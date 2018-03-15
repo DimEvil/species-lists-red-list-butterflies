@@ -16,8 +16,9 @@ library(inborutils) # wrap GBIF api data
 
 rawdataset <- read.csv("./Data/dataset.txt", sep = ";")
 
-names(rawdataset)[1] <- "scientificNameLocal"
-names(rawdataset)[2] <- "scientificName"  #is scientificName EU commit
+rawdataset %<>%
+  rename(scientificNameLocal = SpeciesnameLocal,
+         scientificName = SpeciesnameEurope)
 
 DwcTaxon <- rawdataset[,c(1,2)]
 DwcTaxonList <- distinct(DwcTaxon, scientificNameLocal, scientificName, keep_all=true)
