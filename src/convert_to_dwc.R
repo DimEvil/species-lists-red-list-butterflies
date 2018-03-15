@@ -28,7 +28,6 @@ DwcTaxonBE <- rawdataset %>%
   filter(CountryCode == 'BE') %>%
   select(-Endemic)
   
-vdigest <- Vectorize(digest)
 DwcTaxonList %<>% 
   mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/", 
          rightsHolder = "INBO", 
