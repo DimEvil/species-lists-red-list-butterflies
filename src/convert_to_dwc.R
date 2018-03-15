@@ -29,10 +29,17 @@ DwcTaxonBE <- rawdataset %>%
   select(-Endemic)
   
 vdigest <- Vectorize(digest)
-DwcTaxonList %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/", 
-                     rightsHolder = "INBO", accessRights = "http://www.inbo.be/en/norms-for-data-use", 
-                     datasetName = "Butterfly Species List Europe", occurrencestatus = "present", language = 'EN', 
-                     datasetID = "DOI", kingdom = "Animalia", phylum = "Artropoda" , class = 'Insecta" ' )
+DwcTaxonList %<>% 
+  mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/", 
+         rightsHolder = "INBO", 
+         accessRights = "http://www.inbo.be/en/norms-for-data-use", 
+         datasetName = "Butterfly Species List Europe", 
+         occurrencestatus = "present", 
+         language = 'EN', 
+         datasetID = "DOI", 
+         kingdom = "Animalia", 
+         phylum = "Artropoda" , 
+         class = 'Insecta" ' )
 DwcTaxonList <- gbif_species_name_match(DwcTaxonList, name_col = "scientificName", gbif_terms= c('usageKey','scientificName','rank','order','matchType', 'phylum', 'kingdom','genus','class','confidence',  'synonym','status','family'))
 
 write.csv(DwcTaxonList, file = "dwc_taxon_file.csv", na = "", row.names = FALSE, fileEncoding ="UTF-8")
