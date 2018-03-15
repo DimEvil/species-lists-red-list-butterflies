@@ -16,7 +16,7 @@ library(rgbif)     # To Match GBIF
 rawdataset <- read.csv("~/GitHub/species-lists-red-list-butterflies/species-lists-red-list-butterflies/Data/dataset.txt", sep=";")
 
 names(rawdataset)[1] <- "scientificNameLocal"
-names(rawdataset)[2] <- "scientificName"  #is scientificName EU
+names(rawdataset)[2] <- "scientificName"  #is scientificName EU commit
 
 DwcTaxon <- rawdataset[,c(1,2)]
 DwcTaxonBE <- select(filter(rawdataset, CountryCode == 'BE'),c(1,2,3,4))
