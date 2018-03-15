@@ -26,8 +26,6 @@ DwcTaxonList <- distinct(DwcTaxon, scientificNameLocal, scientificName, keep_all
 DwcTaxonBE <- select(filter(rawdataset, CountryCode == 'BE'),c(1,2,3,4))
 
 vdigest <- Vectorize(digest)
-DwcTaxon %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/", rightsHolder = "INBO", accessRights = "http://www.inbo.be/en/norms-for-data-use", datasetName = "Butterfly Species List Europe", occurrencestatus = "present", language = 'EN', datasetID = "DOI", kingdom = "Animalia", phylum = "Artropoda" , class = 'Insecta" ' )
-
 DwcTaxonList %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/", 
                      rightsHolder = "INBO", accessRights = "http://www.inbo.be/en/norms-for-data-use", 
                      datasetName = "Butterfly Species List Europe", occurrencestatus = "present", language = 'EN', 
