@@ -1,5 +1,3 @@
-
-
 library(tidyverse) # For data transformations
 
 # None core tidyverse packages:
@@ -16,7 +14,7 @@ library(assertable) # because it sneeded for rGBIF
 library(inborutils) # wrap GBIF api data
 
 
-rawdataset <- read.csv("~/GitHub/species-lists-red-list-butterflies/species-lists-red-list-butterflies/Data/dataset.txt", sep=";")
+rawdataset <- read.csv("./Data/dataset.txt", sep = ";")
 
 names(rawdataset)[1] <- "scientificNameLocal"
 names(rawdataset)[2] <- "scientificName"  #is scientificName EU commit
