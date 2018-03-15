@@ -20,12 +20,14 @@ rawdataset %<>%
   rename(scientificNameLocal = SpeciesnameLocal,
          scientificName = SpeciesnameEurope)
 
-DwcTaxonBE <- select(filter(rawdataset, CountryCode == 'BE'),c(1,2,3,4))
-
 DwcTaxonList <- rawdataset %>% 
   select(scientificNameLocal, scientificName) %>%
   distinct(scientificNameLocal, .keep_all = TRUE)
 
+DwcTaxonBE <- rawdataset %>% 
+  filter(CountryCode == 'BE') %>%
+  select(-Endemic)
+  
 vdigest <- Vectorize(digest)
 DwcTaxonList %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/", 
                      rightsHolder = "INBO", accessRights = "http://www.inbo.be/en/norms-for-data-use", 
