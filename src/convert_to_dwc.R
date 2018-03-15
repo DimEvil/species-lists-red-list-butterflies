@@ -20,9 +20,11 @@ rawdataset %<>%
   rename(scientificNameLocal = SpeciesnameLocal,
          scientificName = SpeciesnameEurope)
 
-DwcTaxon <- rawdataset[,c(1,2)]
-DwcTaxonList <- distinct(DwcTaxon, scientificNameLocal, scientificName, keep_all=true)
 DwcTaxonBE <- select(filter(rawdataset, CountryCode == 'BE'),c(1,2,3,4))
+
+DwcTaxonList <- rawdataset %>% 
+  select(scientificNameLocal, scientificName) %>%
+  distinct(scientificNameLocal, .keep_all = TRUE)
 
 vdigest <- Vectorize(digest)
 DwcTaxonList %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/", 
