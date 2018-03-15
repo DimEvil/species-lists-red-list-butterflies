@@ -39,7 +39,7 @@ DwcTaxonList %<>%
          datasetID = "DOI", 
          kingdom = "Animalia", 
          phylum = "Artropoda" , 
-         class = 'Insecta" ' )
+         class = "Insecta" )
 DwcTaxonList <- gbif_species_name_match(DwcTaxonList, name_col = "scientificName", gbif_terms= c('usageKey','scientificName','rank','order','matchType', 'phylum', 'kingdom','genus','class','confidence',  'synonym','status','family'))
 
 write.csv(DwcTaxonList, file = "dwc_taxon_file.csv", na = "", row.names = FALSE, fileEncoding ="UTF-8")
