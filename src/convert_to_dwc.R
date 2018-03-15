@@ -47,5 +47,6 @@ DwcTaxonList %<>%
                                          'confidence', 'synonym', 'status',
                                          'family'))
 
-write.csv(DwcTaxonList, file = "dwc_taxon_file.csv", na = "", row.names = FALSE, fileEncoding ="UTF-8")
+write.csv(DwcTaxonList, file = "dwc_taxon_file.csv", na = "", 
+          row.names = FALSE, fileEncoding = "UTF-8")
 
