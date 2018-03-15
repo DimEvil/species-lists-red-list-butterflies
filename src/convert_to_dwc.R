@@ -14,7 +14,7 @@ library(assertable) # because it sneeded for rGBIF
 library(inborutils) # wrap GBIF api data
 
 
-rawdataset <- read.csv("./Data/dataset.txt", sep = ";")
+rawdataset <- read.csv("./data/dataset.txt", sep = ";")
 
 rawdataset %<>%
   rename(scientificNameLocal = SpeciesnameLocal,
