@@ -1,5 +1,3 @@
-
-
 library(tidyverse) # For data transformations
 
 # None core tidyverse packages:
@@ -16,21 +14,38 @@ library(assertable) # because it sneeded for rGBIF
 library(inborutils) # wrap GBIF api data
 
 
-rawdataset <- read.csv("~/GitHub/species-lists-red-list-butterflies/species-lists-red-list-butterflies/Data/dataset.txt", sep=";")
+rawdataset <- read.csv("./data/dataset.txt", sep = ";")
 
-names(rawdataset)[1] <- "scientificNameLocal"
-names(rawdataset)[2] <- "scientificName"  #is scientificName EU commit
+rawdataset %<>%
+  rename(scientificNameLocal = SpeciesnameLocal,
+         scientificName = SpeciesnameEurope)
 
-DwcTaxon <- rawdataset[,c(1,2)]
-DwcTaxonList <- distinct(DwcTaxon, scientificNameLocal, scientificName, keep_all=true)
-DwcTaxonBE <- select(filter(rawdataset, CountryCode == 'BE'),c(1,2,3,4))
+DwcTaxonList <- rawdataset %>% 
+  select(scientificNameLocal, scientificName) %>%
+  distinct(scientificNameLocal, .keep_all = TRUE)
 
-vdigest <- Vectorize(digest)
-DwcTaxonList %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/", 
-                     rightsHolder = "INBO", accessRights = "http://www.inbo.be/en/norms-for-data-use", 
-                     datasetName = "Butterfly Species List Europe", occurrencestatus = "present", language = 'EN', 
-                     datasetID = "DOI", kingdom = "Animalia", phylum = "Artropoda" , class = 'Insecta" ' )
-DwcTaxonList <- gbif_species_name_match(DwcTaxonList, name_col = "scientificName", gbif_terms= c('usageKey','scientificName','rank','order','matchType', 'phylum', 'kingdom','genus','class','confidence',  'synonym','status','family'))
+DwcTaxonBE <- rawdataset %>% 
+  filter(CountryCode == 'BE') %>%
+  select(-Endemic)
+  
+DwcTaxonList %<>% 
+  mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/", 
+         rightsHolder = "INBO", 
+         accessRights = "http://www.inbo.be/en/norms-for-data-use", 
+         datasetName = "Butterfly Species List Europe", 
+         occurrencestatus = "present", 
+         language = 'EN', 
+         datasetID = "DOI", 
+         kingdom = "Animalia", 
+         phylum = "Artropoda" , 
+         class = "Insecta") %>%
+  gbif_species_name_match(name_col = "scientificName", 
+                          gbif_terms = c('usageKey', 'scientificName', 'rank', 
+                                         'order', 'matchType','phylum', 
+                                         'kingdom', 'genus','class',
+                                         'confidence', 'synonym', 'status',
+                                         'family'))
 
-write.csv(DwcTaxonList, file = "dwc_taxon_file.csv", na = "", row.names = FALSE, fileEncoding ="UTF-8")
+write.csv(DwcTaxonList, file = "dwc_taxon_file.csv", na = "", 
+          row.names = FALSE, fileEncoding = "UTF-8")
 
