@@ -38,12 +38,9 @@ DwcDistribution  <- rawdataset
 
 DwcDistribution %<>% 
   mutate(occurrenceStatus = "present")
-  gbif_species_name_match(name_col = "scientificNameEU", 
-                           gbif_terms = c('usageKey', 'scientificName', 'rank', 
-                                         'order', 'matchType','phylum', 
-                                        'kingdom', 'genus','class',
-                                       'confidence', 'synonym', 'status',
-                                      'family'))
+  gbif_species_name_match((name_col = "scientificNameEU", 
+                           gbif_terms = c('usageKey', 'scientificName', 'rank')
+                          
 DwcTaxonListLocal %<>% 
   mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/", 
          rightsHolder = "INBO", 
