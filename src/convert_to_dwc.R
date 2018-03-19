@@ -18,37 +18,36 @@ rawdataset <- read.csv("./data/dataset.txt", sep = ";")
 
 rawdataset %<>%
   rename(scientificNameLocal = SpeciesnameLocal,
-         scientificName = SpeciesnameEurope)
+         scientificNameEU = SpeciesnameEurope,
+         threatStatus = RedListCategory)
 
 DwcTaxonListEU <- rawdataset %>% 
-  select(scientificNameLocal, scientificName) %>%
-  distinct(scientificName, .keep_all = TRUE)     
+  select(scientificNameLocal, scientificNameEU) %>%
+  distinct(scientificNameEU, .keep_all = TRUE)     
 
 DwcTaxonListLocal <- rawdataset %>% 
-  select(scientificNameLocal, scientificName) %>%
+  select(scientificNameLocal, scientificNameEU) %>%
   distinct(scientificNameLocal, .keep_all = TRUE) 
 
 DwcTaxonBE <- rawdataset %>% 
   filter(CountryCode == 'BE') %>%
   select(-Endemic)
+
+DwcDistribution  <- rawdataset
+
+
+DwcDistribution %<>% 
+  mutate(occurrenceStatus = "present")
+ # gbif_species_name_match(name_col = "scientificNameEU", 
+ #                          gbif_terms = c('usageKey', 'scientificName', 'rank', 
+ #                                        'order', 'matchType','phylum', 
+  #                                       'kingdom', 'genus','class',
+   #                                      'confidence', 'synonym', 'status',
+    #                                     'family'))
   
-DwcTaxonListEU %<>% 
-  mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/", 
-         rightsHolder = "INBO", 
-         accessRights = "http://www.inbo.be/en/norms-for-data-use", 
-         datasetName = "Butterfly Species List Europe", 
-         occurrencestatus = "present", 
-         language = 'EN', 
-         datasetID = "DOI", 
-         kingdom = "Animalia", 
-         phylum = "Artropoda" , 
-         class = "Insecta") %>%
-  gbif_species_name_match(name_col = "scientificName", 
-                          gbif_terms = c('usageKey', 'scientificName', 'rank', 
-                                         'order', 'matchType','phylum', 
-                                         'kingdom', 'genus','class',
-                                         'confidence', 'synonym', 'status',
-                                         'family'))
+##The First one works????? local -- EU
+
+
 DwcTaxonListLocal %<>% 
   mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/", 
          rightsHolder = "INBO", 
@@ -66,11 +65,32 @@ DwcTaxonListLocal %<>%
                                          'kingdom', 'genus','class',
                                          'confidence', 'synonym', 'status',
                                          'family'))
+DwcTaxonListEU %<>% 
+  mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/", 
+         rightsHolder = "INBO", 
+         accessRights = "http://www.inbo.be/en/norms-for-data-use", 
+         datasetName = "Butterfly Species List Europe", 
+         occurrencestatus = "present", 
+         language = 'EN', 
+         datasetID = "DOI", 
+         kingdom = "Animalia", 
+         phylum = "Artropoda" , 
+         class = "Insecta") %>%
+  gbif_species_name_match(name_col = "scientificNameEU", 
+                          gbif_terms = c('usageKey', 'scientificName', 'rank', 
+                                         'order', 'matchType','phylum', 
+                                         'kingdom', 'genus','class',
+                                         'confidence', 'synonym', 'status',
+                                         'family'))
+
 
 write.csv(DwcTaxonListEU, file = "dwc_taxon_fileEU.csv", na = "", 
           row.names = FALSE, fileEncoding = "UTF-8")
 
-write.csv(DwcTaxonListEU, file = "dwc_taxon_fileLocal.csv", na = "", 
+write.csv(DwcTaxonListLocal, file = "dwc_taxon_fileLocal.csv", na = "", 
+          row.names = FALSE, fileEncoding = "UTF-8")
+
+write.csv(DwcDistribution, file = "dwc_distribution.csv", na = "", 
           row.names = FALSE, fileEncoding = "UTF-8")
 
 
