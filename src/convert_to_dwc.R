@@ -14,7 +14,7 @@ library(assertable) # because it sneeded for rGBIF
 library(inborutils) # wrap GBIF api data
 
 
-rawdataset <- read.csv("./data/dataset.txt", sep = ";")
+rawdataset <- read.csv("./data/raw/dataset.txt", sep = ";")
 
 rawdataset %<>%
   rename(scientificNameLocal = SpeciesnameLocal,
@@ -38,16 +38,12 @@ DwcDistribution  <- rawdataset
 
 DwcDistribution %<>% 
   mutate(occurrenceStatus = "present")
- # gbif_species_name_match(name_col = "scientificNameEU", 
- #                          gbif_terms = c('usageKey', 'scientificName', 'rank', 
- #                                        'order', 'matchType','phylum', 
-  #                                       'kingdom', 'genus','class',
-   #                                      'confidence', 'synonym', 'status',
-    #                                     'family'))
-  
-##The First one works????? local -- EU
-
-
+  gbif_species_name_match(name_col = "scientificNameEU", 
+                           gbif_terms = c('usageKey', 'scientificName', 'rank', 
+                                         'order', 'matchType','phylum', 
+                                        'kingdom', 'genus','class',
+                                       'confidence', 'synonym', 'status',
+                                      'family'))
 DwcTaxonListLocal %<>% 
   mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/", 
          rightsHolder = "INBO", 
@@ -84,13 +80,13 @@ DwcTaxonListEU %<>%
                                          'family'))
 
 
-write.csv(DwcTaxonListEU, file = "dwc_taxon_fileEU.csv", na = "", 
+write.csv(DwcTaxonListEU, file = "./data/interim/dwc_taxon_fileEU.csv", na = "", 
           row.names = FALSE, fileEncoding = "UTF-8")
 
-write.csv(DwcTaxonListLocal, file = "dwc_taxon_fileLocal.csv", na = "", 
+write.csv(DwcTaxonListLocal, file = "./data/interim/dwc_taxon_fileLocal.csv", na = "", 
           row.names = FALSE, fileEncoding = "UTF-8")
 
-write.csv(DwcDistribution, file = "dwc_distribution.csv", na = "", 
+write.csv(DwcDistribution, file = "./data/interim/dwc_distribution.csv", na = "", 
           row.names = FALSE, fileEncoding = "UTF-8")
 
 
