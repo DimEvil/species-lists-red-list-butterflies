@@ -35,12 +35,15 @@ DwcTaxonBE <- rawdataset %>%
 
 DwcDistribution  <- rawdataset
 
+vdigest <- Vectorize(digest)
 
 DwcDistribution %<>% 
-  mutate(occurrenceStatus = "present")
-  gbif_species_name_match((name_col = "scientificNameEU", 
-                           gbif_terms = c('usageKey', 'scientificName', 'rank')
-                          
+  mutate(occurrenceStatus = "present")%>%
+  gbif_species_name_match(name_col = "scientificNameEU", 
+                          gbif_terms = c('usageKey', 'scientificName', 'rank'))%>%
+ mutate(taxonID = paste(usageKey, vdigest (scientificName, algo="md5"), sep=":"))
+  
+
 DwcTaxonListLocal %<>% 
   mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/", 
          rightsHolder = "INBO", 
@@ -57,7 +60,9 @@ DwcTaxonListLocal %<>%
                                          'order', 'matchType','phylum', 
                                          'kingdom', 'genus','class',
                                          'confidence', 'synonym', 'status',
-                                         'family'))
+                                         'family'))%>%
+  mutate(taxonID = paste(usageKey, vdigest (scientificName, algo="md5"), sep=":"))
+
 DwcTaxonListEU %<>% 
   mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/", 
          rightsHolder = "INBO", 
@@ -74,7 +79,8 @@ DwcTaxonListEU %<>%
                                          'order', 'matchType','phylum', 
                                          'kingdom', 'genus','class',
                                          'confidence', 'synonym', 'status',
-                                         'family'))
+                                         'family'))%>%
+  mutate(taxonID = paste(usageKey, vdigest (scientificName, algo="md5"), sep=":"))
 
 
 write.csv(DwcTaxonListEU, file = "./data/interim/dwc_taxon_fileEU.csv", na = "", 
