@@ -38,3 +38,4 @@ Temporary Items
 *.docx
 .Rproj.user
 .Rhistory
+.RData
