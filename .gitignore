@@ -37,10 +37,5 @@ Temporary Items
 .apdisk
 *.docx
 .Rproj.user
-<<<<<<< HEAD
 .Rhistory
-.RData
-=======
-.RData
-.Rhistory
->>>>>>> b771bf21b0434e5c3958d5343858b48cb3fad1a3
+.Rdata
