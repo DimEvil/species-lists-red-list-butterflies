@@ -166,20 +166,20 @@ taxonEU %<>% mutate(rightsHolder = "INBO")
 ### datasetID
 
 ```{r}
-taxon  %<>% mutate(datasetID = "to_be_completed")
+taxonEU  %<>% mutate(datasetID = "to_be_completed")
 ```
 
 
 ### datasetName
 
 ```{r}
-taxon %<>% mutate(datasetName = "Red Lists Butterflies Europe_EU")
+taxonEU %<>% mutate(datasetName = "Red Lists Butterflies Europe_EU")
 ```
 
 ### nomenclaturalCode
 
 ```{r}
-taxon %<>% mutate(nomenclaturalCode = "ICZN")
+taxonEU %<>% mutate(nomenclaturalCode = "ICZN")
 ```
 
 
@@ -222,7 +222,7 @@ write.csv(taxonEU, file = dwc_taxon_fileEU, na = "", row.names = FALSE, fileEnco
 # Create distribution extension
 
 ```{r start_distribution}
-distribution <- raw_data
+distributionEU <- raw_data
 ```
 
 ## Term mapping
@@ -230,6 +230,8 @@ distribution <- raw_data
 Map the data to [Species Distribution](http://rs.gbif.org/extension/gbif/1.0/distribution.xml).
 
 ### taxonID
+
+
 ### locationID
 ### locality
 ### countryCode
