@@ -1,0 +1,194 @@
+---
+title: "Darwin Core mapping"
+subtitle: "For: Inventory of alien macroinvertebrates in Flanders, Belgium"
+author:
+- Lien Reyserhove
+- Peter Desmet
+- Dimitri Brosens
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+---
+
+This document describes how we map the checklist data to Darwin Core. 
+
+# Setup
+
+```{r setup, echo = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+Set locale (so we use UTF-8 character encoding):
+
+```{r}
+# This works on Mac OS X, might not work on other OS
+Sys.setlocale("LC_CTYPE", "en_US.UTF-8")
+```
+
+Load libraries:
+
+```{r}
+
+```
+
+Set file paths (all paths should be relative to this script):
+
+```{r}
+# Raw files:
+raw_data_file = "../data/raw/AI_2016_Boets_etal_Supplement.xls"
+sources_file = "../data/raw/sources.tsv"
+
+# Processed files:
+dwc_taxon_file = "../data/processed/dwc_checklist/taxon.csv"
+dwc_distribution_file = "../data/processed/dwc_checklist/distribution.csv"
+dwc_profile_file = "../data/processed/dwc_checklist/speciesprofile.csv"
+dwc_description_file = "../data/processed/dwc_checklist/description.csv"
+```
+
+# Read and pre-process raw data
+
+Create a data frame `raw_data` from the source data:
+
+```{r}
+# Read the source data:
+raw_data <- read_excel(raw_data_file, sheet = "checklist", na = "NA") 
+sources <- read.table(sources_file, sep = "\t", quote = "", colClasses = "character",  fileEncoding = "UTF8", header = T)
+```
+
+Clean the data somewhat: remove empty rows if present:
+
+```{r}
+raw_data %<>%
+  remove_empty("rows") %>%    # Remove empty rows
+  clean_names()               # Have sensible (lowercase) column names
+```
+
+
+## Generate taxonID
+
+To uniquely identify a taxon in the taxon core and reference taxa in the extensions, we need a `taxonID`. Since we need it in all generated files, we generate it here in the raw data frame. It is a combination of `dataset-shortname:taxon:` and a hash based on the scientific name. As long as the scientific name doesn't change, the ID will be stable:
+
+```{r}
+# Vectorize the digest function (The digest() function isn't vectorized. So if you pass in a vector, you get one value for the whole vector rather than a digest for each element of the vector):
+vdigest <- Vectorize(digest)
+
+# Generate taxonID:
+raw_data %<>% mutate(taxon_id = paste("alien-macroinvertebrates-checklist", "taxon", vdigest(species, algo="md5"), sep = ":"))
+```
+
+
+## Further pre-processing:
+
+Add prefix `raw_` to all column names to avoid name clashes with Darwin Core terms:
+
+```{r}
+colnames(raw_data) <- paste0("raw_", colnames(raw_data))
+```
+ 
+Preview data:
+
+```{r}
+head(raw_data)
+```
+
+# Create taxon core
+
+```{r start_taxon}
+taxon <- raw_data
+```
+
+## Term mapping
+
+Map the data to [Darwin Core Taxon](http://rs.gbif.org/core/dwc_taxon_2015-04-24.xml).
+ 
+### language
+### license
+### rightsHolder
+### datasetID
+### datasetName
+### references
+### taxonID
+### scientificName
+### kingdom
+### phylum
+### class
+### order
+
+ 
+## Post-processing
+
+Remove the original columns:
+
+```{r}
+taxon %<>% select(-starts_with("raw_"))
+```
+
+Sort on `taxonID`:
+
+```{r}
+taxon %<>% arrange(taxonID)
+```
+
+Preview data:
+
+```{r}
+head(taxon)
+```
+
+Save to CSV:
+
+```{r}
+write.csv(taxon, file = dwc_taxon_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+```
+
+# Create distribution extension
+
+```{r start_distribution}
+distribution <- raw_data
+```
+
+## Term mapping
+
+Map the data to [Species Distribution](http://rs.gbif.org/extension/gbif/1.0/distribution.xml).
+
+### taxonID
+### locationID
+### locality
+### countryCode
+### occurrenceStatus
+### establishmentMeans
+### eventDate
+### source
+
+## Post-processing
+
+Remove the original columns:
+
+```{r}
+distribution %<>% select(-starts_with("raw_"), -start_year, -end_year)
+```
+
+Sort on `taxonID`:
+
+```{r}
+distribution %<>% arrange(taxonID)
+```
+
+Preview data:
+
+```{r}
+distribution %>%
+  mutate(source = substr(source, 1, 10)) %>% # Shorten source to make it easier to display
+  head()
+```
+
+Save to CSV:
+
+```{r}
+write.csv(distribution, file = dwc_distribution_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+```
+
