@@ -94,11 +94,13 @@ Preview data:
 head(raw_data)
 ```
 
-# Create taxon core
+# Create taxonList core EU
 
 ```{r start_taxon}
 taxon <- raw_data
 ```
+
+
 
 ## Term mapping
 
@@ -127,19 +129,58 @@ taxon %<>% mutate(rightsHolder = "INBO")
 
 ### datasetID
 
+```{r}
 taxon  %<>% mutate(datasetID = "to_be_completed")
+```
+
 
 ### datasetName
 
+```{r}
 taxon %<>% mutate(datasetName = "Red Lists Butterflies Europe_EU")
+```
 
-### references
-### taxonID
-### scientificName
+
+### treadStatus
+
+```{r}
+taxon %<>% rename(threatStatus = raw_red_list_category)
+
+```
+
+### Look at data
+
+```{r}
+head(taxonEU)
+
+```
+
+### taxonListEU
+
+Create species list EU names
+
+```{r}
+taxonEU <-  taxon %<>% select(raw_speciesname_local, raw_speciesname_europe) %>%
+           distinct(raw_speciesname_europe, .keep_all = TRUE) 
+```
+
+
+
+### Look at data
+
+```{r}
+head(taxonEU)
+
+```
+
 ### kingdom
+
+
 ### phylum
 ### class
 ### order
+
+### taxonID
 
 ## Generate taxonID
 
