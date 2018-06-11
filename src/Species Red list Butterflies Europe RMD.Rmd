@@ -1,6 +1,6 @@
 ---
 title: "Darwin Core mapping"
-subtitle: "Red List Butterflies Europe"
+subtitle: "Red List Butterflies Europe EU_list"
 author:
 - Lien Reyserhove
 - Dimitri Brosens
@@ -91,39 +91,75 @@ colnames(raw_data) <- paste0("raw_", colnames(raw_data))
 Preview data:
 
 ```{r}
-head(raw_data)
+head(raw_data, n = 100)
 ```
 
 # Create taxonList core EU
 
 ```{r start_taxon}
-taxon <- raw_data
+taxonEU <- raw_data
 ```
 
+# taxonListEU
+
+Create species list EU names
+
+```{r}
+taxonEU %<>% select(raw_speciesname_local, raw_speciesname_europe) %>%
+           distinct(raw_speciesname_europe, .keep_all = TRUE) 
+```
+
+Preview data:
+
+```{r}
+head(taxonEU , n = 100)
+```
+
+```{r}
+# Vectorize the digest function (The digest() function isn't vectorized. So if you pass in a vector, you get one value for the whole vector rather than a digest for each element of the vector):
+vdigest <- Vectorize(digest)
+
+taxonEU %<>% 
+
+  gbif_species_name_match(name_col = "raw_speciesname_europe", 
+                          gbif_terms = c('usageKey', 'scientificName', 'rank', 
+                                         'order', 'matchType','phylum', 
+                                         'kingdom', 'genus','class',
+                                         'confidence', 'synonym', 'status',
+                                         'family'))%>%
+  mutate(taxonID = paste(usageKey, vdigest (scientificName, algo="md5"), sep=":"))
+```
+
+Preview data:
+
+```{r}
+head(taxonEU , n = 100)
 
 
-## Term mapping
+```
+
+## Add fixed terms mapping
 
 Map the data to [Darwin Core Taxon](http://rs.gbif.org/core/dwc_taxon_2015-04-24.xml).
  
 ### language
 
 ```{r}
-taxon %<>% mutate(language = "en")
+taxonEU %<>% mutate(language = "en")
 ```
 
 
 ### license
 
 ```{r}
-taxon %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/")
+taxonEU %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/")
 
 ```
 
 ### rightsHolder
 
 ```{r}
-taxon %<>% mutate(rightsHolder = "INBO")  
+taxonEU %<>% mutate(rightsHolder = "INBO")  
 ```
 
 
@@ -141,84 +177,40 @@ taxon %<>% mutate(datasetName = "Red Lists Butterflies Europe_EU")
 ```
 
 
-### treadStatus
-
-```{r}
-taxon %<>% rename(threatStatus = raw_red_list_category)
-
-```
 
 ### Look at data
 
 ```{r}
 head(taxonEU)
-
+View(taxonEU)
 ```
 
-### taxonListEU
-
-Create species list EU names
-
-```{r}
-taxonEU <-  taxon %<>% select(raw_speciesname_local, raw_speciesname_europe) %>%
-           distinct(raw_speciesname_europe, .keep_all = TRUE) 
-```
-
-
-
-### Look at data
-
-```{r}
-head(taxonEU)
-
-```
-
-### kingdom
-
-
-### phylum
-### class
-### order
-
-### taxonID
-
-## Generate taxonID
-
-To uniquely identify a taxon in the taxon core and reference taxa in the extensions, we need a `taxonID`. Since we need it in all generated files, we generate it here in the raw data frame. It is a combination of `dataset-shortname:taxon:` and a hash based on the scientific name. As long as the scientific name doesn't change, the ID will be stable:
-
-```{r}
-# Vectorize the digest function (The digest() function isn't vectorized. So if you pass in a vector, you get one value for the whole vector rather than a digest for each element of the vector):
-vdigest <- Vectorize(digest)
-
-# Generate taxonID:
-raw_data %<>% mutate(taxon_id = paste("alien-macroinvertebrates-checklist", "taxon", vdigest(species, algo="md5"), sep = ":"))
-```
 
  
 ## Post-processing
 
 Remove the original columns:
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 taxon %<>% select(-starts_with("raw_"))
 ```
 
 Sort on `taxonID`:
 
 ```{r}
-taxon %<>% arrange(taxonID)
+taxonEU %<>% arrange(taxonID)
 ```
 
 Preview data:
 
 ```{r}
-head(taxon)
+head(taxonEU)
 ```
 
 Save to CSV:
 
 ```{r}
-write.csv(taxon, file = dwc_taxon_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(taxon, file = dwc_taxon_EU, na = "", row.names = FALSE, fileEncoding = "UTF-8")
 ```
 
 # Create distribution extension
