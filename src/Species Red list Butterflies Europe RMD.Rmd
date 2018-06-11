@@ -130,6 +130,9 @@ taxon %<>% mutate(rightsHolder = "INBO")
 taxon  %<>% mutate(datasetID = "to_be_completed")
 
 ### datasetName
+
+taxon %<>% mutate(datasetName = "Red Lists Europe")
+
 ### references
 ### taxonID
 ### scientificName
