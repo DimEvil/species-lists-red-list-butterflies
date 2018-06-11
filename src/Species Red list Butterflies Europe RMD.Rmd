@@ -58,7 +58,6 @@ raw_data_file = "../data/raw/dataset.txt"
 
 # Processed files:
 dwc_taxon_fileEU = "../data/processed/dwc_checklist/taxonEU.csv"
-dwc_taxon_fileLocal = "../data/processed/dwc_checklist/taxonLocal.csv"
 dwc_distribution_file = "../data/processed/dwc_checklist/distribution.csv"
 
 ```
@@ -78,19 +77,6 @@ Clean the data somewhat: remove empty rows if present:
 raw_data %<>%
   remove_empty("rows") %>%    # Remove empty rows
   clean_names()               # Have sensible (lowercase) column names
-```
-
-
-## Generate taxonID
-
-To uniquely identify a taxon in the taxon core and reference taxa in the extensions, we need a `taxonID`. Since we need it in all generated files, we generate it here in the raw data frame. It is a combination of `dataset-shortname:taxon:` and a hash based on the scientific name. As long as the scientific name doesn't change, the ID will be stable:
-
-```{r}
-# Vectorize the digest function (The digest() function isn't vectorized. So if you pass in a vector, you get one value for the whole vector rather than a digest for each element of the vector):
-vdigest <- Vectorize(digest)
-
-# Generate taxonID:
-raw_data %<>% mutate(taxon_id = paste("alien-macroinvertebrates-checklist", "taxon", vdigest(species, algo="md5"), sep = ":"))
 ```
 
 
@@ -130,6 +116,18 @@ Map the data to [Darwin Core Taxon](http://rs.gbif.org/core/dwc_taxon_2015-04-24
 ### phylum
 ### class
 ### order
+
+## Generate taxonID
+
+To uniquely identify a taxon in the taxon core and reference taxa in the extensions, we need a `taxonID`. Since we need it in all generated files, we generate it here in the raw data frame. It is a combination of `dataset-shortname:taxon:` and a hash based on the scientific name. As long as the scientific name doesn't change, the ID will be stable:
+
+```{r}
+# Vectorize the digest function (The digest() function isn't vectorized. So if you pass in a vector, you get one value for the whole vector rather than a digest for each element of the vector):
+vdigest <- Vectorize(digest)
+
+# Generate taxonID:
+raw_data %<>% mutate(taxon_id = paste("alien-macroinvertebrates-checklist", "taxon", vdigest(species, algo="md5"), sep = ":"))
+```
 
  
 ## Post-processing
