@@ -176,6 +176,12 @@ taxon  %<>% mutate(datasetID = "to_be_completed")
 taxon %<>% mutate(datasetName = "Red Lists Butterflies Europe_EU")
 ```
 
+### nomenclaturalCode
+
+```{r}
+taxon %<>% mutate(nomenclaturalCode = "ICZN")
+```
+
 
 
 ### Look at data
