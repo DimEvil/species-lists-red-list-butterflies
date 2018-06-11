@@ -105,8 +105,26 @@ taxon <- raw_data
 Map the data to [Darwin Core Taxon](http://rs.gbif.org/core/dwc_taxon_2015-04-24.xml).
  
 ### language
+
+```{r}
+taxon %<>% mutate(language = "en")
+```
+
+
 ### license
+
+```{r}
+taxon %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/")
+
+```
+
 ### rightsHolder
+
+```{r}
+taxon %<>% mutate(rightsHolder = "INBO")  
+```
+
+
 ### datasetID
 ### datasetName
 ### references
