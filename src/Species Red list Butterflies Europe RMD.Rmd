@@ -131,7 +131,7 @@ taxon  %<>% mutate(datasetID = "to_be_completed")
 
 ### datasetName
 
-taxon %<>% mutate(datasetName = "Red Lists Europe")
+taxon %<>% mutate(datasetName = "Red Lists Butterflies Europe_EU")
 
 ### references
 ### taxonID
