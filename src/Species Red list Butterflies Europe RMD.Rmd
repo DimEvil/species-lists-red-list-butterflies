@@ -57,7 +57,7 @@ raw_data_file = "../data/raw/dataset.txt"
 
 
 # Processed files:
-dwc_taxon_fileEU = "../data/processed/dwc_checklist/taxonEU.csv"
+dwc_taxon_fileEU = "../data/processed/dwc_checklistEU/taxonEU.csv"
 dwc_distribution_file = "../data/processed/dwc_checklist/distribution.csv"
 
 ```
@@ -210,7 +210,7 @@ head(taxonEU)
 Save to CSV:
 
 ```{r}
-write.csv(taxon, file = dwc_taxon_EU, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(taxonEU, file = dwc_taxon_fileEU, na = "", row.names = FALSE, fileEncoding = "UTF-8")
 ```
 
 # Create distribution extension
