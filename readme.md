@@ -33,10 +33,10 @@ The repository structure is based on [Cookiecutter Data Science](http://drivenda
 ├── docs              : Repository website GENERATED
 │
 └── src
-    ├── read_data.Rmd : Script to read data qnd match names with GBIF backbone taxonomy
+    ├── read_data.Rmd : Script to read data and match names with GBIF backbone taxonomy
     ├── dwc_mapping.Rmd : Darwin Core mapping script
     ├── weighted_red_list_values.Rmd : Script to calculate weighted red list values
-    └── src.Rproj       : RStudio project file
+    └── src.Rproj      : RStudio project file
 ```
 
 ## Installation
