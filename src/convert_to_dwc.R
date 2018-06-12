@@ -12,6 +12,7 @@ library(digest)     # To generate hashes
 library(rgbif)      # To Match GBIF
 library(assertable) # because it sneeded for rGBIF
 library(inborutils) # wrap GBIF api data
+library(dplyr)
 
 
 rawdataset <- read.csv("./data/raw/dataset.txt", sep = ";")
