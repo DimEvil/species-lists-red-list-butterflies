@@ -14,7 +14,7 @@ output:
     number_sections: true
 ---
 
-This document describes how we import the "National checklists and red lists for prioritising European butterfly conservations actions" dataset from the basic [Googlesheets document](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?ts=5b1f937f#gid=0) as [csv files](https://github.com/inbo/red-lists-european-butterflies-checklist/tree/master/data/interim) on GitHub. It further describes how we match the species information to the GBIF backbone.
+This document describes how we import the "National checklists and red lists for prioritising European butterfly conservations actions" dataset from the basic [Googlesheets document](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?ts=5b1f937f#gid=0) as four separate [csv files](https://github.com/inbo/red-lists-european-butterflies-checklist/tree/master/data/interim) on GitHub. It further describes how we add species phylogeny information to the taxon files by using the GBIF backbone.
 
 # Setup
 
@@ -49,15 +49,13 @@ references_file = "../data/interim/references.csv"
 
 ## Read raw data
 
-The original spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?ts=5b1f937f#gid=1323544344). We need to retrieve this spreadsheet and select the specific worksheet first:
-
-Retrieve the spreadsheet:
+The original spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?ts=5b1f937f#gid=1323544344). We need to retrieve this spreadsheet and select the specific Googlesheet:
 
 ```{r}
 retrieve_spreadsheet <- gs_title("EuroButt")
 ```
 
-This spreadsheet contains four different worksheets: `taxa_europe`, `taxa_regional`, `regional_threat_scores` and `references`. We select these and save them as separate data frames.
+This spreadsheet contains four different worksheets: `taxa_europe`, `taxa_regional`, `regional_threat_scores` and `references`. We select these here and save them as separate data frames:
 
 ```{r}
 taxa_europe <- retrieve_spreadsheet %>% gs_read("taxa_europe")
