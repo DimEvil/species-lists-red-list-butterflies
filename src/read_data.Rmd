@@ -55,33 +55,13 @@ The original spreadsheet can be found [here](https://docs.google.com/spreadsheet
 retrieve_spreadsheet <- gs_title("EuroButt")
 ```
 
-This spreadsheet contains four different worksheets: `taxa_europe`, `taxa_regional`, `regional_threat_scores` and `references`. We select these here and save them as separate data frames:
+This spreadsheet contains four different worksheets: `taxa_europe`, `taxa_regional`, `regional_threat_scores` and `references`. We select these here and save them as separate data frames. We will first continue with the `taxa_regional` as this the original dataframe.
 
 ```{r}
-taxa_europe <- retrieve_spreadsheet %>% gs_read("taxa_europe")
-taxa_regional <- retrieve_spreadsheet %>% gs_read("taxa_regional")
+# taxa_europe <- retrieve_spreadsheet %>% gs_read("taxa_europe") 
+taxa_regional <- retrieve_spreadsheet %>% gs_read("taxa_regional") 
 regional_threat_scores <- retrieve_spreadsheet %>% gs_read("regional_threat_scores")
 references <- retrieve_spreadsheet %>% gs_read("references")
-```
-
-## Match species name to GBIF backbone
-
-We retrieve the taxonomic information for each species in `taxa_europe`. We do this using the gbif_species_name_match() function provided by the `inborutils` package: 
-
-```{r}
-taxa_europe %<>% gbif_species_name_match(name_col = "SpeciesnameEurope", 
-                                        gbif_terms = c('usageKey', 'scientificName', 'rank', 'matchType', 
-                                                       'kingdom', 'phylum', 'class', 'order', 'family', 
-                                                       'genus', 'confidence', 'synonym', 'status'))
-```
-
-We do the same for `taxa_regional`:
-
-```{r}
-taxa_regional %<>% gbif_species_name_match(name_col = "SpeciesnameLocal", 
-                                        gbif_terms = c('usageKey', 'scientificName', 'rank', 'matchType', 
-                                                       'kingdom', 'phylum', 'class', 'order', 'family', 
-                                                       'genus', 'confidence', 'synonym', 'status'))
 ```
 
 ## Export files to interim folder
