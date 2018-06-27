@@ -15,7 +15,7 @@ library(inborutils) # wrap GBIF api data
 library(dplyr)
 
 
-rawdataset <- read.csv("./data/raw/dataset.txt", sep = ";")
+rawdataset <- read.csv("../data/raw/dataset.txt", sep = ";")
 
 rawdataset %<>%
   rename(scientificNameLocal = SpeciesnameLocal,
@@ -84,13 +84,13 @@ DwcTaxonListEU %<>%
   mutate(taxonID = paste(usageKey, vdigest (scientificName, algo="md5"), sep=":"))
 
 
-write.csv(DwcTaxonListEU, file = "./data/interim/dwc_taxon_fileEU.csv", na = "", 
+write.csv(DwcTaxonListEU, file = "../data/interim/dwc_taxon_fileEU.csv", na = "", 
           row.names = FALSE, fileEncoding = "UTF-8")
 
-write.csv(DwcTaxonListLocal, file = "./data/interim/dwc_taxon_fileLocal.csv", na = "", 
+write.csv(DwcTaxonListLocal, file = "../data/interim/dwc_taxon_fileLocal.csv", na = "", 
           row.names = FALSE, fileEncoding = "UTF-8")
 
-write.csv(DwcDistribution, file = "./data/interim/dwc_distribution.csv", na = "", 
+write.csv(DwcDistribution, file = "../data/interim/dwc_distribution.csv", na = "", 
           row.names = FALSE, fileEncoding = "UTF-8")
 
 
