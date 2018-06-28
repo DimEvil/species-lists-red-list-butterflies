@@ -56,8 +56,8 @@ Set file paths (all paths should be relative to this script):
 raw_data_file = "../data/interim/taxa_regional.csv"
 
 # Processed files:
-dwc_taxon_fileEU = "../data/processed/dwc_checklistEU/taxonEU.csv"
-dwc_distribution_file = "../data/processed/dwc_checklist/distribution.csv"
+dwc_taxon_fileEU = "../data/processed/dwc_checklistEU/taxon.csv"
+dwc_distribution_file = "../data/processed/dwc_checklistEU/distribution.csv"
 
 ```
 
@@ -65,22 +65,31 @@ dwc_distribution_file = "../data/processed/dwc_checklist/distribution.csv"
 
 Create a data frame `raw_data` from the source data:
 
+# Pre-processing
 
 
 
 # Read the source data:
 ```{r}
 raw_data <- read_csv("../data/interim/taxa_regional.csv")
-View(raw_data)
+references <- read_csv ("../data/interim/references.csv")
+#View(raw_data)
+#View(references)
 ```
 
+# Join references
 
+```{r}
+raw_data <- taxa_regional %>% left_join(references, by = c("CountryCode" = "CountryCode"))
+```
 
 ```{r}
 raw_data %<>%
   remove_empty("rows") %>%    # Remove empty rows
   clean_names()               # Have sensible (lowercase) column names
 ```
+
+
 
 
 ## Further pre-processing:
@@ -96,7 +105,7 @@ Preview data:
 ```{r}
 head(raw_data, n = 100)
 ```
-
+#Create taxonID
 
 ```{r}
 # Vectorize the digest function (The digest() function isn't vectorized. So if you pass in a vector, you get one value for the whole vector rather than a digest for each element of the vector):
@@ -117,7 +126,7 @@ head(raw_data , n = 100)
 
 ```{r}
 taxon <- raw_data
-View(taxon)
+# View(taxon)
 ```
 
 ### Term mapping
@@ -128,7 +137,7 @@ Map the data to [Darwin Core Taxon](http://rs.gbif.org/core/dwc_taxon_2015-04-24
 
 ```{r}
 taxon %<>% 
-  select(raw_speciesname_local, raw_speciesname_europe,taxonID, raw_use) %>%
+  select(raw_speciesname_local, raw_speciesname_europe,taxonID, raw_use, raw_reference_species_list, raw_reference_red_list, raw_country) %>%
   filter(raw_use == 'y') %>%
   distinct(taxonID, .keep_all = TRUE) 
   head(taxon)
@@ -176,16 +185,26 @@ taxon %<>% mutate(datasetName = "red-lists-european-butterflies-checklist")
 taxon %<>% mutate(nomenclaturalCode = "ICZN")
 ```
 
-## Systematics
+## systematics
 
 ```{r}
 taxon %<>% mutate(kingdom = "Animalia") %>%
            mutate(class = "Insecta") %>%
            mutate (order= "Lepidoptera")
+head(taxon)
+```
+## renaming
+
+
+
+```{r}
+taxon %<>%
+      rename(scientificName = raw_speciesname_europe) %>%
+      rename(references = raw_reference_species_list)
+
 ```
 
-
-### Look at data
+### look at data
 
 ```{r}
 head(taxon)
@@ -205,39 +224,99 @@ taxon %<>% select(-starts_with("raw_"))
 Sort on `taxonID`:
 
 ```{r}
-taxonEU %<>% arrange(taxonID)
+taxon %<>% arrange(taxonID)
 ```
 
 Preview data:
 
 ```{r}
-head(taxonEU)
+head(taxon)
 ```
 
 Save to CSV:
 
 ```{r}
-write.csv(taxonEU, file = dwc_taxon_fileEU, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(taxon, file = dwc_taxon_fileEU, na = "", row.names = FALSE, fileEncoding = "UTF-8")
 ```
 
 # Create distribution extension
 
 ```{r start_distribution}
-distributionEU <- raw_data
+distribution <- raw_data
+head(distribution)
 ```
 
 ## Term mapping
 
 Map the data to [Species Distribution](http://rs.gbif.org/extension/gbif/1.0/distribution.xml).
 
+### Use unique values in taxon
+
+```{r}
+distribution %<>% 
+  select(raw_speciesname_europe,taxonID, raw_use, raw_country_code, raw_red_list_category, raw_comments, raw_status, raw_reference_red_list) %>%
+  filter(raw_use == 'y') 
+
+head(distribution)
+```
+
+
+
 ### taxonID
+
+### scientificName
+
+```{r}
+distribution %<>%
+    rename(scientificName = raw_speciesname_europe) 
+```
 
 
 ### locationID
+
 ### locality
+
+
 ### countryCode
-### occurrenceStatus
+
+
+```{r}
+distribution %<>%
+      rename(countryCode = raw_country_code)
+
+```
+
 ### establishmentMeans
+
+
+```{r}
+distribution %<>%
+      rename(establishmentMeans = raw_status)
+
+```
+## renaming
+
+
+
+```{r}
+distribution %<>%
+      rename(source = raw_reference_red_list)
+
+```
+
+### occurrenceStatus
+
+
+### treadStatus
+
+
+```{r}
+distribution %<>%
+      rename(treadStatus = raw_red_list_category)
+
+```
+
+
 ### eventDate
 ### source
 
@@ -246,7 +325,7 @@ Map the data to [Species Distribution](http://rs.gbif.org/extension/gbif/1.0/dis
 Remove the original columns:
 
 ```{r}
-distribution %<>% select(-starts_with("raw_"), -start_year, -end_year)
+distribution %<>% select(-starts_with("raw_"))
 ```
 
 Sort on `taxonID`:
@@ -259,7 +338,7 @@ Preview data:
 
 ```{r}
 distribution %>%
-  mutate(source = substr(source, 1, 10)) %>% # Shorten source to make it easier to display
+ # mutate(source = substr(source, 1, 10)) %>% # Shorten source to make it easier to display
   head()
 ```
 
@@ -267,5 +346,6 @@ Save to CSV:
 
 ```{r}
 write.csv(distribution, file = dwc_distribution_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+
 ```
 
