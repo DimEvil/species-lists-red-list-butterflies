@@ -128,9 +128,9 @@ Map the data to [Darwin Core Taxon](http://rs.gbif.org/core/dwc_taxon_2015-04-24
 
 ```{r}
 taxon %<>% 
-  select(raw_speciesname_local, raw_speciesname_europe, raw_use) %>%
+  select(raw_speciesname_local, raw_speciesname_europe,taxonID, raw_use) %>%
   filter(raw_use == 'y') %>%
-  distinct(raw_speciesname_europe, .keep_all = TRUE) 
+  distinct(taxonID, .keep_all = TRUE) 
   head(taxon)
 ```
 
@@ -176,10 +176,12 @@ taxon %<>% mutate(datasetName = "red-lists-european-butterflies-checklist")
 taxon %<>% mutate(nomenclaturalCode = "ICZN")
 ```
 
-## kingdom
+## Systematics
 
 ```{r}
-taxon %<>% mutate(kingdom = "animalia")
+taxon %<>% mutate(kingdom = "Animalia") %>%
+           mutate(class = "Insecta") %>%
+           mutate (order= "Lepidoptera")
 ```
 
 
@@ -187,7 +189,7 @@ taxon %<>% mutate(kingdom = "animalia")
 
 ```{r}
 head(taxon)
-View(taxon)
+
 ```
 
 
