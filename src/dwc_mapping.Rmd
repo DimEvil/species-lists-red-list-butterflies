@@ -117,12 +117,25 @@ head(raw_data , n = 100)
 
 ```{r}
 taxon <- raw_data
+View(taxon)
 ```
 
 ### Term mapping
 
 Map the data to [Darwin Core Taxon](http://rs.gbif.org/core/dwc_taxon_2015-04-24.xml).
  
+### Use unique values in taxon
+
+```{r}
+taxon %<>% 
+  select(raw_speciesname_local, raw_speciesname_europe, raw_use) %>%
+  filter(raw_use == 'y') %>%
+  distinct(raw_speciesname_europe, .keep_all = TRUE) 
+  head(taxon)
+```
+
+
+
 ### language
 
 ```{r}
@@ -154,7 +167,7 @@ taxon  %<>% mutate(datasetID = "to_be_completed")
 ### datasetName
 
 ```{r}
-taxon %<>% mutate(datasetName = "Red Lists Butterflies Europe_EU")
+taxon %<>% mutate(datasetName = "red-lists-european-butterflies-checklist")
 ```
 
 ### nomenclaturalCode
@@ -163,6 +176,11 @@ taxon %<>% mutate(datasetName = "Red Lists Butterflies Europe_EU")
 taxon %<>% mutate(nomenclaturalCode = "ICZN")
 ```
 
+## kingdom
+
+```{r}
+taxon %<>% mutate(kingdom = "animalia")
+```
 
 
 ### Look at data
