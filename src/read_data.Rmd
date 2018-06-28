@@ -69,7 +69,7 @@ references <- retrieve_spreadsheet %>% gs_read("references")
 We add a copy of the four generated data frames to the [interim folder](https://github.com/inbo/red-lists-european-butterflies-checklist/tree/master/data/interim) on Github:
 
 ```{r}
-write.csv(taxa_europe, file = taxa_europe_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+#write.csv(taxa_europe, file = taxa_europe_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
 write.csv(taxa_regional, file = taxa_regional_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
 write.csv(regional_threat_scores, file = regional_threat_scores_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
 write.csv(references, file = references_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
