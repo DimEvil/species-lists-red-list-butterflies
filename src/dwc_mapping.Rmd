@@ -268,15 +268,15 @@ head(distribution)
 ## Term mapping
 
 Map the data to [Species Distribution](http://rs.gbif.org/extension/gbif/1.0/distribution.xml).
+### Pre-processing
 
 ### Use unique values in taxon
+Use unique values in taxon
 
 ```{r}
 distribution %<>% 
-  select(raw_speciesname_europe,taxonID, raw_use, raw_country_code, raw_red_list_category, raw_comments, raw_status, raw_reference_red_list) %>%
-  filter(raw_use == 'y') 
-
-head(distribution)
+  filter(raw_use == 'y') %>% 
+  select(raw_speciesname_europe, raw_taxon_id, raw_country, raw_country_code, raw_red_list_category, raw_comments, raw_status, raw_reference_red_list) 
 ```
 
 
