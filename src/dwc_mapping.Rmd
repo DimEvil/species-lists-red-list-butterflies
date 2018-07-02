@@ -100,13 +100,20 @@ raw_data <- taxa_regional
 raw_data <- taxa_regional %>% left_join(references, by = c("CountryCode" = "CountryCode"))
 ```
 
+## Create taxonID
+
 ```{r}
 raw_data %<>%
   remove_empty("rows") %>%    # Remove empty rows
   clean_names()               # Have sensible (lowercase) column names
 ```
+# Vectorize the digest function (The digest() function isn't vectorized. So if you pass in a vector, you get one value for the whole vector rather than a digest for each element of the vector):
+vdigest <- Vectorize(digest)
 
+raw_data %<>% mutate(taxonID = paste("red-lists-european-butterflies-checklist", "taxon", vdigest (SpeciesnameEurope, algo="md5"), sep=":"))
+```
 
+## Further pre-processing
 
 
 ## Further pre-processing:
@@ -121,22 +128,6 @@ Preview data:
 
 ```{r}
 head(raw_data, n = 100)
-```
-#Create taxonID
-
-```{r}
-# Vectorize the digest function (The digest() function isn't vectorized. So if you pass in a vector, you get one value for the whole vector rather than a digest for each element of the vector):
-vdigest <- Vectorize(digest)
-
-raw_data %<>% mutate(taxonID = paste("red-lists-european-butterflies-checklist", "taxon", vdigest (raw_speciesname_europe, algo="md5"), sep=":"))
-```
-
-Preview data:
-
-```{r}
-head(raw_data , n = 100)
-
-
 ```
 
 ## Create taxon core
