@@ -194,9 +194,11 @@ taxon %<>% mutate(taxonID = raw_taxon_id)
 ```
 
 ### nomenclaturalCode
+### scientificName
 
 ```{r}
 taxon %<>% mutate(nomenclaturalCode = "ICZN")
+taxon %<>% mutate(scientificName = raw_speciesname_europe) 
 ```
 
 ### kingdom
@@ -204,7 +206,6 @@ taxon %<>% mutate(nomenclaturalCode = "ICZN")
 ```{r}
 taxon %<>% mutate(kingdom = "Animalia")
 ```
-## renaming
 
 ### class
 
@@ -215,8 +216,6 @@ taxon %<>% mutate(class = "Insecta")
 ### order
 
 ```{r}
-taxon %<>%
-      rename(scientificName = raw_speciesname_europe) 
 taxon %<>% mutate (order= "Lepidoptera")
 ```
 
