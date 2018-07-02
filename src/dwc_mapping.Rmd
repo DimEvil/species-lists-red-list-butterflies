@@ -178,7 +178,13 @@ taxon %<>% mutate(institutionCode = "INBO")
 ### datasetName
 
 ```{r}
-taxon %<>% mutate(datasetName = "red-lists-european-butterflies-checklist")
+taxon %<>% mutate(datasetName = "National checklists and red lists for prioritising European butterfly conservation actions")
+```
+
+### taxonID
+
+```{r}
+taxon %<>% mutate(taxonID = raw_taxon_id) 
 ```
 
 ### nomenclaturalCode
