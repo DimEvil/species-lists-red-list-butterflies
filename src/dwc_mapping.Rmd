@@ -284,6 +284,7 @@ Map the data to [Species Distribution](http://rs.gbif.org/extension/gbif/1.0/dis
 ```{r}
 distribution %<>%
     rename(scientificName = raw_speciesname_europe) 
+distribution %<>% mutate(taxonID = raw_taxon_id) 
 ```
 
 
