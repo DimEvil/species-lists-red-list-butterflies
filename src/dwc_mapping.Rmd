@@ -62,7 +62,7 @@ dwc_taxon_file = "../data/processed/dwc_checklist/taxon.csv"
 dwc_distribution_file = "../data/processed/dwc_checklist/distribution.csv"
 ```
 
-## Read raw data
+# Read raw data
 
 The original spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?ts=5b1f937f#gid=1323544344). We need to retrieve this spreadsheet and select the specific Googlesheet:
 
@@ -78,8 +78,6 @@ regional_threat_scores <- retrieve_spreadsheet %>% gs_read("regional_threat_scor
 references <- retrieve_spreadsheet %>% gs_read("references")
 ```
 
-## Export files to interim folder
-
 We add a copy of the generated data frames to the [interim folder](https://github.com/inbo/red-lists-european-butterflies-checklist/tree/master/data/interim) on Github:
 
 ```{r}
@@ -94,19 +92,17 @@ Create a data frame `raw_data` from `taxa_regional`, which is the original dataf
 raw_data <- taxa_regional
 ```
 
-# Join references
+# Pre-processing
+
+## Join references:
 
 ```{r}
-raw_data <- taxa_regional %>% left_join(references, by = c("CountryCode" = "CountryCode"))
+raw_data <- taxa_regional %>% left_join(references, by = c("CountryCode"))
 ```
 
 ## Create taxonID
 
 ```{r}
-raw_data %<>%
-  remove_empty("rows") %>%    # Remove empty rows
-  clean_names()               # Have sensible (lowercase) column names
-```
 # Vectorize the digest function (The digest() function isn't vectorized. So if you pass in a vector, you get one value for the whole vector rather than a digest for each element of the vector):
 vdigest <- Vectorize(digest)
 
@@ -115,8 +111,13 @@ raw_data %<>% mutate(taxonID = paste("red-lists-european-butterflies-checklist",
 
 ## Further pre-processing
 
+Clean data somewhat
 
-## Further pre-processing:
+```{r}
+raw_data %<>%
+  remove_empty("rows") %>%    # Remove empty rows
+  clean_names()               # Have sensible (lowercase) column names
+```
 
 Add prefix `raw_` to all column names to avoid name clashes with Darwin Core terms:
 
