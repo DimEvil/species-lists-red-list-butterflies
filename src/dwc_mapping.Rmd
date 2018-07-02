@@ -133,23 +133,15 @@ head(raw_data, n = 100)
 
 ## Create taxon core
 
-```{r}
-taxon <- raw_data
-# View(taxon)
-```
+### Pre-processing
 
-### Term mapping
-
-Map the data to [Darwin Core Taxon](http://rs.gbif.org/core/dwc_taxon_2015-04-24.xml).
- 
-### Use unique values in taxon
+Use unique values in taxon
 
 ```{r}
 taxon %<>% 
-  select(raw_speciesname_local, raw_speciesname_europe,taxonID, raw_use, raw_reference_species_list, raw_reference_red_list, raw_country) %>%
   filter(raw_use == 'y') %>%
-  distinct(taxonID, .keep_all = TRUE) 
-  head(taxon)
+  select(raw_speciesname_local, raw_speciesname_europe, raw_country, raw_taxon_id, raw_use, raw_reference_species_list, raw_reference_red_list) %>%
+  distinct(raw_taxon_id, .keep_all = TRUE)
 ```
 
 
