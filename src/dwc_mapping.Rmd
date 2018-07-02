@@ -193,11 +193,9 @@ taxon %<>% mutate(datasetName = "National checklists and red lists for prioritis
 taxon %<>% mutate(taxonID = raw_taxon_id) 
 ```
 
-### nomenclaturalCode
 ### scientificName
 
 ```{r}
-taxon %<>% mutate(nomenclaturalCode = "ICZN")
 taxon %<>% mutate(scientificName = raw_speciesname_europe) 
 ```
 
@@ -219,6 +217,10 @@ taxon %<>% mutate(class = "Insecta")
 taxon %<>% mutate (order= "Lepidoptera")
 ```
 
+### nomenclaturalCode
+
+```{r}
+taxon %<>% mutate(nomenclaturalCode = "ICZN")
 ```
 
 ### look at data
