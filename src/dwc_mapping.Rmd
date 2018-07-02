@@ -226,20 +226,17 @@ taxon %<>% mutate (order= "Lepidoptera")
 taxon %<>% mutate(taxonRank = "species")
 ```
 
-### look at data
+### nomenclaturalCode
 
 ```{r}
-head(taxon)
-
+taxon %<>% mutate(nomenclaturalCode = "ICZN")
 ```
 
-
- 
 ## Post-processing
 
 Remove the original columns:
 
-```{r eval=FALSE, include=FALSE}
+```{r}
 taxon %<>% select(-starts_with("raw_"))
 ```
 
@@ -258,7 +255,7 @@ head(taxon)
 Save to CSV:
 
 ```{r}
-write.csv(taxon, file = dwc_taxon_fileEU, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(taxon, file = dwc_taxon_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
 ```
 
 # Create distribution extension
