@@ -169,6 +169,12 @@ taxon  %<>% mutate(datasetID = "to_be_completed")
 taxon %<>% mutate(accessRights = "https://www.inbo.be/en/norms-data-use") 
 ```
 
+### references 
+
+```{r}
+taxon %<>% mutate(references = raw_reference_species_list) 
+```
+
 ### institutionCode
 
 ```{r}
@@ -207,8 +213,7 @@ head(taxon)
 
 ```{r}
 taxon %<>%
-      rename(scientificName = raw_speciesname_europe) %>%
-      rename(references = raw_reference_species_list)
+      rename(scientificName = raw_speciesname_europe) 
 
 ```
 
