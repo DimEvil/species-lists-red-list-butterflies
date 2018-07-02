@@ -163,6 +163,17 @@ taxon %<>% mutate(rightsHolder = "INBO")
 taxon  %<>% mutate(datasetID = "to_be_completed")
 ```
 
+### accessRights
+
+```{r}
+taxon %<>% mutate(accessRights = "https://www.inbo.be/en/norms-data-use") 
+```
+
+### institutionCode
+
+```{r}
+taxon %<>% mutate(institutionCode = "INBO") 
+```
 
 ### datasetName
 
