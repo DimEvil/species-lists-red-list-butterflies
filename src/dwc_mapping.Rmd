@@ -220,9 +220,10 @@ taxon %<>% mutate(class = "Insecta")
 taxon %<>% mutate (order= "Lepidoptera")
 ```
 
+### taxonRank
 
 ```{r}
-taxon %<>% mutate(nomenclaturalCode = "ICZN")
+taxon %<>% mutate(taxonRank = "species")
 ```
 
 ### look at data
