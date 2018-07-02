@@ -1,6 +1,6 @@
 ---
 title: "Darwin Core mapping"
-subtitle: "Red List Butterflies Europe EU_list"
+subtitle: "For: National checklists and red lists for prioritising European butterfly conservation actions"
 author:
 - Lien Reyserhove
 - Dimitri Brosens
@@ -48,8 +48,8 @@ regional_threat_scores_file = "../data/interim/regional_threat_scores.csv"
 references_file = "../data/interim/references.csv"
 
 # Processed files:
-dwc_taxon_file = "../data/processed/dwc_checklist/taxon.csv"
-dwc_distribution_file = "../data/processed/dwc_checklist/distribution.csv"
+dwc_taxon_file = "../data/processed/dwc/taxon.csv"
+dwc_distribution_file = "../data/processed/dwc/distribution.csv"
 ```
 
 # Read raw data
@@ -123,6 +123,10 @@ head(raw_data, n = 100)
 
 ## Create taxon core
 
+```{r}
+taxon <- raw_data
+```
+
 ### Pre-processing
 
 Use unique values in taxon
@@ -134,20 +138,20 @@ taxon %<>%
   distinct(raw_taxon_id, .keep_all = TRUE)
 ```
 
+### Term mapping
 
-
+Map the data to [Darwin Core Taxon](http://rs.gbif.org/core/dwc_taxon_2015-04-24.xml).
+ 
 ### language
 
 ```{r}
 taxon %<>% mutate(language = "en")
 ```
 
-
 ### license
 
 ```{r}
 taxon %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/")
-
 ```
 
 ### rightsHolder
@@ -155,7 +159,6 @@ taxon %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/")
 ```{r}
 taxon %<>% mutate(rightsHolder = "INBO")  
 ```
-
 
 ### datasetID
 
@@ -217,7 +220,6 @@ taxon %<>% mutate(class = "Insecta")
 taxon %<>% mutate (order= "Lepidoptera")
 ```
 
-### nomenclaturalCode
 
 ```{r}
 taxon %<>% mutate(nomenclaturalCode = "ICZN")
