@@ -1,6 +1,6 @@
 ---
 title: "Darwin Core mapping"
-subtitle: "Red List Butterflies Europe EU_list"
+subtitle: "For: National checklists and red lists for prioritising European butterfly conservation actions"
 author:
 - Lien Reyserhove
 - Dimitri Brosens
@@ -32,46 +32,76 @@ Load libraries:
 
 ```{r}
 
-# None core tidyverse packages:
-library(magrittr)  # For %<>% pipes
-
-# Other packages
-library(tidyverse) # For data transformations
-library(janitor)    # For cleaning input data
-library(knitr)      # For nicer (kable) tables
-library(readxl)     # To read excel files
-library(stringr)    # To perform string operations
-library(digest)     # To generate hashes
-library(rgbif)      # To Match GBIF
-library(assertable) # because it sneeded for rGBIF
-library(inborutils) # wrap GBIF api data
-library(dplyr)
-
+library(tidyverse)        # For data transformations
+library(magrittr)         # For %<>% pipes
+library(googlesheets)     # To import and read Google spreadsheets 
+library(janitor)          # For cleaning input data
+library(digest)           # To generate hashes
 ```
 
 Set file paths (all paths should be relative to this script):
 
 ```{r}
-# Raw files:
-raw_data_file = "../data/raw/dataset.txt"
-
+# Interim files:
+taxa_regional_file = "../data/interim/taxa_regional.csv"
+regional_threat_scores_file = "../data/interim/regional_threat_scores.csv"
+references_file = "../data/interim/references.csv"
 
 # Processed files:
-dwc_taxon_fileEU = "../data/processed/dwc_checklistEU/taxonEU.csv"
-dwc_distribution_file = "../data/processed/dwc_checklist/distribution.csv"
-
+dwc_taxon_file = "../data/processed/dwc/taxon.csv"
+dwc_distribution_file = "../data/processed/dwc/distribution.csv"
 ```
 
-# Read and pre-process raw data
+# Read raw data
 
-Create a data frame `raw_data` from the source data:
+The original spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?ts=5b1f937f#gid=1323544344). We need to retrieve this spreadsheet and select the specific Googlesheet:
 
 ```{r}
-# Read the source data:
-raw_data <- read.csv("../data/raw/dataset.txt", sep = ";")
+retrieve_spreadsheet <- gs_title("EuroButt")
 ```
 
-Clean the data somewhat: remove empty rows if present:
+This spreadsheet contains three relevant different worksheets: `taxa_regional`, `regional_threat_scores` and `references`. We select these here and save them as separate data frames. We will then continue with the `taxa_regional` as this is the original dataframe.
+
+```{r}
+taxa_regional <- retrieve_spreadsheet %>% gs_read("taxa_regional") 
+regional_threat_scores <- retrieve_spreadsheet %>% gs_read("regional_threat_scores")
+references <- retrieve_spreadsheet %>% gs_read("references")
+```
+
+We add a copy of the generated data frames to the [interim folder](https://github.com/inbo/red-lists-european-butterflies-checklist/tree/master/data/interim) on Github:
+
+```{r}
+write.csv(taxa_regional, file = taxa_regional_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(regional_threat_scores, file = regional_threat_scores_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(references, file = references_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+```
+
+Create a data frame `raw_data` from `taxa_regional`, which is the original dataframe and the basis for the mapping of the checklist:
+
+```{r}
+raw_data <- taxa_regional
+```
+
+# Pre-processing
+
+## Join references:
+
+```{r}
+raw_data <- taxa_regional %>% left_join(references, by = c("CountryCode"))
+```
+
+## Create taxonID
+
+```{r}
+# Vectorize the digest function (The digest() function isn't vectorized. So if you pass in a vector, you get one value for the whole vector rather than a digest for each element of the vector):
+vdigest <- Vectorize(digest)
+
+raw_data %<>% mutate(taxonID = paste("red-lists-european-butterflies-checklist", "taxon", vdigest (SpeciesnameEurope, algo="md5"), sep=":"))
+```
+
+## Further pre-processing
+
+Clean data somewhat
 
 ```{r}
 raw_data %<>%
@@ -79,150 +109,169 @@ raw_data %<>%
   clean_names()               # Have sensible (lowercase) column names
 ```
 
-
-## Further pre-processing:
-
 Add prefix `raw_` to all column names to avoid name clashes with Darwin Core terms:
 
 ```{r}
 colnames(raw_data) <- paste0("raw_", colnames(raw_data))
 ```
- 
+
+Select columns for which `raw_use = Y`:
+
+```{r}
+raw_data %<>% filter(raw_use == 'y') 
+```
+
 Preview data:
 
 ```{r}
 head(raw_data, n = 100)
 ```
 
-# Create taxonList core EU
-
-```{r start_taxon}
-taxonEU <- raw_data
-```
-
-# taxonListEU
-
-Create species list EU names
+## Create taxon core
 
 ```{r}
-taxonEU %<>% select(raw_speciesname_local, raw_speciesname_europe) %>%
-           distinct(raw_speciesname_europe, .keep_all = TRUE) 
+taxon <- raw_data
 ```
 
-Preview data:
+### Pre-processing
+
+Use unique values in taxon
 
 ```{r}
-head(taxonEU , n = 100)
+taxon %<>% distinct(raw_taxon_id, .keep_all = TRUE)
 ```
 
-```{r}
-# Vectorize the digest function (The digest() function isn't vectorized. So if you pass in a vector, you get one value for the whole vector rather than a digest for each element of the vector):
-vdigest <- Vectorize(digest)
-
-taxonEU %<>% 
-
-  gbif_species_name_match(name_col = "raw_speciesname_europe", 
-                          gbif_terms = c('usageKey', 'scientificName', 'rank', 
-                                         'order', 'matchType','phylum', 
-                                         'kingdom', 'genus','class',
-                                         'confidence', 'synonym', 'status',
-                                         'family'))%>%
-  mutate(taxonID = paste(usageKey, vdigest (scientificName, algo="md5"), sep=":"))
-```
-
-Preview data:
-
-```{r}
-head(taxonEU , n = 100)
-
-
-```
-
-## Add fixed terms mapping
+### Term mapping
 
 Map the data to [Darwin Core Taxon](http://rs.gbif.org/core/dwc_taxon_2015-04-24.xml).
  
 ### language
 
 ```{r}
-taxonEU %<>% mutate(language = "en")
+taxon %<>% mutate(language = "en")
 ```
-
 
 ### license
 
 ```{r}
-taxonEU %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/")
-
+taxon %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/")
 ```
 
 ### rightsHolder
 
 ```{r}
-taxonEU %<>% mutate(rightsHolder = "INBO")  
+taxon %<>% mutate(rightsHolder = "INBO")  
 ```
 
+### accessRights
+
+```{r}
+taxon %<>% mutate(accessRights = "https://www.inbo.be/en/norms-data-use") 
+```
+
+### references 
+
+```{r}
+taxon %<>% mutate(references = raw_reference_species_list) 
+```
 
 ### datasetID
 
 ```{r}
-taxonEU  %<>% mutate(datasetID = "to_be_completed")
+taxon  %<>% mutate(datasetID = "to_be_completed")
 ```
 
+### institutionCode
+
+```{r}
+taxon %<>% mutate(institutionCode = "INBO") 
+```
 
 ### datasetName
 
 ```{r}
-taxonEU %<>% mutate(datasetName = "Red Lists Butterflies Europe_EU")
+taxon %<>% mutate(datasetName = "National checklists and red lists for prioritising European butterfly conservation actions")
+```
+
+### taxonID
+
+```{r}
+taxon %<>% mutate(taxonID = raw_taxon_id) 
+```
+
+### scientificName
+
+```{r}
+taxon %<>% mutate(scientificName = raw_speciesname_europe) 
+```
+
+### kingdom
+
+```{r}
+taxon %<>% mutate(kingdom = "Animalia")
+```
+
+### phylum
+
+```{r}
+taxon %<>% mutate(phylum = "Arthropoda")
+```
+
+### class
+
+```{r}
+taxon %<>% mutate(class = "Insecta") 
+```
+
+### order
+
+```{r}
+taxon %<>% mutate (order= "Lepidoptera")
+```
+
+### taxonRank
+
+```{r}
+taxon %<>% mutate(taxonRank = "species")
 ```
 
 ### nomenclaturalCode
 
 ```{r}
-taxonEU %<>% mutate(nomenclaturalCode = "ICZN")
+taxon %<>% mutate(nomenclaturalCode = "ICZN")
 ```
 
-
-
-### Look at data
-
-```{r}
-head(taxonEU)
-View(taxonEU)
-```
-
-
- 
 ## Post-processing
 
 Remove the original columns:
 
-```{r eval=FALSE, include=FALSE}
+```{r}
 taxon %<>% select(-starts_with("raw_"))
 ```
 
 Sort on `taxonID`:
 
 ```{r}
-taxonEU %<>% arrange(taxonID)
+taxon %<>% arrange(taxonID)
 ```
 
 Preview data:
 
 ```{r}
-head(taxonEU)
+head(taxon)
 ```
 
 Save to CSV:
 
 ```{r}
-write.csv(taxonEU, file = dwc_taxon_fileEU, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(taxon, file = dwc_taxon_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
 ```
 
 # Create distribution extension
 
 ```{r start_distribution}
-distributionEU <- raw_data
+distribution <- raw_data
+head(distribution)
 ```
 
 ## Term mapping
@@ -231,21 +280,48 @@ Map the data to [Species Distribution](http://rs.gbif.org/extension/gbif/1.0/dis
 
 ### taxonID
 
+```{r}
+distribution %<>% mutate(taxonID = raw_taxon_id) 
+```
 
-### locationID
 ### locality
+
+```{r}
+distribution %<>% mutate(locality = raw_country) 
+```
+
 ### countryCode
-### occurrenceStatus
+
+```{r}
+distribution %<>% mutate(countryCode = raw_country_code)
+
+```
+
+### threatStatus
+
+```{r}
+distribution %<>% mutate(threatStatus = raw_red_list_category)
+```
+
 ### establishmentMeans
-### eventDate
+
+```{r}
+distribution %<>% mutate(establishmentMeans = raw_status)
+
+```
+
 ### source
+
+```{r}
+distribution %<>% mutate(source = raw_reference_red_list)
+```
 
 ## Post-processing
 
 Remove the original columns:
 
 ```{r}
-distribution %<>% select(-starts_with("raw_"), -start_year, -end_year)
+distribution %<>% select(-starts_with("raw_"))
 ```
 
 Sort on `taxonID`:
@@ -257,9 +333,7 @@ distribution %<>% arrange(taxonID)
 Preview data:
 
 ```{r}
-distribution %>%
-  mutate(source = substr(source, 1, 10)) %>% # Shorten source to make it easier to display
-  head()
+distribution %>% head()
 ```
 
 Save to CSV:
