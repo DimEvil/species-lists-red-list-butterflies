@@ -274,16 +274,6 @@ distribution <- raw_data
 head(distribution)
 ```
 
-### Pre-processing
-
-Use unique values in taxon
-
-```{r}
-distribution %<>% 
-  filter(raw_use == 'y') %>% 
-  select(raw_speciesname_europe, raw_taxon_id, raw_country, raw_country_code, raw_red_list_category, raw_comments, raw_status, raw_reference_red_list) 
-```
-
 ## Term mapping
 
 Map the data to [Species Distribution](http://rs.gbif.org/extension/gbif/1.0/distribution.xml).
