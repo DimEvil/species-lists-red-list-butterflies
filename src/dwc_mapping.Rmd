@@ -30,7 +30,7 @@ Sys.setlocale("LC_CTYPE", "en_US.UTF-8")
 
 Load libraries:
 
-```{r eval = FALSE}
+```{r}
 
 library(tidyverse)        # For data transformations
 library(magrittr)         # For %<>% pipes
@@ -60,7 +60,7 @@ The original spreadsheet can be found [here](https://docs.google.com/spreadsheet
 retrieve_spreadsheet <- gs_title("EuroButt")
 ```
 
-This spreadsheet contains three relevant different worksheets: `taxa_regional`, `regional_threat_scores` and `references`. We select these here and save them as separate data frames. We will then continue with the `taxa_regional` as this the original dataframe.
+This spreadsheet contains three relevant different worksheets: `taxa_regional`, `regional_threat_scores` and `references`. We select these here and save them as separate data frames. We will then continue with the `taxa_regional` as this is the original dataframe.
 
 ```{r}
 taxa_regional <- retrieve_spreadsheet %>% gs_read("taxa_regional") 
@@ -333,15 +333,12 @@ distribution %<>% arrange(taxonID)
 Preview data:
 
 ```{r}
-distribution %>%
- # mutate(source = substr(source, 1, 10)) %>% # Shorten source to make it easier to display
-  head()
+distribution %>% head()
 ```
 
 Save to CSV:
 
 ```{r}
 write.csv(distribution, file = dwc_distribution_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
-
 ```
 
