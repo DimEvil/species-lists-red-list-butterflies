@@ -211,6 +211,12 @@ taxon %<>% mutate(scientificName = raw_speciesname_europe)
 taxon %<>% mutate(kingdom = "Animalia")
 ```
 
+### phylum
+
+```{r}
+taxon %<>% mutate(phylum = "Arthropoda")
+```
+
 ### class
 
 ```{r}
