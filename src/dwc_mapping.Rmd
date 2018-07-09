@@ -114,7 +114,13 @@ Add prefix `raw_` to all column names to avoid name clashes with Darwin Core ter
 ```{r}
 colnames(raw_data) <- paste0("raw_", colnames(raw_data))
 ```
- 
+
+Select columns for which `raw_use = Y`:
+
+```{r}
+raw_data %<>% filter(raw_use == 'y') 
+```
+
 Preview data:
 
 ```{r}
@@ -132,10 +138,7 @@ taxon <- raw_data
 Use unique values in taxon
 
 ```{r}
-taxon %<>% 
-  filter(raw_use == 'y') %>%
-  select(raw_speciesname_local, raw_speciesname_europe, raw_country, raw_taxon_id, raw_use, raw_reference_species_list, raw_reference_red_list) %>%
-  distinct(raw_taxon_id, .keep_all = TRUE)
+taxon %<>% distinct(raw_taxon_id, .keep_all = TRUE)
 ```
 
 ### Term mapping
