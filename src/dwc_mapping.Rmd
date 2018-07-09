@@ -297,39 +297,24 @@ distribution %<>% mutate(countryCode = raw_country_code)
 
 ```
 
+### threatStatus
+
+```{r}
+distribution %<>% mutate(threatStatus = raw_red_list_category)
+```
+
 ### establishmentMeans
 
-
 ```{r}
-distribution %<>%
-      rename(establishmentMeans = raw_status)
-
-```
-## renaming
-
-
-
-```{r}
-distribution %<>%
-      rename(source = raw_reference_red_list)
+distribution %<>% mutate(establishmentMeans = raw_status)
 
 ```
 
-### occurrenceStatus
-
-
-### treadStatus
-
-
-```{r}
-distribution %<>%
-      rename(treadStatus = raw_red_list_category)
-
-```
-
-
-### eventDate
 ### source
+
+```{r}
+distribution %<>% mutate(source = raw_reference_red_list)
+```
 
 ## Post-processing
 
