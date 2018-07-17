@@ -172,7 +172,7 @@ taxon %<>% mutate(accessRights = "https://www.inbo.be/en/norms-data-use")
 ### references 
 
 ```{r}
-taxon %<>% mutate(references = raw_reference_species_list) 
+taxon %<>% mutate(identificationReferences = raw_reference_species_list) 
 ```
 
 ### datasetID
