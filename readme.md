@@ -24,7 +24,7 @@ The repository structure is based on [Cookiecutter Data Science](http://drivenda
 ├── .gitignore        : Files and directories to be ignored by git
 │
 ├── data
-│   ├── raw           : Source data, copy of Google Spreadsheet GENERATED
+│   ├── ~~raw~~       : Source data, copy of Google Spreadsheet GENERATED
 │   ├── interim       : Source data (csv),input for further scripts GENERATED
 │   └── processed
 │       ├── dwc       : Darwin Core output of mapping script GENERATED
