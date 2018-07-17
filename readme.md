@@ -6,7 +6,7 @@ This repository contains the functionality to standardize the _National checklis
 
 ## Workflow
 
-* [source data](data/raw) → Read data + match names with GBIF backbone taxonomy [script](src/read_data.Rmd) → [interim data](data/interim)
+* [source data](data/raw) → Read raw data from google.sheet [script](src/dwc_mapping.Rmd) → [data](data/interim)
 * [interim data](data/interim) → Darwin Core [mapping script](src/dwc_mapping.Rmd) → Generated [Darwin Core files](data/processed/dwc)
 * [interim data](data/interim) → Calculate weighted red list values [script](weighted_red_list_values.Rmd) → Weighted red list values [table](data/processed/weighted_red_list_values.csv)
 
