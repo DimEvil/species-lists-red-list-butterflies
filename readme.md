@@ -25,7 +25,7 @@ The repository structure is based on [Cookiecutter Data Science](http://drivenda
 │
 ├── data
 │   ├── raw           : Source data, copy of Google Spreadsheet GENERATED
-│   ├── interim       : GBIF annotated source data, input for further scripts GENERATED
+│   ├── interim       : Source data (csv),input for further scripts GENERATED
 │   └── processed
 │       ├── dwc       : Darwin Core output of mapping script GENERATED
 │       └── weighted_red_list_values.csv : Output of weighted red list values script GENERATED
