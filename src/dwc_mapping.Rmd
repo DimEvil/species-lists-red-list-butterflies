@@ -81,6 +81,9 @@ write.csv(references, file = references_file, na = "", row.names = FALSE, fileEn
 write.csv(country_info, file = country_info_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
 ```
 
+
+The country_info data will be used for the calculations of the weighted_red_list_values here: script[scr](https://github.com/inbo/red-lists-european-butterflies-checklist/blob/master/src/weighted_red_list_values.Rmd)
+
 Create a data frame `raw_data` from `taxa_regional`, which is the original dataframe and the basis for the mapping of the checklist:
 
 ```{r}
