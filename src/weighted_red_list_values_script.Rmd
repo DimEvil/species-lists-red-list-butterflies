@@ -114,11 +114,16 @@ raw_data <- raw_data %>%
 View(raw_data)
 ```
 
- ```{r}
-raw_data <- taxa_regional %>% left_join(references, by = c("CountryCode"))
+## Calculations
+
+```{r}
+species_per_country <- species_per_country %>%
+  group_by(raw_country_code) %>%
+  summarize(n())
+  View (species_per_country)
 ```
+
  
  
- 
- 
+
  
