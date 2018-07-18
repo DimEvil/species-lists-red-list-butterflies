@@ -301,12 +301,17 @@ distribution %<>% mutate(countryCode = raw_country_code)
 
 ```{r}
 distribution %<>% mutate(threatStatus = raw_red_list_category)
+  
 ```
 
 ### establishmentMeans
 
 ```{r}
-distribution %<>% mutate(establishmentMeans = raw_status)
+distribution %<>% 
+  mutate(establishmentMeans = raw_status) %>%
+  mutate(establishmentMeans = recode(establishmentMeans
+            ,"Breeding"="native"
+            ,"NeedsConfirmation"="uncertain")) 
 
 ```
 
