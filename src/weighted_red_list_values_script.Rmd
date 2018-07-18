@@ -117,7 +117,7 @@ View(raw_data)
 ## Calculations
 
 ```{r}
-species_per_country <- species_per_country %>%
+species_per_country <- raw_data %>%
   group_by(raw_country_code) %>%
   summarize(n())
   View (species_per_country)
