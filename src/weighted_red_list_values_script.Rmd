@@ -5,25 +5,120 @@ date: "18 juli 2018"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+This document describes how we map the checklist data to Darwin Core. 
+
+# Setup
+
+```{r setup, echo = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-# Load libraries
+Set locale (so we use UTF-8 character encoding):
 
 ```{r}
+# This works on Mac OS X, might not work on other OS
+Sys.setlocale("LC_CTYPE", "en_US.UTF-8")
+```
+
+Load libraries:
+
+```{r}
+
+library(tidyverse)        # For data transformations
+library(magrittr)         # For %<>% pipes
+library(googlesheets)     # To import and read Google spreadsheets 
+library(janitor)          # For cleaning input data
+library(digest)           # To generate hashes
 library(knitr)
 opts_chunk$set(echo = TRUE)
-library(tidyverse)
 library(dplyr)
 library(readxl)
 library(RODBC)
 library(gam)
 ```
+
+Set file paths (all paths should be relative to this script):
+
+```{r}
+# Interim files:
+taxa_regional_file = "../data/interim/taxa_regional.csv"
+regional_threat_scores_file = "../data/interim/regional_threat_scores.csv"
+country_info_file = "../data/interim/country_info.csv"
+
+# Processed files:
+
+weighted_red_list_values_file = "../data/processed/weighted_red_list_values.csv"
+
+```
+
+# Read raw data
+
+The original spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?ts=5b1f937f#gid=1323544344). We need to retrieve this spreadsheet and select the specific Googlesheet:
+
+```{r}
+retrieve_spreadsheet <- gs_title("EuroButt")
+```
+
+This spreadsheet contains four relevant different worksheets: `taxa_regional`, `regional_threat_scores`, `country_info` and `references`. We select these here and save them as separate data frames. We will then continue with the `taxa_regional` as this is the original dataframe.
+
+```{r}
+taxa_regional <- retrieve_spreadsheet %>% gs_read("taxa_regional") 
+regional_threat_scores <- retrieve_spreadsheet %>% gs_read("regional_threat_scores")
+country_info <- retrieve_spreadsheet %>% gs_read("country_info")
+
+```
+
+Create a data frame `raw_data` from `taxa_regional`, which is the original dataframe and the basis for the calculation of the values:
+
+```{r}
+raw_data <- taxa_regional
+```
+
+### Pre-processing
+
+Clean data somewhat
+
+```{r}
+raw_data %<>%
+  remove_empty("rows") %>%    # Remove empty rows
+  clean_names()               # Have sensible (lowercase) column names
+```
+
+Add prefix `raw_` to all column names to avoid name clashes with Darwin Core terms:
+
+```{r}
+colnames(raw_data) <- paste0("raw_", colnames(raw_data))
+```
+
+Select columns for which `raw
+-use = Y`:
+
+```{r}
+raw_data %<>% filter(raw_use == 'y') 
+```
+
+Preview data:
+
+```{r}
+head(raw_data, n = 100)
+```
+
+
+
+```{r}
+raw_data %<>%
+  select(raw_speciesname_europe, raw_country_code, raw_red_list_category)%>%    
+  group_by(raw_speciesname_europe, raw_country_code,raw_red_list_category, add = FALSE) %>%
+  summarise()
+head(raw_data, n=50)
+View(raw_data)
+```
+ 
+
+```{r}
+raw_data %<>%
+  group_by(raw_speciesname_europe)
+View(raw_data)
+```
+
 
