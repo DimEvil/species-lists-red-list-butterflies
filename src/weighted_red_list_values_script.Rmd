@@ -106,3 +106,19 @@ head(raw_data, n=50)
 View(raw_data)
 ```
  
+ ## Join values
+
+```{r}
+raw_data <- raw_data %>% 
+  left_join(regional_threat_scores, by = c("raw_red_list_category" = "RedListCategory","raw_country_code"="countryCode"))
+View(raw_data)
+```
+
+ ```{r}
+raw_data <- taxa_regional %>% left_join(references, by = c("CountryCode"))
+```
+ 
+ 
+ 
+ 
+ 
