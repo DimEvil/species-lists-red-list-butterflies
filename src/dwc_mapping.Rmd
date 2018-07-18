@@ -46,10 +46,12 @@ Set file paths (all paths should be relative to this script):
 taxa_regional_file = "../data/interim/taxa_regional.csv"
 regional_threat_scores_file = "../data/interim/regional_threat_scores.csv"
 references_file = "../data/interim/references.csv"
+country_info_file = "../data/interim/country_info.csv"
 
 # Processed files:
 dwc_taxon_file = "../data/processed/dwc/taxon.csv"
 dwc_distribution_file = "../data/processed/dwc/distribution.csv"
+
 ```
 
 # Read raw data
@@ -60,12 +62,14 @@ The original spreadsheet can be found [here](https://docs.google.com/spreadsheet
 retrieve_spreadsheet <- gs_title("EuroButt")
 ```
 
-This spreadsheet contains three relevant different worksheets: `taxa_regional`, `regional_threat_scores` and `references`. We select these here and save them as separate data frames. We will then continue with the `taxa_regional` as this is the original dataframe.
+This spreadsheet contains four relevant different worksheets: `taxa_regional`, `regional_threat_scores`, `country_info` and `references`. We select these here and save them as separate data frames. We will then continue with the `taxa_regional` as this is the original dataframe.
 
 ```{r}
 taxa_regional <- retrieve_spreadsheet %>% gs_read("taxa_regional") 
 regional_threat_scores <- retrieve_spreadsheet %>% gs_read("regional_threat_scores")
 references <- retrieve_spreadsheet %>% gs_read("references")
+country_info <- retrieve_spreadsheet %>% gs_read("country_info")
+
 ```
 
 We add a copy of the generated data frames to the [interim folder](https://github.com/inbo/red-lists-european-butterflies-checklist/tree/master/data/interim) on Github:
@@ -74,6 +78,7 @@ We add a copy of the generated data frames to the [interim folder](https://githu
 write.csv(taxa_regional, file = taxa_regional_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
 write.csv(regional_threat_scores, file = regional_threat_scores_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
 write.csv(references, file = references_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(country_info, file = country_info_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
 ```
 
 Create a data frame `raw_data` from `taxa_regional`, which is the original dataframe and the basis for the mapping of the checklist:
