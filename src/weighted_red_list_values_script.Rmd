@@ -167,11 +167,11 @@ View(MeanRLCValue_per_country)
 
 head(MeanRLCValue_per_country)
 head(raw_data)
+
 ```
 
 #TRying to proceed with the original script by Dirk
-# Red List value per COUNTRY
-Arranging dataframes according to Dirk
+
 
 ```{r}
 MDB <- raw_data
@@ -179,11 +179,10 @@ MeanRLC <- MeanRLCValue_per_country %<>%
            drop_na(RLCNum)
 
 MeanRLC$sqrtArea <- sqrt(MeanRLC$Area)
-
 head(MeanRLC)
 View(MeanRLC)
-View(MeanRLC$sqrtArea)
 ```
+
 
 ```{r}
 lmsCountry <-( MeanRLC %>%
@@ -198,6 +197,7 @@ lmsCountry <-( MeanRLC %>%
 	) %>%
 	ungroup())
 head(lmsCountry)
+
 
 TableCountry <- lmsCountry %>% 
 	arrange(desc(fit))
@@ -217,6 +217,7 @@ p <- ggplot(lmsCountry, aes(x = reorder(raw_country_code, -fit), y = fit)) +
 p
 
 ggsave(p, file = "MeanRLCperCountry.jpg", dpi = 300, height = 5, width = 10)
+
 ```
  
  # weighted Red List value per SPECIES for Europe (sqrt area as weight)
