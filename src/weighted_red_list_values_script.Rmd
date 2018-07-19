@@ -179,8 +179,10 @@ MeanRLC <- MeanRLCValue_per_country %<>%
            drop_na(RLCNum)
 
 MeanRLC$sqrtArea <- sqrt(MeanRLC$Area)
+
 head(MeanRLC)
 View(MeanRLC)
+View(MeanRLC$sqrtArea)
 ```
 
 ```{r}
@@ -217,4 +219,4 @@ p
 ggsave(p, file = "MeanRLCperCountry.jpg", dpi = 300, height = 5, width = 10)
 ```
  
- 
+ # weighted Red List value per SPECIES for Europe (sqrt area as weight)
