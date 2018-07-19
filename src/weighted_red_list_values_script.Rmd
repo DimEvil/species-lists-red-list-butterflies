@@ -151,6 +151,15 @@ View(species_per_country)
 
 ```
 
+#Weighted Red list values
 
 
+```{r}
+MeanRLCValue_per_country <- raw_data %>%
+      group_by (raw_country_code) %>%
+      summarise_at(vars(RLCNum),funs(mean(., na.rm=TRUE)))
+View(MeanRLCValue_per_country)
+```
+
+ 
  
