@@ -165,7 +165,8 @@ NCountries is Raw Data + info on countries per species
 
 ```{r}
 NCountries <- raw_data %>%
-              left_join(country_per_species, by = c("raw_speciesname_europe"="raw_speciesname_europe"))
+              left_join(country_per_species, by = c("raw_speciesname_europe"="raw_speciesname_europe")) %>%
+              left_join(country_info, by = c("raw_country_code"="CountryCode"))
 
 View(NCountries)
 
@@ -181,6 +182,15 @@ NCountries2 <- NCountries %>%
 	summarise(NCountries = length(raw_country_code))
 head(NCountries2)
 nrow(NCountries2)
+
+NCountriesEU <- NCountries %>% 
+	filter(!is.na(EU))
+
+NCountries2EU <- NCountriesEU %>% 
+	group_by(raw_speciesname_europe) %>%
+	summarise(NCountriesEU = length(raw_country_code))
+
+NCountriesEurEU <- full_join(NCountries2, NCountries2EU, by = "raw_speciesname_europe")
 
 ```
 
@@ -307,11 +317,11 @@ head(join1)
 join2 <- full_join(join1, NCountries2, by = "raw_speciesname_europe")
 head(join2)
 
-join3 <- full_join(join2, SpeciesList, by = "raw_speciesname_europe")
+join3 <- full_join(join2, specieslist, by = c("raw_speciesname_europe"="SpeciesnameEurope"))
 head(join3)
 
 TableEurope <- join3 %>% 
-	select(SpeciesnameEurope, fit, NCountries, nCountriesRLEur, RedListCategoryEurope, EuropeanEndemic, Endemic, EdgeOfRange) %>% 
+	select(raw_speciesname_europe, fit, NCountries, nCountriesRLEur, RedListCategoryEurope, EuropeanEndemic, Endemic, EdgeOfRange) %>% 
 	group_by(nCountriesRLEur) %>% 
 	arrange(desc(fit)) %>% 
 	ungroup()
@@ -319,4 +329,59 @@ TableEurope$fit <- round(TableEurope$fit, 2)
 head(TableEurope)
 
 ```
- 
+
+
+
+
+```{r}
+# weighted Red List value per SPECIES for EU (sqrt area as weight)
+##################################################################
+lmsHDSpecies <- MeanRLCValue_per_species %>% 
+	filter(!is.na(EU)) %>% 
+	group_by(raw_speciesname_europe) %>%
+	do(lm(RLCNum_species ~ 1, weights = sqrtArea, data = .) %>%
+		 	predict.lm(., 
+		 						 newdata = data.frame(RLCNum_species = 0,
+		 						 										 RLCNum_species = 1),
+		 						 interval = "confidence",
+		 						 level = 0.95) %>%
+		 	as.data.frame()
+	)%>%
+	ungroup()
+head(lmsHDSpecies)
+lmsHDSpecies <- arrange(lmsHDSpecies, desc(fit))
+head(lmsHDSpecies)
+
+lmsHDSpecies2 <- MeanRLCValue_per_species %>% 
+	filter(!is.na(EU)) %>% 
+	group_by(raw_speciesname_europe) %>%
+	summarise(nCountriesRLEU = length(raw_country_code))
+head(lmsHDSpecies2)
+lmsHDSpecies2 <- arrange(lmsHDSpecies2, desc(nCountriesRLEU))
+head(lmsHDSpecies2)
+
+join1 <- full_join(lmsHDSpecies, lmsHDSpecies2, by = "raw_speciesname_europe")
+head(join1)
+join2 <- full_join(join1, specieslist, by = c("raw_speciesname_europe"="SpeciesnameEurope"))
+head(join2)
+join3 <- full_join(join2, NCountriesEurEU, by = "raw_speciesname_europe")
+head(join3)
+
+TableEU <- join3 %>% 
+	select(raw_speciesname_europe, fit, nCountriesRLEU, NCountriesEU, RedListCategoryEU, HabitatsDirective) %>% 
+	group_by(nCountriesRLEU) %>% 
+	arrange(desc(fit), desc(nCountriesRLEU)) %>% 
+	ungroup()
+TableEU$fit <- round(TableEU$fit, 2)
+head(TableEU)
+
+write.csv(TableEU, file = "TableEUsqrtArea.csv", dec = ".", row.names = FALSE, na = "-")
+
+# Join European and EU tables
+TableEuropeEU <- full_join(TableEurope, TableEU, by = "raw_speciesname_europe")
+head(TableEuropeEU)
+nrow(TableEuropeEU)
+
+write.csv(TableEuropeEU, file = "TableEuropeEU.csv", dec = ".", row.names = FALSE, na = "0")
+```
+
