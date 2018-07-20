@@ -111,15 +111,22 @@ raw_data %<>%
   summarise()
 head(raw_data, n=50)
 View(raw_data)
+
 ```
+
+
+
  
- ## Join regional threat score  information
+## Join regional threat score  information
 
 ```{r}
 raw_data <- raw_data %>% 
   left_join(regional_threat_scores, by = c("raw_red_list_category" = "RedListCategory","raw_country_code"="countryCode"))
 View(raw_data)
 ```
+
+
+
 
 ## Calculations
 
@@ -137,7 +144,8 @@ calculates country per species
 ```{r}
 country_per_species <- raw_data %>%
   group_by(raw_speciesname_europe) %>%
-  summarize(n())
+  summarize(n()) %>%
+  rename(number_of_countries = 'n()')
   View (country_per_species)
 ```
 
@@ -153,6 +161,21 @@ species_per_country <- species_per_country %>%
 View(species_per_country)
 
 ```
+
+# Recreate dataframes used in original script
+
+NCountries is Raw Data + info on countries per species
+
+```{r}
+NCountries2 <- NCountries %>% 
+	group_by(SpeciesnameEurope) %>%
+	summarise(NCountries = length(CountryCode))
+head(NCountries2)
+nrow(NCountries2)
+
+```
+
+
 
 #Weighted Red list values
 
@@ -177,7 +200,12 @@ MeanRLCValue_per_species <- raw_data %>%
       group_by (raw_speciesname_europe) %>%
       summarise_at(vars(RLCNum),funs(mean(., na.rm=TRUE))) %>%
       rename(RLCNum_species = RLCNum) %>%
-      left_join(raw_data, by = c("raw_speciesname_europe"="raw_speciesname_europe"))
+      left_join(raw_data, by = c("raw_speciesname_europe"="raw_speciesname_europe")) %>%
+      left_join(country_info, by = c("raw_country_code"="CountryCode")) %>%
+      drop_na(RLCNum_species)
+MeanRLCValue_per_species$sqrtArea <- sqrt(MeanRLCValue_per_species$Area)
+
+
 View(MeanRLCValue_per_species)
 
 head(MeanRLCValue_per_species)
@@ -245,4 +273,41 @@ ggsave(p, file = "MeanRLCperCountry.jpg", dpi = 300, height = 5, width = 10)
  
  # weighted Red List value per SPECIES for Europe (sqrt area as weight)
  
+```{r}
+lmsSpecies <- as.data.frame(MeanRLCValue_per_species %>%
+															group_by(raw_speciesname_europe) %>%
+															do(lm(RLCNum_species ~ 1, weights = sqrtArea, data = .) %>%
+																 	predict.lm(., 
+																 						 newdata = data.frame(RLCNum_species = 0,
+																 						 										RLCNum_species = 1),
+																 						 interval = "confidence",
+																 						 level = 0.95) %>%
+																 	as.data.frame()
+															) %>%
+															ungroup())
+head(lmsSpecies)
+
+lmsSpecies2 <- MeanRLCValue_per_species %>% 
+	group_by(raw_speciesname_europe) %>%
+	summarise(nCountriesRLEur = length(raw_country_code))
+head(lmsSpecies2)
+
+join1 <- full_join(lmsSpecies, lmsSpecies2, by = "raw_speciesname_europe")
+head(join1)
+
+join2 <- full_join(join1, NCountries2, by = "raw_speciesname_europe")
+head(join2)
+
+join3 <- full_join(join2, SpeciesList, by = "raw_speciesname_europe")
+head(join3)
+
+TableEurope <- join3 %>% 
+	select(SpeciesnameEurope, fit, NCountries, nCountriesRLEur, RedListCategoryEurope, EuropeanEndemic, Endemic, EdgeOfRange) %>% 
+	group_by(nCountriesRLEur) %>% 
+	arrange(desc(fit)) %>% 
+	ungroup()
+TableEurope$fit <- round(TableEurope$fit, 2)
+head(TableEurope)
+
+```
  
