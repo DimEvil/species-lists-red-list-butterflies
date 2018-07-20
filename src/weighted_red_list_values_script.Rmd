@@ -156,7 +156,7 @@ View(species_per_country)
 
 #Weighted Red list values
 
-We calculate the mean RLC and left join the country information.
+We calculate the mean RLC_country and left join the country information.
 
 ```{r}
 MeanRLCValue_per_country <- raw_data %>%
@@ -170,6 +170,25 @@ head(raw_data)
 
 ```
 
+We calculate the mean RLC_species and left join the country information.
+
+```{r}
+MeanRLCValue_per_species <- raw_data %>%
+      group_by (raw_speciesname_europe) %>%
+      summarise_at(vars(RLCNum),funs(mean(., na.rm=TRUE))) %>%
+      rename(RLCNum_species = RLCNum) %>%
+      left_join(raw_data, by = c("raw_speciesname_europe"="raw_speciesname_europe"))
+View(MeanRLCValue_per_species)
+
+head(MeanRLCValue_per_species)
+
+
+```
+
+
+
+
+
 #TRying to proceed with the original script by Dirk
 
 
@@ -181,6 +200,7 @@ MeanRLC <- MeanRLCValue_per_country %<>%
 MeanRLC$sqrtArea <- sqrt(MeanRLC$Area)
 head(MeanRLC)
 View(MeanRLC)
+
 ```
 
 
@@ -204,6 +224,9 @@ TableCountry <- lmsCountry %>%
 head(TableCountry)
 
 ```
+
+
+
 ```{r}
 p <- ggplot(lmsCountry, aes(x = reorder(raw_country_code, -fit), y = fit)) + 
 		 	geom_point() +
@@ -221,3 +244,5 @@ ggsave(p, file = "MeanRLCperCountry.jpg", dpi = 300, height = 5, width = 10)
 ```
  
  # weighted Red List value per SPECIES for Europe (sqrt area as weight)
+ 
+ 
