@@ -330,7 +330,7 @@ head(TableEurope)
 
 ```
 
-
+# weighted Red List value per SPECIES for EU (sqrt area as weight)
 
 
 ```{r}
@@ -383,5 +383,47 @@ head(TableEuropeEU)
 nrow(TableEuropeEU)
 
 write.csv(TableEuropeEU, file = "TableEuropeEU.csv", dec = ".", row.names = FALSE, na = "0")
+```
+
+# Correlation Area - mean RLC per country 
+
+```{r}
+
+CorAreaMeanRLC <- as.data.frame(sqlQuery(MDB, "select * from [qryCorrelationAreaRLC]"))
+odbcClose(MDB)
+head(CorAreaMeanRLC)
+
+CorAreaMeanRLC$mRLV <- round(CorAreaMeanRLC$mRLV, 0)
+CorAreaMeanRLC$sqrtmRLV <- sqrt(CorAreaMeanRLC$mRLV)
+CorAreaMeanRLC$Area1 <- CorAreaMeanRLC$Area/1000
+CorAreaMeanRLC$sqrtArea <- sqrt(CorAreaMeanRLC$Area1)
+
+head(CorAreaMeanRLC)
+hist(CorAreaMeanRLC$mRLV)
+hist(CorAreaMeanRLC$sqrtmRLV)
+
+cor.test(CorAreaMeanRLC$mRLV, CorAreaMeanRLC$sqrtArea, method = c("pearson"))
+
+glm.cor <- aov(mRLV ~ sqrtArea
+							 , data= CorAreaMeanRLC
+							 , family = poisson)
+summary(glm.cor)
+plot(glm.cor)
+
+glm.cor <- glm(mRLV ~ Area
+							 , data= CorAreaMeanRLC
+							 , family = poisson)
+summary(glm.cor)
+
+gam.cor <- gam(mRLV ~ s(sqrtArea, k = 5)
+							 , data= CorAreaMeanRLC
+							 , family = poisson)
+summary(gam.cor)
+plot(gam.cor)
+
+p <- ggplot(CorAreaMeanRLC, aes(x = sqrtArea, y = mRLV)) + geom_point() + geom_smooth(method = "lm", se = TRUE, colour = "black", formula = y ~ splines::ns(x, 1)) + theme_bw() + labs(x = "sqrt(Area)", y = "mRLV") + theme(axis.text.x = element_text(face = "bold", size = 20), axis.text.y = element_text(face = "bold", size = 20)) + theme(axis.title = element_text(face="bold", size=22))
+p
+ggsave(p, file = "AreamRLV.jpg", dpi = 300, height = 6, width = 10)
+
 ```
 
