@@ -389,6 +389,7 @@ write.csv(TableEuropeEU, file = "TableEuropeEU.csv", dec = ".", row.names = FALS
 
 ```{r}
 
+
 CorAreaMeanRLC <- MeanRLC
 
 head(CorAreaMeanRLC)
@@ -405,15 +406,18 @@ hist(CorAreaMeanRLC$sqrtRLCNum)
 cor.test(CorAreaMeanRLC$RLCNum, CorAreaMeanRLC$sqrtArea, method = c("pearson"))
 
 glm.cor <- aov(RLCNum ~ sqrtArea
+
 							 , data= CorAreaMeanRLC
 							 , family = poisson)
 summary(glm.cor)
 plot(glm.cor)
 
+
 glm.cor <- glm(RLCNum ~ Area
 							 , data= CorAreaMeanRLC
 							 , family = poisson)
 summary(glm.cor)
+
 
 gam.cor <- gam(RLCNum ~ s(sqrtArea)
 							 , data= CorAreaMeanRLC
@@ -421,7 +425,9 @@ gam.cor <- gam(RLCNum ~ s(sqrtArea)
 summary(gam.cor)
 plot(gam.cor)
 
+
 p <- ggplot(CorAreaMeanRLC, aes(x = sqrtArea, y = RLCNum)) + geom_point() + geom_smooth(method = "lm", se = TRUE, colour = "black", formula = y ~ splines::ns(x, 1)) + theme_bw() + labs(x = "sqrt(Area)", y = "mRLV") + theme(axis.text.x = element_text(face = "bold", size = 20), axis.text.y = element_text(face = "bold", size = 20)) + theme(axis.title = element_text(face="bold", size=22))
+
 p
 ggsave(p, file = "AreamRLV.jpg", dpi = 300, height = 6, width = 10)
 
