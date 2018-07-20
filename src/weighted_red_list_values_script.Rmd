@@ -61,6 +61,7 @@ This spreadsheet contains four relevant different worksheets: `taxa_regional`, `
 taxa_regional <- retrieve_spreadsheet %>% gs_read("taxa_regional") 
 regional_threat_scores <- retrieve_spreadsheet %>% gs_read("regional_threat_scores")
 country_info <- retrieve_spreadsheet %>% gs_read("country_info")
+specieslist <- retrieve_spreadsheet %>% gs_read("taxa_europe")
 
 ```
 
@@ -168,11 +169,7 @@ NCountries <- raw_data %>%
 
 View(NCountries)
 
-NCountries2 <- NCountries %>% 
-	group_by(raw_speciesname_europe) %>%
-	summarise(NCountries = length(raw_country_code))
-head(NCountries2)
-nrow(NCountries2)
+
 ```
 
 N is for number of coutries, we did this already....
