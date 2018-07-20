@@ -115,17 +115,13 @@ View(raw_data)
 ```
 
 
-
- 
-## Join regional threat score  information
+## Join regional threat score information
 
 ```{r}
 raw_data <- raw_data %>% 
   left_join(regional_threat_scores, by = c("raw_red_list_category" = "RedListCategory","raw_country_code"="countryCode"))
 View(raw_data)
 ```
-
-
 
 
 ## Calculations
@@ -162,14 +158,30 @@ View(species_per_country)
 
 ```
 
-# Recreate dataframes used in original script
+# Recreate Ncountry dataframes used in original script
 
 NCountries is Raw Data + info on countries per species
 
 ```{r}
+NCountries <- raw_data %>%
+              left_join(country_per_species, by = c("raw_speciesname_europe"="raw_speciesname_europe"))
+
+View(NCountries)
+
 NCountries2 <- NCountries %>% 
-	group_by(SpeciesnameEurope) %>%
-	summarise(NCountries = length(CountryCode))
+	group_by(raw_speciesname_europe) %>%
+	summarise(NCountries = length(raw_country_code))
+head(NCountries2)
+nrow(NCountries2)
+```
+
+N is for number of coutries, we did this already....
+country_per_species is NCountries2
+
+```{r}
+NCountries2 <- NCountries %>% 
+	group_by(raw_speciesname_europe) %>%
+	summarise(NCountries = length(raw_country_code))
 head(NCountries2)
 nrow(NCountries2)
 
