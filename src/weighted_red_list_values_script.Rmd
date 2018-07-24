@@ -42,7 +42,7 @@ regional_threat_scores_file = "../data/interim/regional_threat_scores.csv"
 country_info_file = "../data/interim/country_info.csv"
 species_per_country_file = "../data/interim/species_per_country.csv"
 country_per_species_file = "../data/interim/country_per_species.csv"
-
+MeanRLCValue_per_country_sqrt_file = "../data/interim/weighted_red_list_values_per_sqrt_country.csv"
 
 
 # Processed files:
@@ -50,6 +50,8 @@ country_per_species_file = "../data/interim/country_per_species.csv"
 weighted_red_list_values_file = "../data/processed/weighted_red_list_values.csv"
 MeanRLCValue_per_species_file = "../data/processed/weighted_red_list_values_per_species.csv"
 MeanRLCValue_per_country_file = "../data/processed/weighted_red_list_values_per_country.csv"
+
+
 ```
 
 # Read raw data
@@ -260,32 +262,28 @@ MeanRLC <- MeanRLCValue_per_country %<>%
 
 MeanRLC$sqrtArea <- sqrt(MeanRLC$Area)
 head(MeanRLC)
-View(MeanRLC)
+
+
+write.csv(MeanRLC, file = MeanRLCValue_per_country_sqrt_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
 
 ```
-
+# Linear model created on MeanRLCValue_per_species. Use ungrouped MeanRLCValue_per_species as dataframe
 
 ```{r}
-lmsCountry <-( MeanRLC %>%
+lmsCountry <-(as.data.frame(MeanRLCValue_per_species %>%
 	group_by(raw_country_code) %>%
-	do(lm(RLCNum ~ 1, data = .) %>%
+	 drop_na(RLCNum) %>%
+	do(lm(RLCNum ~ 1, data = .data) %>%
 		 	predict.lm(., 
-		 						 newdata = data.frame(RLCNum = 0,
-		 						                      RLCNum = 1),
+		 						 newdata = data.frame(RLCNumA = 0,
+		 						                      RLCNumB = 1),
 		 						 interval = "confidence",
 		 						 level = 0.95) %>%
 		 	as.data.frame()
 	) %>%
-	ungroup())
+	ungroup()))
 head(lmsCountry)
-
-
-TableCountry <- lmsCountry %>% 
-	arrange(desc(fit))
-head(TableCountry)
-
 ```
-
 
 
 ```{r}
@@ -294,7 +292,7 @@ p <- ggplot(lmsCountry, aes(x = reorder(raw_country_code, -fit), y = fit)) +
 		 	geom_pointrange(aes(ymin = lwr, ymax = upr)) +
       xlab("CountryCode") +
       ylab("mRLV") + 
-      geom_hline(yintercept = 50, size = 1, linetype = 1) + # , colour = "red"
+      geom_hline(yintercept = 50, size = 1, linetype = 1) + # colour = "red")
       geom_hline(yintercept = 30, size = 1, linetype = 2) + # , colour = "orange"
       geom_hline(yintercept = 20, size = 1, linetype = 3) + # , colour = "yellow"
       theme_bw()
@@ -309,10 +307,11 @@ ggsave(p, file = "MeanRLCperCountry.jpg", dpi = 300, height = 5, width = 10)
 ```{r}
 lmsSpecies <- as.data.frame(MeanRLCValue_per_species %>%
 															group_by(raw_speciesname_europe) %>%
-															do(lm(RLCNum_species ~ 1, weights = sqrtArea, data = .) %>%
-																 	predict.lm(., 
-																 						 newdata = data.frame(RLCNum_species = 0,
-																 						 										RLCNum_species = 1),
+															drop_na(RLCNum) %>%
+															do(lm(RLCNum ~ 1, weights = sqrtArea, data = .) %>%
+															  	predict.lm(., 
+																 						 newdata = data.frame(RLCNumA = 0,
+																 						 										  RLCNumB = 1),
 																 						 interval = "confidence",
 																 						 level = 0.95) %>%
 																 	as.data.frame()
@@ -320,6 +319,10 @@ lmsSpecies <- as.data.frame(MeanRLCValue_per_species %>%
 															ungroup())
 head(lmsSpecies)
 
+```
+
+
+```{r}
 lmsSpecies2 <- MeanRLCValue_per_species %>% 
 	group_by(raw_speciesname_europe) %>%
 	summarise(nCountriesRLEur = length(raw_country_code))
