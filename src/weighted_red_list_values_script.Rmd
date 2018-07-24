@@ -40,11 +40,15 @@ Set file paths (all paths should be relative to this script):
 taxa_regional_file = "../data/interim/taxa_regional.csv"
 regional_threat_scores_file = "../data/interim/regional_threat_scores.csv"
 country_info_file = "../data/interim/country_info.csv"
+species_per_country_file = "../data/interim/species_per_country.csv"
+country_per_species_file = "../data/interim/country_per_species.csv"
+
+
 
 # Processed files:
 
 weighted_red_list_values_file = "../data/processed/weighted_red_list_values.csv"
-
+MeanRLCValue_per_species = "../data/processed/weighted_red_list_values.csv"
 ```
 
 # Read raw data
@@ -134,6 +138,7 @@ species_per_country <- raw_data %>%
   group_by(raw_country_code) %>%
   summarize(n())
   View (species_per_country)
+
 ```
 
 calculates country per species
@@ -156,6 +161,8 @@ Species per country
 species_per_country <- species_per_country %>%
      left_join(country_info, by = c("raw_country_code"="CountryCode"))
 View(species_per_country)
+
+write.csv(species_per_country, file = species_per_country_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
 
 ```
 
