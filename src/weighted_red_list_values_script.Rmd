@@ -48,7 +48,8 @@ country_per_species_file = "../data/interim/country_per_species.csv"
 # Processed files:
 
 weighted_red_list_values_file = "../data/processed/weighted_red_list_values.csv"
-MeanRLCValue_per_species = "../data/processed/weighted_red_list_values.csv"
+MeanRLCValue_per_species_file = "../data/processed/weighted_red_list_values_per_species.csv"
+MeanRLCValue_per_country_file = "../data/processed/weighted_red_list_values_per_country.csv"
 ```
 
 # Read raw data
@@ -149,6 +150,8 @@ country_per_species <- raw_data %>%
   summarize(n()) %>%
   rename(number_of_countries = 'n()')
   View (country_per_species)
+
+write.csv(country_per_species, file = country_per_species_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
 ```
 
 
@@ -217,6 +220,8 @@ View(MeanRLCValue_per_country)
 head(MeanRLCValue_per_country)
 head(raw_data)
 
+write.csv(MeanRLCValue_per_country, file = MeanRLCValue_per_country_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+
 ```
 
 We calculate the mean RLC_species and left join the country information.
@@ -235,6 +240,8 @@ MeanRLCValue_per_species$sqrtArea <- sqrt(MeanRLCValue_per_species$Area)
 View(MeanRLCValue_per_species)
 
 head(MeanRLCValue_per_species)
+
+write.csv(MeanRLCValue_per_species, file = MeanRLCValue_per_species_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
 
 
 ```
