@@ -16,6 +16,11 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
+# Weighted REd List Values Script
+
+This script is used to dynamically calculate the weighted red list values, based on the raw data files on https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?ts=5b1f937f#gid=1323544344
+
+
 # Load libraries
 
 ```{r warning=FALSE}
@@ -50,6 +55,9 @@ MeanRLCValue_per_country_sqrt_file = "../data/interim/weighted_red_list_values_p
 weighted_red_list_values_file = "../data/processed/weighted_red_list_values.csv"
 MeanRLCValue_per_species_file = "../data/processed/weighted_red_list_values_per_species.csv"
 MeanRLCValue_per_country_file = "../data/processed/weighted_red_list_values_per_country.csv"
+TableEU_file = "../data/processed/TableEUsqrtArea.csv"
+TableEuropeEU_file = "../data/processed/TableEuropeEU.csv"
+
 
 # Genetated images
 
@@ -397,14 +405,16 @@ TableEU <- join3 %>%
 TableEU$fit <- round(TableEU$fit, 2)
 head(TableEU)
 
-write.csv(TableEU, file = "TableEUsqrtArea.csv", dec = ".", row.names = FALSE, na = "-")
+#write.csv(TableEU, file = "TableEUsqrtArea.csv", dec = ".", row.names = FALSE, na = "-")
+write.csv(TableEU, file = TableEUsqrtArea_file , na = "", row.names = FALSE, fileEncoding = "UTF-8")
 
 # Join European and EU tables
 TableEuropeEU <- full_join(TableEurope, TableEU, by = "raw_speciesname_europe")
 head(TableEuropeEU)
 nrow(TableEuropeEU)
 
-write.csv(TableEuropeEU, file = "TableEuropeEU.csv", dec = ".", row.names = FALSE, na = "0")
+write.csv(TableEuropeEU, file = TableEuropeEU_file, dec = ".", row.names = FALSE, na = "0")
+
 ```
 
 # Correlation Area - mean RLC per country 
