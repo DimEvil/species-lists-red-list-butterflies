@@ -2,7 +2,7 @@
 
 ## Rationale
 
-This repository contains the functionality to standardize the _National checklists and red lists for prioritising European butterfly conservation actions_ (Maes et al. 2019) to a [Darwin Core checklist](https://www.gbif.org/dataset-classes) that can be harvested by [GBIF](http://www.gbif.org).
+This repository contains the functionality to standardize the _National checklists and red lists for prioritising European butterfly conservation actions_ (Maes et al. 2019) to a [Darwin Core checklist](https://www.gbif.org/dataset-classes) that can be harvested by [GBIF](http://www.gbif.org) and the script used to calculate the weighted red list categories as used in Maes et al. 2019.
 
 ## Workflow
 
@@ -29,13 +29,15 @@ The repository structure is based on [Cookiecutter Data Science](http://drivenda
 │   └── processed
 │       ├── dwc       : Darwin Core output of mapping script GENERATED
 │       └── weighted_red_list_values.csv : Output of weighted red list values script GENERATED
-│
+|       └── images    : Images created in weighted red list value script
+|
 ├── docs              : Repository website GENERATED
 │
 └── src
     ├── read_data.Rmd : Script to read data and match names with GBIF backbone taxonomy
     ├── dwc_mapping.Rmd : Darwin Core mapping script
-    ├── weighted_red_list_values.Rmd : Script to calculate weighted red list values
+    ├── weighted_red_list_values_script.Rmd : Script to dynamically calculate weighted red list values based on gsheets
+    ├── weighted_red_list_values.Rmd: legacy script
     └── src.Rproj      : RStudio project file
 ```
 
@@ -46,7 +48,7 @@ The repository structure is based on [Cookiecutter Data Science](http://drivenda
 3. Open the `dwc_mapping.Rmd` [R Markdown file](https://rmarkdown.rstudio.com/) in RStudio
 4. Install any required packages
 5. Click `Run > Run All` to generate the processed data
-6. Alternatively, click `Build > Build website` to generate the processed data and build the website in `/docs`
+
 
 ## Contributors
 
