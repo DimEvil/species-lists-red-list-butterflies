@@ -55,7 +55,7 @@ MeanRLCValue_per_country_file = "../data/processed/weighted_red_list_values_per_
 
 
 MeanRLC_image = "../images/MeanRLCperCountry.jpg"
-
+AreamRLV_image = "../images/AreamRLV.jpg"
 ```
 
 # Read raw data
@@ -302,7 +302,7 @@ MeanRLCperCountry <- ggplot(lmsCountry, aes(x = reorder(raw_country_code, -fit),
       theme_bw()
 MeanRLCperCountry
 
-ggsave(p, file = "MeanRLCperCountry.jpg", dpi = 300, height = 5, width = 10)
+##ggsave(p, file = "MeanRLCperCountry.jpg", dpi = 300, height = 5, width = 10)
 ggsave(MeanRLCperCountry, file = MeanRLC_image, device = "jpeg", dpi = 300, height = 5, width = 10)
 
 ```
@@ -448,10 +448,12 @@ summary(gam.cor)
 plot(gam.cor)
 
 
-p <- ggplot(CorAreaMeanRLC, aes(x = sqrtArea, y = RLCNum)) + geom_point() + geom_smooth(method = "lm", se = TRUE, colour = "black", formula = y ~ splines::ns(x, 1)) + theme_bw() + labs(x = "sqrt(Area)", y = "mRLV") + theme(axis.text.x = element_text(face = "bold", size = 20), axis.text.y = element_text(face = "bold", size = 20)) + theme(axis.title = element_text(face="bold", size=22))
+AreamRLV <- ggplot(CorAreaMeanRLC, aes(x = sqrtArea, y = RLCNum)) + geom_point() + geom_smooth(method = "lm", se = TRUE, colour = "black", formula = y ~ splines::ns(x, 1)) + theme_bw() + labs(x = "sqrt(Area)", y = "mRLV") + theme(axis.text.x = element_text(face = "bold", size = 20), axis.text.y = element_text(face = "bold", size = 20)) + theme(axis.title = element_text(face="bold", size=22))
 
-p
-ggsave(p, file = "AreamRLV.jpg", dpi = 300, height = 6, width = 10)
+AreamRLV
+ggsave(AreamRLV, file = AreamRLV_image, device = "jpeg", dpi = 300, height = 6, width = 10)
+
+#ggsave(p, file = "AreamRLV.jpg", dpi = 300, height = 6, width = 10)
 
 ```
 
