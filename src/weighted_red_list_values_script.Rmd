@@ -51,6 +51,10 @@ weighted_red_list_values_file = "../data/processed/weighted_red_list_values.csv"
 MeanRLCValue_per_species_file = "../data/processed/weighted_red_list_values_per_species.csv"
 MeanRLCValue_per_country_file = "../data/processed/weighted_red_list_values_per_country.csv"
 
+# Genetated images
+
+
+MeanRLC_image = "../images/MeanRLCperCountry.jpg"
 
 ```
 
@@ -287,7 +291,7 @@ head(lmsCountry)
 
 
 ```{r}
-p <- ggplot(lmsCountry, aes(x = reorder(raw_country_code, -fit), y = fit)) + 
+MeanRLCperCountry <- ggplot(lmsCountry, aes(x = reorder(raw_country_code, -fit), y = fit)) + 
 		 	geom_point() +
 		 	geom_pointrange(aes(ymin = lwr, ymax = upr)) +
       xlab("CountryCode") +
@@ -296,9 +300,10 @@ p <- ggplot(lmsCountry, aes(x = reorder(raw_country_code, -fit), y = fit)) +
       geom_hline(yintercept = 30, size = 1, linetype = 2) + # , colour = "orange"
       geom_hline(yintercept = 20, size = 1, linetype = 3) + # , colour = "yellow"
       theme_bw()
-p
+MeanRLCperCountry
 
 ggsave(p, file = "MeanRLCperCountry.jpg", dpi = 300, height = 5, width = 10)
+ggsave(MeanRLCperCountry, file = MeanRLC_image, device = "jpeg", dpi = 300, height = 5, width = 10)
 
 ```
  
