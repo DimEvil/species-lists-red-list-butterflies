@@ -2,7 +2,9 @@
 title: "weighted_red_list_values_script"
 author: "Dimitri Brosens"
 date: "18 juli 2018"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 
@@ -51,7 +53,7 @@ MeanRLCValue_per_species_file = "../data/processed/weighted_red_list_values_per_
 MeanRLCValue_per_country_file = "../data/processed/weighted_red_list_values_per_country.csv"
 TableEU_file = "../data/processed/TableEUsqrtArea.csv"
 TableEuropeEU_file = "../data/processed/TableEuropeEU.csv"
-
+TableEUsqrtArea_file = "../data/processed/TableEUsqrtArea.csv"
 
 # Genetated images
 
