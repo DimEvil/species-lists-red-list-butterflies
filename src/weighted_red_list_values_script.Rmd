@@ -106,7 +106,7 @@ Select columns for which `raw
 -use = Y`:
 
 ```{r}
-raw_data %<>% filter(raw_use == 'y') 
+#raw_data %<>% filter(raw_use == 'y') 
 ```
 
 Preview data:
