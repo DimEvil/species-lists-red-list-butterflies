@@ -63,71 +63,79 @@ write_csv(references, here("data", "raw", "references.csv"), na = "")
 write_csv(country_info, here("data", "raw", "country_info.csv"), na = "")
 ```
 
-The country_info data will be used for the calculations of the weighted_red_list_values here: script[scr](https://github.com/inbo/red-lists-european-butterflies-checklist/blob/master/src/weighted_red_list_values.Rmd)
+`taxa_regional` and `references` will be used for the Darwin Core mapping, while `country_info` is need for calculation in `wrl_values.Rmd`.
 
-Create a data frame `raw_data` from `taxa_regional`, which is the original dataframe and the basis for the mapping of the checklist:
+# Process source data
+
+Get `taxa_regional` and join with the `references` as the basis for our mapping:
 
 ```{r}
-raw_data <- taxa_regional
+input_data <-
+  taxa_regional %>%
+  left_join(references, by = c("CountryCode"))
 ```
 
-# Pre-processing
+## Tidy data
 
-## Join references:
-
-```{r}
-raw_data <- taxa_regional %>% left_join(references, by = c("CountryCode"))
-```
-
-## Create taxonID
+Clean data somewhat:
 
 ```{r}
-# Vectorize the digest function (The digest() function isn't vectorized. So if you pass in a vector, you get one value for the whole vector rather than a digest for each element of the vector):
-vdigest <- Vectorize(digest)
-
-raw_data %<>% mutate(taxonID = paste("red-lists-european-butterflies-checklist", "taxon", vdigest (SpeciesnameEurope, algo="md5"), sep=":"))
-```
-
-## Further pre-processing
-
-Clean data somewhat
-
-```{r}
-raw_data %<>%
+input_data %<>%
   remove_empty("rows") %>%    # Remove empty rows
   clean_names()               # Have sensible (lowercase) column names
 ```
 
-Add prefix `raw_` to all column names to avoid name clashes with Darwin Core terms:
+Add prefix `input_` to all column names to avoid name clashes with Darwin Core terms:
 
 ```{r}
-colnames(raw_data) <- paste0("raw_", colnames(raw_data))
+colnames(input_data) <- paste0("input_", colnames(input_data))
 ```
 
-Select columns for which `raw_use = Y`:
+## Scientific names
+
+No cleaning required.
+
+## Taxon IDs
+
+To link taxa with information in the extension(s), each taxon needs a unique and relatively stable `taxonID`. Here we create one in the form of `dataset_shortname:taxon:hash`, where `hash` is unique code based on scientific name (that will remain the same as long as scientific name remains the same):
 
 ```{r}
-raw_data %<>% filter(raw_use == 'y') 
+vdigest <- Vectorize(digest) # Vectorize digest function to work with vectors
+input_data %<>% mutate(input_taxon_id = paste(
+  "butterflies-europe-checklist",
+  "taxon",
+  vdigest(paste(input_speciesname_europe), algo = "md5"),
+  sep = ":"
+))
+```
+
+## Preview data
+
+Show the number of species and distributions:
+
+```{r}
+input_data %>%
+  summarize(
+    `# taxa` = n_distinct(input_taxon_id),
+    `# distributions` = n()
+  ) %>%
+  adorn_totals("row")
 ```
 
 Preview data:
 
 ```{r}
-head(raw_data, n = 100)
+input_data %>% head()
 ```
 
-## Create taxon core
+# Taxon core
 
-```{r}
-taxon <- raw_data
-```
+## Pre-processing
 
-### Pre-processing
+Create a dataframe with unique taxa only (ignoring multiple distribution rows):
 
-Use unique values in taxon
-
-```{r}
-taxon %<>% distinct(raw_taxon_id, .keep_all = TRUE)
+```{r start_taxon}
+taxon <- input_data %>% distinct(input_taxon_id, .keep_all = TRUE)
 ```
 
 ### Term mapping
@@ -149,19 +157,13 @@ taxon %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/")
 ### rightsHolder
 
 ```{r}
-taxon %<>% mutate(rightsHolder = "INBO")  
+taxon %<>% mutate(rightsHolder = "INBO")
 ```
 
 ### accessRights
 
 ```{r}
-taxon %<>% mutate(accessRights = "https://www.inbo.be/en/norms-data-use") 
-```
-
-### references 
-
-```{r}
-taxon %<>% mutate(identificationReferences = raw_reference_species_list) 
+taxon %<>% mutate(accessRights = "https://www.inbo.be/en/norms-data-use")
 ```
 
 ### datasetID
@@ -173,7 +175,7 @@ taxon  %<>% mutate(datasetID = "to_be_completed")
 ### institutionCode
 
 ```{r}
-taxon %<>% mutate(institutionCode = "INBO") 
+taxon %<>% mutate(institutionCode = "INBO")
 ```
 
 ### datasetName
@@ -185,13 +187,13 @@ taxon %<>% mutate(datasetName = "National checklists and red lists for prioritis
 ### taxonID
 
 ```{r}
-taxon %<>% mutate(taxonID = raw_taxon_id) 
+taxon %<>% mutate(taxonID = input_taxon_id)
 ```
 
 ### scientificName
 
 ```{r}
-taxon %<>% mutate(scientificName = raw_speciesname_europe) 
+taxon %<>% mutate(scientificName = input_speciesname_europe)
 ```
 
 ### kingdom
@@ -209,13 +211,13 @@ taxon %<>% mutate(phylum = "Arthropoda")
 ### class
 
 ```{r}
-taxon %<>% mutate(class = "Insecta") 
+taxon %<>% mutate(class = "Insecta")
 ```
 
 ### order
 
 ```{r}
-taxon %<>% mutate (order= "Lepidoptera")
+taxon %<>% mutate(order= "Lepidoptera")
 ```
 
 ### taxonRank
@@ -235,10 +237,10 @@ taxon %<>% mutate(nomenclaturalCode = "ICZN")
 Remove the original columns:
 
 ```{r}
-taxon %<>% select(-starts_with("raw_"))
+taxon %<>% select(-starts_with("input_"))
 ```
 
-Sort on `taxonID`:
+Sort on `taxonID` (to maintain some consistency between updates of the dataset):
 
 ```{r}
 taxon %<>% arrange(taxonID)
@@ -247,13 +249,13 @@ taxon %<>% arrange(taxonID)
 Preview data:
 
 ```{r}
-head(taxon)
+taxon %>% head()
 ```
 
 Save to CSV:
 
 ```{r}
-write.csv(taxon, file = dwc_taxon_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+write_csv(taxon, here("data", "processed", "taxon.csv"), na = "")
 ```
 
 # Create distribution extension
