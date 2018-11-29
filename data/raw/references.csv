@@ -1,46 +1,46 @@
-"Country","CountryCode","ReferenceSpeciesList","ReferenceRedList"
-"Albania","AL","Verovnik and Popovic (2013); Micevski et al. (2015); Šašic et al. (2015b); Cuvelier et al. (2018)","Anonymous (2013)"
-"Andorra","AD","Dantart & Jubany (2012)","Dantart & Jubany (2012)"
-"Austria","AT","Huemer (2013); Huemer & Wiesmair (2017)","Zulka et al. 2003; Höttinger and Pennerstorfer (2005)"
-"Belarus","BY","Korb & Bolshakov (2016)","Kulak & Yakovlev (2018)"
-"Belgium","BE","Fichefet et al. (2008); Maes et al. (2012)","Fichefet et al. (2008); Maes et al. (2012)"
-"Bosnia and Herzegovina","BA","Koren and Kulijer (2016); Lelo (2016)","Ðug (2013)"
-"Bulgaria","BG","Langourov and Simov (2014); Kolev (2017); Kolev and Tsvetanov (2018)","Hristova and Beshkov (2017)"
-"Croatia","HR","Šašic and Mihoci (2011); Šašic et al. (2015a)","Šašic et al. (2015a)"
-"Cyprus","CY","John and Skule (2016)",
-"Czech Republic","CZ","Alois Pavlícko & Zdenek Faltýnek Fric (pers. comm)","Beneš and Konvicka (2017)"
-"Denmark","DK","Aarvik et al. (2017)","Wind & Phil (2004)"
-"Estonia","EE","Aarvik et al. (2017); Tartes and Õunap (2014)","Anu Tiitsaar (pers.comm.)"
-"Finland","FI","Aarvik et al. (2017); Saarinen and Jantunen (2013)","Kaitila et al. (2010)"
-"France","FR","Lafranchis et al. (2015)","UICN France (2012)"
-"Germany","DE","Reinhardt & Bolz (2011)","Reinhardt & Bolz (2011)"
-"Greece","GR","Pamperis (2009)","Pamperis (2009); Legakis and Maragou (2009)"
-"Hungary","HU","Varga (2012); Szabolcs et al. (2012); Gergely et al. (2017)","Ádám Korösi & Ádám Gór (pers. comm.)"
-"Iceland","IS","Aarvik et al. (2017)",
-"Ireland","IE","Tomás Murray (pers. comm.)","Regan et al. (2010)"
-"Italy","IT","Balletto et al. (2014)","Bonelli et al. (in press)"
-"Latvia","LV","Aarvik et al. (2017)",
-"Liechtenstein","LI","Aistleitner and Aistleitner (1996); Hiermann (pers. comm.)",
-"Lithuania","LT","Aarvik et al. (2017)","Rašomavicius (2007)"
-"Luxembourg","LU","Mestdagh et al. (2018)","Mestdagh et al. (2018)"
-"Macaronesia_Azores","MA_AZ","Tennent (2005); Vieira and Karsholt (2010); Wiemers (pers. comm.)",
-"Macaronesia_CanaryIslands","MA_CA","Tennent (2005); Báez and Oromí (2010); Wiemers (pers. comm.)",
-"Macaronesia_MadeiraIslands","MA_MA","Tennent (2005); Wiemers (pers comm)",
-"Macedonia","MK","Micevski and Micevski (2017)","Krpac & Darcemont (2011)"
-"Malta","MT","Valletta (1972); Schembri (1968); Sammut (2000); Cassar (in press)",
-"Moldova","MD","Korb and Bolshakov (2016); Mølgaard (2017)",
-"Montenegro","ME","Švara et al. (2015); Franeta (2018)",
-"Netherlands","NL","Kuchlein and de Vos (1999); van Swaay (2018)","Bos et al. (2006)"
-"Norway","NO","Aarvik et al. (2017)","Henriksen & Hilmo (2015)"
-"Poland","PL","Glowaciñski (2002)","Glowaciñski (2002); Sielezniew (pers. Comm)"
-"Portugal","PT","Garcia-Pereira et al. (2003); Marabuto and Maravalhas (2008)",
-"Romania","RO","Székely (2008); Dinca (2017)","Rakosy (2002)"
-"Russia","RU","Tshikolovets (2011); Tuzov (1997); Tuzov (2000); Verovnik (pers. comm.); Tatarinov and Gorbunov (2014)","Iliashenko & Iliashenko (2000); Danilov-Danilian (2001)"
-"Serbia","RS","Popovic & Verovnik (2018)","Jakšic (2003); Popovic et al. (2017)"
-"Slovakia","SK","Pastorális et al. (2013)","Hernik Kalivoda (pers. comm.)"
-"Slovenia","SI","Verovnik et al. (2012)","Anonymous (2002); Verovnik et al. (2012)"
-"Spain","ES","Garcia-Barros et al. (2004); Monasterio León et al. (2017)","Verdú & Galante (2009); Verdú et al. (2011)"
-"Sweden","SE","Ahrné et al. (2015)","Ahrné et al. (2015)"
-"Switzerland","CH","Sonderegger (2005); SwissLepTeam (2010); Wermeille et al. (2014)","Wermeille et al. (2014)"
-"Ukraine","UA","Nekrutenko and Tshikolovets (2005); Korb and Bolshakov (2016)","Popov & Geryak (pers. comm.)"
-"United Kingdom","GB","Newland et al. (2015)","Fox et al. (2011)"
+Country,CountryCode,ReferenceSpeciesList,ReferenceRedList
+Albania,AL,Verovnik and Popović (2013); Micevski et al. (2015); Šašić et al. (2015b); Cuvelier et al. (2018),Anonymous (2013)
+Andorra,AD,Dantart & Jubany (2012),Dantart & Jubany (2012)
+Austria,AT,Huemer (2013); Huemer & Wiesmair (2017),Zulka et al. 2003; Höttinger and Pennerstorfer (2005)
+Belarus,BY,Korb & Bolshakov (2016),Kulak & Yakovlev (2018)
+Belgium,BE,Fichefet et al. (2008); Maes et al. (2012),Fichefet et al. (2008); Maes et al. (2012)
+Bosnia and Herzegovina,BA,Koren and Kulijer (2016); Lelo (2016),Đug (2013)
+Bulgaria,BG,Langourov and Simov (2014); Kolev (2017); Kolev and Tsvetanov (2018),Hristova and Beshkov (2017)
+Croatia,HR,Šašić and Mihoci (2011); Šašić et al. (2015a),Šašić et al. (2015a)
+Cyprus,CY,John and Skule (2016),
+Czech Republic,CZ,Alois Pavlíčko & Zdeněk Faltýnek Fric (pers. comm),Beneš and Konvička (2017)
+Denmark,DK,Aarvik et al. (2017),Wind & Phil (2004)
+Estonia,EE,Aarvik et al. (2017); Tartes and Õunap (2014),Anu Tiitsaar (pers.comm.)
+Finland,FI,Aarvik et al. (2017); Saarinen and Jantunen (2013),Kaitila et al. (2010)
+France,FR,Lafranchis et al. (2015),UICN France (2012)
+Germany,DE,Reinhardt & Bolz (2011),Reinhardt & Bolz (2011)
+Greece,GR,Pamperis (2009),Pamperis (2009); Legakis and Maragou (2009)
+Hungary,HU,Varga (2012); Szabolcs et al. (2012); Gergely et al. (2017),Ádám Kőrösi & Ádám Gór (pers. comm.)
+Iceland,IS,Aarvik et al. (2017),
+Ireland,IE,Tomás Murray (pers. comm.),Regan et al. (2010)
+Italy,IT,Balletto et al. (2014),Bonelli et al. (in press)
+Latvia,LV,Aarvik et al. (2017),
+Liechtenstein,LI,Aistleitner and Aistleitner (1996); Hiermann (pers. comm.),
+Lithuania,LT,Aarvik et al. (2017),Rašomavičius (2007)
+Luxembourg,LU,Mestdagh et al. (2018),Mestdagh et al. (2018)
+Macaronesia_Azores,MA_AZ,Tennent (2005); Vieira and Karsholt (2010); Wiemers (pers. comm.),
+Macaronesia_CanaryIslands,MA_CA,Tennent (2005); Báez and Oromí (2010); Wiemers (pers. comm.),
+Macaronesia_MadeiraIslands,MA_MA,Tennent (2005); Wiemers (pers comm),
+Macedonia,MK,Micevski and Micevski (2017),Krpač & Darcemont (2011)
+Malta,MT,Valletta (1972); Schembri (1968); Sammut (2000); Cassar (in press),
+Moldova,MD,Korb and Bolshakov (2016); Mølgaard (2017),
+Montenegro,ME,Švara et al. (2015); Franeta (2018),
+Netherlands,NL,Kuchlein and de Vos (1999); van Swaay (2018),Bos et al. (2006)
+Norway,NO,Aarvik et al. (2017),Henriksen & Hilmo (2015)
+Poland,PL,Glowaciñski (2002),Glowaciñski (2002); Sielezniew (pers. Comm)
+Portugal,PT,Garcia-Pereira et al. (2003); Marabuto and Maravalhas (2008),
+Romania,RO,Székely (2008); Dincă (2017),Rakosy (2002)
+Russia,RU,Tshikolovets (2011); Tuzov (1997); Tuzov (2000); Verovnik (pers. comm.); Tatarinov and Gorbunov (2014),Iliashenko & Iliashenko (2000); Danilov-Danilian (2001)
+Serbia,RS,Popović & Verovnik (2018),Jakšić (2003); Popović et al. (2017)
+Slovakia,SK,Pastorális et al. (2013),Hernik Kalivoda (pers. comm.)
+Slovenia,SI,Verovnik et al. (2012),Anonymous (2002); Verovnik et al. (2012)
+Spain,ES,Garcia-Barros et al. (2004); Monasterio León et al. (2017),Verdú & Galante (2009); Verdú et al. (2011)
+Sweden,SE,Ahrné et al. (2015),Ahrné et al. (2015)
+Switzerland,CH,Sonderegger (2005); SwissLepTeam (2010); Wermeille et al. (2014),Wermeille et al. (2014)
+Ukraine,UA,Nekrutenko and Tshikolovets (2005); Korb and Bolshakov (2016),Popov & Geryak (pers. comm.)
+United Kingdom,GB,Newland et al. (2015),Fox et al. (2011)

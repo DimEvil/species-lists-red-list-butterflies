@@ -4,83 +4,64 @@ subtitle: "For: National checklists and red lists for prioritising European butt
 author:
 - Lien Reyserhove
 - Dimitri Brosens
+- Peter Desmet
 date: "`r Sys.Date()`"
 output:
   html_document:
+    df_print: paged
+    number_sections: true
     toc: true
     toc_depth: 3
     toc_float: true
-    number_sections: true
 ---
 
-This document describes how we map the checklist data to Darwin Core. 
+This document describes how we map the checklist data to Darwin Core. The source file for this document can be found [here](https://github.com/inbo/butterflies-europe-checklist/blob/master/src/dwc_mapping.Rmd).
 
 # Setup
 
-```{r setup, echo = FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
-```
-
-Set locale (so we use UTF-8 character encoding):
-
-```{r}
-# This works on Mac OS X, might not work on other OS
-Sys.setlocale("LC_CTYPE", "en_US.UTF-8")
 ```
 
 Load libraries:
 
 ```{r}
-
-library(tidyverse)        # For data transformations
-library(magrittr)         # For %<>% pipes
-library(googlesheets)     # To import and read Google spreadsheets 
-library(janitor)          # For cleaning input data
-library(digest)           # To generate hashes
+library(tidyverse)      # To do data science
+library(magrittr)       # To use %<>% pipes
+library(here)           # To find files
+library(janitor)        # To clean input data
+library(googlesheets)   # To import and read Google spreadsheets 
+library(digest)         # To generate hashes
+library(rgbif)          # To use GBIF services
 ```
 
-Set file paths (all paths should be relative to this script):
+# Read source data
 
-```{r}
-# Interim files:
-taxa_regional_file = "../data/interim/taxa_regional.csv"
-regional_threat_scores_file = "../data/interim/regional_threat_scores.csv"
-references_file = "../data/interim/references.csv"
-country_info_file = "../data/interim/country_info.csv"
+The original spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?usp=sharing).
 
-# Processed files:
-dwc_taxon_file = "../data/processed/dwc/taxon.csv"
-dwc_distribution_file = "../data/processed/dwc/distribution.csv"
+Retrieve the spreadsheet:
 
-```
-
-# Read raw data
-
-The original spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?ts=5b1f937f#gid=1323544344). We need to retrieve this spreadsheet and select the specific Googlesheet:
-
-```{r}
+```{r connect_google_spreadsheets}
 retrieve_spreadsheet <- gs_title("EuroButt")
 ```
 
-This spreadsheet contains four relevant different worksheets: `taxa_regional`, `regional_threat_scores`, `country_info` and `references`. We select these here and save them as separate data frames. We will then continue with the `taxa_regional` as this is the original dataframe.
+This spreadsheet contains four relevant different worksheets to read:
 
 ```{r}
 taxa_regional <- retrieve_spreadsheet %>% gs_read("taxa_regional") 
 regional_threat_scores <- retrieve_spreadsheet %>% gs_read("regional_threat_scores")
 references <- retrieve_spreadsheet %>% gs_read("references")
 country_info <- retrieve_spreadsheet %>% gs_read("country_info")
-
 ```
 
-We add a copy of the generated data frames to the [interim folder](https://github.com/inbo/red-lists-european-butterflies-checklist/tree/master/data/interim) on Github:
+We want to add a copy of the source data to the repository:
 
 ```{r}
-write.csv(taxa_regional, file = taxa_regional_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
-write.csv(regional_threat_scores, file = regional_threat_scores_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
-write.csv(references, file = references_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
-write.csv(country_info, file = country_info_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+write_csv(taxa_regional, here("data", "raw", "taxa_regional.csv"), na = "")
+write_csv(regional_threat_scores, here("data", "raw", "regional_threat_scores.csv"), na = "")
+write_csv(references, here("data", "raw", "references.csv"), na = "")
+write_csv(country_info, here("data", "raw", "country_info.csv"), na = "")
 ```
-
 
 The country_info data will be used for the calculations of the weighted_red_list_values here: script[scr](https://github.com/inbo/red-lists-european-butterflies-checklist/blob/master/src/weighted_red_list_values.Rmd)
 
