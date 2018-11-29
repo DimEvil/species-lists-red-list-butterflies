@@ -8,7 +8,7 @@ The repository also includes the script used to calculate the weighted red list 
 
 ## Workflow
 
-[source data](data/raw) (maintained as a [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?usp=sharing)) → Darwin Core [mapping script](src/dwc_mapping.Rmd) → generated [Darwin Core files](data/processed/dwc)
+[source data](data/raw) (maintained as a [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?usp=sharing)) → Darwin Core [mapping script](src/dwc_mapping.Rmd) → generated [Darwin Core files](data/processed)
 
 [source data](data/raw) → [script](src/wrl_values.Rmd) to calculate weighted red list values → [weighted red list values table](data/processed/wrl_values.csv)
 
@@ -27,15 +27,14 @@ The repository structure is based on [Cookiecutter Data Science](http://drivenda
 ├── .gitignore             : Files and directories to be ignored by git
 │
 ├── data
-│   ├── raw                : Source data (from Google Spreadsheet), input for mapping script GENERATED
+│   ├── raw                : Source data from Google Spreadsheet, input for scripts GENERATED
 │   └── processed
-│       ├── dwc            : Darwin Core output of mapping script GENERATED
+│       ├── *.csv          : Darwin Core output of mapping script GENERATED
 │       └── wrl_values.csv : Output of weighted red list values script
 │
 ├── docs                   : Repository website GENERATED
 │
 └── src
-    ├── read_data.Rmd      : Script to read data and match names with GBIF Backbone taxonomy
     ├── dwc_mapping.Rmd    : Darwin Core mapping script
     ├── wrl_values.Rmd     : Script to dynamically calculate weighted red list values
     ├── _site.yml          : Settings to build website in docs/
