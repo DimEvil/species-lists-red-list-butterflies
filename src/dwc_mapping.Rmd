@@ -258,11 +258,14 @@ Save to CSV:
 write_csv(taxon, here("data", "processed", "taxon.csv"), na = "")
 ```
 
-# Create distribution extension
+# Distribution extension
 
-```{r start_distribution}
-distribution <- raw_data
-head(distribution)
+## Pre-processing
+
+Create a dataframe with all data:
+
+```{r}
+distribution <- input_data
 ```
 
 ## Term mapping
@@ -272,44 +275,159 @@ Map the data to [Species Distribution](http://rs.gbif.org/extension/gbif/1.0/dis
 ### taxonID
 
 ```{r}
-distribution %<>% mutate(taxonID = raw_taxon_id) 
+distribution %<>% mutate(taxonID = input_taxon_id) 
 ```
 
 ### locality
 
+Inspect values:
+
 ```{r}
-distribution %<>% mutate(locality = raw_country) 
+distribution %>%
+  group_by(input_country_code, input_country) %>%
+  count()
+```
+
+Map values:
+
+```{r}
+distribution %<>% mutate(locality = recode(input_country,
+  Macaronesia_Azores = "Azores",
+  Macaronesia_CanaryIslands = "Canary Islands",
+  Macaronesia_MadeiraIslands = "Madeira"
+))
+```
+
+Inspect mapped values: 
+
+```{r}
+distribution %>%
+  filter(input_country != locality) %>%
+  group_by(input_country, locality) %>%
+  count()
 ```
 
 ### countryCode
 
-```{r}
-distribution %<>% mutate(countryCode = raw_country_code)
+Inspect values:
 
+```{r}
+distribution %>%
+  group_by(input_country_code) %>%
+  count()
+```
+
+Map values:
+
+```{r}
+distribution %<>% mutate(countryCode = recode(input_country_code,
+  MA_AZ = "PT", # Azores -> Portugal
+  MA_CA = "SP", # Canary Islands -> Spain
+  MA_MA = "PT" # Madeira -> Portugal
+))
+```
+
+Inspect mapped values: 
+
+```{r}
+distribution %>%
+  filter(input_country_code != countryCode) %>%
+  group_by(input_country_code, countryCode) %>%
+  count()
+```
+
+### occurrenceStatus
+
+Inspect values:
+
+```{r}
+distribution %>%
+  group_by(input_status) %>%
+  count()
+```
+
+Map values:
+
+```{r}
+distribution %<>% mutate(occurrenceStatus = recode(input_status,
+  Ex = "absent",
+  M = "?",
+  P = "present",
+  .default = ""
+))
+```
+
+Inspect mapped values: 
+
+```{r}
+distribution %>%
+  group_by(input_status, occurrenceStatus) %>%
+  count()
 ```
 
 ### threatStatus
 
+Inspect values:
+
 ```{r}
-distribution %<>% mutate(threatStatus = raw_red_list_category)
-  
+distribution %>%
+  group_by(input_red_list_category) %>%
+  count()
 ```
 
-### establishmentMeans
+Map values:
 
 ```{r}
-distribution %<>% 
-  mutate(establishmentMeans = raw_status) %>%
-  mutate(establishmentMeans = recode(establishmentMeans
-            ,"Breeding"="native"
-            ,"NeedsConfirmation"="uncertain")) 
+distribution %<>% mutate(threatStatus = recode(input_red_list_category,
+  CR = "CR", # Critically endangered
+  DD = "DD", # Data deficient
+  EN = "EN", # Endangered
+  LC = "LC", # Least concern
+  NE = "NE", # Not evaluated
+  "No Red List available" = "",
+  NT = "NT", # Near threatened
+  NtA = "?",
+  R = "?",
+  RE = "?",
+  Unknown = "?",
+  VU = "VU", # Vulnerable
+  .default = ""
+))
+```
 
+Inspect mapped values: 
+
+```{r}
+distribution %>%
+  group_by(input_red_list_category, threatStatus) %>%
+  count()
 ```
 
 ### source
 
+Inspect values:
+
 ```{r}
-distribution %<>% mutate(source = raw_reference_red_list)
+distribution %>%
+  group_by(input_reference_red_list) %>%
+  count()
+```
+
+Replace `;` with ` | `:
+
+```{r}
+distribution %<>% mutate(source =
+  str_replace(input_reference_red_list, ";", " | ")
+)
+```
+
+Inspect mapped values: 
+
+```{r}
+distribution %>%
+  filter(input_reference_red_list != source) %>%
+  group_by(input_reference_red_list, source) %>%
+  count()
 ```
 
 ## Post-processing
@@ -317,13 +435,7 @@ distribution %<>% mutate(source = raw_reference_red_list)
 Remove the original columns:
 
 ```{r}
-distribution %<>% select(-starts_with("raw_"))
-```
-
-Sort on `taxonID`:
-
-```{r}
-distribution %<>% arrange(taxonID)
+distribution %<>% select(-starts_with("input_"))
 ```
 
 Preview data:
@@ -335,6 +447,5 @@ distribution %>% head()
 Save to CSV:
 
 ```{r}
-write.csv(distribution, file = dwc_distribution_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+write_csv(distribution, here("data", "processed", "distribution.csv"), na = "")
 ```
-
