@@ -91,6 +91,12 @@ Add prefix `input_` to all column names to avoid name clashes with Darwin Core t
 colnames(input_data) <- paste0("input_", colnames(input_data))
 ```
 
+Sort on scientific name and country code (to maintain some consistency between updates of the dataset):
+
+```{r}
+input_data %<>% arrange(input_speciesname_europe, input_country_code)
+```
+
 ## Scientific names
 
 No cleaning required.
@@ -238,12 +244,6 @@ Remove the original columns:
 
 ```{r}
 taxon %<>% select(-starts_with("input_"))
-```
-
-Sort on `taxonID` (to maintain some consistency between updates of the dataset):
-
-```{r}
-taxon %<>% arrange(taxonID)
 ```
 
 Preview data:
