@@ -1,0 +1,17 @@
+name: "National checklists and red lists for prioritising European butterfly conservation actions"
+output_dir: "../docs"
+include: "static"
+navbar:
+  title: "butterflies-europe-checklist"
+  left:
+    - text: "Darwin Core mapping"
+      href: dwc_mapping.html
+    - text: "Weighted red list values"
+      href: wrl_values.html
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/trias-project/butterflies-europe-checklist
+output:
+  html_document:
+    theme: yeti
+    df_print: paged
