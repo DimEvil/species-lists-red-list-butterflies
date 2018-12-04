@@ -1,5 +1,5 @@
 ---
-title: "weighted_red_list_values_script"
+title: "Weighted red list values"
 author: "Dimitri Brosens"
 date: "18 juli 2018"
 output:
