@@ -409,24 +409,24 @@ Inspect values:
 
 ```{r}
 distribution %>%
-  group_by(input_reference_red_list) %>%
+  group_by(input_reference_species_list, input_reference_red_list) %>%
   count()
 ```
 
-Replace `;` with ` | `:
+Combine the references `input_reference_species_list` and `input_reference_red_list`, ignoring `NA` and using ` | ` as separator:
 
 ```{r}
-distribution %<>% mutate(source =
-  str_replace(input_reference_red_list, ";", " | ")
-)
+distribution %<>%
+  mutate(source = paste(input_reference_species_list, input_reference_red_list, sep = "; ")) %>%
+  mutate(source = str_replace(source, "; NA", "")) %>% # Replace paste() output for NA values
+  mutate(source = str_replace(source, "; ", " | "))
 ```
 
 Inspect mapped values: 
 
 ```{r}
 distribution %>%
-  filter(input_reference_red_list != source) %>%
-  group_by(input_reference_red_list, source) %>%
+  group_by(input_reference_species_list, input_reference_red_list, source) %>%
   count()
 ```
 
