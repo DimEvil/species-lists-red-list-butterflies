@@ -379,17 +379,17 @@ Map values:
 
 ```{r}
 distribution %<>% mutate(threatStatus = recode(input_red_list_category,
-  CR = "CR", # Critically endangered
-  DD = "DD", # Data deficient
+  CR = "CR", # Critically Endangered
+  DD = "DD", # Data Deficient
   EN = "EN", # Endangered
-  LC = "LC", # Least concern
-  NE = "NE", # Not evaluated
+  LC = "LC", # Least Concern
+  NE = "NE", # Not Evaluated
   "No Red List available" = "",
-  NT = "NT", # Near threatened
-  NtA = "?",
-  R = "?",
-  RE = "?",
-  Unknown = "?",
+  NT = "NT", # Near Threatened
+  NtA = "NA", # Not Applicable
+  R = "Rare", # not an official IUCN term, but used by Germany
+  RE = "RE", # Regionally Extinct
+  Unknown = "unknown", # not an official IUCN term, but opted to be explicit
   VU = "VU", # Vulnerable
   .default = ""
 ))
