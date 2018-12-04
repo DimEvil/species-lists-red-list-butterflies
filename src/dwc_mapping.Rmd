@@ -351,7 +351,7 @@ Map values:
 ```{r}
 distribution %<>% mutate(occurrenceStatus = recode(input_status,
   Ex = "absent",
-  M = "?",
+  M = "absent", # Regular migrant, decided to use "absent" rather than "irregular" or "present"
   P = "present",
   .default = ""
 ))
