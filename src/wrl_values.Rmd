@@ -1,5 +1,5 @@
 ---
-title: "weighted_red_list_values_script"
+title: "Weighted red list values"
 author: "Dimitri Brosens"
 date: "18 juli 2018"
 output:
@@ -7,59 +7,22 @@ output:
   html_document: default
 ---
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Weighted REd List Values Script
+# Weighted Red List Values Script
 
 This script is used to dynamically calculate the weighted red list values, based on the raw data files on https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?ts=5b1f937f#gid=1323544344
-
 
 # Load libraries
 
 ```{r warning=FALSE}
-library(knitr)
-opts_chunk$set(echo = TRUE)
-library(dplyr)
-library(readxl)
-library(RODBC)
 library(gam)
 library(tidyverse)        # For data transformations
 library(magrittr)         # For %<>% pipes
 library(googlesheets)     # To import and read Google spreadsheets 
 library(janitor)          # For cleaning input data
-library(digest)
-```
-
-
-Set file paths (all paths should be relative to this script):
-
-```{r}
-# Interim files:
-taxa_regional_file = "../data/interim/taxa_regional.csv"
-regional_threat_scores_file = "../data/interim/regional_threat_scores.csv"
-country_info_file = "../data/interim/country_info.csv"
-species_per_country_file = "../data/interim/species_per_country.csv"
-country_per_species_file = "../data/interim/country_per_species.csv"
-MeanRLCValue_per_country_sqrt_file = "../data/interim/weighted_red_list_values_per_sqrt_country.csv"
-
-
-# Processed files:
-
-weighted_red_list_values_file = "../data/processed/weighted_red_list_values.csv"
-MeanRLCValue_per_species_file = "../data/processed/weighted_red_list_values_per_species.csv"
-MeanRLCValue_per_country_file = "../data/processed/weighted_red_list_values_per_country.csv"
-TableEU_file = "../data/processed/TableEUsqrtArea.csv"
-TableEuropeEU_file = "../data/processed/TableEuropeEU.csv"
-TableEUsqrtArea_file = "../data/processed/TableEUsqrtArea.csv"
-
-# Genetated images
-
-
-MeanRLC_image = "../images/MeanRLCperCountry.jpg"
-AreamRLV_image = "../images/AreamRLV.jpg"
 ```
 
 # Read raw data
@@ -77,7 +40,6 @@ taxa_regional <- retrieve_spreadsheet %>% gs_read("taxa_regional")
 regional_threat_scores <- retrieve_spreadsheet %>% gs_read("regional_threat_scores")
 country_info <- retrieve_spreadsheet %>% gs_read("country_info")
 specieslist <- retrieve_spreadsheet %>% gs_read("taxa_europe")
-
 ```
 
 Create a data frame `raw_data` from `taxa_regional`, which is the original dataframe and the basis for the calculation of the values:
@@ -102,21 +64,13 @@ Add prefix `raw_` to all column names to avoid name clashes with Darwin Core ter
 colnames(raw_data) <- paste0("raw_", colnames(raw_data))
 ```
 
-Select columns for which `raw
--use = Y`:
-
-```{r}
-#raw_data %<>% filter(raw_use == 'y') 
-```
-
 Preview data:
 
 ```{r}
 head(raw_data, n = 100)
-View(raw_data)
 ```
 
-#Focus on the speciesnames used in €urope
+# Focus on the speciesnames used in Europe
 
 (6371 rows)
 
@@ -126,19 +80,14 @@ raw_data %<>%
   group_by(raw_speciesname_europe, raw_country_code,raw_red_list_category, add = FALSE) %>%
   summarise()
 head(raw_data, n=50)
-View(raw_data)
-
 ```
-
 
 ## Join regional threat score information
 
 ```{r}
 raw_data <- raw_data %>% 
   left_join(regional_threat_scores, by = c("raw_red_list_category" = "RedListCategory","raw_country_code"="countryCode"))
-View(raw_data)
 ```
-
 
 ## Calculations
 
@@ -148,8 +97,6 @@ Calculates species per country
 species_per_country <- raw_data %>%
   group_by(raw_country_code) %>%
   summarize(n())
-  View (species_per_country)
-
 ```
 
 calculates country per species
@@ -159,24 +106,19 @@ country_per_species <- raw_data %>%
   group_by(raw_speciesname_europe) %>%
   summarize(n()) %>%
   rename(number_of_countries = 'n()')
-  View (country_per_species)
 
-write.csv(country_per_species, file = country_per_species_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+write_csv(country_per_species, here("data", "interim", "country_per_species.csv"), na = "")
 ```
 
-
-
-##Join Country Information
+## Join Country Information
 
 Species per country
 
 ```{r}
 species_per_country <- species_per_country %>%
-     left_join(country_info, by = c("raw_country_code"="CountryCode"))
-View(species_per_country)
+  left_join(country_info, by = c("raw_country_code"="CountryCode"))
 
-write.csv(species_per_country, file = species_per_country_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
-
+write_csv(species_per_country, here("data", "interim", "species_per_country.csv"), na = "")
 ```
 
 # Recreate Ncountry dataframes used in original script
@@ -187,10 +129,6 @@ NCountries is Raw Data + info on countries per species
 NCountries <- raw_data %>%
               left_join(country_per_species, by = c("raw_speciesname_europe"="raw_speciesname_europe")) %>%
               left_join(country_info, by = c("raw_country_code"="CountryCode"))
-
-View(NCountries)
-
-
 ```
 
 N is for number of coutries, we did this already....
@@ -211,27 +149,22 @@ NCountries2EU <- NCountriesEU %>%
 	summarise(NCountriesEU = length(raw_country_code))
 
 NCountriesEurEU <- full_join(NCountries2, NCountries2EU, by = "raw_speciesname_europe")
-
 ```
 
-
-
-#Weighted Red list values
+# Weighted Red list values
 
 We calculate the mean RLC_country and left join the country information.
 
 ```{r}
 MeanRLCValue_per_country <- raw_data %>%
-      group_by (raw_country_code) %>%
+      group_by(raw_country_code) %>%
       summarise_at(vars(RLCNum),funs(mean(., na.rm=TRUE))) %>%
       left_join(country_info, by = c("raw_country_code"="CountryCode"))
-View(MeanRLCValue_per_country)
 
 head(MeanRLCValue_per_country)
 head(raw_data)
 
-write.csv(MeanRLCValue_per_country, file = MeanRLCValue_per_country_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
-
+write_csv(MeanRLCValue_per_country, here("data", "processed", "wrl_values_per_country.csv"), na = "")
 ```
 
 We calculate the mean RLC_species and left join the country information.
@@ -246,22 +179,12 @@ MeanRLCValue_per_species <- raw_data %>%
       drop_na(RLCNum_species)
 MeanRLCValue_per_species$sqrtArea <- sqrt(MeanRLCValue_per_species$Area)
 
-
-View(MeanRLCValue_per_species)
-
 head(MeanRLCValue_per_species)
 
-write.csv(MeanRLCValue_per_species, file = MeanRLCValue_per_species_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
-
-
+write_csv(MeanRLCValue_per_species, here("data", "processed", "wrl_values_per_species.csv"), na = "")
 ```
 
-
-
-
-
-#TRying to proceed with the original script by Dirk
-
+# Trying to proceed with the original script by Dirk
 
 ```{r}
 MDB <- raw_data
@@ -271,10 +194,9 @@ MeanRLC <- MeanRLCValue_per_country %<>%
 MeanRLC$sqrtArea <- sqrt(MeanRLC$Area)
 head(MeanRLC)
 
-
-write.csv(MeanRLC, file = MeanRLCValue_per_country_sqrt_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
-
+write_csv(MeanRLC, here("data", "interim", "wrl_values_per_sqrt_country.csv"), na = "")
 ```
+
 # Linear model created on MeanRLCValue_per_species. Use ungrouped MeanRLCValue_per_species as dataframe
 
 ```{r}
@@ -293,7 +215,6 @@ lmsCountry <-(as.data.frame(MeanRLCValue_per_species %>%
 head(lmsCountry)
 ```
 
-
 ```{r}
 MeanRLCperCountry <- ggplot(lmsCountry, aes(x = reorder(raw_country_code, -fit), y = fit)) + 
 		 	geom_point() +
@@ -306,12 +227,10 @@ MeanRLCperCountry <- ggplot(lmsCountry, aes(x = reorder(raw_country_code, -fit),
       theme_bw()
 MeanRLCperCountry
 
-##ggsave(p, file = "MeanRLCperCountry.jpg", dpi = 300, height = 5, width = 10)
-ggsave(MeanRLCperCountry, file = MeanRLC_image, device = "jpeg", dpi = 300, height = 5, width = 10)
-
+ggsave(MeanRLCperCountry, file = here("images", "mean_rlv_per_country.jpg"), device = "jpeg", dpi = 300, height = 5, width = 10)
 ```
  
- # weighted Red List value per SPECIES for Europe (sqrt area as weight)
+# weighted Red List value per SPECIES for Europe (sqrt area as weight)
  
 ```{r}
 lmsSpecies <- as.data.frame(MeanRLCValue_per_species %>%
@@ -327,9 +246,7 @@ lmsSpecies <- as.data.frame(MeanRLCValue_per_species %>%
 															) %>%
 															ungroup())
 head(lmsSpecies)
-
 ```
-
 
 ```{r}
 lmsSpecies2 <- MeanRLCValue_per_species %>% 
@@ -353,15 +270,11 @@ TableEurope <- join3 %>%
 	ungroup()
 TableEurope$fit <- round(TableEurope$fit, 2)
 head(TableEurope)
-
 ```
 
 # weighted Red List value per SPECIES for EU (sqrt area as weight)
 
-
 ```{r}
-# weighted Red List value per SPECIES for EU (sqrt area as weight)
-##################################################################
 lmsHDSpecies <- MeanRLCValue_per_species %>% 
 	filter(!is.na(EU)) %>% 
 	group_by(raw_speciesname_europe) %>%
@@ -401,23 +314,19 @@ TableEU <- join3 %>%
 TableEU$fit <- round(TableEU$fit, 2)
 head(TableEU)
 
-#write.csv(TableEU, file = "TableEUsqrtArea.csv", dec = ".", row.names = FALSE, na = "-")
-write.csv(TableEU, file = TableEUsqrtArea_file , na = "", row.names = FALSE, fileEncoding = "UTF-8")
+write_csv(TableEU, here("data", "processed", "wrl_values_eu_sqrt_area.csv"), na = "")
 
 # Join European and EU tables
 TableEuropeEU <- full_join(TableEurope, TableEU, by = "raw_speciesname_europe")
 head(TableEuropeEU)
 nrow(TableEuropeEU)
 
-write.csv(TableEuropeEU, file = TableEuropeEU_file, dec = ".", row.names = FALSE, na = "0")
-
+write_csv(TableEuropeEU, here("data", "processed", "wrl_values_eu.csv"), na = "0")
 ```
 
 # Correlation Area - mean RLC per country 
 
 ```{r}
-
-
 CorAreaMeanRLC <- MeanRLC
 
 head(CorAreaMeanRLC)
@@ -441,25 +350,16 @@ summary(glm.cor)
 plot(glm.cor)
 
 
-glm.cor <- glm(RLCNum ~ Area
-							 , data= CorAreaMeanRLC
-							 , family = poisson)
+glm.cor <- glm(RLCNum ~ Area, data = CorAreaMeanRLC, family = poisson)
 summary(glm.cor)
 
 
-gam.cor <- gam(RLCNum ~ s(sqrtArea)
-							 , data= CorAreaMeanRLC
-							 , family = poisson)
+gam.cor <- gam(RLCNum ~ s(sqrtArea), data = CorAreaMeanRLC, family = poisson)
 summary(gam.cor)
 plot(gam.cor)
-
 
 AreamRLV <- ggplot(CorAreaMeanRLC, aes(x = sqrtArea, y = RLCNum)) + geom_point() + geom_smooth(method = "lm", se = TRUE, colour = "black", formula = y ~ splines::ns(x, 1)) + theme_bw() + labs(x = "sqrt(Area)", y = "mRLV") + theme(axis.text.x = element_text(face = "bold", size = 20), axis.text.y = element_text(face = "bold", size = 20)) + theme(axis.title = element_text(face="bold", size=22))
 
 AreamRLV
-ggsave(AreamRLV, file = AreamRLV_image, device = "jpeg", dpi = 300, height = 6, width = 10)
-
-#ggsave(p, file = "AreamRLV.jpg", dpi = 300, height = 6, width = 10)
-
+ggsave(AreamRLV, file = here("images/mean_rlv_per_sqrt_area.jpg"), device = "jpeg", dpi = 300, height = 6, width = 10)
 ```
-

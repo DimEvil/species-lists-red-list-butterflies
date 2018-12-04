@@ -1,0 +1,239 @@
+countryCode,Country,RedListCategory,RLCNum
+AD,Andorra,CR,80
+AD,Andorra,DD,1
+AD,Andorra,EN,50
+AD,Andorra,LC,1
+AD,Andorra,NT,20
+AD,Andorra,VU,30
+AL,Albania,CR,80
+AL,Albania,EN,50
+AL,Albania,NT,20
+AL,Albania,Unknown,1
+AL,Albania,VU,30
+AT,Austria,CR,80
+AT,Austria,DD,1
+AT,Austria,EN,50
+AT,Austria,LC,1
+AT,Austria,NE,1
+AT,Austria,NT,20
+AT,Austria,RE,100
+AT,Austria,VU,30
+BA,Bosnia and Herzegovina,CR,80
+BA,Bosnia and Herzegovina,DD,1
+BA,Bosnia and Herzegovina,EN,50
+BA,Bosnia and Herzegovina,LC,1
+BA,Bosnia and Herzegovina,NT,20
+BA,Bosnia and Herzegovina,RE,100
+BA,Bosnia and Herzegovina,Unknown,1
+BA,Bosnia and Herzegovina,VU,30
+BE,Belgium,CR,80
+BE,Belgium,DD,1
+BE,Belgium,EN,50
+BE,Belgium,LC,1
+BE,Belgium,NE,1
+BE,Belgium,NT,20
+BE,Belgium,NtA,
+BE,Belgium,RE,100
+BE,Belgium,VU,30
+BG,Bulgaria,CR,80
+BG,Bulgaria,DD,1
+BG,Bulgaria,EN,50
+BG,Bulgaria,LC,1
+BG,Bulgaria,NE,1
+BG,Bulgaria,NT,20
+BG,Bulgaria,RE,100
+BG,Bulgaria,Unknown,1
+BG,Bulgaria,VU,30
+BY,Belarus,CR,80
+BY,Belarus,DD,1
+BY,Belarus,EN,50
+BY,Belarus,LC,1
+BY,Belarus,NT,20
+BY,Belarus,RE,100
+BY,Belarus,Unknown,1
+BY,Belarus,VU,30
+CH,Switzerland,CR,80
+CH,Switzerland,EN,50
+CH,Switzerland,LC,1
+CH,Switzerland,NT,20
+CH,Switzerland,NtA,1
+CH,Switzerland,RE,100
+CH,Switzerland,Unknown,1
+CH,Switzerland,VU,30
+CZ,Czech Republic,CR,80
+CZ,Czech Republic,EN,50
+CZ,Czech Republic,LC,1
+CZ,Czech Republic,NE,1
+CZ,Czech Republic,NT,20
+CZ,Czech Republic,RE,100
+CZ,Czech Republic,Unknown,1
+CZ,Czech Republic,VU,30
+DE,Germany,CR,80
+DE,Germany,DD,1
+DE,Germany,EN,50
+DE,Germany,LC,1
+DE,Germany,NE,1
+DE,Germany,NT,20
+DE,Germany,R,20
+DE,Germany,RE,100
+DE,Germany,VU,30
+DK,Denmark,CR,80
+DK,Denmark,EN,50
+DK,Denmark,LC,1
+DK,Denmark,NE,
+DK,Denmark,NT,20
+DK,Denmark,NtA,1
+DK,Denmark,RE,100
+DK,Denmark,VU,30
+EE,Estonia,CR,80
+EE,Estonia,EN,50
+EE,Estonia,LC,1
+EE,Estonia,NT,20
+EE,Estonia,NtA,1
+EE,Estonia,RE,100
+EE,Estonia,VU,30
+ES,Spain,EN,50
+ES,Spain,LC,1
+ES,Spain,NE,1
+ES,Spain,NT,20
+ES,Spain,VU,30
+FI,Finland,CR,80
+FI,Finland,EN,50
+FI,Finland,LC,1
+FI,Finland,NE,1
+FI,Finland,NT,20
+FI,Finland,NtA,1
+FI,Finland,VU,30
+FR,France,CR,80
+FR,France,DD,1
+FR,France,EN,50
+FR,France,LC,1
+FR,France,NT,20
+FR,France,RE,100
+FR,France,Unknown,1
+FR,France,VU,30
+GB,United Kingdom,CR,80
+GB,United Kingdom,EN,50
+GB,United Kingdom,LC,1
+GB,United Kingdom,NT,20
+GB,United Kingdom,NtA,1
+GB,United Kingdom,RE,100
+GB,United Kingdom,VU,30
+GR,Greece,CR,80
+GR,Greece,EN,50
+GR,Greece,LC,1
+GR,Greece,NT,20
+GR,Greece,Unknown,1
+GR,Greece,VU,30
+HR,Croatia,CR,80
+HR,Croatia,DD,1
+HR,Croatia,EN,50
+HR,Croatia,LC,1
+HR,Croatia,NT,20
+HR,Croatia,NtA,1
+HR,Croatia,Unknown,1
+HR,Croatia,VU,30
+HU,Hungary,CR,80
+HU,Hungary,DD,1
+HU,Hungary,EN,50
+HU,Hungary,LC,1
+HU,Hungary,NT,20
+HU,Hungary,RE,100
+HU,Hungary,VU,30
+IE,Ireland,DD,1
+IE,Ireland,EN,50
+IE,Ireland,LC,1
+IE,Ireland,NE,1
+IE,Ireland,NT,20
+IE,Ireland,VU,30
+IT,Italy,CR,80
+IT,Italy,DD,1
+IT,Italy,EN,50
+IT,Italy,LC,1
+IT,Italy,NT,20
+IT,Italy,NtA,1
+IT,Italy,RE,100
+IT,Italy,VU,30
+LT,Lithuania,CR,80
+LT,Lithuania,DD,1
+LT,Lithuania,EN,50
+LT,Lithuania,LC,1
+LT,Lithuania,NT,20
+LT,Lithuania,NtA,1
+LT,Lithuania,RE,100
+LT,Lithuania,VU,30
+LU,Luxembourg,CR,80
+LU,Luxembourg,DD,1
+LU,Luxembourg,EN,50
+LU,Luxembourg,LC,1
+LU,Luxembourg,NE,1
+LU,Luxembourg,NT,20
+LU,Luxembourg,NtA,1
+LU,Luxembourg,RE,100
+LU,Luxembourg,VU,30
+MK,Macedonia,EN,65
+MK,Macedonia,NT,20
+MK,Macedonia,Unknown,1
+MK,Macedonia,VU,30
+NL,Netherlands,CR,80
+NL,Netherlands,EN,50
+NL,Netherlands,LC,1
+NL,Netherlands,NE,1
+NL,Netherlands,NT,20
+NL,Netherlands,RE,100
+NL,Netherlands,Unknown,1
+NL,Netherlands,VU,30
+NO,Norway,CR,80
+NO,Norway,EN,50
+NO,Norway,LC,1
+NO,Norway,NT,20
+NO,Norway,NtA,1
+NO,Norway,VU,30
+PL,Poland,CR,80
+PL,Poland,EN,50
+PL,Poland,LC,1
+PL,Poland,NT,20
+PL,Poland,RE,100
+PL,Poland,VU,30
+RS,Serbia,CR,80
+RS,Serbia,DD,1
+RS,Serbia,EN,50
+RS,Serbia,LC,1
+RS,Serbia,NT,20
+RS,Serbia,RE,100
+RS,Serbia,Unknown,1
+RS,Serbia,VU,30
+RU,Russia,CR,80
+RU,Russia,EN,50
+RU,Russia,LC,1
+RU,Russia,NT,20
+RU,Russia,RE,100
+RU,Russia,VU,30
+SE,Sweden,CR,80
+SE,Sweden,EN,50
+SE,Sweden,LC,1
+SE,Sweden,NT,20
+SE,Sweden,NtA,1
+SE,Sweden,RE,100
+SE,Sweden,VU,30
+SI,Slovenia,DD,1
+SI,Slovenia,EN,65
+SI,Slovenia,LC,1
+SI,Slovenia,NT,20
+SI,Slovenia,RE,100
+SI,Slovenia,Unknown,1
+SI,Slovenia,VU,30
+SK,Slovakia,CR,80
+SK,Slovakia,DD,1
+SK,Slovakia,EN,50
+SK,Slovakia,LC,1
+SK,Slovakia,RE,100
+SK,Slovakia,VU,30
+UA,Ukraine,CR,80
+UA,Ukraine,DD,1
+UA,Ukraine,EN,50
+UA,Ukraine,LC,1
+UA,Ukraine,NT,20
+UA,Ukraine,RE,100
+UA,Ukraine,Unknown,1
+UA,Ukraine,VU,30

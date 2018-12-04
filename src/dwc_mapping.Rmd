@@ -4,149 +4,144 @@ subtitle: "For: National checklists and red lists for prioritising European butt
 author:
 - Lien Reyserhove
 - Dimitri Brosens
+- Peter Desmet
 date: "`r Sys.Date()`"
 output:
   html_document:
+    df_print: paged
+    number_sections: true
     toc: true
     toc_depth: 3
     toc_float: true
-    number_sections: true
 ---
 
-This document describes how we map the checklist data to Darwin Core. 
+This document describes how we map the checklist data to Darwin Core. The source file for this document can be found [here](https://github.com/inbo/butterflies-europe-checklist/blob/master/src/dwc_mapping.Rmd).
 
 # Setup
 
-```{r setup, echo = FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
-```
-
-Set locale (so we use UTF-8 character encoding):
-
-```{r}
-# This works on Mac OS X, might not work on other OS
-Sys.setlocale("LC_CTYPE", "en_US.UTF-8")
 ```
 
 Load libraries:
 
 ```{r}
-
-library(tidyverse)        # For data transformations
-library(magrittr)         # For %<>% pipes
-library(googlesheets)     # To import and read Google spreadsheets 
-library(janitor)          # For cleaning input data
-library(digest)           # To generate hashes
+library(tidyverse)      # To do data science
+library(magrittr)       # To use %<>% pipes
+library(here)           # To find files
+library(janitor)        # To clean input data
+library(googlesheets)   # To import and read Google spreadsheets 
+library(digest)         # To generate hashes
+library(rgbif)          # To use GBIF services
 ```
 
-Set file paths (all paths should be relative to this script):
+# Read source data
 
-```{r}
-# Interim files:
-taxa_regional_file = "../data/interim/taxa_regional.csv"
-regional_threat_scores_file = "../data/interim/regional_threat_scores.csv"
-references_file = "../data/interim/references.csv"
-country_info_file = "../data/interim/country_info.csv"
+The original spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?usp=sharing).
 
-# Processed files:
-dwc_taxon_file = "../data/processed/dwc/taxon.csv"
-dwc_distribution_file = "../data/processed/dwc/distribution.csv"
+Retrieve the spreadsheet:
 
-```
-
-# Read raw data
-
-The original spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?ts=5b1f937f#gid=1323544344). We need to retrieve this spreadsheet and select the specific Googlesheet:
-
-```{r}
+```{r connect_google_spreadsheets}
 retrieve_spreadsheet <- gs_title("EuroButt")
 ```
 
-This spreadsheet contains four relevant different worksheets: `taxa_regional`, `regional_threat_scores`, `country_info` and `references`. We select these here and save them as separate data frames. We will then continue with the `taxa_regional` as this is the original dataframe.
+This spreadsheet contains four relevant different worksheets to read:
 
 ```{r}
 taxa_regional <- retrieve_spreadsheet %>% gs_read("taxa_regional") 
 regional_threat_scores <- retrieve_spreadsheet %>% gs_read("regional_threat_scores")
 references <- retrieve_spreadsheet %>% gs_read("references")
 country_info <- retrieve_spreadsheet %>% gs_read("country_info")
-
 ```
 
-We add a copy of the generated data frames to the [interim folder](https://github.com/inbo/red-lists-european-butterflies-checklist/tree/master/data/interim) on Github:
+We want to add a copy of the source data to the repository:
 
 ```{r}
-write.csv(taxa_regional, file = taxa_regional_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
-write.csv(regional_threat_scores, file = regional_threat_scores_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
-write.csv(references, file = references_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
-write.csv(country_info, file = country_info_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+write_csv(taxa_regional, here("data", "raw", "taxa_regional.csv"), na = "")
+write_csv(regional_threat_scores, here("data", "raw", "regional_threat_scores.csv"), na = "")
+write_csv(references, here("data", "raw", "references.csv"), na = "")
+write_csv(country_info, here("data", "raw", "country_info.csv"), na = "")
 ```
 
+`taxa_regional` and `references` will be used for the Darwin Core mapping, while `country_info` is need for calculation in `wrl_values.Rmd`.
 
-The country_info data will be used for the calculations of the weighted_red_list_values here: script[scr](https://github.com/inbo/red-lists-european-butterflies-checklist/blob/master/src/weighted_red_list_values.Rmd)
+# Process source data
 
-Create a data frame `raw_data` from `taxa_regional`, which is the original dataframe and the basis for the mapping of the checklist:
+Get `taxa_regional` and join with the `references` as the basis for our mapping:
 
 ```{r}
-raw_data <- taxa_regional
+input_data <-
+  taxa_regional %>%
+  left_join(references, by = c("CountryCode"))
 ```
 
-# Pre-processing
+## Tidy data
 
-## Join references:
-
-```{r}
-raw_data <- taxa_regional %>% left_join(references, by = c("CountryCode"))
-```
-
-## Create taxonID
+Clean data somewhat:
 
 ```{r}
-# Vectorize the digest function (The digest() function isn't vectorized. So if you pass in a vector, you get one value for the whole vector rather than a digest for each element of the vector):
-vdigest <- Vectorize(digest)
-
-raw_data %<>% mutate(taxonID = paste("red-lists-european-butterflies-checklist", "taxon", vdigest (SpeciesnameEurope, algo="md5"), sep=":"))
-```
-
-## Further pre-processing
-
-Clean data somewhat
-
-```{r}
-raw_data %<>%
+input_data %<>%
   remove_empty("rows") %>%    # Remove empty rows
   clean_names()               # Have sensible (lowercase) column names
 ```
 
-Add prefix `raw_` to all column names to avoid name clashes with Darwin Core terms:
+Add prefix `input_` to all column names to avoid name clashes with Darwin Core terms:
 
 ```{r}
-colnames(raw_data) <- paste0("raw_", colnames(raw_data))
+colnames(input_data) <- paste0("input_", colnames(input_data))
 ```
 
-Select columns for which `raw_use = Y`:
+Sort on scientific name and country code (to maintain some consistency between updates of the dataset):
 
 ```{r}
-raw_data %<>% filter(raw_use == 'y') 
+input_data %<>% arrange(input_speciesname_europe, input_country_code)
+```
+
+## Scientific names
+
+No cleaning required.
+
+## Taxon IDs
+
+To link taxa with information in the extension(s), each taxon needs a unique and relatively stable `taxonID`. Here we create one in the form of `dataset_shortname:taxon:hash`, where `hash` is unique code based on scientific name (that will remain the same as long as scientific name remains the same):
+
+```{r}
+vdigest <- Vectorize(digest) # Vectorize digest function to work with vectors
+input_data %<>% mutate(input_taxon_id = paste(
+  "butterflies-europe-checklist",
+  "taxon",
+  vdigest(paste(input_speciesname_europe), algo = "md5"),
+  sep = ":"
+))
+```
+
+## Preview data
+
+Show the number of species and distributions:
+
+```{r}
+input_data %>%
+  summarize(
+    `# taxa` = n_distinct(input_taxon_id),
+    `# distributions` = n()
+  ) %>%
+  adorn_totals("row")
 ```
 
 Preview data:
 
 ```{r}
-head(raw_data, n = 100)
+input_data %>% head()
 ```
 
-## Create taxon core
+# Taxon core
 
-```{r}
-taxon <- raw_data
-```
+## Pre-processing
 
-### Pre-processing
+Create a dataframe with unique taxa only (ignoring multiple distribution rows):
 
-Use unique values in taxon
-
-```{r}
-taxon %<>% distinct(raw_taxon_id, .keep_all = TRUE)
+```{r start_taxon}
+taxon <- input_data %>% distinct(input_taxon_id, .keep_all = TRUE)
 ```
 
 ### Term mapping
@@ -168,19 +163,13 @@ taxon %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/")
 ### rightsHolder
 
 ```{r}
-taxon %<>% mutate(rightsHolder = "INBO")  
+taxon %<>% mutate(rightsHolder = "INBO")
 ```
 
 ### accessRights
 
 ```{r}
-taxon %<>% mutate(accessRights = "https://www.inbo.be/en/norms-data-use") 
-```
-
-### references 
-
-```{r}
-taxon %<>% mutate(identificationReferences = raw_reference_species_list) 
+taxon %<>% mutate(accessRights = "https://www.inbo.be/en/norms-data-use")
 ```
 
 ### datasetID
@@ -192,7 +181,7 @@ taxon  %<>% mutate(datasetID = "to_be_completed")
 ### institutionCode
 
 ```{r}
-taxon %<>% mutate(institutionCode = "INBO") 
+taxon %<>% mutate(institutionCode = "INBO")
 ```
 
 ### datasetName
@@ -204,13 +193,13 @@ taxon %<>% mutate(datasetName = "National checklists and red lists for prioritis
 ### taxonID
 
 ```{r}
-taxon %<>% mutate(taxonID = raw_taxon_id) 
+taxon %<>% mutate(taxonID = input_taxon_id)
 ```
 
 ### scientificName
 
 ```{r}
-taxon %<>% mutate(scientificName = raw_speciesname_europe) 
+taxon %<>% mutate(scientificName = input_speciesname_europe)
 ```
 
 ### kingdom
@@ -228,13 +217,13 @@ taxon %<>% mutate(phylum = "Arthropoda")
 ### class
 
 ```{r}
-taxon %<>% mutate(class = "Insecta") 
+taxon %<>% mutate(class = "Insecta")
 ```
 
 ### order
 
 ```{r}
-taxon %<>% mutate (order= "Lepidoptera")
+taxon %<>% mutate(order= "Lepidoptera")
 ```
 
 ### taxonRank
@@ -254,32 +243,29 @@ taxon %<>% mutate(nomenclaturalCode = "ICZN")
 Remove the original columns:
 
 ```{r}
-taxon %<>% select(-starts_with("raw_"))
-```
-
-Sort on `taxonID`:
-
-```{r}
-taxon %<>% arrange(taxonID)
+taxon %<>% select(-starts_with("input_"))
 ```
 
 Preview data:
 
 ```{r}
-head(taxon)
+taxon %>% head()
 ```
 
 Save to CSV:
 
 ```{r}
-write.csv(taxon, file = dwc_taxon_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+write_csv(taxon, here("data", "processed", "taxon.csv"), na = "")
 ```
 
-# Create distribution extension
+# Distribution extension
 
-```{r start_distribution}
-distribution <- raw_data
-head(distribution)
+## Pre-processing
+
+Create a dataframe with all data:
+
+```{r}
+distribution <- input_data
 ```
 
 ## Term mapping
@@ -289,44 +275,159 @@ Map the data to [Species Distribution](http://rs.gbif.org/extension/gbif/1.0/dis
 ### taxonID
 
 ```{r}
-distribution %<>% mutate(taxonID = raw_taxon_id) 
+distribution %<>% mutate(taxonID = input_taxon_id) 
 ```
 
 ### locality
 
+Inspect values:
+
 ```{r}
-distribution %<>% mutate(locality = raw_country) 
+distribution %>%
+  group_by(input_country_code, input_country) %>%
+  count()
+```
+
+Map values:
+
+```{r}
+distribution %<>% mutate(locality = recode(input_country,
+  Macaronesia_Azores = "Azores",
+  Macaronesia_CanaryIslands = "Canary Islands",
+  Macaronesia_MadeiraIslands = "Madeira"
+))
+```
+
+Inspect mapped values: 
+
+```{r}
+distribution %>%
+  filter(input_country != locality) %>%
+  group_by(input_country, locality) %>%
+  count()
 ```
 
 ### countryCode
 
-```{r}
-distribution %<>% mutate(countryCode = raw_country_code)
+Inspect values:
 
+```{r}
+distribution %>%
+  group_by(input_country_code) %>%
+  count()
+```
+
+Map values:
+
+```{r}
+distribution %<>% mutate(countryCode = recode(input_country_code,
+  MA_AZ = "PT", # Azores -> Portugal
+  MA_CA = "SP", # Canary Islands -> Spain
+  MA_MA = "PT" # Madeira -> Portugal
+))
+```
+
+Inspect mapped values: 
+
+```{r}
+distribution %>%
+  filter(input_country_code != countryCode) %>%
+  group_by(input_country_code, countryCode) %>%
+  count()
+```
+
+### occurrenceStatus
+
+Inspect values:
+
+```{r}
+distribution %>%
+  group_by(input_status) %>%
+  count()
+```
+
+Map values:
+
+```{r}
+distribution %<>% mutate(occurrenceStatus = recode(input_status,
+  Ex = "absent",
+  M = "absent", # Regular migrant, decided to use "absent" rather than "irregular" or "present"
+  P = "present",
+  .default = ""
+))
+```
+
+Inspect mapped values: 
+
+```{r}
+distribution %>%
+  group_by(input_status, occurrenceStatus) %>%
+  count()
 ```
 
 ### threatStatus
 
+Inspect values:
+
 ```{r}
-distribution %<>% mutate(threatStatus = raw_red_list_category)
-  
+distribution %>%
+  group_by(input_red_list_category) %>%
+  count()
 ```
 
-### establishmentMeans
+Map values:
 
 ```{r}
-distribution %<>% 
-  mutate(establishmentMeans = raw_status) %>%
-  mutate(establishmentMeans = recode(establishmentMeans
-            ,"Breeding"="native"
-            ,"NeedsConfirmation"="uncertain")) 
+distribution %<>% mutate(threatStatus = recode(input_red_list_category,
+  CR = "CR", # Critically Endangered
+  DD = "DD", # Data Deficient
+  EN = "EN", # Endangered
+  LC = "LC", # Least Concern
+  NE = "NE", # Not Evaluated
+  "No Red List available" = "",
+  NT = "NT", # Near Threatened
+  NtA = "NA", # Not Applicable
+  R = "Rare", # not an official IUCN term, but used by Germany
+  RE = "RE", # Regionally Extinct
+  Unknown = "unknown", # not an official IUCN term, but opted to be explicit
+  VU = "VU", # Vulnerable
+  .default = ""
+))
+```
 
+Inspect mapped values: 
+
+```{r}
+distribution %>%
+  group_by(input_red_list_category, threatStatus) %>%
+  count()
 ```
 
 ### source
 
+Inspect values:
+
 ```{r}
-distribution %<>% mutate(source = raw_reference_red_list)
+distribution %>%
+  group_by(input_reference_species_list, input_reference_red_list) %>%
+  count()
+```
+
+Combine the references `input_reference_species_list` and `input_reference_red_list`, ignoring `NA` and using ` | ` as separator:
+
+```{r}
+distribution %<>%
+  mutate(source = paste(input_reference_species_list, input_reference_red_list, sep = "; ")) %>%
+  mutate(source = str_replace(source, "; NA", "")) %>% # Replace paste() output for NA values
+  mutate(source = str_replace(source, "; ", " | "))
+```
+
+Inspect mapped values: 
+
+```{r}
+distribution %>%
+  group_by(input_reference_species_list, input_reference_red_list, source) %>%
+  count()
 ```
 
 ## Post-processing
@@ -334,13 +435,7 @@ distribution %<>% mutate(source = raw_reference_red_list)
 Remove the original columns:
 
 ```{r}
-distribution %<>% select(-starts_with("raw_"))
-```
-
-Sort on `taxonID`:
-
-```{r}
-distribution %<>% arrange(taxonID)
+distribution %<>% select(-starts_with("input_"))
 ```
 
 Preview data:
@@ -352,6 +447,5 @@ distribution %>% head()
 Save to CSV:
 
 ```{r}
-write.csv(distribution, file = dwc_distribution_file, na = "", row.names = FALSE, fileEncoding = "UTF-8")
+write_csv(distribution, here("data", "processed", "distribution.csv"), na = "")
 ```
-
