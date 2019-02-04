@@ -23,7 +23,7 @@ The repository structure is based on [Cookiecutter Data Science](http://drivenda
 ```
 ├── README.md              : Description of this repository
 ├── LICENSE                : Repository license
-├── european-butterflies-checklist.Rproj : RStudio project file
+├── eurobutt-checklist.Rproj : RStudio project file
 ├── .gitignore             : Files and directories to be ignored by git
 │
 ├── data
@@ -52,8 +52,8 @@ The repository structure is based on [Cookiecutter Data Science](http://drivenda
 
 ## Contributors
 
-[List of contributors](https://github.com/inbo/butterflies-europe-checklist/contributors)
+[List of contributors](https://github.com/inbo/eurobutt-checklist/contributors)
 
 ## License
 
-[MIT License](https://github.com/inbo/butterflies-europe-checklist/blob/master/LICENSE)
+[MIT License](https://github.com/inbo/eurobutt-checklist/blob/master/LICENSE)
