@@ -1,0 +1,67 @@
+region_code,region_name,country_code,country_name,part_of_eu,area,population
+AD,,AD,Andorra,,468,76965
+AL,,AL,Albania,,28748,2930187
+AT,,AT,Austria,y,83858,8735453
+BA,,BA,Bosnia and Herzegovina,,51129,3507017
+BE,,BE,Belgium,y,30528,11429336
+BG,,BG,Bulgaria,y,110994,7084571
+BY,,BY,Belarus,,207600,9468338
+CH,,CH,Switzerland,,41290,8476005
+CY,,CY,Cyprus,y,9251,1179551
+CZ,,CZ,Czech Republic,y,78866,10618303
+DE,,DE,Germany,y,357168,82114224
+DK,,DK,Denmark,y,44493,5733551
+EE,,EE,Estonia,y,45339,1309632
+ES,,ES,Spain,y,498468,46354321
+EU27,European Union,,,,,
+EUR,Europe,,,,,
+FI,,FI,Finland,y,338145,5523231
+FR,,FR,France,y,551394,64979548
+GB,,GB,United Kingdom,y,244820,66181585
+GR,,GR,Greece,y,131940,11159773
+HR,,HR,Croatia,y,56594,4189353
+HU,,HU,Hungary,y,93030,9721559
+IE,,IE,Ireland,y,70273,4761657
+IS,,IS,Iceland,,102775,335025
+IT,,IT,Italy,y,301318,59359900
+LI,,LI,Liechtenstein,,160,37922
+LT,,LT,Lithuania,y,65300,2890297
+LU,,LU,Luxembourg,y,2428,583455
+LV,,LV,Latvia,y,64589,1949670
+MA,Macaronesia,,,y,,
+MA_AZ,Azores,PT,Portugal,y,,
+MA_AZ_Corvo,Corvo,PT,Portugal,y,,
+MA_AZ_Faial,Faial,PT,Portugal,y,,
+MA_AZ_Flores,Flores,PT,Portugal,y,,
+MA_AZ_Graciosa,Graciosa,PT,Portugal,y,,
+MA_AZ_Pico,Pico,PT,Portugal,y,,
+MA_AZ_Santa Maria,Santa Maria,PT,Portugal,y,,
+MA_AZ_Sao Jorge,Sao Jorge,PT,Portugal,y,,
+MA_AZ_Sao Miguel,Sao Miguel,PT,Portugal,y,,
+MA_AZ_Terceira,Terceira,PT,Portugal,y,,
+MA_CA,Canary Islands,ES,Spain,y,,
+MA_CA_El Hierro,El Hierro,PT,Portugal,y,,
+MA_CA_Fuerteventura,Fuerteventura,ES,Spain,y,,
+MA_CA_Gran Canaria,Gran Canaria,ES,Spain,y,,
+MA_CA_La Gomera,La Gomera,ES,Spain,y,,
+MA_CA_La Palma,La Palma,ES,Spain,y,,
+MA_CA_Lanzarote,Lanzorate,ES,Spain,y,,
+MA_CA_Tenerife,Tenerife,ES,Spain,y,,
+MA_MA,Madeira,PT,Portugal,y,,
+MA_MA_Madeira,Madeira,PT,Portugal,y,,
+MA_MA_Porto Santo,Porto Santo,PT,Portugal,y,,
+MD,,MD,Moldova,,33846,4051212
+ME,,ME,Montenegro,,13812,628960
+MK,,MK,the former Yugoslav Republic of Macedonia,,25713,2083160
+MT,,MT,Malta,y,316,430835
+NL,,NL,Netherlands,y,41198,17035938
+NO,,NO,Norway,,385178,5305383
+PL,,PL,Poland,y,312685,38170712
+PT,,PT,Portugal,y,91568,10329506
+RO,,RO,Romania,y,238392,19679306
+RS,,RS,Serbia,,88361,8790574
+RU,,RU,Russia,,3972400,
+SE,,SE,Sweden,y,449964,9910701
+SI,,SI,Slovenia,y,20273,2079976
+SK,,SK,Slovakia,y,49036,5447662
+UA,,UA,Ukraine,,603628,44222947

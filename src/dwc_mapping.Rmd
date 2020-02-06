@@ -48,16 +48,17 @@ input_references <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vS
 input_rlc <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=1579699417&single=true&output=csv")
 ```
 
-We want to add a copy of the source data to the repository:
+Copy the source data to the repository:
 
 ```{r}
-write_csv(taxa_regional, here("data", "raw", "taxa_regional.csv"), na = "")
-write_csv(regional_threat_scores, here("data", "raw", "regional_threat_scores.csv"), na = "")
-write_csv(references, here("data", "raw", "references.csv"), na = "")
-write_csv(country_info, here("data", "raw", "country_info.csv"), na = "")
+write_csv(input_distribution, here("data", "raw", "distribution.csv"), na = "")
+write_csv(input_taxa, here("data", "raw", "taxa.csv"), na = "")
+write_csv(input_regions, here("data", "raw", "regions.csv"), na = "")
+write_csv(input_references, here("data", "raw", "references.csv"), na = "")
+write_csv(input_rlc, here("data", "raw", "rlc.csv"), na = "")
 ```
 
-`taxa_regional` and `references` will be used for the Darwin Core mapping, while `country_info` is need for calculation in `wrl_values.Rmd`.
+The first 4 files will be used for the Darwin Core mapping, while `rlc` is needed for the calculation in `wrl_values.Rmd`.
 
 # Process source data
 
