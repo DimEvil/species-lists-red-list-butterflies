@@ -2,20 +2,19 @@
 title: "Darwin Core mapping"
 subtitle: "For: National checklists and red lists for prioritising European butterfly conservation actions"
 author:
-- Lien Reyserhove
-- Dimitri Brosens
 - Peter Desmet
+- Dimitri Brosens
 date: "`r Sys.Date()`"
 output:
   html_document:
     df_print: paged
-    number_sections: true
-    toc: true
+    number_sections: yes
+    toc: yes
     toc_depth: 3
-    toc_float: true
+    toc_float: yes
 ---
 
-This document describes how we map the checklist data to Darwin Core. The source file for this document can be found [here](https://github.com/inbo/butterflies-europe-checklist/blob/master/src/dwc_mapping.Rmd).
+This document describes how we map the checklist data to Darwin Core. The source file for this document can be found [here](https://github.com/inbo/eurobutt-checklist/blob/master/src/dwc_mapping.Rmd).
 
 # Setup
 
@@ -27,10 +26,10 @@ Load libraries:
 
 ```{r}
 library(tidyverse)      # To do data science
+library(tidylog)        # To provide feedback on dplyr functions
 library(magrittr)       # To use %<>% pipes
 library(here)           # To find files
 library(janitor)        # To clean input data
-library(googlesheets)   # To import and read Google spreadsheets 
 library(digest)         # To generate hashes
 library(rgbif)          # To use GBIF services
 ```
@@ -39,19 +38,14 @@ library(rgbif)          # To use GBIF services
 
 The original spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?usp=sharing).
 
-Retrieve the spreadsheet:
-
-```{r connect_google_spreadsheets}
-retrieve_spreadsheet <- gs_title("EuroButt")
-```
-
-This spreadsheet contains four relevant different worksheets to read:
+Read the relevant worksheets:
 
 ```{r}
-taxa_regional <- retrieve_spreadsheet %>% gs_read("taxa_regional") 
-regional_threat_scores <- retrieve_spreadsheet %>% gs_read("regional_threat_scores")
-references <- retrieve_spreadsheet %>% gs_read("references")
-country_info <- retrieve_spreadsheet %>% gs_read("country_info")
+input_distribution <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=979140000&single=true&output=csv")
+input_taxa <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=1559651428&single=true&output=csv")
+input_regions <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=2076261682&single=true&output=csv")
+input_references <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pubhtml?gid=1083424499&single=true")
+input_rlc <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=1579699417&single=true&output=csv")
 ```
 
 We want to add a copy of the source data to the repository:
