@@ -62,12 +62,26 @@ The first 4 files will be used for the Darwin Core mapping, while `rlc` is neede
 
 # Process source data
 
-Get `taxa_regional` and join with the `references` as the basis for our mapping:
+The `input_references` contain references of species/red lists per region. We can include those as `source` for distributions, but unfortunately not as full references in a [reference extension](http://rs.gbif.org/extension/gbif/1.0/references.xml), as that would require them to be associated (and repeated) with taxa.
+
+Group `references` to create a concatenated list of unique references per `region_code`, e.g. `AD` = `Đug (2013) | Koren and Kulijer (2016) | Lelo (2016)`. References that act as both red and species list reference, will only be listed once:
+
+```{r}
+grouped_references <-
+  input_references %>%
+  arrange(region_code, citation_type, citation) %>%
+  group_by(region_code) %>%
+  summarize(reference = paste(unique(citation), collapse = " | "))
+```
+
+Start from distributions and join with taxon, region and grouped references information (which should result in the same number of rows as distributions):
 
 ```{r}
 input_data <-
-  taxa_regional %>%
-  left_join(references, by = c("CountryCode"))
+  input_distribution %>%
+  left_join(input_taxa, on = "scientific_name") %>%
+  left_join(input_regions, on = "region_code") %>%
+  left_join(grouped_references, on = "region_code")
 ```
 
 ## Tidy data
