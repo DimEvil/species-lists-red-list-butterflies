@@ -112,7 +112,22 @@ input_data %<>% arrange(scientific_name, region_code)
 
 ## Scientific names
 
-No cleaning required.
+Information regarding scientific names, authorship, classification and phylogenetic order in `input_taxa` is derived from Wiemers et al. (2018, https://doi.org/10.3897/zookeys.811.28712), which is an "updated checklist of the European Butterflies" with 496 species.
+
+Some names on the regional checklists however, have names (`scientific_name_regional`) where that could not be matched (e.g. as synonyms) with names (`scientific_name`) on the official checklist:
+
+```{r}
+input_data %>%
+  filter(is.na(family)) %>% # Assesses if there was a match with input_taxa and thus better than is.na(scientific_name)
+  select(scientific_name_regional, scientific_name, region_code, comments) %>%
+  arrange(scientific_name_regional)
+```
+
+We want to restrict the list to names that are included on `input_taxa`:
+
+```{r}
+input_data %<>% filter(!is.na(family)) # Remove distributions/names without match
+```
 
 ## Taxon IDs
 
