@@ -267,6 +267,12 @@ taxon %<>% mutate(dwc_family = family)
 taxon %<>% mutate(dwc_genus = genus)
 ```
 
+### specificEpithet
+
+```{r}
+taxon %<>% mutate(dwc_specificEpithet = specific_epithet)
+```
+
 ### taxonRank
 
 ```{r}
