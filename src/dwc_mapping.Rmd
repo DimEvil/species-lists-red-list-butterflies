@@ -104,7 +104,7 @@ input_data %<>%
   clean_names()               # Have sensible (lowercase) column names
 ```
 
-Sort on scientific name and country code (to maintain some consistency between updates of the dataset):
+Sort on scientific name and region code (to maintain some consistency between updates of the dataset):
 
 ```{r}
 input_data %<>% arrange(scientific_name, region_code)
@@ -328,64 +328,89 @@ Map the data to [Species Distribution](http://rs.gbif.org/extension/gbif/1.0/dis
 ### taxonID
 
 ```{r}
-distribution %<>% mutate(taxonID = input_taxon_id) 
+distribution %<>% mutate(dwc_taxonID = taxon_id) 
+```
+
+### locationID
+
+Map values:
+
+```{r}
+distribution %<>% mutate(dwc_locationID = case_when(
+  # Europe: not WGSRPD:1 as that does not include Azores and Canary islands
+  # https://en.wikipedia.org/wiki/World_Geographical_Scheme_for_Recording_Plant_Distributions#1_Europe
+  region_code == "EUR" ~ "",
+  
+  # European union: EU is reserved, but not an official ISO code
+  # https://en.wikipedia.org/wiki/ISO_3166-1#Criteria_for_inclusion
+  region_code == "EU27" ~ "",
+  
+  # Azores, Canary Islands, Madeira: use marine regions codes
+  # The island groups have ISO_3166-2 subdivisions codes, but for consistency we use marine regions for all
+  region_code == "MA_AZ" ~ "http://marineregions.org/mrgid/2454", # ISO_3166:PT-20
+  region_code == "MA_AZ_Corvo" ~ "http://marineregions.org/mrgid/2462",
+  region_code == "MA_AZ_Faial" ~ "http://marineregions.org/mrgid/2458",
+  region_code == "MA_AZ_Flores" ~ "http://marineregions.org/mrgid/2461",
+  region_code == "MA_AZ_Graciosa" ~ "http://marineregions.org/mrgid/2463",
+  region_code == "MA_AZ_Pico" ~ "http://marineregions.org/mrgid/2460",
+  region_code == "MA_AZ_Santa Maria" ~ "http://marineregions.org/mrgid/2459",
+  region_code == "MA_AZ_Sao Jorge" ~ "http://marineregions.org/mrgid/2455",
+  region_code == "MA_AZ_Sao Miguel" ~ "http://marineregions.org/mrgid/2456",
+  region_code == "MA_AZ_Terceira" ~ "http://marineregions.org/mrgid/2457",
+  
+  region_code == "MA_CA" ~ "http://marineregions.org/mrgid/3743", # ISO_3166:ES-CN
+  region_code == "MA_CA_El Hierro" ~ "http://marineregions.org/mrgid/3747",
+  region_code == "MA_CA_Fuerteventura" ~ "http://marineregions.org/mrgid/3757",
+  region_code == "MA_CA_Gran Canaria" ~ "http://marineregions.org/mrgid/3746",
+  region_code == "MA_CA_La Gomera" ~ "http://marineregions.org/mrgid/3744",
+  region_code == "MA_CA_La Palma" ~ "http://marineregions.org/mrgid/3748",
+  region_code == "MA_CA_Lanzarote" ~ "http://marineregions.org/mrgid/3755",
+  region_code == "MA_CA_Tenerife" ~ "http://marineregions.org/mrgid/3756",
+
+  region_code == "MA_MA" ~ "http://marineregions.org/mrgid/4955", # ISO_3166:PT-30
+  region_code == "MA_MA_Madeira" ~ "http://marineregions.org/mrgid/4956",
+  region_code == "MA_MA_Porto Santo" ~ "http://marineregions.org/mrgid/4958",
+  
+  # All other countries: ISO_3166 code
+  is.na(region_name) ~ paste0("ISO_3166:", region_code)
+))
 ```
 
 ### locality
 
-Inspect values:
-
-```{r}
-distribution %>%
-  group_by(input_country_code, input_country) %>%
-  count()
-```
-
 Map values:
 
 ```{r}
-distribution %<>% mutate(locality = recode(input_country,
-  Macaronesia_Azores = "Azores",
-  Macaronesia_CanaryIslands = "Canary Islands",
-  Macaronesia_MadeiraIslands = "Madeira"
+distribution %<>% mutate(dwc_locality = case_when(
+  # Use country name if not a region  
+  is.na(region_name) ~ country_name,
+  
+  # Use e.g. "Corvo, Azores" for island groups
+  str_detect(region_code, "MA_AZ_") ~ paste(region_name, "Azores", sep = ", "),
+  str_detect(region_code, "MA_MA_") ~ paste(region_name, "Madeira", sep = ", "),
+  str_detect(region_code, "MA_CA_") ~ paste(region_name, "Canary Islands", sep = ", "),
+  
+  # Use region name for rest
+  TRUE ~ region_name
 ))
-```
-
-Inspect mapped values: 
-
-```{r}
-distribution %>%
-  filter(input_country != locality) %>%
-  group_by(input_country, locality) %>%
-  count()
 ```
 
 ### countryCode
 
-Inspect values:
-
-```{r}
-distribution %>%
-  group_by(input_country_code) %>%
-  count()
-```
-
 Map values:
 
 ```{r}
-distribution %<>% mutate(countryCode = recode(input_country_code,
-  MA_AZ = "PT", # Azores -> Portugal
-  MA_CA = "SP", # Canary Islands -> Spain
-  MA_MA = "PT" # Madeira -> Portugal
-))
+distribution %<>% mutate(dwc_countryCode = country_code)
 ```
 
 Inspect mapped values: 
 
 ```{r}
 distribution %>%
-  filter(input_country_code != countryCode) %>%
-  group_by(input_country_code, countryCode) %>%
+  group_by(
+    region_code, region_name, country_code, country_name,
+    dwc_locationID, dwc_locality, dwc_countryCode
+  ) %>%
   count()
 ```
 
@@ -395,17 +420,22 @@ Inspect values:
 
 ```{r}
 distribution %>%
-  group_by(input_status) %>%
+  group_by(status) %>%
   count()
 ```
 
 Map values:
 
 ```{r}
-distribution %<>% mutate(occurrenceStatus = recode(input_status,
-  Ex = "absent",
-  M = "absent", # Regular migrant, decided to use "absent" rather than "irregular" or "present"
-  P = "present",
+distribution %<>% mutate(dwc_occurrenceStatus = recode(status,
+  "A" = "?",
+  "Ex" = "?",
+  "Excluded" = "?",
+  "I" = "?",
+  "M" = "absent", # Regular migrant, decided to use "absent" rather than "irregular" or "present"
+  "P" = "present",
+  "P?" = "?",
+  "P(I)" = "?",
   .default = ""
 ))
 ```
@@ -414,7 +444,7 @@ Inspect mapped values:
 
 ```{r}
 distribution %>%
-  group_by(input_status, occurrenceStatus) %>%
+  group_by(status, dwc_occurrenceStatus) %>%
   count()
 ```
 
@@ -424,26 +454,31 @@ Inspect values:
 
 ```{r}
 distribution %>%
-  group_by(input_red_list_category) %>%
+  group_by(rlc) %>%
   count()
 ```
 
 Map values:
 
 ```{r}
-distribution %<>% mutate(threatStatus = recode(input_red_list_category,
-  CR = "CR", # Critically Endangered
-  DD = "DD", # Data Deficient
-  EN = "EN", # Endangered
-  LC = "LC", # Least Concern
-  NE = "NE", # Not Evaluated
-  "No Red List available" = "",
-  NT = "NT", # Near Threatened
-  NtA = "NA", # Not Applicable
-  R = "Rare", # not an official IUCN term, but used by Germany
-  RE = "RE", # Regionally Extinct
-  Unknown = "unknown", # not an official IUCN term, but opted to be explicit
-  VU = "VU", # Vulnerable
+distribution %<>% mutate(dwc_threatStatus = recode(rlc,
+  # Official IUCN terms: https://www.iucnredlist.org/about/regional
+
+  "RE" = "RE", # Regionally Extinct
+  "CR" = "CR", # Critically Endangered
+  "EN" = "EN", # Endangered
+  "VU" = "VU", # Vulnerable
+  "NT" = "NT", # Near Threatened
+  "LC" = "LC", # Least Concern
+  "DD" = "DD", # Data Deficient
+  "NtA" = "NA", # Not Applicable
+  "NE" = "NE", # Not Evaluated
+  
+  # Unofficial terms
+  "NRLA" = "", # No red list available
+  "R" = "Rare", # Used by Germany
+  "Unknown" = "unknown", # not an official IUCN term, but included to be explicit
+  "LC/NE" = "?",
   .default = ""
 ))
 ```
@@ -452,43 +487,26 @@ Inspect mapped values:
 
 ```{r}
 distribution %>%
-  group_by(input_red_list_category, threatStatus) %>%
+  group_by(rlc, dwc_threatStatus) %>%
   count()
 ```
 
 ### source
 
-Inspect values:
-
 ```{r}
-distribution %>%
-  group_by(input_reference_species_list, input_reference_red_list) %>%
-  count()
+distribution %<>% mutate(dwc_source = reference)
 ```
 
-Combine the references `input_reference_species_list` and `input_reference_red_list`, ignoring `NA` and using ` | ` as separator:
+Only keep the Darwin Core columns:
 
 ```{r}
-distribution %<>%
-  mutate(source = paste(input_reference_species_list, input_reference_red_list, sep = "; ")) %>%
-  mutate(source = str_replace(source, "; NA", "")) %>% # Replace paste() output for NA values
-  mutate(source = str_replace(source, "; ", " | "))
+distribution %<>% select(starts_with("dwc_"))
 ```
 
-Inspect mapped values: 
+Drop the `dwc_` prefix:
 
 ```{r}
-distribution %>%
-  group_by(input_reference_species_list, input_reference_red_list, source) %>%
-  count()
-```
-
-## Post-processing
-
-Remove the original columns:
-
-```{r}
-distribution %<>% select(-starts_with("input_"))
+colnames(distribution) <- str_remove(colnames(distribution), "dwc_")
 ```
 
 Preview data:
