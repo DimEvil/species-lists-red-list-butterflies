@@ -173,7 +173,7 @@ Create a dataframe with unique taxa only (retaining the first of multiple distri
 taxon <- input_data %>% distinct(taxon_id, .keep_all = TRUE)
 ```
 
-### Term mapping
+## Term mapping
 
 Map the data to [Darwin Core Taxon](http://rs.gbif.org/core/dwc_taxon_2015-04-24.xml).
  
@@ -503,6 +503,8 @@ distribution %>%
 distribution %<>% mutate(dwc_source = reference)
 ```
 
+## Post-processing
+
 Only keep the Darwin Core columns:
 
 ```{r}
@@ -525,4 +527,69 @@ Save to CSV:
 
 ```{r}
 write_csv(distribution, here("data", "processed", "distribution.csv"), na = "")
+```
+
+# Vernacular names extension
+
+## Pre-processing
+
+Create a dataframe with unique taxa only (retaining the first of multiple distribution rows):
+
+```{r start_taxon}
+vernacular_names <- input_data %>% distinct(taxon_id, .keep_all = TRUE)
+```
+
+Remove taxa where the vernacular name contains "suggestion":
+
+```{r}
+vernacular_names %<>% filter(!str_detect(english_name, "suggestion"))
+```
+
+### Term mapping
+
+Map the data to [Vernacular Names](http://rs.gbif.org/extension/gbif/1.0/vernacularname.xml).
+
+### taxonID
+
+```{r}
+vernacular_names %<>% mutate(dwc_taxonID = taxon_id) 
+```
+
+### vernacularName
+
+```{r}
+vernacular_names %<>% mutate(dwc_vernacularName = english_name)
+```
+
+
+### language
+
+```{r}
+vernacular_names %<>% mutate(dwc_language = "en") 
+```
+
+## Post-processing
+
+Only keep the Darwin Core columns:
+
+```{r}
+vernacular_names %<>% select(starts_with("dwc_"))
+```
+
+Drop the `dwc_` prefix:
+
+```{r}
+colnames(vernacular_names) <- str_remove(colnames(vernacular_names), "dwc_")
+```
+
+Preview data:
+
+```{r}
+vernacular_names %>% head()
+```
+
+Save to CSV:
+
+```{r}
+write_csv(vernacular_names, here("data", "processed", "vernacularname.csv"), na = "")
 ```
