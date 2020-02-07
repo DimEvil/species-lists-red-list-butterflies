@@ -167,10 +167,10 @@ input_data %>% head()
 
 ## Pre-processing
 
-Create a dataframe with unique taxa only (ignoring multiple distribution rows):
+Create a dataframe with unique taxa only (retaining the first of multiple distribution rows):
 
 ```{r start_taxon}
-taxon <- input_data %>% distinct(input_taxon_id, .keep_all = TRUE)
+taxon <- input_data %>% distinct(taxon_id, .keep_all = TRUE)
 ```
 
 ### Term mapping
@@ -180,99 +180,123 @@ Map the data to [Darwin Core Taxon](http://rs.gbif.org/core/dwc_taxon_2015-04-24
 ### language
 
 ```{r}
-taxon %<>% mutate(language = "en")
+taxon %<>% mutate(dwc_language = "en")
 ```
 
 ### license
 
 ```{r}
-taxon %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/")
+taxon %<>% mutate(dwc_license = "http://creativecommons.org/publicdomain/zero/1.0/")
 ```
 
 ### rightsHolder
 
 ```{r}
-taxon %<>% mutate(rightsHolder = "INBO")
+taxon %<>% mutate(dwc_rightsHolder = "INBO")
 ```
 
 ### accessRights
 
 ```{r}
-taxon %<>% mutate(accessRights = "https://www.inbo.be/en/norms-data-use")
+taxon %<>% mutate(dwc_accessRights = "https://www.inbo.be/en/norms-data-use")
 ```
 
 ### datasetID
 
 ```{r}
-taxon  %<>% mutate(datasetID = "to_be_completed")
+taxon  %<>% mutate(dwc_datasetID = "")
 ```
 
 ### institutionCode
 
 ```{r}
-taxon %<>% mutate(institutionCode = "INBO")
+taxon %<>% mutate(dwc_institutionCode = "INBO")
 ```
 
 ### datasetName
 
 ```{r}
-taxon %<>% mutate(datasetName = "National checklists and red lists for prioritising European butterfly conservation actions")
+taxon %<>% mutate(dwc_datasetName = "National checklists and red lists for prioritising European butterfly conservation actions")
 ```
 
 ### taxonID
 
 ```{r}
-taxon %<>% mutate(taxonID = input_taxon_id)
+taxon %<>% mutate(dwc_taxonID = taxon_id)
 ```
 
 ### scientificName
 
 ```{r}
-taxon %<>% mutate(scientificName = input_speciesname_europe)
+taxon %<>% mutate(dwc_scientificName = scientific_name)
 ```
 
 ### kingdom
 
 ```{r}
-taxon %<>% mutate(kingdom = "Animalia")
+taxon %<>% mutate(dwc_kingdom = "Animalia")
 ```
 
 ### phylum
 
 ```{r}
-taxon %<>% mutate(phylum = "Arthropoda")
+taxon %<>% mutate(dwc_phylum = "Arthropoda")
 ```
 
 ### class
 
 ```{r}
-taxon %<>% mutate(class = "Insecta")
+taxon %<>% mutate(dwc_class = "Insecta")
 ```
 
 ### order
 
 ```{r}
-taxon %<>% mutate(order= "Lepidoptera")
+taxon %<>% mutate(dwc_order = "Lepidoptera")
+```
+
+### family
+
+```{r}
+taxon %<>% mutate(dwc_family = family)
+```
+
+### genus
+
+```{r}
+taxon %<>% mutate(dwc_genus = genus)
 ```
 
 ### taxonRank
 
 ```{r}
-taxon %<>% mutate(taxonRank = "species")
+taxon %<>% mutate(dwc_taxonRank = "species")
+```
+
+### scientificNameAuthorship
+
+```{r}
+taxon %<>% mutate(dwc_scientificNameAuthorship = authorship)
 ```
 
 ### nomenclaturalCode
 
 ```{r}
-taxon %<>% mutate(nomenclaturalCode = "ICZN")
+taxon %<>% mutate(dwc_nomenclaturalCode = "ICZN")
 ```
 
 ## Post-processing
 
-Remove the original columns:
+Only keep the Darwin Core columns:
 
 ```{r}
-taxon %<>% select(-starts_with("input_"))
+taxon %<>% select(starts_with("dwc_"))
+```
+
+Drop the `dwc_` prefix:
+
+```{r}
+colnames(taxon) <- str_remove(colnames(taxon), "dwc_")
 ```
 
 Preview data:
