@@ -94,16 +94,10 @@ input_data %<>%
   clean_names()               # Have sensible (lowercase) column names
 ```
 
-Add prefix `input_` to all column names to avoid name clashes with Darwin Core terms:
-
-```{r}
-colnames(input_data) <- paste0("input_", colnames(input_data))
-```
-
 Sort on scientific name and country code (to maintain some consistency between updates of the dataset):
 
 ```{r}
-input_data %<>% arrange(input_speciesname_europe, input_country_code)
+input_data %<>% arrange(scientific_name, region_code)
 ```
 
 ## Scientific names
@@ -116,10 +110,10 @@ To link taxa with information in the extension(s), each taxon needs a unique and
 
 ```{r}
 vdigest <- Vectorize(digest) # Vectorize digest function to work with vectors
-input_data %<>% mutate(input_taxon_id = paste(
-  "butterflies-europe-checklist",
+input_data %<>% mutate(taxon_id = paste(
+  "eurobutt-checklist",
   "taxon",
-  vdigest(paste(input_speciesname_europe), algo = "md5"),
+  vdigest(paste(scientific_name), algo = "md5"),
   sep = ":"
 ))
 ```
@@ -130,8 +124,9 @@ Show the number of species and distributions:
 
 ```{r}
 input_data %>%
+  group_by(family) %>%
   summarize(
-    `# taxa` = n_distinct(input_taxon_id),
+    `# taxa` = n_distinct(taxon_id),
     `# distributions` = n()
   ) %>%
   adorn_totals("row")
