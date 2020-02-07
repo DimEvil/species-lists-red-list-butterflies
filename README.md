@@ -10,7 +10,7 @@ The repository also includes the script used to calculate the weighted red list 
 
 [source data](data/raw) (maintained as a [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?usp=sharing)) → Darwin Core [mapping script](src/dwc_mapping.Rmd) → generated [Darwin Core files](data/processed)
 
-[source data](data/raw) → [script](src/wrl_values.Rmd) to calculate weighted red list values → [weighted red list values table](data/processed/wrl_values.csv)
+[source data](data/raw) → [script](src/wrl_values.Rmd) to calculate weighted red list values → [weighted red list values table](data/processed/wrl)
 
 ## Published dataset
 
