@@ -675,10 +675,10 @@ Aricia nicias,Aricia nicias,IT,LC,P,,,y
 Aricia nicias,Aricia nicias,NO,VU,P,,,y
 Aricia nicias,Aricia nicias,RU,NRLA,P,,,y
 Aricia nicias,Aricia nicias,SE,VU,P,,,y
-Azanus jesous,Azanus jesous,EU27,NRLA,P,,,
-Azanus jesous,Azanus jesous,EUR,NRLA,P,,,
 Azanus jesous,Azanus jesous,CY,NRLA,I,,Singleton photographed in 2015 - the first since 1940,n
 Azanus jesous,Azanus jesous,ES,NE,P,,,y
+Azanus jesous,Azanus jesous,EU27,NRLA,P,,,
+Azanus jesous,Azanus jesous,EUR,NRLA,P,,,
 Azanus ubaldus,Azanus ubaldus,EU27,NtA,P,,,n
 Azanus ubaldus,Azanus ubaldus,EUR,NtA,P,,,n
 Azanus ubaldus,Azanus ubaldus,IT,DD,P,,,y
@@ -2265,11 +2265,11 @@ Erebia albergana,Erebia albergana,IT,LC,P,,,y
 Erebia alberganus,Erebia albergana,ME,NRLA,P,,,y
 Erebia alberganus,Erebia albergana,MK,Unknown,P,,,y
 Erebia alberganus,Erebia albergana,RS,NT,P,,EN in 2003,y
-Erebia arvernensis,Erebia arvernensis,EU27,NRLA,P,EU27,,
-Erebia arvernensis,Erebia arvernensis,EUR,NRLA,P,EUR,,
 Erebia arvernensis,Erebia arvernensis,AD,LC,P,,,y
 Erebia cassioides,Erebia arvernensis,CH,Unknown,P,,,y
 Erebia arvernensis,Erebia arvernensis,ES,NE,P,,Addition Rudi Verovnik,y
+Erebia arvernensis,Erebia arvernensis,EU27,NRLA,P,EU27,,
+Erebia arvernensis,Erebia arvernensis,EUR,NRLA,P,EUR,,
 Erebia cassioides,Erebia arvernensis,FR,Unknown,P,,,y
 Erebia dromus,Erebia arvernensis,IT,LC,P,,,y
 Erebia calcaria,Erebia calcarius,AT,DD,P,,,y
@@ -2553,11 +2553,11 @@ Erebia montana,Erebia montana,FR,LC,P,,,y
 Erebia montana,Erebia montana,IT,LC,P,,,y
 Erebia montana,Erebia montana,LI,NRLA,P,,,y
 Erebia montana,Erebia montana,RO,RE,A,,,n
-Erebia neleus,Erebia neleus,EU27,NRLA,P,EU27,,
-Erebia neleus,Erebia neleus,EUR,NRLA,P,EUR,,
 Erebia neleus,Erebia neleus,AL,Unknown,P,,Mentioned as E. cassioides in Cuvelier et al. (2018),y
 Erebia neleus,Erebia neleus,BA,Unknown,P,,Present according to Rudi Verovnik,y
 Erebia neleus,Erebia neleus,BG,VU,P,,,y
+Erebia neleus,Erebia neleus,EU27,NRLA,P,EU27,,
+Erebia neleus,Erebia neleus,EUR,NRLA,P,EUR,,
 Erebia cassioides,Erebia neleus,GR,CR,P,,Status change from Unknown to CR; Legakis & Maragou 2009,y
 Erebia cassioides,Erebia neleus,ME,NRLA,P,,,y
 Erebia neleus,Erebia neleus,MK,Unknown,P,,Addition Rudi Verovnik,y
@@ -3714,9 +3714,9 @@ Hyponephele lycaon,Hyponephele lycaon,RU,NRLA,P,,,y
 Hyponephele lycaon,Hyponephele lycaon,SI,RE,Ex,,,y
 Hyponephele lycaon,Hyponephele lycaon,SK,CR,P,,,y
 Hyponephele lycaon,Hyponephele lycaon,UA,LC,P,,,y
-Iolana debilitata,Iolana debilitata,EUR,NRLA,P,,,
-Iolana debilitata,Iolana debilitata,EU27,NRLA,P,,,
 Iolana debilitata,Iolana debilitata,ES,NE,P,,,y
+Iolana debilitata,Iolana debilitata,EU27,NRLA,P,,,
+Iolana debilitata,Iolana debilitata,EUR,NRLA,P,,,
 Iolana iolas,Iolana iolas,AL,VU,P,,,y
 Iolana iolas,Iolana iolas,AT,NE,A,,,n
 Iolana iolas,Iolana iolas,BA,EN,P,,,y
@@ -3737,10 +3737,10 @@ Iolana iolas,Iolana iolas,RS,EN,P,,EN in 2003,y
 Iolana iolas,Iolana iolas,SI,EN,P,,,y
 Iolana iolas,Iolana iolas,SK,RE,Ex,,,y
 Iolana iolas,Iolana iolas,UA,NE,A,,Comment Yurii Geryak: known for the only one old unverified record,n
-Iphiclides feisthamelii,Iphiclides feisthamelii,EUR,NRLA,P,,,
-Iphiclides feisthamelii,Iphiclides feisthamelii,EU27,NRLA,P,,,
 Iphiclides feisthamelii,Iphiclides feisthamelii,AD,LC,P,,,y
 Iphiclides feisthamelii,Iphiclides feisthamelii,ES,NE,P,,,y
+Iphiclides feisthamelii,Iphiclides feisthamelii,EU27,NRLA,P,,,
+Iphiclides feisthamelii,Iphiclides feisthamelii,EUR,NRLA,P,,,
 Iphiclides feisthamelii,Iphiclides feisthamelii,FR,LC,P,,,y
 Iphiclides feisthamelii,Iphiclides feisthamelii,PT,NRLA,P,,,y
 Iphiclides podalirius,Iphiclides podalirius,AL,Unknown,P,,,y
@@ -4079,8 +4079,6 @@ Leptidea duponcheli,Leptidea duponcheli,MK,Unknown,P,,,y
 Leptidea duponcheli,Leptidea duponcheli,RS,NT,P,,LC in 2003,y
 Leptidea duponcheli,Leptidea duponcheli,RU,NRLA,P,,,y
 Leptidea duponcheli,Leptidea duponcheli,UA,NT,P,,,y
-Leptidea juvernica,Leptidea juvernica,EUR,NRLA,P,,,
-Leptidea juvernica,Leptidea juvernica,EU27,NRLA,P,,,
 Leptidea juvernica,Leptidea juvernica,AL,Unknown,P,,,y
 Leptidea juvernica,Leptidea juvernica,AT,DD,P,,Changed by Helmut Höttinger,y
 Leptidea juvernica,Leptidea juvernica,BA,Unknown,P,,"Added by Rudi Verovnik, but not mentioned in Lelo (2016); Lelo classified all reali as juvernica",y
@@ -4092,6 +4090,8 @@ Leptidea juvernica,Leptidea juvernica,CZ,NE,P,,,y
 Leptidea reali,Leptidea juvernica,DE,DD,P,,,y
 Leptidea juvernica,Leptidea juvernica,DK,CR,Ex,,RE according to Ole Karsholt,y
 Leptidea reali,Leptidea juvernica,EE,LC,P,,,y
+Leptidea juvernica,Leptidea juvernica,EU27,NRLA,P,,,
+Leptidea juvernica,Leptidea juvernica,EUR,NRLA,P,,,
 Leptidea juvernica,Leptidea juvernica,FI,LC,P,,,y
 Leptidea juvernica,Leptidea juvernica,FR,Unknown,P,,,y
 Leptidea juvernica,Leptidea juvernica,GB,NtA,P,,,y
@@ -5035,11 +5035,11 @@ Melitaea britomartis,Melitaea britomartis,SE,CR,P,,,y
 Melitaea britomartis,Melitaea britomartis,SI,VU,P,,,y
 Melitaea britomartis,Melitaea britomartis,SK,VU,P,,,y
 Melitaea britomartis,Melitaea britomartis,UA,NT,P,,,y
-Melitaea celadussa,Melitaea celadussa,EU27,NRLA,P,,,
-Melitaea celadussa,Melitaea celadussa,EUR,NRLA,P,EUR,,
 Melitaea celadussa,Melitaea celadussa,AD,LC,P,,,y
 Melitaea nevadensis,Melitaea celadussa,CH,Unknown,P,,Addition Rudi Verovnik,y
 Melitaea nevadensis,Melitaea celadussa,ES,NE,P,,,y
+Melitaea celadussa,Melitaea celadussa,EU27,NRLA,P,,,
+Melitaea celadussa,Melitaea celadussa,EUR,NRLA,P,EUR,,
 Melitaea (athalia) celadussa,Melitaea celadussa,FR,Unknown,P,,,y
 Melitaea nevadensis,Melitaea celadussa,IT,LC,P,,,y
 Melitaea celadussa,Melitaea celadussa,PT,NRLA,P,,,y
@@ -6401,9 +6401,9 @@ Polyommatus aroaniensis,Polyommatus aroaniensis,EU27,LC,P,EU27,,y
 Polyommatus aroaniensis,Polyommatus aroaniensis,EUR,LC,P,EUR,,y
 Polyommatus aroaniensis,Polyommatus aroaniensis,GR,LC,P,,,y
 Polyommatus aroaniensis,Polyommatus aroaniensis,MK,Unknown,P,,Kolev & Van der Poorten (1997),y
-Polyommatus celina,Polyommatus celina,EUR,NRLA,P,,,
-Polyommatus celina,Polyommatus celina,EU27,NRLA,P,,,
 Polyommatus celina,Polyommatus celina,ES,NE,P,,,y
+Polyommatus celina,Polyommatus celina,EU27,NRLA,P,,,
+Polyommatus celina,Polyommatus celina,EUR,NRLA,P,,,
 Polyommatus celinus,Polyommatus celina,IT,LC,P,,,y
 Polyommatus celina,Polyommatus celina,MA_CA,NRLA,P,,,y
 Polyommatus celina,Polyommatus celina,MA_CA_Fuerteventura,NRLA,P,,,
@@ -6781,11 +6781,11 @@ Proterebia afra,Proterebia phegea,GR,NT,P,,,y
 Proterebia afra,Proterebia phegea,HR,NT,P,,,y
 Erebia afra,Proterebia phegea,RU,NRLA,P,,,y
 Proterebia afra,Proterebia phegea,UA,VU,P,,,y
-Pseudochazara amalthea,Pseudochazara amalthea,EUR,NRLA,P,EUR,,
-Pseudochazara amalthea,Pseudochazara amalthea,EU27,NRLA,P,,,
 Pseudochazara amalthea,Pseudochazara amalthea,AL,Unknown,P,,Addition Rudi Verovnik,y
 Pseudochazara amalthea,Pseudochazara amalthea,BA,EN,P,,"Added by Rudi Verovnik, but not mentioned in Lelo (2016)",y
 Pseudochazara amalthea,Pseudochazara amalthea,BG,Unknown,P,,,y
+Pseudochazara amalthea,Pseudochazara amalthea,EU27,NRLA,P,,,
+Pseudochazara amalthea,Pseudochazara amalthea,EUR,NRLA,P,EUR,,
 Pseudochazara anthelea (amalthea),Pseudochazara amalthea,GR,LC,P,,Status change from Unknown to LC,y
 Pseudochazara amalthea,Pseudochazara amalthea,HR,LC,P,,Addition Rudi Verovnik,y
 Pseudochazara amalthea,Pseudochazara amalthea,MK,Unknown,P,,Addition Rudi Verovnik,y
@@ -6828,9 +6828,9 @@ Pseudochazara mniszechii,Pseudochazara tisiphone,AL,Unknown,P,,,y
 Pseudochazara mniszechii,Pseudochazara tisiphone,EU27,LC,P,,,y
 Pseudochazara mniszechii,Pseudochazara tisiphone,EUR,LC,P,,,y
 Pseudochazara tisiphone,Pseudochazara tisiphone,GR,VU,P,,Status change from LC to VU; Legakis & Maragou 2009,y
+Pseudochazara mercurius,Pseudochazara williamsi,ES,NT,P,,"Listed as P. hippolyte in Verdú et al. (2009, 2011)",y
 Pseudochazara williamsi,Pseudochazara williamsi,EU27,NRLA,P,EU27,,
 Pseudochazara williamsi,Pseudochazara williamsi,EUR,NRLA,P,EUR,,
-Pseudochazara mercurius,Pseudochazara williamsi,ES,NT,P,,"Listed as P. hippolyte in Verdú et al. (2009, 2011)",y
 Pseudophilotes abencerragus,Pseudophilotes abencerragus,ES,NE,P,,,y
 Pseudophilotes abencerragus,Pseudophilotes abencerragus,EU27,LC,P,,,y
 Pseudophilotes abencerragus,Pseudophilotes abencerragus,EUR,LC,P,,,y
@@ -7555,9 +7555,9 @@ Spialia phlomidis,Spialia phlomidis,EUR,LC,P,,,y
 Spialia phlomidis,Spialia phlomidis,GR,LC,P,,,y
 Spialia phlomidis,Spialia phlomidis,MK,NT,P,,,y
 Spialia phlomidis,Spialia phlomidis,RS,VU,P,,NT in 2003,y
+Spialia rosae,Spialia rosae,ES,NE,P,ES,,y
 Spialia rosae,Spialia rosae,EU27,NRLA,P,EU27,,
 Spialia rosae,Spialia rosae,EUR,NRLA,P,EUR,,
-Spialia rosae,Spialia rosae,ES,NE,P,ES,,y
 Spialia sertorius,Spialia sertorius,AD,NT,P,,,y
 Spialia sertorius,Spialia sertorius,AT,VU,P,,,y
 Spialia sertorius,Spialia sertorius,BA,DD,P,,,y
@@ -8026,14 +8026,14 @@ Zizeeria knysna,Zizeeria knysna,MA_CA_Lanzarote,NRLA,P,,,
 Zizeeria knysna,Zizeeria knysna,MA_CA_Tenerife,NRLA,P,,,
 Zizeeria knysna,Zizeeria knysna,MT,NRLA,A,,Misidentification. DNA analysis confirmed the local species as Z. karsandra.,n
 Zizeeria knysna,Zizeeria knysna,PT,NRLA,P,,,y
+Deudorix livia,,CY,NRLA,A,,Single specimen captured in 1994,n
 Aricia hyacinthus,,EU27,RE,Ex,,,n
+Lopinga deidamia,,EU27,NtA,P,,,n
 Aricia hyacinthus,,EUR,RE,Ex,,,y
-Aricia hyacinthus,,RO,DD,A,,Not present according to Rudi Verovnik,n
+Lopinga deidamia,,EUR,NtA,P,,,n
+Deudorix livia,,GR,Unknown,A,,"Species added. Recorded once in NE Attica, Greece; Müller et al. (2005)",n
+Thaleropis ionia,,GR,Unknown,A,,Kudrna (1986),n
 Belenois aurota,,MT,NRLA,P(I),,Probably accidentally introduced,n
 Colias lesbia,,MT,NRLA,A,,Misidentification,n
-Deudorix livia,,CY,NRLA,A,,Single specimen captured in 1994,n
-Deudorix livia,,GR,Unknown,A,,"Species added. Recorded once in NE Attica, Greece; Müller et al. (2005)",n
-Lopinga deidamia,,EU27,NtA,P,,,n
-Lopinga deidamia,,EUR,NtA,P,,,n
 Papilio saharae,,MT,NRLA,A,,Misidentification by Leraut (2016),n
-Thaleropis ionia,,GR,Unknown,A,,Kudrna (1986),n
+Aricia hyacinthus,,RO,DD,A,,Not present according to Rudi Verovnik,n

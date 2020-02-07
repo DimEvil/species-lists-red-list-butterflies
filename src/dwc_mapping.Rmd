@@ -48,6 +48,16 @@ input_references <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vS
 input_rlc <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=1579699417&single=true&output=csv")
 ```
 
+Sort the source files (to maintain some consistency between updates of the dataset):
+
+```{r}
+input_distribution %<>% arrange(scientific_name, region_code)
+input_taxa %<>% arrange(scientific_name)
+input_regions %<>% arrange(region_code)
+input_references %<>% arrange(region_code, citation)
+input_rlc %<>% arrange(country_code, rlc)
+```
+
 Copy the source data to the repository:
 
 ```{r}
