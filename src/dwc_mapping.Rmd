@@ -112,18 +112,18 @@ input_data %<>% arrange(scientific_name, region_code)
 
 ## Scientific names
 
-Information regarding scientific names, authorship, classification and phylogenetic order in `input_taxa` is derived from Wiemers et al. (2018, https://doi.org/10.3897/zookeys.811.28712), which is an "updated checklist of the European Butterflies" with 496 species.
+Information regarding scientific names, authorship, classification and phylogenetic order in `input_taxa` is derived from [Wiemers et al. (2018)](https://doi.org/10.3897/zookeys.811.28712), which is an "updated checklist of the European Butterflies" with 496 species.
 
-Some names on the regional checklists however, have names (`scientific_name_regional`) where that could not be matched (e.g. as synonyms) with names (`scientific_name`) on the official checklist:
+All names on the regional checklists (`scientific_name_regional` in `input_distribution`) were matched by Dimitri Brosens to their accepted name (`scientific_name`) using the [GBIF Backbone Taxonomy](https://doi.org/10.15468/39omei) and verified by Dirk Maes (e.g. `Lycaeides argyrognomon` to official `Plebejus argyrognomon`). A limited number of `scientific_name_regional` could not be matched and/or are not accepted by Wiemers et al. (2018):
 
 ```{r}
 input_data %>%
-  filter(is.na(family)) %>% # Assesses if there was a match with input_taxa and thus better than is.na(scientific_name)
+  filter(is.na(family)) %>% # Is a field from input_taxa and thus assesses there was a match
   select(scientific_name_regional, scientific_name, region_code, comments) %>%
   arrange(scientific_name_regional)
 ```
 
-We want to restrict the list to names that are included on `input_taxa`:
+We **restrict the checklist to scientific names included in Wiemers et al. (2018)** (i.e. those included in `input_taxa`, see [issue 16](https://github.com/inbo/eurobutt-checklist/issues/16)):
 
 ```{r}
 input_data %<>% filter(!is.na(family)) # Remove distributions/names without match
