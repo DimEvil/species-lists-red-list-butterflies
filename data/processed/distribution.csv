@@ -502,14 +502,14 @@ eurobutt-checklist:taxon:9423a461e3c0fb54c0016b0fb6b21905,ISO_3166:HR,Croatia,HR
 eurobutt-checklist:taxon:9423a461e3c0fb54c0016b0fb6b21905,ISO_3166:HU,Hungary,HU,present,LC,Ádám Kőrösi & Ádám Gór (pers. comm.) | Gergely et al. (2017) | Sáfián et al. (2012) | Varga (2012)
 eurobutt-checklist:taxon:9423a461e3c0fb54c0016b0fb6b21905,ISO_3166:IT,Italy,IT,present,LC,Bonelli et al. (2018) | Balletto et al. (2014)
 eurobutt-checklist:taxon:9423a461e3c0fb54c0016b0fb6b21905,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:9423a461e3c0fb54c0016b0fb6b21905,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:9423a461e3c0fb54c0016b0fb6b21905,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:9423a461e3c0fb54c0016b0fb6b21905,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:9423a461e3c0fb54c0016b0fb6b21905,http://marineregions.org/mrgid/3748,"La Palma, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:9423a461e3c0fb54c0016b0fb6b21905,http://marineregions.org/mrgid/3756,"Tenerife, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:9423a461e3c0fb54c0016b0fb6b21905,ISO_3166:MD,Moldova,MD,present,"",Korb and Bolshakov (2016) | Mølgaard (2017)
 eurobutt-checklist:taxon:9423a461e3c0fb54c0016b0fb6b21905,ISO_3166:ME,Montenegro,ME,present,"",Franeta (2018) | Švara et al. (2015)
 eurobutt-checklist:taxon:9423a461e3c0fb54c0016b0fb6b21905,ISO_3166:MK,North Macedonia,MK,present,unknown,Krpač and Darcemont (2011) | Micevski and Micevski (2017)
-eurobutt-checklist:taxon:9423a461e3c0fb54c0016b0fb6b21905,ISO_3166:PL,Poland,PL,?,?,Buszko and Nowacki (2002) | Buszko and Sielezniew (pers. comm.) | Buszko and Masłowski (2015)
+eurobutt-checklist:taxon:9423a461e3c0fb54c0016b0fb6b21905,ISO_3166:PL,Poland,PL,?,NE,Buszko and Nowacki (2002) | Buszko and Sielezniew (pers. comm.) | Buszko and Masłowski (2015)
 eurobutt-checklist:taxon:9423a461e3c0fb54c0016b0fb6b21905,ISO_3166:PT,Portugal,PT,present,"",Garcia-Pereira et al. (2003) | Marabuto and Maravalhas (2008)
 eurobutt-checklist:taxon:9423a461e3c0fb54c0016b0fb6b21905,ISO_3166:RO,Romania,RO,present,NT,Rákosy (2013) | Vlad Dincă (pers. comm.) | Korb and Bolshakov (2016) | Székely (2008) | Wiemers et al. (2018)
 eurobutt-checklist:taxon:9423a461e3c0fb54c0016b0fb6b21905,ISO_3166:RS,Serbia,RS,present,LC,Jakšić (2003) | Popović et al. (2017) | Popović and Verovnik (2018)
@@ -648,7 +648,7 @@ eurobutt-checklist:taxon:32e789a2cb9dc81add6fef82b83d1e59,"",European Union,,pre
 eurobutt-checklist:taxon:32e789a2cb9dc81add6fef82b83d1e59,"",Europe,,present,LC,van Swaay et al. (2010) | Wiemers et al. (2018)
 eurobutt-checklist:taxon:32e789a2cb9dc81add6fef82b83d1e59,ISO_3166:IT,Italy,IT,present,LC,Bonelli et al. (2018) | Balletto et al. (2014)
 eurobutt-checklist:taxon:32e789a2cb9dc81add6fef82b83d1e59,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:32e789a2cb9dc81add6fef82b83d1e59,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:32e789a2cb9dc81add6fef82b83d1e59,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:32e789a2cb9dc81add6fef82b83d1e59,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:32e789a2cb9dc81add6fef82b83d1e59,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:32e789a2cb9dc81add6fef82b83d1e59,http://marineregions.org/mrgid/3748,"La Palma, Canary Islands",ES,present,"",
@@ -1099,7 +1099,7 @@ eurobutt-checklist:taxon:1ff7bd3fb0b7c7d8a301cd4382ab46b3,ISO_3166:LU,Luxembourg
 eurobutt-checklist:taxon:1ff7bd3fb0b7c7d8a301cd4382ab46b3,ISO_3166:MD,Moldova,MD,present,"",Korb and Bolshakov (2016) | Mølgaard (2017)
 eurobutt-checklist:taxon:1ff7bd3fb0b7c7d8a301cd4382ab46b3,ISO_3166:ME,Montenegro,ME,present,"",Franeta (2018) | Švara et al. (2015)
 eurobutt-checklist:taxon:1ff7bd3fb0b7c7d8a301cd4382ab46b3,ISO_3166:MK,North Macedonia,MK,present,unknown,Krpač and Darcemont (2011) | Micevski and Micevski (2017)
-eurobutt-checklist:taxon:1ff7bd3fb0b7c7d8a301cd4382ab46b3,ISO_3166:PL,Poland,PL,?,?,Buszko and Nowacki (2002) | Buszko and Sielezniew (pers. comm.) | Buszko and Masłowski (2015)
+eurobutt-checklist:taxon:1ff7bd3fb0b7c7d8a301cd4382ab46b3,ISO_3166:PL,Poland,PL,?,NE,Buszko and Nowacki (2002) | Buszko and Sielezniew (pers. comm.) | Buszko and Masłowski (2015)
 eurobutt-checklist:taxon:1ff7bd3fb0b7c7d8a301cd4382ab46b3,ISO_3166:PT,Portugal,PT,present,"",Garcia-Pereira et al. (2003) | Marabuto and Maravalhas (2008)
 eurobutt-checklist:taxon:1ff7bd3fb0b7c7d8a301cd4382ab46b3,ISO_3166:RO,Romania,RO,present,NT,Rákosy (2013) | Vlad Dincă (pers. comm.) | Korb and Bolshakov (2016) | Székely (2008) | Wiemers et al. (2018)
 eurobutt-checklist:taxon:1ff7bd3fb0b7c7d8a301cd4382ab46b3,ISO_3166:RS,Serbia,RS,present,LC,Jakšić (2003) | Popović et al. (2017) | Popović and Verovnik (2018)
@@ -1369,7 +1369,7 @@ eurobutt-checklist:taxon:910516de18c3f3797d3852b36f8a0e25,ISO_3166:CY,Cyprus,CY,
 eurobutt-checklist:taxon:910516de18c3f3797d3852b36f8a0e25,"",European Union,,present,NA,van Swaay et al. (2010)
 eurobutt-checklist:taxon:910516de18c3f3797d3852b36f8a0e25,"",Europe,,present,NA,van Swaay et al. (2010) | Wiemers et al. (2018)
 eurobutt-checklist:taxon:910516de18c3f3797d3852b36f8a0e25,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:910516de18c3f3797d3852b36f8a0e25,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:910516de18c3f3797d3852b36f8a0e25,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:910516de18c3f3797d3852b36f8a0e25,http://marineregions.org/mrgid/3757,"Fuerteventura, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:910516de18c3f3797d3852b36f8a0e25,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:910516de18c3f3797d3852b36f8a0e25,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
@@ -1822,7 +1822,7 @@ eurobutt-checklist:taxon:0557f1f5c5bea5f62b851b2ac8297f82,http://marineregions.o
 eurobutt-checklist:taxon:0557f1f5c5bea5f62b851b2ac8297f82,http://marineregions.org/mrgid/2456,"Sao Miguel, Azores",PT,present,"",
 eurobutt-checklist:taxon:0557f1f5c5bea5f62b851b2ac8297f82,http://marineregions.org/mrgid/2457,"Terceira, Azores",PT,present,"",
 eurobutt-checklist:taxon:0557f1f5c5bea5f62b851b2ac8297f82,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:0557f1f5c5bea5f62b851b2ac8297f82,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:0557f1f5c5bea5f62b851b2ac8297f82,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:0557f1f5c5bea5f62b851b2ac8297f82,http://marineregions.org/mrgid/3757,"Fuerteventura, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:0557f1f5c5bea5f62b851b2ac8297f82,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:0557f1f5c5bea5f62b851b2ac8297f82,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
@@ -1990,7 +1990,7 @@ eurobutt-checklist:taxon:00b1b058c855594d51e6228e7294f1f5,ISO_3166:LV,Latvia,LV,
 eurobutt-checklist:taxon:00b1b058c855594d51e6228e7294f1f5,ISO_3166:MD,Moldova,MD,present,"",Korb and Bolshakov (2016) | Mølgaard (2017)
 eurobutt-checklist:taxon:00b1b058c855594d51e6228e7294f1f5,ISO_3166:ME,Montenegro,ME,present,"",Franeta (2018) | Švara et al. (2015)
 eurobutt-checklist:taxon:00b1b058c855594d51e6228e7294f1f5,ISO_3166:MK,North Macedonia,MK,present,unknown,Krpač and Darcemont (2011) | Micevski and Micevski (2017)
-eurobutt-checklist:taxon:00b1b058c855594d51e6228e7294f1f5,ISO_3166:PL,Poland,PL,?,?,Buszko and Nowacki (2002) | Buszko and Sielezniew (pers. comm.) | Buszko and Masłowski (2015)
+eurobutt-checklist:taxon:00b1b058c855594d51e6228e7294f1f5,ISO_3166:PL,Poland,PL,?,NE,Buszko and Nowacki (2002) | Buszko and Sielezniew (pers. comm.) | Buszko and Masłowski (2015)
 eurobutt-checklist:taxon:00b1b058c855594d51e6228e7294f1f5,ISO_3166:RO,Romania,RO,present,VU,Rákosy (2013) | Vlad Dincă (pers. comm.) | Korb and Bolshakov (2016) | Székely (2008) | Wiemers et al. (2018)
 eurobutt-checklist:taxon:00b1b058c855594d51e6228e7294f1f5,ISO_3166:RS,Serbia,RS,present,LC,Jakšić (2003) | Popović et al. (2017) | Popović and Verovnik (2018)
 eurobutt-checklist:taxon:00b1b058c855594d51e6228e7294f1f5,ISO_3166:RU,Russia,RU,present,"",Danilov-Danilian (2001) | Iliashenko and Iliashenko (2000) | Rudi Verovnik (pers. comm.) | Tatarinov and Gorbunov (2014) | Tshikolovets (2011) | Tuzov (1997) | Tuzov (2000)
@@ -2048,7 +2048,7 @@ eurobutt-checklist:taxon:569ab87bf207bec5c7a9915fda0f7642,ISO_3166:HU,Hungary,HU
 eurobutt-checklist:taxon:569ab87bf207bec5c7a9915fda0f7642,ISO_3166:MD,Moldova,MD,present,"",Korb and Bolshakov (2016) | Mølgaard (2017)
 eurobutt-checklist:taxon:569ab87bf207bec5c7a9915fda0f7642,ISO_3166:ME,Montenegro,ME,present,"",Franeta (2018) | Švara et al. (2015)
 eurobutt-checklist:taxon:569ab87bf207bec5c7a9915fda0f7642,ISO_3166:MK,North Macedonia,MK,present,unknown,Krpač and Darcemont (2011) | Micevski and Micevski (2017)
-eurobutt-checklist:taxon:569ab87bf207bec5c7a9915fda0f7642,ISO_3166:PL,Poland,PL,?,?,Buszko and Nowacki (2002) | Buszko and Sielezniew (pers. comm.) | Buszko and Masłowski (2015)
+eurobutt-checklist:taxon:569ab87bf207bec5c7a9915fda0f7642,ISO_3166:PL,Poland,PL,?,NE,Buszko and Nowacki (2002) | Buszko and Sielezniew (pers. comm.) | Buszko and Masłowski (2015)
 eurobutt-checklist:taxon:569ab87bf207bec5c7a9915fda0f7642,ISO_3166:RO,Romania,RO,present,VU,Rákosy (2013) | Vlad Dincă (pers. comm.) | Korb and Bolshakov (2016) | Székely (2008) | Wiemers et al. (2018)
 eurobutt-checklist:taxon:569ab87bf207bec5c7a9915fda0f7642,ISO_3166:RS,Serbia,RS,present,LC,Jakšić (2003) | Popović et al. (2017) | Popović and Verovnik (2018)
 eurobutt-checklist:taxon:569ab87bf207bec5c7a9915fda0f7642,ISO_3166:RU,Russia,RU,present,"",Danilov-Danilian (2001) | Iliashenko and Iliashenko (2000) | Rudi Verovnik (pers. comm.) | Tatarinov and Gorbunov (2014) | Tshikolovets (2011) | Tuzov (1997) | Tuzov (2000)
@@ -2166,7 +2166,7 @@ eurobutt-checklist:taxon:27b7f62f8bdaf918a10972ef9ea6c60d,ISO_3166:UA,Ukraine,UA
 eurobutt-checklist:taxon:c39132e03cc75b8d6c98548163a23c99,"",European Union,,present,LC,van Swaay et al. (2010)
 eurobutt-checklist:taxon:c39132e03cc75b8d6c98548163a23c99,"",Europe,,present,LC,van Swaay et al. (2010) | Wiemers et al. (2018)
 eurobutt-checklist:taxon:c39132e03cc75b8d6c98548163a23c99,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:c39132e03cc75b8d6c98548163a23c99,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,?,"",
+eurobutt-checklist:taxon:c39132e03cc75b8d6c98548163a23c99,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,?,"",
 eurobutt-checklist:taxon:c39132e03cc75b8d6c98548163a23c99,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:c39132e03cc75b8d6c98548163a23c99,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:c39132e03cc75b8d6c98548163a23c99,http://marineregions.org/mrgid/3748,"La Palma, Canary Islands",ES,present,"",
@@ -2207,7 +2207,7 @@ eurobutt-checklist:taxon:3189f65891d9d7f4040f862c81f87c23,http://marineregions.o
 eurobutt-checklist:taxon:3189f65891d9d7f4040f862c81f87c23,http://marineregions.org/mrgid/2456,"Sao Miguel, Azores",PT,present,"",
 eurobutt-checklist:taxon:3189f65891d9d7f4040f862c81f87c23,http://marineregions.org/mrgid/2457,"Terceira, Azores",PT,present,"",
 eurobutt-checklist:taxon:3189f65891d9d7f4040f862c81f87c23,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:3189f65891d9d7f4040f862c81f87c23,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:3189f65891d9d7f4040f862c81f87c23,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:3189f65891d9d7f4040f862c81f87c23,http://marineregions.org/mrgid/3757,"Fuerteventura, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:3189f65891d9d7f4040f862c81f87c23,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:3189f65891d9d7f4040f862c81f87c23,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
@@ -3426,7 +3426,7 @@ eurobutt-checklist:taxon:add354ade339b13573289c8d63d076a7,http://marineregions.o
 eurobutt-checklist:taxon:1cdf003cf49fdaa961501a4e71f29801,"",European Union,,present,VU,van Swaay et al. (2010)
 eurobutt-checklist:taxon:1cdf003cf49fdaa961501a4e71f29801,"",Europe,,present,VU,van Swaay et al. (2010) | Wiemers et al. (2018)
 eurobutt-checklist:taxon:1cdf003cf49fdaa961501a4e71f29801,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:1cdf003cf49fdaa961501a4e71f29801,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:1cdf003cf49fdaa961501a4e71f29801,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:4acb3729de1079d53d0c7aca26ae947e,"",European Union,,present,"",van Swaay et al. (2010)
 eurobutt-checklist:taxon:4acb3729de1079d53d0c7aca26ae947e,"",Europe,,present,"",van Swaay et al. (2010) | Wiemers et al. (2018)
 eurobutt-checklist:taxon:4acb3729de1079d53d0c7aca26ae947e,ISO_3166:IT,Italy,IT,present,LC,Bonelli et al. (2018) | Balletto et al. (2014)
@@ -3925,7 +3925,7 @@ eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,http://marineregions.o
 eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,http://marineregions.org/mrgid/2456,"Sao Miguel, Azores",PT,present,"",
 eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,http://marineregions.org/mrgid/2457,"Terceira, Azores",PT,present,"",
 eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,http://marineregions.org/mrgid/3757,"Fuerteventura, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
@@ -3940,7 +3940,7 @@ eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,ISO_3166:ME,Montenegro
 eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,ISO_3166:MK,North Macedonia,MK,absent,unknown,Krpač and Darcemont (2011) | Micevski and Micevski (2017)
 eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,ISO_3166:MT,Malta,MT,present,"",Cassar (2018) | Sammut (2000) | Schembri (1968) | Valletta (1972)
 eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,ISO_3166:NL,Netherlands,NL,?,NE,Bos et al. (2006) | Kuchlein and de Vos (1999) | van Swaay (2018)
-eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,ISO_3166:PL,Poland,PL,?,?,Buszko and Nowacki (2002) | Buszko and Sielezniew (pers. comm.) | Buszko and Masłowski (2015)
+eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,ISO_3166:PL,Poland,PL,?,NE,Buszko and Nowacki (2002) | Buszko and Sielezniew (pers. comm.) | Buszko and Masłowski (2015)
 eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,ISO_3166:PT,Portugal,PT,present,"",Garcia-Pereira et al. (2003) | Marabuto and Maravalhas (2008)
 eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,ISO_3166:RO,Romania,RO,?,"",Rákosy (2013) | Vlad Dincă (pers. comm.) | Korb and Bolshakov (2016) | Székely (2008) | Wiemers et al. (2018)
 eurobutt-checklist:taxon:c61dd3f593dfd8b4796dcd5e6af6e092,ISO_3166:RS,Serbia,RS,absent,NE,Jakšić (2003) | Popović et al. (2017) | Popović and Verovnik (2018)
@@ -4200,7 +4200,7 @@ eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,ISO_3166:HU,Hungary,HU
 eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,ISO_3166:IT,Italy,IT,present,LC,Bonelli et al. (2018) | Balletto et al. (2014)
 eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,ISO_3166:LI,Liechtenstein,LI,?,"",Aistleitner and Aistleitner (1996) | Ulrich Hiermann (pers. comm.)
 eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,http://marineregions.org/mrgid/3757,"Fuerteventura, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
@@ -4214,7 +4214,7 @@ eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,ISO_3166:MD,Moldova,MD
 eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,ISO_3166:ME,Montenegro,ME,absent,"",Franeta (2018) | Švara et al. (2015)
 eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,ISO_3166:MK,North Macedonia,MK,absent,unknown,Krpač and Darcemont (2011) | Micevski and Micevski (2017)
 eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,ISO_3166:MT,Malta,MT,present,"",Cassar (2018) | Sammut (2000) | Schembri (1968) | Valletta (1972)
-eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,ISO_3166:PL,Poland,PL,?,?,Buszko and Nowacki (2002) | Buszko and Sielezniew (pers. comm.) | Buszko and Masłowski (2015)
+eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,ISO_3166:PL,Poland,PL,?,NE,Buszko and Nowacki (2002) | Buszko and Sielezniew (pers. comm.) | Buszko and Masłowski (2015)
 eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,ISO_3166:PT,Portugal,PT,present,"",Garcia-Pereira et al. (2003) | Marabuto and Maravalhas (2008)
 eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,ISO_3166:RO,Romania,RO,?,"",Rákosy (2013) | Vlad Dincă (pers. comm.) | Korb and Bolshakov (2016) | Székely (2008) | Wiemers et al. (2018)
 eurobutt-checklist:taxon:d0b0aff0d86c399edd085bbea0df8c73,ISO_3166:RS,Serbia,RS,absent,LC,Jakšić (2003) | Popović et al. (2017) | Popović and Verovnik (2018)
@@ -4564,7 +4564,7 @@ eurobutt-checklist:taxon:976bee108c08139329270cfbefe153ab,ISO_3166:LT,Lithuania,
 eurobutt-checklist:taxon:976bee108c08139329270cfbefe153ab,ISO_3166:LU,Luxembourg,LU,present,LC,Mestdagh et al. (in press)
 eurobutt-checklist:taxon:976bee108c08139329270cfbefe153ab,ISO_3166:LV,Latvia,LV,present,"",Aarvik et al. (2017)
 eurobutt-checklist:taxon:976bee108c08139329270cfbefe153ab,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:976bee108c08139329270cfbefe153ab,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:976bee108c08139329270cfbefe153ab,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:976bee108c08139329270cfbefe153ab,http://marineregions.org/mrgid/3757,"Fuerteventura, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:976bee108c08139329270cfbefe153ab,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:976bee108c08139329270cfbefe153ab,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
@@ -4814,7 +4814,7 @@ eurobutt-checklist:taxon:10a6e59ec3e602af632c4e22eb9c70a4,ISO_3166:LT,Lithuania,
 eurobutt-checklist:taxon:10a6e59ec3e602af632c4e22eb9c70a4,ISO_3166:LU,Luxembourg,LU,present,LC,Mestdagh et al. (in press)
 eurobutt-checklist:taxon:10a6e59ec3e602af632c4e22eb9c70a4,ISO_3166:LV,Latvia,LV,present,"",Aarvik et al. (2017)
 eurobutt-checklist:taxon:10a6e59ec3e602af632c4e22eb9c70a4,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:10a6e59ec3e602af632c4e22eb9c70a4,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:10a6e59ec3e602af632c4e22eb9c70a4,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:10a6e59ec3e602af632c4e22eb9c70a4,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:10a6e59ec3e602af632c4e22eb9c70a4,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:10a6e59ec3e602af632c4e22eb9c70a4,http://marineregions.org/mrgid/3748,"La Palma, Canary Islands",ES,present,"",
@@ -5707,7 +5707,7 @@ eurobutt-checklist:taxon:7a3efb7210a6518965dfcf0f45374c5c,http://marineregions.o
 eurobutt-checklist:taxon:456df73a5144d61c4c41981bf3d60950,"",European Union,,present,LC,van Swaay et al. (2010)
 eurobutt-checklist:taxon:456df73a5144d61c4c41981bf3d60950,"",Europe,,present,LC,van Swaay et al. (2010) | Wiemers et al. (2018)
 eurobutt-checklist:taxon:456df73a5144d61c4c41981bf3d60950,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:456df73a5144d61c4c41981bf3d60950,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:456df73a5144d61c4c41981bf3d60950,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:456df73a5144d61c4c41981bf3d60950,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:456df73a5144d61c4c41981bf3d60950,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:456df73a5144d61c4c41981bf3d60950,http://marineregions.org/mrgid/3748,"La Palma, Canary Islands",ES,present,"",
@@ -6132,7 +6132,7 @@ eurobutt-checklist:taxon:1a35102f4838db1ca2d6b7c83cc45954,ISO_3166:LT,Lithuania,
 eurobutt-checklist:taxon:1a35102f4838db1ca2d6b7c83cc45954,ISO_3166:LU,Luxembourg,LU,present,LC,Mestdagh et al. (in press)
 eurobutt-checklist:taxon:1a35102f4838db1ca2d6b7c83cc45954,ISO_3166:LV,Latvia,LV,present,"",Aarvik et al. (2017)
 eurobutt-checklist:taxon:1a35102f4838db1ca2d6b7c83cc45954,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:1a35102f4838db1ca2d6b7c83cc45954,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:1a35102f4838db1ca2d6b7c83cc45954,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:1a35102f4838db1ca2d6b7c83cc45954,http://marineregions.org/mrgid/3757,"Fuerteventura, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:1a35102f4838db1ca2d6b7c83cc45954,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:1a35102f4838db1ca2d6b7c83cc45954,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
@@ -6716,7 +6716,7 @@ eurobutt-checklist:taxon:41fe87fb17246df90582d7f805a53a76,ISO_3166:HR,Croatia,HR
 eurobutt-checklist:taxon:41fe87fb17246df90582d7f805a53a76,ISO_3166:IT,Italy,IT,present,LC,Bonelli et al. (2018) | Balletto et al. (2014)
 eurobutt-checklist:taxon:41fe87fb17246df90582d7f805a53a76,ISO_3166:LU,Luxembourg,LU,?,NA,Mestdagh et al. (in press)
 eurobutt-checklist:taxon:41fe87fb17246df90582d7f805a53a76,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:41fe87fb17246df90582d7f805a53a76,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:41fe87fb17246df90582d7f805a53a76,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:41fe87fb17246df90582d7f805a53a76,http://marineregions.org/mrgid/3757,"Fuerteventura, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:41fe87fb17246df90582d7f805a53a76,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:41fe87fb17246df90582d7f805a53a76,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
@@ -7669,7 +7669,7 @@ eurobutt-checklist:taxon:1e5a990ca8507ca8e77d9557959e4626,ISO_3166:UA,Ukraine,UA
 eurobutt-checklist:taxon:137a0bf8421783eeefd4950395c1ed02,"",European Union,,present,LC,van Swaay et al. (2010)
 eurobutt-checklist:taxon:137a0bf8421783eeefd4950395c1ed02,"",Europe,,present,LC,van Swaay et al. (2010) | Wiemers et al. (2018)
 eurobutt-checklist:taxon:137a0bf8421783eeefd4950395c1ed02,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:137a0bf8421783eeefd4950395c1ed02,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:137a0bf8421783eeefd4950395c1ed02,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:137a0bf8421783eeefd4950395c1ed02,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:137a0bf8421783eeefd4950395c1ed02,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:137a0bf8421783eeefd4950395c1ed02,http://marineregions.org/mrgid/3748,"La Palma, Canary Islands",ES,present,"",
@@ -7818,7 +7818,7 @@ eurobutt-checklist:taxon:28d1dd087442aa7dbc71a19023cf98ed,http://marineregions.o
 eurobutt-checklist:taxon:28d1dd087442aa7dbc71a19023cf98ed,http://marineregions.org/mrgid/2456,"Sao Miguel, Azores",PT,present,"",
 eurobutt-checklist:taxon:28d1dd087442aa7dbc71a19023cf98ed,http://marineregions.org/mrgid/2457,"Terceira, Azores",PT,present,"",
 eurobutt-checklist:taxon:28d1dd087442aa7dbc71a19023cf98ed,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:28d1dd087442aa7dbc71a19023cf98ed,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:28d1dd087442aa7dbc71a19023cf98ed,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:28d1dd087442aa7dbc71a19023cf98ed,http://marineregions.org/mrgid/3757,"Fuerteventura, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:28d1dd087442aa7dbc71a19023cf98ed,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:28d1dd087442aa7dbc71a19023cf98ed,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
@@ -7883,7 +7883,7 @@ eurobutt-checklist:taxon:f5f5f8695854ea72afb3fb0527da57a8,http://marineregions.o
 eurobutt-checklist:taxon:f5f5f8695854ea72afb3fb0527da57a8,http://marineregions.org/mrgid/2456,"Sao Miguel, Azores",PT,present,"",
 eurobutt-checklist:taxon:f5f5f8695854ea72afb3fb0527da57a8,http://marineregions.org/mrgid/2457,"Terceira, Azores",PT,present,"",
 eurobutt-checklist:taxon:f5f5f8695854ea72afb3fb0527da57a8,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:f5f5f8695854ea72afb3fb0527da57a8,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:f5f5f8695854ea72afb3fb0527da57a8,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:f5f5f8695854ea72afb3fb0527da57a8,http://marineregions.org/mrgid/3757,"Fuerteventura, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:f5f5f8695854ea72afb3fb0527da57a8,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:f5f5f8695854ea72afb3fb0527da57a8,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
@@ -7919,7 +7919,7 @@ eurobutt-checklist:taxon:177ee2600cf35af8b6f6919ce13cdbc9,http://marineregions.o
 eurobutt-checklist:taxon:177ee2600cf35af8b6f6919ce13cdbc9,http://marineregions.org/mrgid/2455,"Sao Jorge, Azores",PT,?,"",
 eurobutt-checklist:taxon:177ee2600cf35af8b6f6919ce13cdbc9,http://marineregions.org/mrgid/2456,"Sao Miguel, Azores",PT,?,"",
 eurobutt-checklist:taxon:177ee2600cf35af8b6f6919ce13cdbc9,http://marineregions.org/mrgid/3743,Canary Islands,ES,?,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:177ee2600cf35af8b6f6919ce13cdbc9,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,?,"",
+eurobutt-checklist:taxon:177ee2600cf35af8b6f6919ce13cdbc9,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,?,"",
 eurobutt-checklist:taxon:177ee2600cf35af8b6f6919ce13cdbc9,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,?,"",
 eurobutt-checklist:taxon:177ee2600cf35af8b6f6919ce13cdbc9,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,?,"",
 eurobutt-checklist:taxon:177ee2600cf35af8b6f6919ce13cdbc9,http://marineregions.org/mrgid/3748,"La Palma, Canary Islands",ES,?,"",
@@ -7928,7 +7928,7 @@ eurobutt-checklist:taxon:177ee2600cf35af8b6f6919ce13cdbc9,ISO_3166:PT,Portugal,P
 eurobutt-checklist:taxon:4fae99015858d7d87bab0456cb357a13,"",European Union,,present,LC,van Swaay et al. (2010)
 eurobutt-checklist:taxon:4fae99015858d7d87bab0456cb357a13,"",Europe,,present,LC,van Swaay et al. (2010) | Wiemers et al. (2018)
 eurobutt-checklist:taxon:4fae99015858d7d87bab0456cb357a13,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:4fae99015858d7d87bab0456cb357a13,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:4fae99015858d7d87bab0456cb357a13,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:4fae99015858d7d87bab0456cb357a13,http://marineregions.org/mrgid/3757,"Fuerteventura, Canary Islands",ES,?,"",
 eurobutt-checklist:taxon:4fae99015858d7d87bab0456cb357a13,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:4fae99015858d7d87bab0456cb357a13,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
@@ -7987,7 +7987,7 @@ eurobutt-checklist:taxon:2ab0f637a5af65b09535f62424f07f2f,ISO_3166:IT,Italy,IT,p
 eurobutt-checklist:taxon:2ab0f637a5af65b09535f62424f07f2f,ISO_3166:MD,Moldova,MD,present,"",Korb and Bolshakov (2016) | Mølgaard (2017)
 eurobutt-checklist:taxon:2ab0f637a5af65b09535f62424f07f2f,ISO_3166:ME,Montenegro,ME,present,"",Franeta (2018) | Švara et al. (2015)
 eurobutt-checklist:taxon:2ab0f637a5af65b09535f62424f07f2f,ISO_3166:MK,North Macedonia,MK,present,NT,Krpač and Darcemont (2011) | Micevski and Micevski (2017)
-eurobutt-checklist:taxon:2ab0f637a5af65b09535f62424f07f2f,ISO_3166:PL,Poland,PL,?,?,Buszko and Nowacki (2002) | Buszko and Sielezniew (pers. comm.) | Buszko and Masłowski (2015)
+eurobutt-checklist:taxon:2ab0f637a5af65b09535f62424f07f2f,ISO_3166:PL,Poland,PL,?,NE,Buszko and Nowacki (2002) | Buszko and Sielezniew (pers. comm.) | Buszko and Masłowski (2015)
 eurobutt-checklist:taxon:2ab0f637a5af65b09535f62424f07f2f,ISO_3166:RO,Romania,RO,present,VU,Rákosy (2013) | Vlad Dincă (pers. comm.) | Korb and Bolshakov (2016) | Székely (2008) | Wiemers et al. (2018)
 eurobutt-checklist:taxon:2ab0f637a5af65b09535f62424f07f2f,ISO_3166:RS,Serbia,RS,present,LC,Jakšić (2003) | Popović et al. (2017) | Popović and Verovnik (2018)
 eurobutt-checklist:taxon:2ab0f637a5af65b09535f62424f07f2f,ISO_3166:RU,Russia,RU,present,"",Danilov-Danilian (2001) | Iliashenko and Iliashenko (2000) | Rudi Verovnik (pers. comm.) | Tatarinov and Gorbunov (2014) | Tshikolovets (2011) | Tuzov (1997) | Tuzov (2000)
@@ -8010,7 +8010,7 @@ eurobutt-checklist:taxon:0cb85c6bba008904d664b00e5c8ecf3a,ISO_3166:ES,Spain,ES,p
 eurobutt-checklist:taxon:0cb85c6bba008904d664b00e5c8ecf3a,"",European Union,,present,NA,van Swaay et al. (2010)
 eurobutt-checklist:taxon:0cb85c6bba008904d664b00e5c8ecf3a,"",Europe,,present,NA,van Swaay et al. (2010) | Wiemers et al. (2018)
 eurobutt-checklist:taxon:0cb85c6bba008904d664b00e5c8ecf3a,http://marineregions.org/mrgid/3743,Canary Islands,ES,present,"",Báez and Oromí (2010) | Martin Wiemers (pers. comm.) | Tennent (2005)
-eurobutt-checklist:taxon:0cb85c6bba008904d664b00e5c8ecf3a,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",PT,present,"",
+eurobutt-checklist:taxon:0cb85c6bba008904d664b00e5c8ecf3a,http://marineregions.org/mrgid/3747,"El Hierro, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:0cb85c6bba008904d664b00e5c8ecf3a,http://marineregions.org/mrgid/3757,"Fuerteventura, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:0cb85c6bba008904d664b00e5c8ecf3a,http://marineregions.org/mrgid/3746,"Gran Canaria, Canary Islands",ES,present,"",
 eurobutt-checklist:taxon:0cb85c6bba008904d664b00e5c8ecf3a,http://marineregions.org/mrgid/3744,"La Gomera, Canary Islands",ES,present,"",
