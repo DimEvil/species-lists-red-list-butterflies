@@ -430,18 +430,18 @@ distribution %>%
   count()
 ```
 
-Map values:
+Map values (see [Wiemers et al. 2018](https://doi.org/10.3897/zookeys.811.28712), Materials & Methods). For migrants we decided to map to own term `migrant` as this information is too important to be lumped into `irregular` (with alternative term `vagrant`) and cannot be considered just `present` or `absent` (see  issue [#18](https://github.com/inbo/eurobutt-checklist/issues/18)).
 
 ```{r}
 distribution %<>% mutate(dwc_occurrenceStatus = recode(status,
-  "A" = "?",
-  "Ex" = "?",
-  "Excluded" = "?",
-  "I" = "?",
-  "M" = "absent", # Regular migrant, decided to use "absent" rather than "irregular" or "present"
+  "A" = "absent",
+  "Ex" = "absent", # Regionally extinct, is indicated in threatStatus "RE"
+  "Excluded" = "excluded",
+  "I" = "irregular", # Irregular vagrant
+  "M" = "migrant", # Regular migrant
   "P" = "present",
-  "P?" = "?",
-  "P(I)" = "?",
+  "P?" = "doubtful", # Possibly present
+  "P(I)" = "irregular", # Probably only present as an immigrant
   .default = ""
 ))
 ```
