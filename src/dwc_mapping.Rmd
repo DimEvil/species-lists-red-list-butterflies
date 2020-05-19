@@ -484,7 +484,7 @@ distribution %<>% mutate(dwc_threatStatus = recode(rlc,
   "NRLA" = "", # No red list available
   "R" = "Rare", # Used by Germany
   "Unknown" = "unknown", # not an official IUCN term, but included to be explicit
-  "LC/NE" = "?",
+  "LC/NE" = "NE", # Used by Poland
   .default = ""
 ))
 ```
