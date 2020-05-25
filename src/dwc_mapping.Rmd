@@ -33,9 +33,9 @@ library(digest)         # To generate hashes
 
 # Read source data
 
-The original spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?usp=sharing).
+The source data is maintained in [this Google Spreadsheet](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?usp=sharing).
 
-Read the relevant worksheets:
+Read the relevant worksheets (published as csv):
 
 ```{r}
 input_distribution <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=979140000&single=true&output=csv")
@@ -55,7 +55,7 @@ input_references %<>% arrange(region_code, citation)
 input_rlc %<>% arrange(country_code, rlc)
 ```
 
-Copy the source data to the repository:
+Copy the source data to the repository to keep track of changes:
 
 ```{r}
 write_csv(input_distribution, here("data", "raw", "distribution.csv"), na = "")
@@ -168,7 +168,7 @@ input_data %>% head()
 
 # Darwin Core mapping
 
-## Create taxon core
+## Taxon core
 
 Create a dataframe with unique taxa only (retaining the first of multiple distribution rows):
 
@@ -292,7 +292,7 @@ taxon %<>% mutate(dwc_scientificNameAuthorship = authorship)
 taxon %<>% mutate(dwc_nomenclaturalCode = "ICZN")
 ```
 
-## Create distribution extension
+## Distribution extension
 
 Create a dataframe with all data:
 
@@ -474,7 +474,7 @@ distribution %>%
 distribution %<>% mutate(dwc_source = reference)
 ```
 
-# Create vernacular names extension
+# Vernacular names extension
 
 Create a dataframe with unique taxa only (retaining the first of multiple distribution rows):
 
