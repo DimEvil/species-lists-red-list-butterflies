@@ -362,10 +362,10 @@ distribution %<>% mutate(dwc_locality = case_when(
   # Use country name if not a region  
   is.na(region_name) ~ country_name,
   
-  # Use e.g. "Corvo, Azores" for island groups
-  str_detect(region_code, "MA_AZ_") ~ paste(region_name, "Azores", sep = ", "),
-  str_detect(region_code, "MA_MA_") ~ paste(region_name, "Madeira", sep = ", "),
-  str_detect(region_code, "MA_CA_") ~ paste(region_name, "Canary Islands", sep = ", "),
+  # Use e.g. "Azores, Corvo" for island groups
+  str_detect(region_code, "MA_AZ_") ~ paste("Azores", region_name, sep = ", "),
+  str_detect(region_code, "MA_MA_") ~ paste("Madeira", region_name, sep = ", "),
+  str_detect(region_code, "MA_CA_") ~ paste("Canary Islands", region_name, sep = ", "),
   
   # Use region name for rest
   TRUE ~ region_name
