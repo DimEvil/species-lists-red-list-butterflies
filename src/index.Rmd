@@ -1,5 +1,5 @@
 ---
-title: "National checklists and red lists for prioritising European butterfly conservation actions"
+title: ""
 ---
 
 ```{r, child = "../README.md"}
