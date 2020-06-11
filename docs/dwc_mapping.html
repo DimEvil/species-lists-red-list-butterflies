@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Peter Desmet" />
+<meta name="author" content="Dimitri Brosens" />
+
+<meta name="date" content="2020-06-11" />
+
+<title>Darwin Core mapping</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="static/css/custom.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h2 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h3 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h4 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h5 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h6 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">eurobutt-checklist</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="dwc_mapping.html">Darwin Core mapping</a>
+</li>
+<li>
+  <a href="wrl_values.html">Weighted red list values</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/inbo/eurobutt-checklist">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Darwin Core mapping</h1>
+<h3 class="subtitle">For: National checklists and red lists for prioritising European butterfly conservation actions</h3>
+<h4 class="author">Peter Desmet</h4>
+<h4 class="author">Dimitri Brosens</h4>
+<h4 class="date">2020-06-11</h4>
+
+</div>
+
+
+<p>This document describes how we map the checklist data to Darwin Core. The source file for this document can be found <a href="https://github.com/inbo/eurobutt-checklist/blob/master/src/dwc_mapping.Rmd">here</a>.</p>
+<p>Load libraries:</p>
+<pre class="r"><code>library(tidyverse)      # To do data science
+library(tidylog)        # To provide feedback on dplyr functions
+library(magrittr)       # To use %&lt;&gt;% pipes
+library(here)           # To find files
+library(janitor)        # To clean input data
+library(digest)         # To generate hashes</code></pre>
+<div id="read-source-data" class="section level1">
+<h1><span class="header-section-number">1</span> Read source data</h1>
+<p>The source data is maintained in <a href="https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?usp=sharing">this Google Spreadsheet</a>.</p>
+<p>Read the relevant worksheets (published as csv):</p>
+<pre class="r"><code>input_distribution &lt;- read_csv(&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=979140000&amp;single=true&amp;output=csv&quot;)
+input_taxa &lt;- read_csv(&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=1559651428&amp;single=true&amp;output=csv&quot;)
+input_regions &lt;- read_csv(&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=2076261682&amp;single=true&amp;output=csv&quot;)
+input_references &lt;- read_csv(&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=1083424499&amp;single=true&amp;output=csv&quot;)
+input_rlc &lt;- read_csv(&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=1579699417&amp;single=true&amp;output=csv&quot;)</code></pre>
+<p>Sort the source files (to maintain some consistency between updates of the dataset):</p>
+<pre class="r"><code>input_distribution %&lt;&gt;% arrange(scientific_name, region_code)
+input_taxa %&lt;&gt;% arrange(scientific_name)
+input_regions %&lt;&gt;% arrange(region_code)
+input_references %&lt;&gt;% arrange(region_code, citation)
+input_rlc %&lt;&gt;% arrange(country_code, rlc)</code></pre>
+<p>Copy the source data to the repository to keep track of changes:</p>
+<pre class="r"><code>write_csv(input_distribution, here(&quot;data&quot;, &quot;raw&quot;, &quot;distribution.csv&quot;), na = &quot;&quot;)
+write_csv(input_taxa, here(&quot;data&quot;, &quot;raw&quot;, &quot;taxa.csv&quot;), na = &quot;&quot;)
+write_csv(input_regions, here(&quot;data&quot;, &quot;raw&quot;, &quot;regions.csv&quot;), na = &quot;&quot;)
+write_csv(input_references, here(&quot;data&quot;, &quot;raw&quot;, &quot;references.csv&quot;), na = &quot;&quot;)
+write_csv(input_rlc, here(&quot;data&quot;, &quot;raw&quot;, &quot;rlc.csv&quot;), na = &quot;&quot;)</code></pre>
+<p>The first 4 files will be used for the Darwin Core mapping, while <code>rlc</code> is needed for the calculation in <code>wrl_values.Rmd</code>.</p>
+</div>
+<div id="preprocessing" class="section level1">
+<h1><span class="header-section-number">2</span> Preprocessing</h1>
+<div id="join-spreadsheets" class="section level2">
+<h2><span class="header-section-number">2.1</span> Join spreadsheets</h2>
+<p>The <code>input_references</code> contain references of species/red lists per region. We can include those as <code>source</code> for distributions, but unfortunately not as full references in a <a href="http://rs.gbif.org/extension/gbif/1.0/references.xml">reference extension</a>, as that would require them to be associated (and repeated) with taxa.</p>
+<p>Group <code>references</code> to create a concatenated list of unique references per <code>region_code</code>, e.g. <code>AD</code> = <code>Đug (2013) | Koren and Kulijer (2016) | Lelo (2016)</code>. References that act as both red and species list reference, will only be listed once:</p>
+<pre class="r"><code>grouped_references &lt;-
+  input_references %&gt;%
+  arrange(region_code, citation_type, citation) %&gt;%
+  group_by(region_code) %&gt;%
+  summarize(reference = paste(unique(citation), collapse = &quot; | &quot;))</code></pre>
+<p>Start from distributions and join with taxon, region and grouped references information (which should result in the same number of rows as distributions):</p>
+<pre class="r"><code>input_data &lt;-
+  input_distribution %&gt;%
+  left_join(input_taxa, on = &quot;scientific_name&quot;) %&gt;%
+  left_join(input_regions, on = &quot;region_code&quot;) %&gt;%
+  left_join(grouped_references, on = &quot;region_code&quot;)</code></pre>
+<pre class="r"><code>nrow(input_data) == nrow(input_distribution)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="tidy-data" class="section level2">
+<h2><span class="header-section-number">2.2</span> Tidy data</h2>
+<p>Clean data somewhat:</p>
+<pre class="r"><code>input_data %&lt;&gt;%
+  remove_empty(&quot;rows&quot;) %&gt;%    # Remove empty rows
+  clean_names()               # Have sensible (lowercase) column names</code></pre>
+<p>Sort on scientific name and region code (to maintain some consistency between updates of the dataset):</p>
+<pre class="r"><code>input_data %&lt;&gt;% arrange(scientific_name, region_code)</code></pre>
+</div>
+<div id="scientific-names" class="section level2">
+<h2><span class="header-section-number">2.3</span> Scientific names</h2>
+<p>Information regarding scientific names, authorship, classification and phylogenetic order in <code>input_taxa</code> is derived from <a href="https://doi.org/10.3897/zookeys.811.28712">Wiemers et al. (2018)</a>, which is an “updated checklist of the European Butterflies” with 496 species.</p>
+<p>All names on the regional checklists (<code>scientific_name_regional</code> in <code>input_distribution</code>) were matched by Dimitri Brosens to their accepted name (<code>scientific_name</code>) using the <a href="https://doi.org/10.15468/39omei">GBIF Backbone Taxonomy</a> and verified by Dirk Maes (e.g. <code>Lycaeides argyrognomon</code> to official <code>Plebejus argyrognomon</code>). A limited number of <code>scientific_name_regional</code> could not be matched and/or are not accepted by Wiemers et al. (2018):</p>
+<pre class="r"><code>input_data %&gt;%
+  filter(is.na(family)) %&gt;% # Is a field from input_taxa and thus assesses there was a match
+  select(scientific_name_regional, scientific_name, region_code, comments) %&gt;%
+  arrange(scientific_name_regional)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["scientific_name_regional"],"name":[1],"type":["chr"],"align":["left"]},{"label":["scientific_name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["region_code"],"name":[3],"type":["chr"],"align":["left"]},{"label":["comments"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"Aricia hyacinthus","2":"NA","3":"EU27","4":"NA"},{"1":"Aricia hyacinthus","2":"NA","3":"EUR","4":"NA"},{"1":"Aricia hyacinthus","2":"NA","3":"RO","4":"Not present according to Rudi Verovnik"},{"1":"Belenois aurota","2":"NA","3":"MT","4":"Probably accidentally introduced"},{"1":"Colias lesbia","2":"NA","3":"MT","4":"Misidentification"},{"1":"Deudorix livia","2":"NA","3":"CY","4":"Single specimen captured in 1994"},{"1":"Deudorix livia","2":"NA","3":"GR","4":"Species added. Recorded once in NE Attica, Greece; Müller et al. (2005)"},{"1":"Lopinga deidamia","2":"NA","3":"EU27","4":"NA"},{"1":"Lopinga deidamia","2":"NA","3":"EUR","4":"NA"},{"1":"Paleophilotes panope","2":"Palaeophilotes panope","3":"RU","4":"Comment Rudi: not a European species"},{"1":"Papilio saharae","2":"NA","3":"MT","4":"Misidentification by Leraut (2016)"},{"1":"Polyommatus eleniae","2":"Polyommatus eleniae","3":"EU27","4":"Does not occur in Europe"},{"1":"Polyommatus eleniae","2":"Polyommatus eleniae","3":"EUR","4":"Does not occur in Europe"},{"1":"Polyommatus pljushtchi","2":"Polyommatus damone?","3":"EU27","4":"CHECK SCIENTIFIC NAME"},{"1":"Polyommatus pljushtchi","2":"Polyommatus damone?","3":"EUR","4":"CHECK SCIENTIFIC NAME"},{"1":"Pseudophilotes panope","2":"Palaeophilotes panope","3":"EU27","4":"Comment Rudi: not a European species"},{"1":"Pseudophilotes panope","2":"Palaeophilotes panope","3":"EUR","4":"Comment Rudi: not a European species"},{"1":"Thaleropis ionia","2":"NA","3":"GR","4":"Kudrna (1986)"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>We <strong>restrict the checklist to scientific names included in Wiemers et al. (2018)</strong> (i.e. those included in <code>input_taxa</code>, see <a href="https://github.com/inbo/eurobutt-checklist/issues/16">issue 16</a>):</p>
+<pre class="r"><code>input_data %&lt;&gt;% filter(!is.na(family)) # Remove distributions/names without match</code></pre>
+</div>
+<div id="taxon-ids" class="section level2">
+<h2><span class="header-section-number">2.4</span> Taxon IDs</h2>
+<p>To link taxa with information in the extension(s), each taxon needs a unique and relatively stable <code>taxonID</code>. Here we create one in the form of <code>dataset_shortname:taxon:hash</code>, where <code>hash</code> is unique code based on scientific name (that will remain the same as long as scientific name remains the same):</p>
+<pre class="r"><code>vdigest &lt;- Vectorize(digest) # Vectorize digest function to work with vectors
+input_data %&lt;&gt;% mutate(taxon_id = paste(
+  &quot;eurobutt-checklist&quot;,
+  &quot;taxon&quot;,
+  vdigest(paste(scientific_name), algo = &quot;md5&quot;),
+  sep = &quot;:&quot;
+))</code></pre>
+</div>
+<div id="preview-data" class="section level2">
+<h2><span class="header-section-number">2.5</span> Preview data</h2>
+<p>Show the number of species and distributions:</p>
+<pre class="r"><code>input_data %&gt;%
+  group_by(family) %&gt;%
+  summarize(
+    `# taxa` = n_distinct(taxon_id),
+    `# distributions` = n()
+  ) %&gt;%
+  adorn_totals(&quot;row&quot;)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["family"],"name":[1],"type":["chr"],"align":["left"]},{"label":["# taxa"],"name":[2],"type":["int"],"align":["right"]},{"label":["# distributions"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"Hesperiidae","2":"47","3":"874"},{"1":"Lycaenidae","2":"130","3":"2188"},{"1":"Nymphalidae","2":"246","3":"3722"},{"1":"Papilionidae","2":"15","3":"230"},{"1":"Pieridae","2":"57","3":"968"},{"1":"Riodinidae","2":"1","3":"38"},{"1":"Total","2":"496","3":"8020"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Preview data:</p>
+<pre class="r"><code>input_data %&gt;% head()</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["scientific_name_regional"],"name":[1],"type":["chr"],"align":["left"]},{"label":["scientific_name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["region_code"],"name":[3],"type":["chr"],"align":["left"]},{"label":["rlc"],"name":[4],"type":["chr"],"align":["left"]},{"label":["status"],"name":[5],"type":["chr"],"align":["left"]},{"label":["endemic"],"name":[6],"type":["chr"],"align":["left"]},{"label":["comments"],"name":[7],"type":["chr"],"align":["left"]},{"label":["use"],"name":[8],"type":["chr"],"align":["left"]},{"label":["phylogenetic_order"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["family"],"name":[10],"type":["chr"],"align":["left"]},{"label":["subfamily"],"name":[11],"type":["chr"],"align":["left"]},{"label":["genus"],"name":[12],"type":["chr"],"align":["left"]},{"label":["specific_epithet"],"name":[13],"type":["chr"],"align":["left"]},{"label":["authorship"],"name":[14],"type":["chr"],"align":["left"]},{"label":["english_name"],"name":[15],"type":["chr"],"align":["left"]},{"label":["taxon_comments"],"name":[16],"type":["chr"],"align":["left"]},{"label":["habitats_directive"],"name":[17],"type":["chr"],"align":["left"]},{"label":["spec_status"],"name":[18],"type":["chr"],"align":["left"]},{"label":["edge_of_range"],"name":[19],"type":["chr"],"align":["left"]},{"label":["region_name"],"name":[20],"type":["chr"],"align":["left"]},{"label":["country_code"],"name":[21],"type":["chr"],"align":["left"]},{"label":["country_name"],"name":[22],"type":["chr"],"align":["left"]},{"label":["part_of_eu"],"name":[23],"type":["chr"],"align":["left"]},{"label":["area"],"name":[24],"type":["dbl"],"align":["right"]},{"label":["population"],"name":[25],"type":["dbl"],"align":["right"]},{"label":["reference"],"name":[26],"type":["chr"],"align":["left"]},{"label":["taxon_id"],"name":[27],"type":["chr"],"align":["left"]}],"data":[{"1":"Aglais ichnusa","2":"Aglais ichnusa","3":"EU27","4":"LC","5":"P","6":"EU27","7":"NA","8":"y","9":"298","10":"Nymphalidae","11":"Nymphalinae","12":"Aglais","13":"ichnusa","14":"(Hübner, 1824)","15":"Corsican Small Tortoiseshell","16":"NA","17":"NA","18":"NA","19":"NA","20":"European Union","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"van Swaay et al. (2010)","27":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368"},{"1":"Aglais ichnusa","2":"Aglais ichnusa","3":"EUR","4":"LC","5":"P","6":"EUR","7":"NA","8":"y","9":"298","10":"Nymphalidae","11":"Nymphalinae","12":"Aglais","13":"ichnusa","14":"(Hübner, 1824)","15":"Corsican Small Tortoiseshell","16":"NA","17":"NA","18":"NA","19":"NA","20":"Europe","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"van Swaay et al. (2010) | Wiemers et al. (2018)","27":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368"},{"1":"Aglais urticae ichnusa","2":"Aglais ichnusa","3":"FR","4":"Unknown","5":"P","6":"NA","7":"NA","8":"y","9":"298","10":"Nymphalidae","11":"Nymphalinae","12":"Aglais","13":"ichnusa","14":"(Hübner, 1824)","15":"Corsican Small Tortoiseshell","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"FR","22":"France","23":"y","24":"551394","25":"64979548","26":"UICN France et al. (2012) | Lafranchis et al. (2015)","27":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368"},{"1":"Aglais ichnusa","2":"Aglais ichnusa","3":"IT","4":"LC","5":"P","6":"NA","7":"NA","8":"y","9":"298","10":"Nymphalidae","11":"Nymphalinae","12":"Aglais","13":"ichnusa","14":"(Hübner, 1824)","15":"Corsican Small Tortoiseshell","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"IT","22":"Italy","23":"y","24":"301318","25":"59359900","26":"Bonelli et al. (2018) | Balletto et al. (2014)","27":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368"},{"1":"Inachis io","2":"Aglais io","3":"AD","4":"LC","5":"P","6":"NA","7":"NA","8":"y","9":"296","10":"Nymphalidae","11":"Nymphalinae","12":"Aglais","13":"io","14":"(Linnaeus, 1758)","15":"Peacock","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"AD","22":"Andorra","23":"NA","24":"468","25":"76965","26":"Dantart and Jubany (2012)","27":"eurobutt-checklist:taxon:313b5c3d9d2b299ecb8018413ad136ba"},{"1":"Aglais io","2":"Aglais io","3":"AL","4":"Unknown","5":"P","6":"NA","7":"NA","8":"y","9":"296","10":"Nymphalidae","11":"Nymphalinae","12":"Aglais","13":"io","14":"(Linnaeus, 1758)","15":"Peacock","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"AL","22":"Albania","23":"NA","24":"28748","25":"2930187","26":"Anonymous (2013) | Cuvelier et al. (2018) | Micevski et al. (2015) | Šašić et al. (2015) | Verovnik and Popović (2013)","27":"eurobutt-checklist:taxon:313b5c3d9d2b299ecb8018413ad136ba"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div id="darwin-core-mapping" class="section level1">
+<h1><span class="header-section-number">3</span> Darwin Core mapping</h1>
+<div id="taxon-core" class="section level2">
+<h2><span class="header-section-number">3.1</span> Taxon core</h2>
+<p>Create a dataframe with unique taxa only (retaining the first of multiple distribution rows):</p>
+<pre class="r"><code>taxon &lt;- input_data %&gt;% distinct(taxon_id, .keep_all = TRUE)</code></pre>
+<p>Map the data to <a href="http://rs.gbif.org/core/dwc_taxon_2015-04-24.xml">Darwin Core Taxon</a>:</p>
+<div id="language" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> language</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_language = &quot;en&quot;)</code></pre>
+</div>
+<div id="license" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> license</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_license = &quot;http://creativecommons.org/publicdomain/zero/1.0/&quot;)</code></pre>
+</div>
+<div id="rightsholder" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> rightsHolder</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_rightsHolder = &quot;INBO&quot;)</code></pre>
+</div>
+<div id="accessrights" class="section level3">
+<h3><span class="header-section-number">3.1.4</span> accessRights</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_accessRights = &quot;https://www.inbo.be/en/norms-data-use&quot;)</code></pre>
+</div>
+<div id="datasetid" class="section level3">
+<h3><span class="header-section-number">3.1.5</span> datasetID</h3>
+<pre class="r"><code>taxon  %&lt;&gt;% mutate(dwc_datasetID = &quot;&quot;)</code></pre>
+</div>
+<div id="institutioncode" class="section level3">
+<h3><span class="header-section-number">3.1.6</span> institutionCode</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_institutionCode = &quot;INBO&quot;)</code></pre>
+</div>
+<div id="datasetname" class="section level3">
+<h3><span class="header-section-number">3.1.7</span> datasetName</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_datasetName = &quot;National checklists and red lists for prioritising European butterfly conservation actions&quot;)</code></pre>
+</div>
+<div id="taxonid" class="section level3">
+<h3><span class="header-section-number">3.1.8</span> taxonID</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_taxonID = taxon_id)</code></pre>
+</div>
+<div id="scientificname" class="section level3">
+<h3><span class="header-section-number">3.1.9</span> scientificName</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_scientificName = scientific_name)</code></pre>
+</div>
+<div id="kingdom" class="section level3">
+<h3><span class="header-section-number">3.1.10</span> kingdom</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_kingdom = &quot;Animalia&quot;)</code></pre>
+</div>
+<div id="phylum" class="section level3">
+<h3><span class="header-section-number">3.1.11</span> phylum</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_phylum = &quot;Arthropoda&quot;)</code></pre>
+</div>
+<div id="class" class="section level3">
+<h3><span class="header-section-number">3.1.12</span> class</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_class = &quot;Insecta&quot;)</code></pre>
+</div>
+<div id="order" class="section level3">
+<h3><span class="header-section-number">3.1.13</span> order</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_order = &quot;Lepidoptera&quot;)</code></pre>
+</div>
+<div id="family" class="section level3">
+<h3><span class="header-section-number">3.1.14</span> family</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_family = family)</code></pre>
+</div>
+<div id="genus" class="section level3">
+<h3><span class="header-section-number">3.1.15</span> genus</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_genus = genus)</code></pre>
+</div>
+<div id="specificepithet" class="section level3">
+<h3><span class="header-section-number">3.1.16</span> specificEpithet</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_specificEpithet = specific_epithet)</code></pre>
+</div>
+<div id="taxonrank" class="section level3">
+<h3><span class="header-section-number">3.1.17</span> taxonRank</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_taxonRank = &quot;species&quot;)</code></pre>
+</div>
+<div id="scientificnameauthorship" class="section level3">
+<h3><span class="header-section-number">3.1.18</span> scientificNameAuthorship</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_scientificNameAuthorship = authorship)</code></pre>
+</div>
+<div id="nomenclaturalcode" class="section level3">
+<h3><span class="header-section-number">3.1.19</span> nomenclaturalCode</h3>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_nomenclaturalCode = &quot;ICZN&quot;)</code></pre>
+</div>
+</div>
+<div id="distribution-extension" class="section level2">
+<h2><span class="header-section-number">3.2</span> Distribution extension</h2>
+<p>Create a dataframe with all data:</p>
+<pre class="r"><code>distribution &lt;- input_data</code></pre>
+<p>Map the data to <a href="http://rs.gbif.org/extension/gbif/1.0/distribution.xml">Species Distribution</a>:</p>
+<div id="taxonid-1" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> taxonID</h3>
+<pre class="r"><code>distribution %&lt;&gt;% mutate(dwc_taxonID = taxon_id) </code></pre>
+</div>
+<div id="locationid" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> locationID</h3>
+<p>Map values:</p>
+<pre class="r"><code>distribution %&lt;&gt;% mutate(dwc_locationID = case_when(
+  # Europe: not WGSRPD:1 as that does not include Azores and Canary islands
+  # https://en.wikipedia.org/wiki/World_Geographical_Scheme_for_Recording_Plant_Distributions#1_Europe
+  region_code == &quot;EUR&quot; ~ &quot;&quot;,
+  
+  # European union: EU is reserved, but not an official ISO code
+  # https://en.wikipedia.org/wiki/ISO_3166-1#Criteria_for_inclusion
+  region_code == &quot;EU27&quot; ~ &quot;&quot;,
+  
+  # Azores, Canary Islands, Madeira: use marine regions codes
+  # The island groups have ISO_3166-2 subdivisions codes, but for consistency we use marine regions for all
+  region_code == &quot;MA_AZ&quot; ~ &quot;http://marineregions.org/mrgid/2454&quot;, # ISO_3166:PT-20
+  region_code == &quot;MA_AZ_Corvo&quot; ~ &quot;http://marineregions.org/mrgid/2462&quot;,
+  region_code == &quot;MA_AZ_Faial&quot; ~ &quot;http://marineregions.org/mrgid/2458&quot;,
+  region_code == &quot;MA_AZ_Flores&quot; ~ &quot;http://marineregions.org/mrgid/2461&quot;,
+  region_code == &quot;MA_AZ_Graciosa&quot; ~ &quot;http://marineregions.org/mrgid/2463&quot;,
+  region_code == &quot;MA_AZ_Pico&quot; ~ &quot;http://marineregions.org/mrgid/2460&quot;,
+  region_code == &quot;MA_AZ_Santa Maria&quot; ~ &quot;http://marineregions.org/mrgid/2459&quot;,
+  region_code == &quot;MA_AZ_Sao Jorge&quot; ~ &quot;http://marineregions.org/mrgid/2455&quot;,
+  region_code == &quot;MA_AZ_Sao Miguel&quot; ~ &quot;http://marineregions.org/mrgid/2456&quot;,
+  region_code == &quot;MA_AZ_Terceira&quot; ~ &quot;http://marineregions.org/mrgid/2457&quot;,
+  
+  region_code == &quot;MA_CA&quot; ~ &quot;http://marineregions.org/mrgid/3743&quot;, # ISO_3166:ES-CN
+  region_code == &quot;MA_CA_El Hierro&quot; ~ &quot;http://marineregions.org/mrgid/3747&quot;,
+  region_code == &quot;MA_CA_Fuerteventura&quot; ~ &quot;http://marineregions.org/mrgid/3757&quot;,
+  region_code == &quot;MA_CA_Gran Canaria&quot; ~ &quot;http://marineregions.org/mrgid/3746&quot;,
+  region_code == &quot;MA_CA_La Gomera&quot; ~ &quot;http://marineregions.org/mrgid/3744&quot;,
+  region_code == &quot;MA_CA_La Palma&quot; ~ &quot;http://marineregions.org/mrgid/3748&quot;,
+  region_code == &quot;MA_CA_Lanzarote&quot; ~ &quot;http://marineregions.org/mrgid/3755&quot;,
+  region_code == &quot;MA_CA_Tenerife&quot; ~ &quot;http://marineregions.org/mrgid/3756&quot;,
+
+  region_code == &quot;MA_MA&quot; ~ &quot;http://marineregions.org/mrgid/4955&quot;, # ISO_3166:PT-30
+  region_code == &quot;MA_MA_Madeira&quot; ~ &quot;http://marineregions.org/mrgid/4956&quot;,
+  region_code == &quot;MA_MA_Porto Santo&quot; ~ &quot;http://marineregions.org/mrgid/4958&quot;,
+  
+  # All other countries: ISO_3166 code
+  is.na(region_name) ~ paste0(&quot;ISO_3166:&quot;, region_code)
+))</code></pre>
+</div>
+<div id="locality" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> locality</h3>
+<p>Map values:</p>
+<pre class="r"><code>distribution %&lt;&gt;% mutate(dwc_locality = case_when(
+  # Use country name if not a region  
+  is.na(region_name) ~ country_name,
+  
+  # Use e.g. &quot;Azores, Corvo&quot; for island groups
+  str_detect(region_code, &quot;MA_AZ_&quot;) ~ paste(&quot;Azores&quot;, region_name, sep = &quot;, &quot;),
+  str_detect(region_code, &quot;MA_MA_&quot;) ~ paste(&quot;Madeira&quot;, region_name, sep = &quot;, &quot;),
+  str_detect(region_code, &quot;MA_CA_&quot;) ~ paste(&quot;Canary Islands&quot;, region_name, sep = &quot;, &quot;),
+  
+  # Use region name for rest
+  TRUE ~ region_name
+))</code></pre>
+</div>
+<div id="countrycode" class="section level3">
+<h3><span class="header-section-number">3.2.4</span> countryCode</h3>
+<p>Map values:</p>
+<pre class="r"><code>distribution %&lt;&gt;% mutate(dwc_countryCode = country_code)</code></pre>
+<p>Inspect mapped values:</p>
+<pre class="r"><code>distribution %&gt;%
+  group_by(
+    region_code, region_name, country_code, country_name,
+    dwc_locationID, dwc_locality, dwc_countryCode
+  ) %&gt;%
+  count()</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["region_code"],"name":[1],"type":["chr"],"align":["left"]},{"label":["region_name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["country_code"],"name":[3],"type":["chr"],"align":["left"]},{"label":["country_name"],"name":[4],"type":["chr"],"align":["left"]},{"label":["dwc_locationID"],"name":[5],"type":["chr"],"align":["left"]},{"label":["dwc_locality"],"name":[6],"type":["chr"],"align":["left"]},{"label":["dwc_countryCode"],"name":[7],"type":["chr"],"align":["left"]},{"label":["n"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"AD","2":"NA","3":"AD","4":"Andorra","5":"ISO_3166:AD","6":"Andorra","7":"AD","8":"153"},{"1":"AL","2":"NA","3":"AL","4":"Albania","5":"ISO_3166:AL","6":"Albania","7":"AL","8":"208"},{"1":"AT","2":"NA","3":"AT","4":"Austria","5":"ISO_3166:AT","6":"Austria","7":"AT","8":"216"},{"1":"BA","2":"NA","3":"BA","4":"Bosnia and Herzegovina","5":"ISO_3166:BA","6":"Bosnia and Herzegovina","7":"BA","8":"199"},{"1":"BE","2":"NA","3":"BE","4":"Belgium","5":"ISO_3166:BE","6":"Belgium","7":"BE","8":"117"},{"1":"BG","2":"NA","3":"BG","4":"Bulgaria","5":"ISO_3166:BG","6":"Bulgaria","7":"BG","8":"220"},{"1":"BY","2":"NA","3":"BY","4":"Belarus","5":"ISO_3166:BY","6":"Belarus","7":"BY","8":"137"},{"1":"CH","2":"NA","3":"CH","4":"Switzerland","5":"ISO_3166:CH","6":"Switzerland","7":"CH","8":"213"},{"1":"CY","2":"NA","3":"CY","4":"Cyprus","5":"ISO_3166:CY","6":"Cyprus","7":"CY","8":"52"},{"1":"CZ","2":"NA","3":"CZ","4":"Czech Republic","5":"ISO_3166:CZ","6":"Czech Republic","7":"CZ","8":"175"},{"1":"DE","2":"NA","3":"DE","4":"Germany","5":"ISO_3166:DE","6":"Germany","7":"DE","8":"189"},{"1":"DK","2":"NA","3":"DK","4":"Denmark","5":"ISO_3166:DK","6":"Denmark","7":"DK","8":"100"},{"1":"EE","2":"NA","3":"EE","4":"Estonia","5":"ISO_3166:EE","6":"Estonia","7":"EE","8":"113"},{"1":"ES","2":"NA","3":"ES","4":"Spain","5":"ISO_3166:ES","6":"Spain","7":"ES","8":"233"},{"1":"EU27","2":"European Union","3":"NA","4":"NA","5":"","6":"European Union","7":"NA","8":"493"},{"1":"EUR","2":"Europe","3":"NA","4":"NA","5":"","6":"Europe","7":"NA","8":"497"},{"1":"FI","2":"NA","3":"FI","4":"Finland","5":"ISO_3166:FI","6":"Finland","7":"FI","8":"121"},{"1":"FR","2":"NA","3":"FR","4":"France","5":"ISO_3166:FR","6":"France","7":"FR","8":"267"},{"1":"GB","2":"NA","3":"GB","4":"United Kingdom","5":"ISO_3166:GB","6":"United Kingdom","7":"GB","8":"75"},{"1":"GR","2":"NA","3":"GR","4":"Greece","5":"ISO_3166:GR","6":"Greece","7":"GR","8":"241"},{"1":"HR","2":"NA","3":"HR","4":"Croatia","5":"ISO_3166:HR","6":"Croatia","7":"HR","8":"200"},{"1":"HU","2":"NA","3":"HU","4":"Hungary","5":"ISO_3166:HU","6":"Hungary","7":"HU","8":"166"},{"1":"IE","2":"NA","3":"IE","4":"Ireland","5":"ISO_3166:IE","6":"Ireland","7":"IE","8":"35"},{"1":"IS","2":"NA","3":"IS","4":"Iceland","5":"ISO_3166:IS","6":"Iceland","7":"IS","8":"6"},{"1":"IT","2":"NA","3":"IT","4":"Italy","5":"ISO_3166:IT","6":"Italy","7":"IT","8":"290"},{"1":"LI","2":"NA","3":"LI","4":"Liechtenstein","5":"ISO_3166:LI","6":"Liechtenstein","7":"LI","8":"137"},{"1":"LT","2":"NA","3":"LT","4":"Lithuania","5":"ISO_3166:LT","6":"Lithuania","7":"LT","8":"127"},{"1":"LU","2":"NA","3":"LU","4":"Luxembourg","5":"ISO_3166:LU","6":"Luxembourg","7":"LU","8":"117"},{"1":"LV","2":"NA","3":"LV","4":"Latvia","5":"ISO_3166:LV","6":"Latvia","7":"LV","8":"119"},{"1":"MA_AZ","2":"Azores","3":"PT","4":"Portugal","5":"http://marineregions.org/mrgid/2454","6":"Azores","7":"PT","8":"10"},{"1":"MA_AZ_Corvo","2":"Corvo","3":"PT","4":"Portugal","5":"http://marineregions.org/mrgid/2462","6":"Azores, Corvo","7":"PT","8":"7"},{"1":"MA_AZ_Faial","2":"Faial","3":"PT","4":"Portugal","5":"http://marineregions.org/mrgid/2458","6":"Azores, Faial","7":"PT","8":"8"},{"1":"MA_AZ_Flores","2":"Flores","3":"PT","4":"Portugal","5":"http://marineregions.org/mrgid/2461","6":"Azores, Flores","7":"PT","8":"7"},{"1":"MA_AZ_Graciosa","2":"Graciosa","3":"PT","4":"Portugal","5":"http://marineregions.org/mrgid/2463","6":"Azores, Graciosa","7":"PT","8":"6"},{"1":"MA_AZ_Pico","2":"Pico","3":"PT","4":"Portugal","5":"http://marineregions.org/mrgid/2460","6":"Azores, Pico","7":"PT","8":"8"},{"1":"MA_AZ_Santa Maria","2":"Santa Maria","3":"PT","4":"Portugal","5":"http://marineregions.org/mrgid/2459","6":"Azores, Santa Maria","7":"PT","8":"6"},{"1":"MA_AZ_Sao Jorge","2":"Sao Jorge","3":"PT","4":"Portugal","5":"http://marineregions.org/mrgid/2455","6":"Azores, Sao Jorge","7":"PT","8":"8"},{"1":"MA_AZ_Sao Miguel","2":"Sao Miguel","3":"PT","4":"Portugal","5":"http://marineregions.org/mrgid/2456","6":"Azores, Sao Miguel","7":"PT","8":"10"},{"1":"MA_AZ_Terceira","2":"Terceira","3":"PT","4":"Portugal","5":"http://marineregions.org/mrgid/2457","6":"Azores, Terceira","7":"PT","8":"7"},{"1":"MA_CA","2":"Canary Islands","3":"ES","4":"Spain","5":"http://marineregions.org/mrgid/3743","6":"Canary Islands","7":"ES","8":"37"},{"1":"MA_CA_El Hierro","2":"El Hierro","3":"ES","4":"Spain","5":"http://marineregions.org/mrgid/3747","6":"Canary Islands, El Hierro","7":"ES","8":"20"},{"1":"MA_CA_Fuerteventura","2":"Fuerteventura","3":"ES","4":"Spain","5":"http://marineregions.org/mrgid/3757","6":"Canary Islands, Fuerteventura","7":"ES","8":"19"},{"1":"MA_CA_Gran Canaria","2":"Gran Canaria","3":"ES","4":"Spain","5":"http://marineregions.org/mrgid/3746","6":"Canary Islands, Gran Canaria","7":"ES","8":"24"},{"1":"MA_CA_La Gomera","2":"La Gomera","3":"ES","4":"Spain","5":"http://marineregions.org/mrgid/3744","6":"Canary Islands, La Gomera","7":"ES","8":"26"},{"1":"MA_CA_La Palma","2":"La Palma","3":"ES","4":"Spain","5":"http://marineregions.org/mrgid/3748","6":"Canary Islands, La Palma","7":"ES","8":"26"},{"1":"MA_CA_Lanzarote","2":"Lanzorate","3":"ES","4":"Spain","5":"http://marineregions.org/mrgid/3755","6":"Canary Islands, Lanzorate","7":"ES","8":"15"},{"1":"MA_CA_Tenerife","2":"Tenerife","3":"ES","4":"Spain","5":"http://marineregions.org/mrgid/3756","6":"Canary Islands, Tenerife","7":"ES","8":"29"},{"1":"MA_MA","2":"Madeira","3":"PT","4":"Portugal","5":"http://marineregions.org/mrgid/4955","6":"Madeira","7":"PT","8":"18"},{"1":"MA_MA_Madeira","2":"Madeira","3":"PT","4":"Portugal","5":"http://marineregions.org/mrgid/4956","6":"Madeira, Madeira","7":"PT","8":"18"},{"1":"MA_MA_Porto Santo","2":"Porto Santo","3":"PT","4":"Portugal","5":"http://marineregions.org/mrgid/4958","6":"Madeira, Porto Santo","7":"PT","8":"11"},{"1":"MD","2":"NA","3":"MD","4":"Moldova","5":"ISO_3166:MD","6":"Moldova","7":"MD","8":"135"},{"1":"ME","2":"NA","3":"ME","4":"Montenegro","5":"ISO_3166:ME","6":"Montenegro","7":"ME","8":"193"},{"1":"MK","2":"NA","3":"MK","4":"North Macedonia","5":"ISO_3166:MK","6":"North Macedonia","7":"MK","8":"214"},{"1":"MT","2":"NA","3":"MT","4":"Malta","5":"ISO_3166:MT","6":"Malta","7":"MT","8":"61"},{"1":"NL","2":"NA","3":"NL","4":"Netherlands","5":"ISO_3166:NL","6":"Netherlands","7":"NL","8":"113"},{"1":"NO","2":"NA","3":"NO","4":"Norway","5":"ISO_3166:NO","6":"Norway","7":"NO","8":"101"},{"1":"PL","2":"NA","3":"PL","4":"Poland","5":"ISO_3166:PL","6":"Poland","7":"PL","8":"163"},{"1":"PT","2":"NA","3":"PT","4":"Portugal","5":"ISO_3166:PT","6":"Portugal","7":"PT","8":"138"},{"1":"RO","2":"NA","3":"RO","4":"Romania","5":"ISO_3166:RO","6":"Romania","7":"RO","8":"204"},{"1":"RS","2":"NA","3":"RS","4":"Serbia","5":"ISO_3166:RS","6":"Serbia","7":"RS","8":"199"},{"1":"RU","2":"NA","3":"RU","4":"Russia","5":"ISO_3166:RU","6":"Russia","7":"RU","8":"261"},{"1":"SE","2":"NA","3":"SE","4":"Sweden","5":"ISO_3166:SE","6":"Sweden","7":"SE","8":"123"},{"1":"SI","2":"NA","3":"SI","4":"Slovenia","5":"ISO_3166:SI","6":"Slovenia","7":"SI","8":"181"},{"1":"SK","2":"NA","3":"SK","4":"Slovakia","5":"ISO_3166:SK","6":"Slovakia","7":"SK","8":"179"},{"1":"UA","2":"NA","3":"UA","4":"Ukraine","5":"ISO_3166:UA","6":"Ukraine","7":"UA","8":"219"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="occurrencestatus" class="section level3">
+<h3><span class="header-section-number">3.2.5</span> occurrenceStatus</h3>
+<p>Inspect values:</p>
+<pre class="r"><code>distribution %&gt;%
+  group_by(status) %&gt;%
+  count()</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["status"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"A","2":"144"},{"1":"Ex","2":"142"},{"1":"Excluded","2":"37"},{"1":"I","2":"217"},{"1":"M","2":"108"},{"1":"P","2":"7334"},{"1":"P?","2":"24"},{"1":"P(I)","2":"14"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Map values (see <a href="https://doi.org/10.3897/zookeys.811.28712">Wiemers et al. 2018</a>, Materials &amp; Methods). For migrants we decided to map to own term <code>migrant</code> as this information is too important to be lumped into <code>irregular</code> (with alternative term <code>vagrant</code>) and cannot be considered just <code>present</code> or <code>absent</code> (see issue <a href="https://github.com/inbo/eurobutt-checklist/issues/18">#18</a>).</p>
+<pre class="r"><code>distribution %&lt;&gt;% mutate(dwc_occurrenceStatus = recode(status,
+  &quot;A&quot; = &quot;absent&quot;,
+  &quot;Ex&quot; = &quot;absent&quot;, # Regionally extinct, is indicated in threatStatus &quot;RE&quot;
+  &quot;Excluded&quot; = &quot;excluded&quot;,
+  &quot;I&quot; = &quot;irregular&quot;, # Irregular vagrant
+  &quot;M&quot; = &quot;migrant&quot;, # Regular migrant
+  &quot;P&quot; = &quot;present&quot;,
+  &quot;P?&quot; = &quot;doubtful&quot;, # Possibly present
+  &quot;P(I)&quot; = &quot;irregular&quot;, # Probably only present as an immigrant
+  .default = &quot;&quot;
+))</code></pre>
+<p>Inspect mapped values:</p>
+<pre class="r"><code>distribution %&gt;%
+  group_by(status, dwc_occurrenceStatus) %&gt;%
+  count()</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["status"],"name":[1],"type":["chr"],"align":["left"]},{"label":["dwc_occurrenceStatus"],"name":[2],"type":["chr"],"align":["left"]},{"label":["n"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"A","2":"absent","3":"144"},{"1":"Ex","2":"absent","3":"142"},{"1":"Excluded","2":"excluded","3":"37"},{"1":"I","2":"irregular","3":"217"},{"1":"M","2":"migrant","3":"108"},{"1":"P","2":"present","3":"7334"},{"1":"P?","2":"doubtful","3":"24"},{"1":"P(I)","2":"irregular","3":"14"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="threatstatus" class="section level3">
+<h3><span class="header-section-number">3.2.6</span> threatStatus</h3>
+<p>Inspect values:</p>
+<pre class="r"><code>distribution %&gt;%
+  group_by(rlc) %&gt;%
+  count()</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["rlc"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"CR","2":"181"},{"1":"DD","2":"136"},{"1":"EN","2":"369"},{"1":"LC","2":"3334"},{"1":"LC/NE","2":"7"},{"1":"NE","2":"384"},{"1":"NRLA","2":"1476"},{"1":"NT","2":"663"},{"1":"NtA","2":"221"},{"1":"R","2":"22"},{"1":"RE","2":"145"},{"1":"Unknown","2":"450"},{"1":"VU","2":"632"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Map values:</p>
+<pre class="r"><code>distribution %&lt;&gt;% mutate(dwc_threatStatus = recode(rlc,
+  # Official IUCN terms: https://www.iucnredlist.org/about/regional
+
+  &quot;RE&quot; = &quot;RE&quot;, # Regionally Extinct
+  &quot;CR&quot; = &quot;CR&quot;, # Critically Endangered
+  &quot;EN&quot; = &quot;EN&quot;, # Endangered
+  &quot;VU&quot; = &quot;VU&quot;, # Vulnerable
+  &quot;NT&quot; = &quot;NT&quot;, # Near Threatened
+  &quot;LC&quot; = &quot;LC&quot;, # Least Concern
+  &quot;DD&quot; = &quot;DD&quot;, # Data Deficient
+  &quot;NtA&quot; = &quot;NA&quot;, # Not Applicable
+  &quot;NE&quot; = &quot;NE&quot;, # Not Evaluated
+  
+  # Unofficial terms
+  &quot;NRLA&quot; = &quot;&quot;, # No red list available
+  &quot;R&quot; = &quot;Rare&quot;, # Used by Germany
+  &quot;Unknown&quot; = &quot;unknown&quot;, # not an official IUCN term, but included to be explicit
+  &quot;LC/NE&quot; = &quot;NE&quot;, # Used by Poland
+  .default = &quot;&quot;
+))</code></pre>
+<p>Inspect mapped values:</p>
+<pre class="r"><code>distribution %&gt;%
+  group_by(rlc, dwc_threatStatus) %&gt;%
+  count()</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["rlc"],"name":[1],"type":["chr"],"align":["left"]},{"label":["dwc_threatStatus"],"name":[2],"type":["chr"],"align":["left"]},{"label":["n"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"CR","2":"CR","3":"181"},{"1":"DD","2":"DD","3":"136"},{"1":"EN","2":"EN","3":"369"},{"1":"LC","2":"LC","3":"3334"},{"1":"LC/NE","2":"NE","3":"7"},{"1":"NE","2":"NE","3":"384"},{"1":"NRLA","2":"","3":"1476"},{"1":"NT","2":"NT","3":"663"},{"1":"NtA","2":"__NA__","3":"221"},{"1":"R","2":"Rare","3":"22"},{"1":"RE","2":"RE","3":"145"},{"1":"Unknown","2":"unknown","3":"450"},{"1":"VU","2":"VU","3":"632"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="source" class="section level3">
+<h3><span class="header-section-number">3.2.7</span> source</h3>
+<pre class="r"><code>distribution %&lt;&gt;% mutate(dwc_source = reference)</code></pre>
+</div>
+</div>
+</div>
+<div id="vernacular-names-extension" class="section level1">
+<h1><span class="header-section-number">4</span> Vernacular names extension</h1>
+<p>Create a dataframe with unique taxa only (retaining the first of multiple distribution rows):</p>
+<pre class="r"><code>vernacular_names &lt;- input_data %&gt;% distinct(taxon_id, .keep_all = TRUE)</code></pre>
+<p>Remove taxa where the vernacular name contains “suggestion”:</p>
+<pre class="r"><code>vernacular_names %&lt;&gt;% filter(!str_detect(english_name, &quot;suggestion&quot;))</code></pre>
+<p>Map the data to <a href="http://rs.gbif.org/extension/gbif/1.0/vernacularname.xml">Vernacular Names</a>:</p>
+<div id="taxonid-2" class="section level3">
+<h3><span class="header-section-number">4.0.1</span> taxonID</h3>
+<pre class="r"><code>vernacular_names %&lt;&gt;% mutate(dwc_taxonID = taxon_id) </code></pre>
+</div>
+<div id="vernacularname" class="section level3">
+<h3><span class="header-section-number">4.0.2</span> vernacularName</h3>
+<pre class="r"><code>vernacular_names %&lt;&gt;% mutate(dwc_vernacularName = english_name)</code></pre>
+</div>
+<div id="language-1" class="section level3">
+<h3><span class="header-section-number">4.0.3</span> language</h3>
+<pre class="r"><code>vernacular_names %&lt;&gt;% mutate(dwc_language = &quot;en&quot;) </code></pre>
+</div>
+</div>
+<div id="post-processing" class="section level1">
+<h1><span class="header-section-number">5</span> Post-processing</h1>
+<p>Only keep the Darwin Core columns:</p>
+<pre class="r"><code>taxon %&lt;&gt;% select(starts_with(&quot;dwc_&quot;))
+distribution %&lt;&gt;% select(starts_with(&quot;dwc_&quot;))
+vernacular_names %&lt;&gt;% select(starts_with(&quot;dwc_&quot;))</code></pre>
+<p>Drop the <code>dwc_</code> prefix:</p>
+<pre class="r"><code>colnames(taxon) &lt;- str_remove(colnames(taxon), &quot;dwc_&quot;)
+colnames(distribution) &lt;- str_remove(colnames(distribution), &quot;dwc_&quot;)
+colnames(vernacular_names) &lt;- str_remove(colnames(vernacular_names), &quot;dwc_&quot;)</code></pre>
+<p>Preview taxon core:</p>
+<pre class="r"><code>taxon %&gt;% head()</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["language"],"name":[1],"type":["chr"],"align":["left"]},{"label":["license"],"name":[2],"type":["chr"],"align":["left"]},{"label":["rightsHolder"],"name":[3],"type":["chr"],"align":["left"]},{"label":["accessRights"],"name":[4],"type":["chr"],"align":["left"]},{"label":["datasetID"],"name":[5],"type":["chr"],"align":["left"]},{"label":["institutionCode"],"name":[6],"type":["chr"],"align":["left"]},{"label":["datasetName"],"name":[7],"type":["chr"],"align":["left"]},{"label":["taxonID"],"name":[8],"type":["chr"],"align":["left"]},{"label":["scientificName"],"name":[9],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[10],"type":["chr"],"align":["left"]},{"label":["phylum"],"name":[11],"type":["chr"],"align":["left"]},{"label":["class"],"name":[12],"type":["chr"],"align":["left"]},{"label":["order"],"name":[13],"type":["chr"],"align":["left"]},{"label":["family"],"name":[14],"type":["chr"],"align":["left"]},{"label":["genus"],"name":[15],"type":["chr"],"align":["left"]},{"label":["specificEpithet"],"name":[16],"type":["chr"],"align":["left"]},{"label":["taxonRank"],"name":[17],"type":["chr"],"align":["left"]},{"label":["scientificNameAuthorship"],"name":[18],"type":["chr"],"align":["left"]},{"label":["nomenclaturalCode"],"name":[19],"type":["chr"],"align":["left"]}],"data":[{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for prioritising European butterfly conservation actions","8":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368","9":"Aglais ichnusa","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Nymphalidae","15":"Aglais","16":"ichnusa","17":"species","18":"(Hübner, 1824)","19":"ICZN"},{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for prioritising European butterfly conservation actions","8":"eurobutt-checklist:taxon:313b5c3d9d2b299ecb8018413ad136ba","9":"Aglais io","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Nymphalidae","15":"Aglais","16":"io","17":"species","18":"(Linnaeus, 1758)","19":"ICZN"},{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for prioritising European butterfly conservation actions","8":"eurobutt-checklist:taxon:b539a7ed55eb3e9e98da58bcc194ee6a","9":"Aglais urticae","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Nymphalidae","15":"Aglais","16":"urticae","17":"species","18":"(Linnaeus, 1758)","19":"ICZN"},{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for prioritising European butterfly conservation actions","8":"eurobutt-checklist:taxon:f5471fb0cd39f621cc6798be5fea44aa","9":"Agriades aquilo","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Lycaenidae","15":"Agriades","16":"aquilo","17":"species","18":"(Boisduval, 1832)","19":"ICZN"},{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for prioritising European butterfly conservation actions","8":"eurobutt-checklist:taxon:80df9d0fb00d1caaa84fac49d305d07b","9":"Agriades dardanus","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Lycaenidae","15":"Agriades","16":"dardanus","17":"species","18":"(Freyer, 1843)","19":"ICZN"},{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for prioritising European butterfly conservation actions","8":"eurobutt-checklist:taxon:d97bac5d477e090d61a361463d91637a","9":"Agriades glandon","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Lycaenidae","15":"Agriades","16":"glandon","17":"species","18":"(de Prunner, 1798)","19":"ICZN"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Preview distribution extension:</p>
+<pre class="r"><code>distribution %&gt;% head()</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["taxonID"],"name":[1],"type":["chr"],"align":["left"]},{"label":["locationID"],"name":[2],"type":["chr"],"align":["left"]},{"label":["locality"],"name":[3],"type":["chr"],"align":["left"]},{"label":["countryCode"],"name":[4],"type":["chr"],"align":["left"]},{"label":["occurrenceStatus"],"name":[5],"type":["chr"],"align":["left"]},{"label":["threatStatus"],"name":[6],"type":["chr"],"align":["left"]},{"label":["source"],"name":[7],"type":["chr"],"align":["left"]}],"data":[{"1":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368","2":"","3":"European Union","4":"NA","5":"present","6":"LC","7":"van Swaay et al. (2010)"},{"1":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368","2":"","3":"Europe","4":"NA","5":"present","6":"LC","7":"van Swaay et al. (2010) | Wiemers et al. (2018)"},{"1":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368","2":"ISO_3166:FR","3":"France","4":"FR","5":"present","6":"unknown","7":"UICN France et al. (2012) | Lafranchis et al. (2015)"},{"1":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368","2":"ISO_3166:IT","3":"Italy","4":"IT","5":"present","6":"LC","7":"Bonelli et al. (2018) | Balletto et al. (2014)"},{"1":"eurobutt-checklist:taxon:313b5c3d9d2b299ecb8018413ad136ba","2":"ISO_3166:AD","3":"Andorra","4":"AD","5":"present","6":"LC","7":"Dantart and Jubany (2012)"},{"1":"eurobutt-checklist:taxon:313b5c3d9d2b299ecb8018413ad136ba","2":"ISO_3166:AL","3":"Albania","4":"AL","5":"present","6":"unknown","7":"Anonymous (2013) | Cuvelier et al. (2018) | Micevski et al. (2015) | Šašić et al. (2015) | Verovnik and Popović (2013)"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Preview vernacular names extension:</p>
+<pre class="r"><code>vernacular_names %&gt;% head()</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["taxonID"],"name":[1],"type":["chr"],"align":["left"]},{"label":["vernacularName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["language"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368","2":"Corsican Small Tortoiseshell","3":"en"},{"1":"eurobutt-checklist:taxon:313b5c3d9d2b299ecb8018413ad136ba","2":"Peacock","3":"en"},{"1":"eurobutt-checklist:taxon:b539a7ed55eb3e9e98da58bcc194ee6a","2":"Small Tortoiseshell","3":"en"},{"1":"eurobutt-checklist:taxon:f5471fb0cd39f621cc6798be5fea44aa","2":"Arctic Blue","3":"en"},{"1":"eurobutt-checklist:taxon:80df9d0fb00d1caaa84fac49d305d07b","2":"Bosnian Blue","3":"en"},{"1":"eurobutt-checklist:taxon:d97bac5d477e090d61a361463d91637a","2":"Glandon Blue","3":"en"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Save to CSV:</p>
+<pre class="r"><code>write_csv(taxon, here(&quot;data&quot;, &quot;processed&quot;, &quot;taxon.csv&quot;), na = &quot;&quot;)
+write_csv(distribution, here(&quot;data&quot;, &quot;processed&quot;, &quot;distribution.csv&quot;), na = &quot;&quot;)
+write_csv(vernacular_names, here(&quot;data&quot;, &quot;processed&quot;, &quot;vernacularname.csv&quot;), na = &quot;&quot;)</code></pre>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

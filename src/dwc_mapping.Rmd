@@ -478,7 +478,7 @@ distribution %<>% mutate(dwc_source = reference)
 
 Create a dataframe with unique taxa only (retaining the first of multiple distribution rows):
 
-```{r start_taxon}
+```{r start_vernacular_names}
 vernacular_names <- input_data %>% distinct(taxon_id, .keep_all = TRUE)
 ```
 
