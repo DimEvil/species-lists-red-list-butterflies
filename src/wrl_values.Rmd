@@ -27,90 +27,66 @@ library(gam)            # To work with generalized additive models
 
 # Read source data
 
-The source data is maintained in a Google Spreadsheet, which is copied to `data/raw` in `src/dwc_mapping.Rmd`: we will use those files as source files:
+The source data is maintained in a Google Spreadsheet and copied by `src/dwc_mapping.Rmd` to `data/raw`, from which we read it:
 
 ```{r}
-taxa_regional <- read_csv(here::here("data", "raw", "distribution.csv"))
-regional_threat_scores <- read_csv(here::here("data", "raw", "rlc.csv"))
+species_list <- read_csv(here::here("data", "raw", "taxa.csv"))
+distribution <- read_csv(here::here("data", "raw", "distribution.csv"))
 country_info <- read_csv(here::here("data", "raw", "regions.csv"))
-specieslist <- read_csv(here::here("data", "raw", "taxa.csv"))
+regional_threat_scores <- read_csv(here::here("data", "raw", "rlc.csv"))
 ```
 
+# Taxa per country + regional threat score
 
-
-Create a data frame `raw_data` from `taxa_regional`, which is the original dataframe and the basis for the calculation of the values:
+`regional_threat_scores` contains a **weight** (in percentage) assigned to a red list category for a country, e.g. `CR` in `Andorra`	= `80`. Add these weights to the distributions and save as `wrl_data`:
 
 ```{r}
+wrl_data <-
+  distribution %>%
+  left_join(regional_threat_scores, by = c("rlc" = "rlc", "region_code" = "country_code"))
 ```
 
+Add country information:
 
 ```{r}
-raw_data %<>%
-  remove_empty("rows") %>%    # Remove empty rows
-  clean_names()               # Have sensible (lowercase) column names
+wrl_data <-
+  wrl_data %>%
+  left_join(country_info, by = c("region_code" = "region_code"))
 ```
 
-Add prefix `raw_` to all column names to avoid name clashes with Darwin Core terms:
+Remove non-countries and non-official scientific names:
 
 ```{r}
-colnames(raw_data) <- paste0("raw_", colnames(raw_data))
+wrl_data <-
+  wrl_data %>%
+  filter(
+    !is.na(country_code), # Excludes Europe, EU27
+    is.na(region_name), # Excludes Azores, Canary, Madeira islands
+    !is.na(scientific_name) # Excludes regional scientific names without an officially accepted match
+  )
 ```
 
-Preview data:
+Save species per country:
 
 ```{r}
-head(raw_data, n = 100)
+wrl_data %>%
+  group_by(country_code, country_name, part_of_eu, area, population) %>%
+  summarize(
+    `number_of_species` = n_distinct(scientific_name)
+  ) %>%
+  select(country_code, number_of_species, country_name, part_of_eu, area, population) %>%
+  write_csv(here::here("data", "interim", "species_per_country.csv"), na = "")
 ```
 
-# Focus on the speciesnames used in Europe
-
-(6371 rows)
+Save countries per species:
 
 ```{r}
-raw_data %<>%
-  select(raw_speciesname_europe, raw_country_code, raw_red_list_category)%>%    
-  group_by(raw_speciesname_europe, raw_country_code,raw_red_list_category, add = FALSE) %>%
-  summarise()
-head(raw_data, n=50)
-```
-
-## Join regional threat score information
-
-```{r}
-raw_data <- raw_data %>% 
-  left_join(regional_threat_scores, by = c("raw_red_list_category" = "RedListCategory","raw_country_code"="countryCode"))
-```
-
-## Calculations
-
-Calculates species per country
-
-```{r}
-species_per_country <- raw_data %>%
-  group_by(raw_country_code) %>%
-  summarize(n())
-```
-
-calculates country per species
-
-```{r}
-country_per_species <- raw_data %>%
-  group_by(raw_speciesname_europe) %>%
-  summarize(n()) %>%
-  rename(number_of_countries = 'n()')
-
-write_csv(country_per_species, here("data", "interim", "country_per_species.csv"), na = "")
-```
-
-## Join Country Information
-
-Species per country
-
-```{r}
-species_per_country <- species_per_country %>%
-  left_join(country_info, by = c("raw_country_code"="CountryCode"))
-
-write_csv(species_per_country, here("data", "interim", "species_per_country.csv"), na = "")
+wrl_data %>%
+  group_by(scientific_name) %>%
+  summarize(
+    `number_of_countries` = n_distinct(country_code)
+  ) %>%
+  write_csv(here::here("data", "interim", "country_per_species.csv"), na = "")
 ```
 
 # Recreate Ncountry dataframes used in original script
@@ -118,9 +94,13 @@ write_csv(species_per_country, here("data", "interim", "species_per_country.csv"
 NCountries is Raw Data + info on countries per species
 
 ```{r}
-NCountries <- raw_data %>%
+NCountries <- distribution %>%
               left_join(country_per_species, by = c("raw_speciesname_europe"="raw_speciesname_europe")) %>%
               left_join(country_info, by = c("raw_country_code"="CountryCode"))
+
+View(NCountries)
+
+
 ```
 
 N is for number of coutries, we did this already....
