@@ -88,54 +88,20 @@ wrl_data %>%
   write_csv(here::here("data", "interim", "countries_per_species.csv"), na = "")
 ```
 
-# Recreate Ncountry dataframes used in original script
-
-NCountries is Raw Data + info on countries per species
-
-```{r}
-NCountries <- distribution %>%
-              left_join(country_per_species, by = c("raw_speciesname_europe"="raw_speciesname_europe")) %>%
-              left_join(country_info, by = c("raw_country_code"="CountryCode"))
-
-View(NCountries)
-
-
-```
-
-N is for number of coutries, we did this already....
-country_per_species is NCountries2
-
-```{r}
-NCountries2 <- NCountries %>% 
-	group_by(raw_speciesname_europe) %>%
-	summarise(NCountries = length(raw_country_code))
-head(NCountries2)
-nrow(NCountries2)
-
-NCountriesEU <- NCountries %>% 
-	filter(!is.na(EU))
-
-NCountries2EU <- NCountriesEU %>% 
-	group_by(raw_speciesname_europe) %>%
-	summarise(NCountriesEU = length(raw_country_code))
-
-NCountriesEurEU <- full_join(NCountries2, NCountries2EU, by = "raw_speciesname_europe")
-```
-
 # Weighted Red list values
 
-We calculate the mean RLC_country and left join the country information.
+Calculate the mean wrl value per country:
 
 ```{r}
-MeanRLCValue_per_country <- raw_data %>%
-      group_by(raw_country_code) %>%
-      summarise_at(vars(RLCNum),funs(mean(., na.rm=TRUE))) %>%
-      left_join(country_info, by = c("raw_country_code"="CountryCode"))
+wrl_values_per_country <-
+  wrl_data %>%
+  group_by(country_code, country_name, part_of_eu, area, population) %>%
+  summarize(
+    mean_rlc = mean(rlc_numeric, na.rm = TRUE)
+  ) %>%
+  select(country_code, mean_rlc, country_name, part_of_eu, area, population)
 
-head(MeanRLCValue_per_country)
-head(raw_data)
-
-write_csv(MeanRLCValue_per_country, here("data", "processed", "wrl_values_per_country.csv"), na = "")
+write_csv(wrl_values_per_country, here::here("data", "processed", "wrl", "wrl_values_per_country.csv"), na = "")
 ```
 
 We calculate the mean RLC_species and left join the country information.
