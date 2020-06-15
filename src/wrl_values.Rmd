@@ -65,6 +65,12 @@ Only include taxa to be used for analysis (column `use`, based on breeding, regu
 analysis_data %<>% filter(use == "y")
 ```
 
+Remove duplicated rows (e.g. two local scientific names that were mapped to one):
+
+```{r}
+analysis_data %<>% distinct(scientific_name, region_code, .keep_all = TRUE)
+```
+
 Remove unnecessary fields and rename `region_code` to `country_code` (including countries + island groups):
 
 ```{r}

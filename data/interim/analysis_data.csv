@@ -1264,7 +1264,6 @@ Coenonympha arcania,P,,LC,1,SK,Slovakia,y,49036
 Coenonympha arcania,P,,LC,,UA,Ukraine,,603628
 Coenonympha corinna,P,,LC,1,FR,France,y,551394
 Coenonympha corinna,P,,LC,1,IT,Italy,y,301318
-Coenonympha corinna,P,,LC,1,IT,Italy,y,301318
 Coenonympha dorus,P,,NT,20,AD,Andorra,,468
 Coenonympha dorus,Ex,,RE,100,CH,Switzerland,,41290
 Coenonympha dorus,P,,NE,,ES,Spain,y,498468
@@ -1273,11 +1272,8 @@ Coenonympha dorus,P,,LC,1,IT,Italy,y,301318
 Coenonympha dorus,P,,NRLA,,PT,Portugal,y,91568
 Coenonympha gardetta,P,,LC,1,AT,Austria,y,83858
 Coenonympha gardetta,P,,LC,1,CH,Switzerland,,41290
-Coenonympha gardetta,P,,LC,1,CH,Switzerland,,41290
 Coenonympha gardetta,P,,R,20,DE,Germany,y,357168
 Coenonympha gardetta,P,,LC,1,FR,France,y,551394
-Coenonympha gardetta,P,,LC,1,FR,France,y,551394
-Coenonympha gardetta,P,,LC,1,IT,Italy,y,301318
 Coenonympha gardetta,P,,LC,1,IT,Italy,y,301318
 Coenonympha gardetta,P,,NRLA,,LI,Liechtenstein,,160
 Coenonympha gardetta,P,,LC,1,SI,Slovenia,y,20273
@@ -1378,7 +1374,6 @@ Coenonympha pamphilus,P,,LC,1,GR,Greece,y,131940
 Coenonympha pamphilus,P,,LC,1,HR,Croatia,y,56594
 Coenonympha pamphilus,P,,LC,1,HU,Hungary,y,93030
 Coenonympha pamphilus,P,,NT,20,IE,Ireland,y,70273
-Coenonympha pamphilus,P,,LC,1,IT,Italy,y,301318
 Coenonympha pamphilus,P,,LC,1,IT,Italy,y,301318
 Coenonympha pamphilus,P,,NRLA,,LI,Liechtenstein,,160
 Coenonympha pamphilus,P,,LC,,LT,Lithuania,y,65300
@@ -2794,7 +2789,6 @@ Hipparchia hermione,P,,CR,80,CZ,Czech Republic,y,78866
 Hipparchia hermione,P,,EN,50,DE,Germany,y,357168
 Hipparchia hermione,P,,NE,,ES,Spain,y,498468
 Hipparchia hermione,P,,LC,1,FR,France,y,551394
-Hipparchia hermione,P,,LC,1,FR,France,y,551394
 Hipparchia hermione,P,,LC,1,IT,Italy,y,301318
 Hipparchia hermione,P,,EN,,LT,Lithuania,y,65300
 Hipparchia hermione,P,,NRLA,,LV,Latvia,y,64589
@@ -3575,8 +3569,6 @@ Lycaena hippothoe,P,,LC,1,FR,France,y,551394
 Lycaena hippothoe,P,,NT,20,HR,Croatia,y,56594
 Lycaena hippothoe,P,,EN,50,HU,Hungary,y,93030
 Lycaena hippothoe,P,,LC,1,IT,Italy,y,301318
-Lycaena hippothoe,P,,LC,1,IT,Italy,y,301318
-Lycaena hippothoe,P,,LC,1,IT,Italy,y,301318
 Lycaena hippothoe,P,,NRLA,,LI,Liechtenstein,,160
 Lycaena hippothoe,P,,LC,,LT,Lithuania,y,65300
 Lycaena hippothoe,P,,CR,80,LU,Luxembourg,y,2428
@@ -3675,7 +3667,6 @@ Lycaena tityrus,P,,LC,1,FR,France,y,551394
 Lycaena tityrus,P,,LC,1,GR,Greece,y,131940
 Lycaena tityrus,P,,LC,1,HR,Croatia,y,56594
 Lycaena tityrus,P,,LC,1,HU,Hungary,y,93030
-Lycaena tityrus,P,,LC,1,IT,Italy,y,301318
 Lycaena tityrus,P,,LC,1,IT,Italy,y,301318
 Lycaena tityrus,P,,NRLA,,LI,Liechtenstein,,160
 Lycaena tityrus,P,,LC,,LT,Lithuania,y,65300
@@ -4114,7 +4105,6 @@ Melitaea didyma,P,,LC,,UA,Ukraine,,603628
 Melitaea ornata,P,,Unknown,1,AL,Albania,,28748
 Melitaea ornata,P,,DD,1,BG,Bulgaria,y,110994
 Melitaea ornata,P,,NE,,ES,Spain,y,498468
-Melitaea ornata,P,,DD,1,FR,France,y,551394
 Melitaea ornata,P,,DD,1,FR,France,y,551394
 Melitaea ornata,P,,LC,1,GR,Greece,y,131940
 Melitaea ornata,P,,LC,1,HR,Croatia,y,56594
@@ -4621,7 +4611,6 @@ Parnassius phoebus,P,,LC,1,CH,Switzerland,,41290
 Parnassius phoebus,P,,DD,1,DE,Germany,y,357168
 Parnassius phoebus,P,,LC,1,FR,France,y,551394
 Parnassius phoebus,P,,LC,1,IT,Italy,y,301318
-Parnassius phoebus,P,,LC,1,IT,Italy,y,301318
 Parnassius phoebus,P,,NRLA,,LI,Liechtenstein,,160
 Parnassius phoebus,P,,NRLA,,RU,Russia,,3972400
 Pelopidas thrax,P,,NRLA,,CY,Cyprus,y,9251
@@ -4644,7 +4633,6 @@ Phengaris alcon,P,,NT,20,GR,Greece,y,131940
 Phengaris alcon,P,,CR,80,HR,Croatia,y,56594
 Phengaris alcon,P,,VU,30,HU,Hungary,y,93030
 Phengaris alcon,P,,VU,30,IT,Italy,y,301318
-Phengaris alcon,P,,NRLA,,LI,Liechtenstein,,160
 Phengaris alcon,P,,NRLA,,LI,Liechtenstein,,160
 Phengaris alcon,P,,EN,,LT,Lithuania,y,65300
 Phengaris alcon,P,,NRLA,,LV,Latvia,y,64589
@@ -5013,7 +5001,6 @@ Plebejus idas,P,,LC,1,FR,France,y,551394
 Plebejus idas,P,,LC,1,GR,Greece,y,131940
 Plebejus idas,P,,LC,1,HR,Croatia,y,56594
 Plebejus idas,P,,VU,30,HU,Hungary,y,93030
-Plebejus idas,P,,LC,1,IT,Italy,y,301318
 Plebejus idas,P,,LC,1,IT,Italy,y,301318
 Plebejus idas,P,,NRLA,,LI,Liechtenstein,,160
 Plebejus idas,P,,LC,,LT,Lithuania,y,65300
@@ -5479,7 +5466,6 @@ Pyrgus alveus,P,,LC,1,BG,Bulgaria,y,110994
 Pyrgus alveus,P,,LC,1,BY,Belarus,,207600
 Pyrgus alveus,P,,LC,1,CH,Switzerland,,41290
 Pyrgus alveus,P,,CR,80,CZ,Czech Republic,y,78866
-Pyrgus alveus,P,,CR,80,CZ,Czech Republic,y,78866
 Pyrgus alveus,P,,EN,50,DE,Germany,y,357168
 Pyrgus alveus,P,,LC,,EE,Estonia,y,45339
 Pyrgus alveus,P,,NE,,ES,Spain,y,498468
@@ -5488,8 +5474,6 @@ Pyrgus alveus,P,,LC,1,FR,France,y,551394
 Pyrgus alveus,P,,LC,1,GR,Greece,y,131940
 Pyrgus alveus,P,,LC,1,HR,Croatia,y,56594
 Pyrgus alveus,P,,VU,30,HU,Hungary,y,93030
-Pyrgus alveus,P,,LC,1,IT,Italy,y,301318
-Pyrgus alveus,P,,LC,1,IT,Italy,y,301318
 Pyrgus alveus,P,,LC,1,IT,Italy,y,301318
 Pyrgus alveus,P,,NRLA,,LI,Liechtenstein,,160
 Pyrgus alveus,P,,LC,,LT,Lithuania,y,65300
@@ -5618,7 +5602,6 @@ Pyrgus cirsii,P,,NT,20,FR,France,y,551394
 Pyrgus cirsii,P,,NtA,,IT,Italy,y,301318
 Pyrgus foulquieri,P,,NE,,ES,Spain,y,498468
 Pyrgus foulquieri,P,,LC,1,FR,France,y,551394
-Pyrgus foulquieri,P,,LC,1,IT,Italy,y,301318
 Pyrgus foulquieri,P,,LC,1,IT,Italy,y,301318
 Pyrgus malvae,P,,Unknown,1,AL,Albania,,28748
 Pyrgus malvae,P,,LC,1,AT,Austria,y,83858
