@@ -1,6 +1,8 @@
 ---
 title: "Weighted red list values"
-author: "Dimitri Brosens"
+author:
+- Dimitri Brosens
+- Dirk Maes
 date: "18 juli 2018"
 output:
   pdf_document: default
