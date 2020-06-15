@@ -36,29 +36,22 @@ country_info <- read_csv(here::here("data", "raw", "regions.csv"))
 regional_threat_scores <- read_csv(here::here("data", "raw", "rlc.csv"))
 ```
 
-# Taxa per country + regional threat score
+# Pre-processing
 
-`regional_threat_scores` contains a **weight** (in percentage) assigned to a red list category for a country, e.g. `CR` in `Andorra`	= `80`. Add these weights to the distributions and save as `wrl_data`:
+Create a dataframe of the taxa per country (= distributions) and associate with country information and regional threat score. Regional threat score is a **weight** (in percentage) assigned to a red list category (rlc) for a country, e.g. `CR` in `Andorra`	= `80`.
 
 ```{r}
-wrl_data <-
+taxa_country_rlc <-
   distribution %>%
+  left_join(country_info, by = c("region_code" = "region_code")) %>%
   left_join(regional_threat_scores, by = c("rlc" = "rlc", "region_code" = "country_code"))
-```
-
-Add country information:
-
-```{r}
-wrl_data <-
-  wrl_data %>%
-  left_join(country_info, by = c("region_code" = "region_code"))
 ```
 
 Remove non-countries and non-official scientific names:
 
 ```{r}
-wrl_data <-
-  wrl_data %>%
+taxa_country_rlc <-
+  taxa_country_rlc %>%
   filter(
     !is.na(country_code), # Excludes Europe, EU27
     is.na(region_name), # Excludes Azores, Canary, Madeira islands
@@ -69,8 +62,8 @@ wrl_data <-
 Save species per country:
 
 ```{r}
-wrl_data %>%
-  group_by(country_code, country_name, part_of_eu, area, population) %>%
+taxa_country_rlc %>%
+  group_by(country_code, country_name) %>%
   summarize(
     `number_of_species` = n_distinct(scientific_name)
   ) %>%
@@ -80,7 +73,7 @@ wrl_data %>%
 Save countries per species:
 
 ```{r}
-wrl_data %>%
+taxa_country_rlc %>%
   group_by(scientific_name) %>%
   summarize(
     `number_of_countries` = n_distinct(country_code)

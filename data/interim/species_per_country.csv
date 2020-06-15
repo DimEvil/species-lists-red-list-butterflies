@@ -1,43 +1,43 @@
-country_code,country_name,part_of_eu,area,population,number_of_species
-AD,Andorra,,468,76965,153
-AL,Albania,,28748,2930187,207
-AT,Austria,y,83858,8735453,214
-BA,Bosnia and Herzegovina,,51129,3507017,199
-BE,Belgium,y,30528,11429336,117
-BG,Bulgaria,y,110994,7084571,219
-BY,Belarus,,207600,9468338,137
-CH,Switzerland,,41290,8476005,208
-CY,Cyprus,y,9251,1179551,52
-CZ,Czech Republic,y,78866,10618303,174
-DE,Germany,y,357168,82114224,185
-DK,Denmark,y,44493,5733551,100
-EE,Estonia,y,45339,1309632,113
-ES,Spain,y,498468,46354321,233
-FI,Finland,y,338145,5523231,121
-FR,France,y,551394,64979548,259
-GB,United Kingdom,y,244820,66181585,75
-GR,Greece,y,131940,11159773,236
-HR,Croatia,y,56594,4189353,199
-HU,Hungary,y,93030,9721559,165
-IE,Ireland,y,70273,4761657,35
-IS,Iceland,,102775,335025,6
-IT,Italy,y,301318,59359900,272
-LI,Liechtenstein,,160,37922,136
-LT,Lithuania,y,65300,2890297,127
-LU,Luxembourg,y,2428,583455,117
-LV,Latvia,y,64589,1949670,119
-MD,Moldova,,33846,4051212,135
-ME,Montenegro,,13812,628960,193
-MK,North Macedonia,,25713,2083160,214
-MT,Malta,y,316,430835,61
-NL,Netherlands,y,41198,17035938,113
-NO,Norway,,385178,5305383,101
-PL,Poland,y,312685,38170712,163
-PT,Portugal,y,91568,10329506,138
-RO,Romania,y,238392,19679306,203
-RS,Serbia,,88361,8790574,199
-RU,Russia,,3972400,,262
-SE,Sweden,y,449964,9910701,123
-SI,Slovenia,y,20273,2079976,181
-SK,Slovakia,y,49036,5447662,178
-UA,Ukraine,,603628,44222947,214
+country_code,country_name,number_of_species
+AD,Andorra,153
+AL,Albania,207
+AT,Austria,214
+BA,Bosnia and Herzegovina,199
+BE,Belgium,117
+BG,Bulgaria,219
+BY,Belarus,137
+CH,Switzerland,208
+CY,Cyprus,52
+CZ,Czech Republic,174
+DE,Germany,185
+DK,Denmark,100
+EE,Estonia,113
+ES,Spain,233
+FI,Finland,121
+FR,France,259
+GB,United Kingdom,75
+GR,Greece,236
+HR,Croatia,199
+HU,Hungary,165
+IE,Ireland,35
+IS,Iceland,6
+IT,Italy,272
+LI,Liechtenstein,136
+LT,Lithuania,127
+LU,Luxembourg,117
+LV,Latvia,119
+MD,Moldova,135
+ME,Montenegro,193
+MK,North Macedonia,214
+MT,Malta,61
+NL,Netherlands,113
+NO,Norway,101
+PL,Poland,163
+PT,Portugal,138
+RO,Romania,203
+RS,Serbia,199
+RU,Russia,262
+SE,Sweden,123
+SI,Slovenia,181
+SK,Slovakia,178
+UA,Ukraine,214
