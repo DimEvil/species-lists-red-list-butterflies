@@ -89,28 +89,17 @@ Save file:
 write_csv(analysis_data, here::here("data", "interim", "analysis_data.csv"), na = "")
 ```
 
-# Counts per country/species
-
-Species per country:
+# Species per country
 
 ```{r}
-taxa_country_rlv %>%
+species_per_country <-
+  analysis_data %>%
   group_by(country_name, country_code) %>%
   summarize(
     `number_of_species` = n_distinct(scientific_name)
-  ) %>%
-  write_csv(here::here("data", "interim", "species_per_country.csv"), na = "")
-```
+  )
 
-Countries per species:
-
-```{r}
-taxa_country_rlv %>%
-  group_by(scientific_name) %>%
-  summarize(
-    `number_of_countries` = n_distinct(country_code)
-  ) %>%
-  write_csv(here::here("data", "interim", "countries_per_species.csv"), na = "")
+write_csv(species_per_country, here::here("data", "processed", "wrl", "species_per_country.csv"), na = "")
 ```
 
 # Weighted Red list values
