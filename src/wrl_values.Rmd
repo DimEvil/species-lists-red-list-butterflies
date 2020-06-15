@@ -25,32 +25,24 @@ library(janitor)        # To clean input data
 library(gam)            # To work with generalized additive models
 ```
 
-# Read raw data
+# Read source data
 
-The original spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?ts=5b1f937f#gid=1323544344). We need to retrieve this spreadsheet and select the specific Googlesheet:
+The source data is maintained in a Google Spreadsheet, which is copied to `data/raw` in `src/dwc_mapping.Rmd`: we will use those files as source files:
 
 ```{r}
-retrieve_spreadsheet <- gs_title("EuroButt")
+taxa_regional <- read_csv(here::here("data", "raw", "distribution.csv"))
+regional_threat_scores <- read_csv(here::here("data", "raw", "rlc.csv"))
+country_info <- read_csv(here::here("data", "raw", "regions.csv"))
+specieslist <- read_csv(here::here("data", "raw", "taxa.csv"))
 ```
 
-This spreadsheet contains four relevant different worksheets: `taxa_regional`, `regional_threat_scores`, `country_info` and `references`. We select these here and save them as separate data frames. We will then continue with the `taxa_regional` as this is the original dataframe.
 
-```{r warning=FALSE}
-taxa_regional <- retrieve_spreadsheet %>% gs_read("taxa_regional") 
-regional_threat_scores <- retrieve_spreadsheet %>% gs_read("regional_threat_scores")
-country_info <- retrieve_spreadsheet %>% gs_read("country_info")
-specieslist <- retrieve_spreadsheet %>% gs_read("taxa_europe")
-```
 
 Create a data frame `raw_data` from `taxa_regional`, which is the original dataframe and the basis for the calculation of the values:
 
 ```{r}
-raw_data <- taxa_regional
 ```
 
-### Pre-processing
-
-Clean data somewhat
 
 ```{r}
 raw_data %<>%
