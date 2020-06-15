@@ -12,18 +12,17 @@ output:
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
-# Weighted Red List Values Script
-
-This script is used to dynamically calculate the weighted red list values, based on the raw data files on https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?ts=5b1f937f#gid=1323544344
+This script is used to dynamically calculate the **weighted red list values** for butterflies in Europe.
 
 # Load libraries
 
-```{r warning=FALSE}
-library(gam)
-library(tidyverse)        # For data transformations
-library(magrittr)         # For %<>% pipes
-library(googlesheets)     # To import and read Google spreadsheets 
-library(janitor)          # For cleaning input data
+```{r}
+library(tidyverse)      # To do data science
+library(tidylog)        # To provide feedback on dplyr functions
+library(magrittr)       # To use %<>% pipes
+library(here)           # To find files
+library(janitor)        # To clean input data
+library(gam)            # To work with generalized additive models
 ```
 
 # Read raw data
