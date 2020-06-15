@@ -74,7 +74,6 @@ wrl_data %>%
   summarize(
     `number_of_species` = n_distinct(scientific_name)
   ) %>%
-  select(country_code, number_of_species, country_name, part_of_eu, area, population) %>%
   write_csv(here::here("data", "interim", "species_per_country.csv"), na = "")
 ```
 
@@ -86,7 +85,7 @@ wrl_data %>%
   summarize(
     `number_of_countries` = n_distinct(country_code)
   ) %>%
-  write_csv(here::here("data", "interim", "country_per_species.csv"), na = "")
+  write_csv(here::here("data", "interim", "countries_per_species.csv"), na = "")
 ```
 
 # Recreate Ncountry dataframes used in original script
