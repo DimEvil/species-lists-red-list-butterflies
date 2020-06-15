@@ -41,7 +41,7 @@ regional_threat_scores <- read_csv(here::here("data", "raw", "rlc.csv"))
 Create a dataframe of the taxa per country (= distributions) and associate with country information and regional threat score. Regional threat score is a **weight** (in percentage) assigned to a red list category (rlc) for a country, e.g. `CR` in `Andorra`	= `80`.
 
 ```{r}
-taxa_country_rlv <-
+analysis_data <-
   distribution %>%
   left_join(country_info, by = c("region_code" = "region_code")) %>%
   left_join(regional_threat_scores, by = c("rlc" = "rlc", "region_code" = "country_code"))
@@ -50,9 +50,7 @@ taxa_country_rlv <-
 Exclude non-countries, islands, and non-official scientific names. Keep island groups:
 
 ```{r}
-taxa_country_rlv <-
-  taxa_country_rlv %>%
-  filter(
+analysis_data %<>% filter(
     !is.na(country_code), # Exclude Europe, EU27, Macaronesia
     !str_detect(region_code, "MA_AZ_"), # Exclude Azores islands, keep island group MA_AZ
     !str_detect(region_code, "MA_CA_"), # Exclude Canary islands, keep island group MA_CA
@@ -61,11 +59,16 @@ taxa_country_rlv <-
   )
 ```
 
+Only include taxa to be used for analysis (column `use`, based on breeding, regular migrant, regionally extinct, etc.):
+
+```{r}
+analysis_data %<>% filter(use == "y")
+```
+
 Remove unnecessary fields and rename `region_code` to `country_code` (including countries + island groups):
 
 ```{r}
-taxa_country_rlv <-
-  taxa_country_rlv %>%
+analysis_data %<>%
   select(
     scientific_name,
     status,
@@ -80,13 +83,19 @@ taxa_country_rlv <-
   rename(country_code = region_code)
 ```
 
+Save file:
+
+```{r}
+write_csv(analysis_data, here::here("data", "interim", "analysis_data.csv"), na = "")
+```
+
 # Counts per country/species
 
 Species per country:
 
 ```{r}
 taxa_country_rlv %>%
-  group_by(country_code, country_name) %>%
+  group_by(country_name, country_code) %>%
   summarize(
     `number_of_species` = n_distinct(scientific_name)
   ) %>%
