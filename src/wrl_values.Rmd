@@ -41,28 +41,51 @@ regional_threat_scores <- read_csv(here::here("data", "raw", "rlc.csv"))
 Create a dataframe of the taxa per country (= distributions) and associate with country information and regional threat score. Regional threat score is a **weight** (in percentage) assigned to a red list category (rlc) for a country, e.g. `CR` in `Andorra`	= `80`.
 
 ```{r}
-taxa_country_rlc <-
+taxa_country_rlv <-
   distribution %>%
   left_join(country_info, by = c("region_code" = "region_code")) %>%
   left_join(regional_threat_scores, by = c("rlc" = "rlc", "region_code" = "country_code"))
 ```
 
-Remove non-countries and non-official scientific names:
+Exclude non-countries, islands, and non-official scientific names. Keep island groups:
 
 ```{r}
-taxa_country_rlc <-
-  taxa_country_rlc %>%
+taxa_country_rlv <-
+  taxa_country_rlv %>%
   filter(
-    !is.na(country_code), # Excludes Europe, EU27
-    is.na(region_name), # Excludes Azores, Canary, Madeira islands
-    !is.na(scientific_name) # Excludes regional scientific names without an officially accepted match
+    !is.na(country_code), # Exclude Europe, EU27, Macaronesia
+    !str_detect(region_code, "MA_AZ_"), # Exclude Azores islands, keep island group MA_AZ
+    !str_detect(region_code, "MA_CA_"), # Exclude Canary islands, keep island group MA_CA
+    !str_detect(region_code, "MA_MA_"), # Exclude Madeira islands, keep island group MA_MA
+    !is.na(scientific_name) # Exclude regional scientific names without an officially accepted match
   )
 ```
 
-Save species per country:
+Remove unnecessary fields and rename `region_code` to `country_code` (including countries + island groups):
 
 ```{r}
-taxa_country_rlc %>%
+taxa_country_rlv <-
+  taxa_country_rlv %>%
+  select(
+    scientific_name,
+    status,
+    endemic,
+    rlc,
+    rlc_numeric,
+    region_code,
+    country_name,
+    part_of_eu,
+    area
+  ) %>%
+  rename(country_code = region_code)
+```
+
+# Counts per country/species
+
+Species per country:
+
+```{r}
+taxa_country_rlv %>%
   group_by(country_code, country_name) %>%
   summarize(
     `number_of_species` = n_distinct(scientific_name)
@@ -70,10 +93,10 @@ taxa_country_rlc %>%
   write_csv(here::here("data", "interim", "species_per_country.csv"), na = "")
 ```
 
-Save countries per species:
+Countries per species:
 
 ```{r}
-taxa_country_rlc %>%
+taxa_country_rlv %>%
   group_by(scientific_name) %>%
   summarize(
     `number_of_countries` = n_distinct(country_code)
