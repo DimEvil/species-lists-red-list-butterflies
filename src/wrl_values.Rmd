@@ -43,20 +43,8 @@ Create a dataframe of the taxa per country (= distributions) and associate with 
 ```{r}
 analysis_data <-
   distribution %>%
-  left_join(country_info, by = c("region_code" = "region_code")) %>%
-  left_join(regional_threat_scores, by = c("rlc" = "rlc", "region_code" = "country_code"))
-```
-
-Exclude non-countries, islands, and non-official scientific names. Keep island groups:
-
-```{r}
-analysis_data %<>% filter(
-    !is.na(country_code), # Exclude Europe, EU27, Macaronesia
-    !str_detect(region_code, "MA_AZ_"), # Exclude Azores islands, keep island group MA_AZ
-    !str_detect(region_code, "MA_CA_"), # Exclude Canary islands, keep island group MA_CA
-    !str_detect(region_code, "MA_MA_"), # Exclude Madeira islands, keep island group MA_MA
-    !is.na(scientific_name) # Exclude regional scientific names without an officially accepted match
-  )
+  left_join(country_info, by = "region_code") %>%
+  left_join(regional_threat_scores, by = c("rlc", "region_code" = "country_code")) # Only associate region_code that are country_code (excluding islands, etc.)
 ```
 
 Only include taxa to be used for analysis (column `use`, based on breeding, regular migrant, regionally extinct, etc.):
@@ -65,10 +53,59 @@ Only include taxa to be used for analysis (column `use`, based on breeding, regu
 analysis_data %<>% filter(use == "y")
 ```
 
+Exclude regional scientific names without an officially accepted match:
+
+```{r}
+analysis_data %<>% filter(!is.na(scientific_name)) # 1 rows (with use="y")
+```
+
 Remove duplicated rows (e.g. two local scientific names that were mapped to one):
 
 ```{r}
-analysis_data %<>% distinct(scientific_name, region_code, .keep_all = TRUE)
+analysis_data %<>% distinct(scientific_name, region_code, status, rlc, .keep_all = TRUE) # 17 rows
+```
+
+Show any remaining duplicates:
+
+```{r}
+analysis_data %>% get_dupes(scientific_name, region_code) # 32 rows (with use="y")
+```
+
+
+
+Create lookup of red list status for Europe and European Union:
+
+```{r}
+rlc_eur <-
+  analysis_data %>%
+  filter(region_code == "EUR") %>%
+  select(scientific_name, rlc) %>%
+  rename(rlc_eur = rlc)
+
+rlc_eu27 <-
+  analysis_data %>%
+  filter(region_code == "EU27") %>%
+  select(scientific_name, rlc) %>%
+  rename(rlc_eu27 = rlc)
+```
+
+Associated red list status for Europe and European Union:
+
+```{r}
+analysis_data %<>%
+  left_join(rlc_eur, by = "scientific_name") %>%
+  left_join(rlc_eu27, by = "scientific_name")
+```
+
+Exclude non-countries, islands, and non-official scientific names. Keep island groups:
+
+```{r}
+analysis_data %<>% filter(
+  !is.na(country_code), # Exclude Europe, EU27, Macaronesia
+  !str_detect(region_code, "MA_AZ_"), # Exclude Azores islands, keep island group MA_AZ
+  !str_detect(region_code, "MA_CA_"), # Exclude Canary islands, keep island group MA_CA
+  !str_detect(region_code, "MA_MA_") # Exclude Madeira islands, keep island group MA_MA
+)
 ```
 
 Remove unnecessary fields and rename `region_code` to `country_code` (including countries + island groups):
@@ -81,6 +118,8 @@ analysis_data %<>%
     endemic,
     rlc,
     rlc_numeric,
+    rlc_eur,
+    rlc_eu27,
     region_code,
     country_name,
     part_of_eu,
