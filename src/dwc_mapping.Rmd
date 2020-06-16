@@ -1,6 +1,6 @@
 ---
 title: "Darwin Core mapping"
-subtitle: "For: National checklists and red lists for prioritising European butterfly conservation actions"
+subtitle: "For: National checklists and red lists for European butterflies"
 author:
 - Peter Desmet
 - Dimitri Brosens
