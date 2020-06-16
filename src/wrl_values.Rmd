@@ -207,39 +207,7 @@ species_per_country <-
 write_csv(species_per_country, here::here("data", "wrl", "table1.csv"), na = "")
 ```
 
-# Mean red list value per country (cRLV)
-
-```{r}
-mean_rlv_per_country <-
-  analysis_data %>%
-  group_by(country_name, country_code) %>%
-  summarize(
-    mean_rlv = mean(rlc_numeric, na.rm = TRUE)
-  )
-
-write_csv(mean_rlv_per_country, here::here("data", "processed", "wrl", "mean_rlv_per_country.csv"), na = "")
-```
-
-# Mean red list value per species (wsRLV)
-
-```{r}
-weighted_rlv_per_species <-
-  analysis_data %>%
-  group_by(scientific_name) %>%
-  summarize(
-    weighted_species_rlv = mean(rlc_numeric, na.rm = TRUE)
-  )
-
-write_csv(weighted_rlv_per_species, here::here("data", "processed", "wrl", "weighted_rlv_per_species.csv"), na = "")
-```
-
-```{r}
-
-```
-
-
-
-# Linear model for weighted red list value per country
+# Figure 2: Linear model for weighted red list value per country
 
 ```{r}
 lms_country <-
@@ -279,6 +247,37 @@ ggsave(
   height = 5,
   width = 10
 )
+```
+
+
+# Mean red list value per country (cRLV)
+
+```{r}
+mean_rlv_per_country <-
+  analysis_data %>%
+  group_by(country_name, country_code) %>%
+  summarize(
+    mean_rlv = mean(rlc_numeric, na.rm = TRUE)
+  )
+
+write_csv(mean_rlv_per_country, here::here("data", "processed", "wrl", "mean_rlv_per_country.csv"), na = "")
+```
+
+# Mean red list value per species (wsRLV)
+
+```{r}
+weighted_rlv_per_species <-
+  analysis_data %>%
+  group_by(scientific_name) %>%
+  summarize(
+    weighted_species_rlv = mean(rlc_numeric, na.rm = TRUE)
+  )
+
+write_csv(weighted_rlv_per_species, here::here("data", "processed", "wrl", "weighted_rlv_per_species.csv"), na = "")
+```
+
+```{r}
+
 ```
 
 # Weighted red list value per species (wsRLV)
