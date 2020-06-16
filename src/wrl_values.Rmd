@@ -12,7 +12,9 @@ output:
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
-This script is used to dynamically calculate the **weighted red list values** for butterflies in Europe.
+[maes_2019]: https://doi.org/10.1007/s10841-019-00127-z
+
+This script is used to dynamically calculate the **weighted red list values** for butterflies in Europe, use for [Maes et al. (2019)][maes_2019].
 
 # Load libraries
 
@@ -37,38 +39,71 @@ regional_threat_scores <- read_csv(here::here("data", "raw", "rlc.csv"))
 ```
 
 # Pre-processing
+# Create species list with Europe/EU red list and endemic status
 
 Create a dataframe of the taxa per country (= distributions) and associate with country information and regional threat score. Regional threat score is a **weight** (in percentage) assigned to a red list category (rlc) for a country, e.g. `CR` in `Andorra`	= `80`.
+Create lookup of red list status in Europe and European Union:
 
 ```{r}
 analysis_data <-
+eur <-
   distribution %>%
   left_join(country_info, by = "region_code") %>%
   left_join(regional_threat_scores, by = c("rlc", "region_code" = "country_code")) # Only associate region_code that are country_code (excluding islands, etc.)
+  filter(region_code == "EUR") %>%
+  filter(use == "y") %>%
+  select(scientific_name, rlc, endemic) %>%
+  rename(rlc_eur = rlc, endemic_eur = endemic)
+
+eu27 <-
+  distribution %>%
+  filter(region_code == "EU27") %>%
+  filter(use == "y") %>%
+  select(scientific_name, rlc, endemic) %>%
+  rename(rlc_eu27 = rlc, endemic_eu27 = endemic)
 ```
 
 Only include taxa to be used for analysis (column `use`, based on breeding, regular migrant, regionally extinct, etc.):
+Create lookup of endemic status:
 
 ```{r}
 analysis_data %<>% filter(use == "y")
+endemic <-
+  distribution %>%
+  filter(!is.na(endemic)) %>%
+  filter(!region_code %in% c("EUR", "EU27")) %>% # Treated separately, see above
+  group_by(scientific_name) %>%
+  summarize(
+    endemic = paste(unique(endemic), collapse = "|")
+  )
 ```
 
 Exclude regional scientific names without an officially accepted match:
+Join information together with species list:
 
 ```{r}
 analysis_data %<>% filter(!is.na(scientific_name)) # 1 rows (with use="y")
+eu_species_list <-
+  species_list %>%
+  left_join(eur, by = "scientific_name") %>%
+  left_join(eu27, by = "scientific_name") %>%
+  left_join(endemic, by = "scientific_name")
 ```
 
 Remove duplicated rows (e.g. two local scientific names that were mapped to one):
+Number of taxa should remain the same:
 
 ```{r}
 analysis_data %<>% distinct(scientific_name, region_code, status, rlc, .keep_all = TRUE) # 17 rows (with use="y")
+nrow(species_list) == nrow(eu_species_list) # Expect TRUE
 ```
 
 Show any remaining scientific_name + region_code duplicates (should be 0):
+Save file:
 
 ```{r}
 analysis_data %>% get_dupes(scientific_name, region_code)
+write_csv(eu_species_list, here::here("data", "interim", "eu_species_list.csv"), na = "")
 ```
 
 Create lookup of red list status for Europe and European Union:
