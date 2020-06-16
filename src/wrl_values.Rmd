@@ -38,18 +38,13 @@ country_info <- read_csv(here::here("data", "raw", "regions.csv"))
 regional_threat_scores <- read_csv(here::here("data", "raw", "rlc.csv"))
 ```
 
-# Pre-processing
 # Create species list with Europe/EU red list and endemic status
 
-Create a dataframe of the taxa per country (= distributions) and associate with country information and regional threat score. Regional threat score is a **weight** (in percentage) assigned to a red list category (rlc) for a country, e.g. `CR` in `Andorra`	= `80`.
 Create lookup of red list status in Europe and European Union:
 
 ```{r}
-analysis_data <-
 eur <-
   distribution %>%
-  left_join(country_info, by = "region_code") %>%
-  left_join(regional_threat_scores, by = c("rlc", "region_code" = "country_code")) # Only associate region_code that are country_code (excluding islands, etc.)
   filter(region_code == "EUR") %>%
   filter(use == "y") %>%
   select(scientific_name, rlc, endemic) %>%
@@ -63,11 +58,9 @@ eu27 <-
   rename(rlc_eu27 = rlc, endemic_eu27 = endemic)
 ```
 
-Only include taxa to be used for analysis (column `use`, based on breeding, regular migrant, regionally extinct, etc.):
 Create lookup of endemic status:
 
 ```{r}
-analysis_data %<>% filter(use == "y")
 endemic <-
   distribution %>%
   filter(!is.na(endemic)) %>%
@@ -78,11 +71,9 @@ endemic <-
   )
 ```
 
-Exclude regional scientific names without an officially accepted match:
 Join information together with species list:
 
 ```{r}
-analysis_data %<>% filter(!is.na(scientific_name)) # 1 rows (with use="y")
 eu_species_list <-
   species_list %>%
   left_join(eur, by = "scientific_name") %>%
@@ -90,44 +81,45 @@ eu_species_list <-
   left_join(endemic, by = "scientific_name")
 ```
 
-Remove duplicated rows (e.g. two local scientific names that were mapped to one):
 Number of taxa should remain the same:
 
 ```{r}
-analysis_data %<>% distinct(scientific_name, region_code, status, rlc, .keep_all = TRUE) # 17 rows (with use="y")
 nrow(species_list) == nrow(eu_species_list) # Expect TRUE
 ```
 
-Show any remaining scientific_name + region_code duplicates (should be 0):
 Save file:
 
 ```{r}
-analysis_data %>% get_dupes(scientific_name, region_code)
 write_csv(eu_species_list, here::here("data", "interim", "eu_species_list.csv"), na = "")
 ```
 
-Create lookup of red list status for Europe and European Union:
+# Create weighted red list status per country/island group
+
+Create a dataframe of the taxa per country (= distributions) and associate with country information and regional threat score. Regional threat score is a **weight** (in percentage) assigned to a red list category (rlc) for a country, e.g. `CR` in `Andorra`	= `80`.
 
 ```{r}
-rlc_eur <-
-  analysis_data %>%
-  filter(region_code == "EUR") %>%
-  select(scientific_name, rlc) %>%
-  rename(rlc_eur = rlc)
-
-rlc_eu27 <-
-  analysis_data %>%
-  filter(region_code == "EU27") %>%
-  select(scientific_name, rlc) %>%
-  rename(rlc_eu27 = rlc)
+analysis_data <-
+  distribution %>%
+  left_join(country_info, by = "region_code") %>%
+  left_join(regional_threat_scores, by = c("rlc", "region_code" = "country_code")) # Only associate region_code that are country_code (excluding islands, etc.)
 ```
 
-Associated red list status for Europe and European Union:
+Exclude regional scientific names without an official scientific name:
 
 ```{r}
-analysis_data %<>%
-  left_join(rlc_eur, by = "scientific_name") %>%
-  left_join(rlc_eu27, by = "scientific_name")
+analysis_data %<>% filter(!is.na(scientific_name)) # 11 rows
+```
+
+Remove duplicated rows (e.g. two local scientific names that were mapped to one):
+
+```{r}
+analysis_data %<>% distinct(scientific_name, region_code, status, rlc, .keep_all = TRUE) # 17 rows
+```
+
+Show any remaining scientific_name + region_code duplicates that will be used in analysis:
+
+```{r}
+analysis_data %>% filter(use == "y") %>% get_dupes(scientific_name, region_code) # 0 rows
 ```
 
 Exclude non-countries, islands, and non-official scientific names. Keep island groups:
@@ -141,24 +133,33 @@ analysis_data %<>% filter(
 )
 ```
 
-Remove unnecessary fields and rename `region_code` to `country_code` (including countries + island groups):
+Only include taxa to be used for analysis (column `use`, based on breeding, regular migrant, regionally extinct, etc.):
+
+```{r}
+analysis_data %<>% filter(use == "y")
+```
+
+Select useful fields and rename `region_code` to `country_code` (including countries + island groups):
 
 ```{r}
 analysis_data %<>%
   select(
     scientific_name,
-    status,
-    endemic,
-    rlc,
-    rlc_numeric,
-    rlc_eur,
-    rlc_eu27,
     region_code,
     country_name,
+    area,
     part_of_eu,
-    area
+    status,
+    rlc,
+    rlc_numeric
   ) %>%
   rename(country_code = region_code)
+```
+
+Sort values by country, species:
+
+```{r}
+analysis_data %<>% arrange(country_code, scientific_name)
 ```
 
 Save file:
