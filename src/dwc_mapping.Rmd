@@ -217,7 +217,7 @@ taxon %<>% mutate(dwc_institutionCode = "INBO")
 ### datasetName
 
 ```{r}
-taxon %<>% mutate(dwc_datasetName = "National checklists and red lists for prioritising European butterfly conservation actions")
+taxon %<>% mutate(dwc_datasetName = "National checklists and red lists for European butterflies")
 ```
 
 ### taxonID
