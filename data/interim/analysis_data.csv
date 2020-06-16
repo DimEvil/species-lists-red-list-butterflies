@@ -11,7 +11,7 @@ Aporia crataegi,AD,Andorra,468,,P,LC,1
 Arethusana arethusa,AD,Andorra,468,,P,VU,30
 Argynnis pandora,AD,Andorra,468,,P,VU,30
 Argynnis paphia,AD,Andorra,468,,P,LC,1
-Aricia montensis,AD,Andorra,468,,P,Unknown,
+Aricia montensis,AD,Andorra,468,,P,Unknown,1
 Aricia morronensis,AD,Andorra,468,,P,EN,50
 Aricia nicias,AD,Andorra,468,,P,VU,30
 Boloria dia,AD,Andorra,468,,P,LC,1
@@ -27,7 +27,7 @@ Callophrys rubi,AD,Andorra,468,,P,LC,1
 Carcharodus alceae,AD,Andorra,468,,P,LC,1
 Carcharodus floccifera,AD,Andorra,468,,P,EN,50
 Carcharodus lavatherae,AD,Andorra,468,,P,DD,1
-Carterocephalus palaemon,AD,Andorra,468,,P,Unknown,
+Carterocephalus palaemon,AD,Andorra,468,,P,Unknown,1
 Celastrina argiolus,AD,Andorra,468,,P,LC,1
 Chazara briseis,AD,Andorra,468,,P,VU,30
 Coenonympha arcania,AD,Andorra,468,,P,LC,1
@@ -83,7 +83,7 @@ Libythea celtis,AD,Andorra,468,,M,LC,1
 Limenitis camilla,AD,Andorra,468,,P,NT,20
 Limenitis reducta,AD,Andorra,468,,P,NT,20
 Lycaena alciphron,AD,Andorra,468,,P,NT,20
-Lycaena helle,AD,Andorra,468,,P,Unknown,
+Lycaena helle,AD,Andorra,468,,P,Unknown,1
 Lycaena hippothoe,AD,Andorra,468,,P,NT,20
 Lycaena phlaeas,AD,Andorra,468,,P,LC,1
 Lycaena tityrus,AD,Andorra,468,,P,LC,1
@@ -396,7 +396,7 @@ Coenonympha pamphilus,AT,Austria,83858,y,P,LC,1
 Coenonympha tullia,AT,Austria,83858,y,P,VU,30
 Colias alfacariensis,AT,Austria,83858,y,P,NT,20
 Colias chrysotheme,AT,Austria,83858,y,P,CR,80
-Colias crocea,AT,Austria,83858,y,P,NE,
+Colias crocea,AT,Austria,83858,y,P,NE,1
 Colias erate,AT,Austria,83858,y,P,LC,1
 Colias hyale,AT,Austria,83858,y,P,LC,1
 Colias myrmidone,AT,Austria,83858,y,P,CR,80
@@ -462,7 +462,7 @@ Lasiommata petropolitana,AT,Austria,83858,y,P,LC,1
 Leptidea juvernica,AT,Austria,83858,y,P,DD,1
 Leptidea morsei,AT,Austria,83858,y,P,EN,50
 Leptidea sinapis,AT,Austria,83858,y,P,DD,1
-Libythea celtis,AT,Austria,83858,y,P,NE,
+Libythea celtis,AT,Austria,83858,y,P,NE,1
 Limenitis camilla,AT,Austria,83858,y,P,LC,1
 Limenitis populi,AT,Austria,83858,y,P,VU,30
 Limenitis reducta,AT,Austria,83858,y,P,EN,50
@@ -554,7 +554,7 @@ Thymelicus acteon,AT,Austria,83858,y,P,EN,50
 Thymelicus lineola,AT,Austria,83858,y,P,LC,1
 Thymelicus sylvestris,AT,Austria,83858,y,P,LC,1
 Vanessa atalanta,AT,Austria,83858,y,P,LC,1
-Vanessa cardui,AT,Austria,83858,y,M,NE,
+Vanessa cardui,AT,Austria,83858,y,M,NE,1
 Zerynthia polyxena,AT,Austria,83858,y,P,NT,20
 Aglais io,BA,Bosnia and Herzegovina,51129,,P,LC,1
 Aglais urticae,BA,Bosnia and Herzegovina,51129,,P,LC,1
@@ -766,7 +766,7 @@ Boloria dia,BE,Belgium,30528,y,P,EN,50
 Boloria eunomia,BE,Belgium,30528,y,P,VU,30
 Boloria euphrosyne,BE,Belgium,30528,y,P,VU,30
 Boloria selene,BE,Belgium,30528,y,P,NT,20
-Brenthis daphne,BE,Belgium,30528,y,P,NE,
+Brenthis daphne,BE,Belgium,30528,y,P,NE,1
 Brenthis ino,BE,Belgium,30528,y,P,LC,1
 Callophrys rubi,BE,Belgium,30528,y,P,NT,20
 Carcharodus alceae,BE,Belgium,30528,y,P,LC,1
@@ -834,7 +834,7 @@ Phengaris alcon,BE,Belgium,30528,y,P,CR,80
 Phengaris arion,BE,Belgium,30528,y,P,CR,80
 Phengaris teleius,BE,Belgium,30528,y,Ex,RE,100
 Pieris brassicae,BE,Belgium,30528,y,P,LC,1
-Pieris mannii,BE,Belgium,30528,y,P,NE,
+Pieris mannii,BE,Belgium,30528,y,P,NE,1
 Pieris napi,BE,Belgium,30528,y,P,LC,1
 Pieris rapae,BE,Belgium,30528,y,P,LC,1
 Plebejus argus,BE,Belgium,30528,y,P,VU,30
@@ -890,7 +890,7 @@ Brenthis daphne,BG,Bulgaria,110994,y,P,LC,1
 Brenthis hecate,BG,Bulgaria,110994,y,P,LC,1
 Brenthis ino,BG,Bulgaria,110994,y,P,LC,1
 Brintesia circe,BG,Bulgaria,110994,y,P,LC,1
-Cacyreus marshalli,BG,Bulgaria,110994,y,P,NE,
+Cacyreus marshalli,BG,Bulgaria,110994,y,P,NE,1
 Callophrys rubi,BG,Bulgaria,110994,y,P,LC,1
 Carcharodus alceae,BG,Bulgaria,110994,y,P,LC,1
 Carcharodus floccifera,BG,Bulgaria,110994,y,P,LC,1
@@ -945,7 +945,7 @@ Freyeria trochylus,BG,Bulgaria,110994,y,P,CR,80
 Gegenes nostrodamus,BG,Bulgaria,110994,y,P,VU,30
 Gegenes pumilio,BG,Bulgaria,110994,y,P,CR,80
 Glaucopsyche alexis,BG,Bulgaria,110994,y,P,LC,1
-Gonepteryx cleopatra,BG,Bulgaria,110994,y,P,NE,
+Gonepteryx cleopatra,BG,Bulgaria,110994,y,P,NE,1
 Gonepteryx farinosa,BG,Bulgaria,110994,y,P,CR,80
 Gonepteryx rhamni,BG,Bulgaria,110994,y,P,LC,1
 Hamearis lucina,BG,Bulgaria,110994,y,P,LC,1
@@ -1463,70 +1463,70 @@ Vanessa cardui,CY,Cyprus,9251,y,M,NRLA,
 Ypthima asterope,CY,Cyprus,9251,y,P,NRLA,
 Zerynthia cerisy,CY,Cyprus,9251,y,P,NRLA,
 Zizeeria karsandra,CY,Cyprus,9251,y,P,NRLA,
-Aglais io,CZ,Czech Republic,78866,y,P,NE,
-Aglais urticae,CZ,Czech Republic,78866,y,P,NE,
+Aglais io,CZ,Czech Republic,78866,y,P,NE,1
+Aglais urticae,CZ,Czech Republic,78866,y,P,NE,1
 Agriades optilete,CZ,Czech Republic,78866,y,P,VU,30
-Anthocharis cardamines,CZ,Czech Republic,78866,y,P,NE,
-Apatura ilia,CZ,Czech Republic,78866,y,P,NE,
-Apatura iris,CZ,Czech Republic,78866,y,P,NE,
-Aphantopus hyperantus,CZ,Czech Republic,78866,y,P,NE,
-Aporia crataegi,CZ,Czech Republic,78866,y,P,NE,
-Araschnia levana,CZ,Czech Republic,78866,y,P,NE,
+Anthocharis cardamines,CZ,Czech Republic,78866,y,P,NE,1
+Apatura ilia,CZ,Czech Republic,78866,y,P,NE,1
+Apatura iris,CZ,Czech Republic,78866,y,P,NE,1
+Aphantopus hyperantus,CZ,Czech Republic,78866,y,P,NE,1
+Aporia crataegi,CZ,Czech Republic,78866,y,P,NE,1
+Araschnia levana,CZ,Czech Republic,78866,y,P,NE,1
 Arethusana arethusa,CZ,Czech Republic,78866,y,P,VU,30
-Argynnis paphia,CZ,Czech Republic,78866,y,P,NE,
-Aricia agestis,CZ,Czech Republic,78866,y,P,NE,
+Argynnis paphia,CZ,Czech Republic,78866,y,P,NE,1
+Aricia agestis,CZ,Czech Republic,78866,y,P,NE,1
 Aricia artaxerxes,CZ,Czech Republic,78866,y,P,CR,80
 Boloria aquilonaris,CZ,Czech Republic,78866,y,P,VU,30
-Boloria dia,CZ,Czech Republic,78866,y,P,NE,
-Boloria eunomia,CZ,Czech Republic,78866,y,P,NE,
+Boloria dia,CZ,Czech Republic,78866,y,P,NE,1
+Boloria eunomia,CZ,Czech Republic,78866,y,P,NE,1
 Boloria euphrosyne,CZ,Czech Republic,78866,y,P,VU,30
 Boloria selene,CZ,Czech Republic,78866,y,P,NT,20
-Brenthis daphne,CZ,Czech Republic,78866,y,P,NE,
+Brenthis daphne,CZ,Czech Republic,78866,y,P,NE,1
 Brenthis hecate,CZ,Czech Republic,78866,y,P,NT,20
-Brenthis ino,CZ,Czech Republic,78866,y,P,NE,
-Brintesia circe,CZ,Czech Republic,78866,y,P,NE,
+Brenthis ino,CZ,Czech Republic,78866,y,P,NE,1
+Brintesia circe,CZ,Czech Republic,78866,y,P,NE,1
 Callophrys rubi,CZ,Czech Republic,78866,y,P,NT,20
 Carcharodus alceae,CZ,Czech Republic,78866,y,P,NT,20
 Carcharodus floccifera,CZ,Czech Republic,78866,y,Ex,RE,100
-Carterocephalus palaemon,CZ,Czech Republic,78866,y,P,NE,
+Carterocephalus palaemon,CZ,Czech Republic,78866,y,P,NE,1
 Carterocephalus silvicola,CZ,Czech Republic,78866,y,Ex,RE,100
-Celastrina argiolus,CZ,Czech Republic,78866,y,P,NE,
+Celastrina argiolus,CZ,Czech Republic,78866,y,P,NE,1
 Chazara briseis,CZ,Czech Republic,78866,y,P,CR,80
 Coenonympha arcania,CZ,Czech Republic,78866,y,P,NT,20
-Coenonympha glycerion,CZ,Czech Republic,78866,y,P,NE,
+Coenonympha glycerion,CZ,Czech Republic,78866,y,P,NE,1
 Coenonympha hero,CZ,Czech Republic,78866,y,Ex,RE,100
-Coenonympha pamphilus,CZ,Czech Republic,78866,y,P,NE,
+Coenonympha pamphilus,CZ,Czech Republic,78866,y,P,NE,1
 Coenonympha tullia,CZ,Czech Republic,78866,y,P,CR,80
 Colias alfacariensis,CZ,Czech Republic,78866,y,P,VU,30
 Colias chrysotheme,CZ,Czech Republic,78866,y,Ex,RE,100
-Colias crocea,CZ,Czech Republic,78866,y,M,NE,
-Colias erate,CZ,Czech Republic,78866,y,P,NE,
-Colias hyale,CZ,Czech Republic,78866,y,P,NE,
+Colias crocea,CZ,Czech Republic,78866,y,M,NE,1
+Colias erate,CZ,Czech Republic,78866,y,P,NE,1
+Colias hyale,CZ,Czech Republic,78866,y,P,NE,1
 Colias myrmidone,CZ,Czech Republic,78866,y,Ex,RE,100
 Colias palaeno,CZ,Czech Republic,78866,y,P,VU,30
 Cupido alcetas,CZ,Czech Republic,78866,y,P,CR,80
-Cupido argiades,CZ,Czech Republic,78866,y,P,NE,
+Cupido argiades,CZ,Czech Republic,78866,y,P,NE,1
 Cupido decoloratus,CZ,Czech Republic,78866,y,P,NT,20
 Cupido minimus,CZ,Czech Republic,78866,y,P,VU,30
 Cyaniris semiargus,CZ,Czech Republic,78866,y,P,VU,30
 Erebia aethiops,CZ,Czech Republic,78866,y,P,EN,50
-Erebia epiphron,CZ,Czech Republic,78866,y,P,NE,
-Erebia euryale,CZ,Czech Republic,78866,y,P,NE,
+Erebia epiphron,CZ,Czech Republic,78866,y,P,NE,1
+Erebia euryale,CZ,Czech Republic,78866,y,P,NE,1
 Erebia ligea,CZ,Czech Republic,78866,y,P,NT,20
 Erebia medusa,CZ,Czech Republic,78866,y,P,NT,20
 Erebia sudetica,CZ,Czech Republic,78866,y,P,VU,30
-Erynnis tages,CZ,Czech Republic,78866,y,P,NE,
+Erynnis tages,CZ,Czech Republic,78866,y,P,NE,1
 Eumedonia eumedon,CZ,Czech Republic,78866,y,P,NT,20
 Euphydryas aurinia,CZ,Czech Republic,78866,y,P,EN,50
 Euphydryas maturna,CZ,Czech Republic,78866,y,P,CR,80
-Fabriciana adippe,CZ,Czech Republic,78866,y,P,NE,
+Fabriciana adippe,CZ,Czech Republic,78866,y,P,NE,1
 Fabriciana niobe,CZ,Czech Republic,78866,y,P,CR,80
-Favonius quercus,CZ,Czech Republic,78866,y,P,NE,
+Favonius quercus,CZ,Czech Republic,78866,y,P,NE,1
 Glaucopsyche alexis,CZ,Czech Republic,78866,y,P,VU,30
-Gonepteryx rhamni,CZ,Czech Republic,78866,y,P,NE,
+Gonepteryx rhamni,CZ,Czech Republic,78866,y,P,NE,1
 Hamearis lucina,CZ,Czech Republic,78866,y,P,EN,50
 Hesperia comma,CZ,Czech Republic,78866,y,P,VU,30
-Heteropterus morpheus,CZ,Czech Republic,78866,y,P,NE,
+Heteropterus morpheus,CZ,Czech Republic,78866,y,P,NE,1
 Hipparchia fagi,CZ,Czech Republic,78866,y,P,VU,30
 Hipparchia hermione,CZ,Czech Republic,78866,y,P,CR,80
 Hipparchia semele,CZ,Czech Republic,78866,y,P,CR,80
@@ -1534,11 +1534,11 @@ Hipparchia statilinus,CZ,Czech Republic,78866,y,Ex,RE,100
 Hyponephele lupina,CZ,Czech Republic,78866,y,Ex,RE,100
 Hyponephele lycaon,CZ,Czech Republic,78866,y,P,CR,80
 Iphiclides podalirius,CZ,Czech Republic,78866,y,P,NT,20
-Issoria lathonia,CZ,Czech Republic,78866,y,P,NE,
+Issoria lathonia,CZ,Czech Republic,78866,y,P,NE,1
 Lasiommata maera,CZ,Czech Republic,78866,y,P,NT,20
-Lasiommata megera,CZ,Czech Republic,78866,y,P,NE,
+Lasiommata megera,CZ,Czech Republic,78866,y,P,NE,1
 Lasiommata petropolitana,CZ,Czech Republic,78866,y,Ex,RE,100
-Leptidea juvernica,CZ,Czech Republic,78866,y,P,NE,
+Leptidea juvernica,CZ,Czech Republic,78866,y,P,NE,1
 Leptidea morsei,CZ,Czech Republic,78866,y,Ex,RE,100
 Leptidea sinapis,CZ,Czech Republic,78866,y,P,NT,20
 Limenitis camilla,CZ,Czech Republic,78866,y,P,NT,20
@@ -1546,17 +1546,17 @@ Limenitis populi,CZ,Czech Republic,78866,y,P,VU,30
 Limenitis reducta,CZ,Czech Republic,78866,y,Ex,RE,100
 Lopinga achine,CZ,Czech Republic,78866,y,P,CR,80
 Lycaena alciphron,CZ,Czech Republic,78866,y,P,VU,30
-Lycaena dispar,CZ,Czech Republic,78866,y,P,NE,
+Lycaena dispar,CZ,Czech Republic,78866,y,P,NE,1
 Lycaena helle,CZ,Czech Republic,78866,y,P,CR,80
 Lycaena hippothoe,CZ,Czech Republic,78866,y,P,NT,20
-Lycaena phlaeas,CZ,Czech Republic,78866,y,P,NE,
+Lycaena phlaeas,CZ,Czech Republic,78866,y,P,NE,1
 Lycaena thersamon,CZ,Czech Republic,78866,y,Ex,RE,100
-Lycaena tityrus,CZ,Czech Republic,78866,y,P,NE,
+Lycaena tityrus,CZ,Czech Republic,78866,y,P,NE,1
 Lycaena virgaureae,CZ,Czech Republic,78866,y,P,NT,20
 Lysandra bellargus,CZ,Czech Republic,78866,y,P,VU,30
 Lysandra coridon,CZ,Czech Republic,78866,y,P,VU,30
-Maniola jurtina,CZ,Czech Republic,78866,y,P,NE,
-Melanargia galathea,CZ,Czech Republic,78866,y,P,NE,
+Maniola jurtina,CZ,Czech Republic,78866,y,P,NE,1
+Melanargia galathea,CZ,Czech Republic,78866,y,P,NE,1
 Melitaea athalia,CZ,Czech Republic,78866,y,P,NT,20
 Melitaea aurelia,CZ,Czech Republic,78866,y,P,EN,50
 Melitaea britomartis,CZ,Czech Republic,78866,y,P,CR,80
@@ -1568,27 +1568,27 @@ Melitaea trivia,CZ,Czech Republic,78866,y,Ex,RE,100
 Minois dryas,CZ,Czech Republic,78866,y,P,VU,30
 Neptis rivularis,CZ,Czech Republic,78866,y,P,NT,20
 Neptis sappho,CZ,Czech Republic,78866,y,Ex,RE,100
-Nymphalis antiopa,CZ,Czech Republic,78866,y,P,NE,
-Nymphalis polychloros,CZ,Czech Republic,78866,y,P,NE,
+Nymphalis antiopa,CZ,Czech Republic,78866,y,P,NE,1
+Nymphalis polychloros,CZ,Czech Republic,78866,y,P,NE,1
 Nymphalis vaualbum,CZ,Czech Republic,78866,y,Ex,RE,100
-Nymphalis xanthomelas,CZ,Czech Republic,78866,y,P,NE,
-Ochlodes sylvanus,CZ,Czech Republic,78866,y,P,NE,
-Papilio machaon,CZ,Czech Republic,78866,y,P,NE,
-Pararge aegeria,CZ,Czech Republic,78866,y,P,NE,
+Nymphalis xanthomelas,CZ,Czech Republic,78866,y,P,NE,1
+Ochlodes sylvanus,CZ,Czech Republic,78866,y,P,NE,1
+Papilio machaon,CZ,Czech Republic,78866,y,P,NE,1
+Pararge aegeria,CZ,Czech Republic,78866,y,P,NE,1
 Parnassius apollo,CZ,Czech Republic,78866,y,P,CR,80
 Parnassius mnemosyne,CZ,Czech Republic,78866,y,P,EN,50
 Phengaris alcon,CZ,Czech Republic,78866,y,P,CR,80
 Phengaris arion,CZ,Czech Republic,78866,y,P,EN,50
 Phengaris nausithous,CZ,Czech Republic,78866,y,P,NT,20
 Phengaris teleius,CZ,Czech Republic,78866,y,P,VU,30
-Pieris brassicae,CZ,Czech Republic,78866,y,P,NE,
+Pieris brassicae,CZ,Czech Republic,78866,y,P,NE,1
 Pieris bryoniae,CZ,Czech Republic,78866,y,P,NT,20
-Pieris napi,CZ,Czech Republic,78866,y,P,NE,
-Pieris rapae,CZ,Czech Republic,78866,y,P,NE,
+Pieris napi,CZ,Czech Republic,78866,y,P,NE,1
+Pieris rapae,CZ,Czech Republic,78866,y,P,NE,1
 Plebejus argus,CZ,Czech Republic,78866,y,P,NT,20
-Plebejus argyrognomon,CZ,Czech Republic,78866,y,P,NE,
+Plebejus argyrognomon,CZ,Czech Republic,78866,y,P,NE,1
 Plebejus idas,CZ,Czech Republic,78866,y,P,CR,80
-Polygonia c-album,CZ,Czech Republic,78866,y,P,NE,
+Polygonia c-album,CZ,Czech Republic,78866,y,P,NE,1
 Polyommatus amandus,CZ,Czech Republic,78866,y,P,NT,20
 Polyommatus damon,CZ,Czech Republic,78866,y,P,CR,80
 Polyommatus daphnis,CZ,Czech Republic,78866,y,P,VU,30
@@ -1596,29 +1596,29 @@ Polyommatus dorylas,CZ,Czech Republic,78866,y,P,CR,80
 Polyommatus eros,CZ,Czech Republic,78866,y,Ex,RE,100
 Polyommatus icarus,CZ,Czech Republic,78866,y,P,EN,50
 Polyommatus thersites,CZ,Czech Republic,78866,y,P,VU,30
-Pontia edusa,CZ,Czech Republic,78866,y,P,NE,
+Pontia edusa,CZ,Czech Republic,78866,y,P,NE,1
 Pseudophilotes baton,CZ,Czech Republic,78866,y,P,CR,80
 Pseudophilotes vicrama,CZ,Czech Republic,78866,y,P,CR,80
 Pyrgus alveus,CZ,Czech Republic,78866,y,P,CR,80
 Pyrgus armoricanus,CZ,Czech Republic,78866,y,P,EN,50
 Pyrgus carthami,CZ,Czech Republic,78866,y,P,EN,50
-Pyrgus malvae,CZ,Czech Republic,78866,y,P,NE,
+Pyrgus malvae,CZ,Czech Republic,78866,y,P,NE,1
 Pyrgus serratulae,CZ,Czech Republic,78866,y,P,EN,50
 Pyronia tithonus,CZ,Czech Republic,78866,y,Ex,RE,100
-Satyrium acaciae,CZ,Czech Republic,78866,y,P,NE,
+Satyrium acaciae,CZ,Czech Republic,78866,y,P,NE,1
 Satyrium ilicis,CZ,Czech Republic,78866,y,P,EN,50
 Satyrium pruni,CZ,Czech Republic,78866,y,P,NT,20
 Satyrium spini,CZ,Czech Republic,78866,y,P,VU,30
 Satyrium w-album,CZ,Czech Republic,78866,y,P,NT,20
 Scolitantides orion,CZ,Czech Republic,78866,y,P,VU,30
-Speyeria aglaja,CZ,Czech Republic,78866,y,P,NE,
+Speyeria aglaja,CZ,Czech Republic,78866,y,P,NE,1
 Spialia sertorius,CZ,Czech Republic,78866,y,P,VU,30
-Thecla betulae,CZ,Czech Republic,78866,y,P,NE,
+Thecla betulae,CZ,Czech Republic,78866,y,P,NE,1
 Thymelicus acteon,CZ,Czech Republic,78866,y,P,EN,50
-Thymelicus lineola,CZ,Czech Republic,78866,y,P,NE,
-Thymelicus sylvestris,CZ,Czech Republic,78866,y,P,NE,
-Vanessa atalanta,CZ,Czech Republic,78866,y,M,NE,
-Vanessa cardui,CZ,Czech Republic,78866,y,M,NE,
+Thymelicus lineola,CZ,Czech Republic,78866,y,P,NE,1
+Thymelicus sylvestris,CZ,Czech Republic,78866,y,P,NE,1
+Vanessa atalanta,CZ,Czech Republic,78866,y,M,NE,1
+Vanessa cardui,CZ,Czech Republic,78866,y,M,NE,1
 Zerynthia polyxena,CZ,Czech Republic,78866,y,P,NT,20
 Aglais io,DE,Germany,357168,y,P,LC,1
 Aglais urticae,DE,Germany,357168,y,P,LC,1
@@ -1754,7 +1754,7 @@ Phengaris nausithous,DE,Germany,357168,y,P,NT,20
 Phengaris teleius,DE,Germany,357168,y,P,EN,50
 Pieris brassicae,DE,Germany,357168,y,P,LC,1
 Pieris bryoniae,DE,Germany,357168,y,P,LC,1
-Pieris mannii,DE,Germany,357168,y,P,NE,
+Pieris mannii,DE,Germany,357168,y,P,NE,1
 Pieris napi,DE,Germany,357168,y,P,LC,1
 Pieris rapae,DE,Germany,357168,y,P,LC,1
 Plebejus argus,DE,Germany,357168,y,P,LC,1
@@ -1811,7 +1811,7 @@ Argynnis paphia,DK,Denmark,44493,y,P,EN,50
 Aricia agestis,DK,Denmark,44493,y,P,LC,1
 Aricia artaxerxes,DK,Denmark,44493,y,P,CR,80
 Boloria aquilonaris,DK,Denmark,44493,y,P,EN,50
-Boloria dia,DK,Denmark,44493,y,Ex,NE,
+Boloria dia,DK,Denmark,44493,y,Ex,NE,1
 Boloria euphrosyne,DK,Denmark,44493,y,P,CR,80
 Boloria selene,DK,Denmark,44493,y,P,LC,1
 Brenthis ino,DK,Denmark,44493,y,P,VU,30
@@ -1828,7 +1828,7 @@ Cupido minimus,DK,Denmark,44493,y,P,LC,1
 Cyaniris semiargus,DK,Denmark,44493,y,P,VU,30
 Erynnis tages,DK,Denmark,44493,y,P,EN,50
 Euphydryas aurinia,DK,Denmark,44493,y,P,CR,80
-Euphydryas maturna,DK,Denmark,44493,y,Ex,NE,
+Euphydryas maturna,DK,Denmark,44493,y,Ex,NE,1
 Fabriciana adippe,DK,Denmark,44493,y,P,EN,50
 Fabriciana niobe,DK,Denmark,44493,y,P,VU,30
 Favonius quercus,DK,Denmark,44493,y,P,LC,1
@@ -1871,8 +1871,8 @@ Polyommatus icarus,DK,Denmark,44493,y,P,LC,1
 Pontia edusa,DK,Denmark,44493,y,M,LC,1
 Pyrgus armoricanus,DK,Denmark,44493,y,P,CR,80
 Pyrgus malvae,DK,Denmark,44493,y,P,VU,30
-Pyrgus serratulae,DK,Denmark,44493,y,Ex,NE,
-Pyronia tithonus,DK,Denmark,44493,y,Ex,NE,
+Pyrgus serratulae,DK,Denmark,44493,y,Ex,NE,1
+Pyronia tithonus,DK,Denmark,44493,y,Ex,NE,1
 Satyrium ilicis,DK,Denmark,44493,y,Ex,RE,100
 Satyrium pruni,DK,Denmark,44493,y,Ex,RE,100
 Satyrium w-album,DK,Denmark,44493,y,P,EN,50
@@ -1882,343 +1882,343 @@ Thymelicus lineola,DK,Denmark,44493,y,P,LC,1
 Thymelicus sylvestris,DK,Denmark,44493,y,P,LC,1
 Vanessa atalanta,DK,Denmark,44493,y,M,LC,1
 Vanessa cardui,DK,Denmark,44493,y,M,LC,1
-Aglais io,EE,Estonia,45339,y,P,LC,
-Aglais urticae,EE,Estonia,45339,y,P,LC,
-Agriades optilete,EE,Estonia,45339,y,P,LC,
-Anthocharis cardamines,EE,Estonia,45339,y,P,LC,
-Apatura ilia,EE,Estonia,45339,y,P,LC,
-Apatura iris,EE,Estonia,45339,y,P,LC,
-Aphantopus hyperantus,EE,Estonia,45339,y,P,LC,
-Aporia crataegi,EE,Estonia,45339,y,P,LC,
-Araschnia levana,EE,Estonia,45339,y,P,LC,
-Argynnis laodice,EE,Estonia,45339,y,P,LC,
-Argynnis paphia,EE,Estonia,45339,y,P,LC,
-Aricia artaxerxes,EE,Estonia,45339,y,P,LC,
-Boloria aquilonaris,EE,Estonia,45339,y,P,LC,
-Boloria dia,EE,Estonia,45339,y,P,LC,
-Boloria eunomia,EE,Estonia,45339,y,P,LC,
-Boloria euphrosyne,EE,Estonia,45339,y,P,LC,
-Boloria freija,EE,Estonia,45339,y,Ex,RE,
-Boloria frigga,EE,Estonia,45339,y,P,EN,
-Boloria selene,EE,Estonia,45339,y,P,LC,
-Boloria titania,EE,Estonia,45339,y,P,LC,
-Brenthis ino,EE,Estonia,45339,y,P,LC,
-Callophrys rubi,EE,Estonia,45339,y,P,LC,
+Aglais io,EE,Estonia,45339,y,P,LC,1
+Aglais urticae,EE,Estonia,45339,y,P,LC,1
+Agriades optilete,EE,Estonia,45339,y,P,LC,1
+Anthocharis cardamines,EE,Estonia,45339,y,P,LC,1
+Apatura ilia,EE,Estonia,45339,y,P,LC,1
+Apatura iris,EE,Estonia,45339,y,P,LC,1
+Aphantopus hyperantus,EE,Estonia,45339,y,P,LC,1
+Aporia crataegi,EE,Estonia,45339,y,P,LC,1
+Araschnia levana,EE,Estonia,45339,y,P,LC,1
+Argynnis laodice,EE,Estonia,45339,y,P,LC,1
+Argynnis paphia,EE,Estonia,45339,y,P,LC,1
+Aricia artaxerxes,EE,Estonia,45339,y,P,LC,1
+Boloria aquilonaris,EE,Estonia,45339,y,P,LC,1
+Boloria dia,EE,Estonia,45339,y,P,LC,1
+Boloria eunomia,EE,Estonia,45339,y,P,LC,1
+Boloria euphrosyne,EE,Estonia,45339,y,P,LC,1
+Boloria freija,EE,Estonia,45339,y,Ex,RE,100
+Boloria frigga,EE,Estonia,45339,y,P,EN,50
+Boloria selene,EE,Estonia,45339,y,P,LC,1
+Boloria titania,EE,Estonia,45339,y,P,LC,1
+Brenthis ino,EE,Estonia,45339,y,P,LC,1
+Callophrys rubi,EE,Estonia,45339,y,P,LC,1
 Carcharodus floccifera,EE,Estonia,45339,y,P,NtA,
-Carterocephalus palaemon,EE,Estonia,45339,y,P,LC,
-Carterocephalus silvicola,EE,Estonia,45339,y,P,LC,
-Celastrina argiolus,EE,Estonia,45339,y,P,LC,
-Coenonympha arcania,EE,Estonia,45339,y,P,LC,
-Coenonympha glycerion,EE,Estonia,45339,y,P,LC,
-Coenonympha hero,EE,Estonia,45339,y,P,LC,
-Coenonympha pamphilus,EE,Estonia,45339,y,P,LC,
-Coenonympha tullia,EE,Estonia,45339,y,P,LC,
-Colias hyale,EE,Estonia,45339,y,P,NT,
-Colias palaeno,EE,Estonia,45339,y,P,LC,
-Cupido argiades,EE,Estonia,45339,y,P,LC,
-Cupido minimus,EE,Estonia,45339,y,P,LC,
-Cyaniris semiargus,EE,Estonia,45339,y,P,LC,
-Erebia embla,EE,Estonia,45339,y,P,EN,
-Erebia ligea,EE,Estonia,45339,y,P,LC,
-Erynnis tages,EE,Estonia,45339,y,P,NT,
-Eumedonia eumedon,EE,Estonia,45339,y,P,LC,
-Euphydryas aurinia,EE,Estonia,45339,y,P,LC,
-Euphydryas maturna,EE,Estonia,45339,y,P,LC,
-Fabriciana adippe,EE,Estonia,45339,y,P,LC,
-Fabriciana niobe,EE,Estonia,45339,y,P,EN,
-Favonius quercus,EE,Estonia,45339,y,P,LC,
-Glaucopsyche alexis,EE,Estonia,45339,y,Ex,RE,
-Gonepteryx rhamni,EE,Estonia,45339,y,P,LC,
-Hamearis lucina,EE,Estonia,45339,y,P,LC,
-Hesperia comma,EE,Estonia,45339,y,P,LC,
-Heteropterus morpheus,EE,Estonia,45339,y,P,LC,
-Hipparchia semele,EE,Estonia,45339,y,P,LC,
-Hyponephele lycaon,EE,Estonia,45339,y,P,VU,
-Issoria lathonia,EE,Estonia,45339,y,P,LC,
-Lasiommata maera,EE,Estonia,45339,y,P,LC,
-Lasiommata petropolitana,EE,Estonia,45339,y,P,LC,
-Leptidea juvernica,EE,Estonia,45339,y,P,LC,
-Leptidea sinapis,EE,Estonia,45339,y,P,LC,
-Limenitis camilla,EE,Estonia,45339,y,P,LC,
-Limenitis populi,EE,Estonia,45339,y,P,LC,
-Lopinga achine,EE,Estonia,45339,y,P,LC,
-Lycaena alciphron,EE,Estonia,45339,y,P,LC,
-Lycaena dispar,EE,Estonia,45339,y,P,LC,
-Lycaena hippothoe,EE,Estonia,45339,y,P,LC,
-Lycaena phlaeas,EE,Estonia,45339,y,P,LC,
-Lycaena tityrus,EE,Estonia,45339,y,P,LC,
-Lycaena virgaureae,EE,Estonia,45339,y,P,LC,
-Maniola jurtina,EE,Estonia,45339,y,P,LC,
-Melitaea athalia,EE,Estonia,45339,y,P,LC,
-Melitaea aurelia,EE,Estonia,45339,y,P,EN,
-Melitaea cinxia,EE,Estonia,45339,y,P,EN,
-Melitaea diamina,EE,Estonia,45339,y,P,LC,
-Melitaea phoebe,EE,Estonia,45339,y,P,LC,
-Nymphalis antiopa,EE,Estonia,45339,y,P,LC,
-Nymphalis polychloros,EE,Estonia,45339,y,P,NT,
-Nymphalis vaualbum,EE,Estonia,45339,y,Ex,RE,
-Nymphalis xanthomelas,EE,Estonia,45339,y,P,LC,
-Ochlodes sylvanus,EE,Estonia,45339,y,P,LC,
-Oeneis jutta,EE,Estonia,45339,y,P,LC,
-Papilio machaon,EE,Estonia,45339,y,P,LC,
-Pararge aegeria,EE,Estonia,45339,y,P,LC,
-Parnassius mnemosyne,EE,Estonia,45339,y,P,LC,
-Phengaris alcon,EE,Estonia,45339,y,P,CR,
-Phengaris arion,EE,Estonia,45339,y,P,EN,
-Pieris brassicae,EE,Estonia,45339,y,P,LC,
-Pieris napi,EE,Estonia,45339,y,P,LC,
-Pieris rapae,EE,Estonia,45339,y,P,LC,
-Plebejus argus,EE,Estonia,45339,y,P,LC,
-Plebejus idas,EE,Estonia,45339,y,P,LC,
-Polygonia c-album,EE,Estonia,45339,y,P,LC,
-Polyommatus amandus,EE,Estonia,45339,y,P,LC,
-Polyommatus icarus,EE,Estonia,45339,y,P,LC,
-Pseudophilotes vicrama,EE,Estonia,45339,y,P,VU,
-Pyrgus alveus,EE,Estonia,45339,y,P,LC,
-Pyrgus malvae,EE,Estonia,45339,y,P,LC,
-Pyrgus serratulae,EE,Estonia,45339,y,P,VU,
-Satyrium ilicis,EE,Estonia,45339,y,P,LC,
-Satyrium pruni,EE,Estonia,45339,y,P,LC,
-Satyrium w-album,EE,Estonia,45339,y,P,LC,
-Speyeria aglaja,EE,Estonia,45339,y,P,LC,
-Thecla betulae,EE,Estonia,45339,y,P,LC,
-Thymelicus lineola,EE,Estonia,45339,y,P,LC,
-Thymelicus sylvestris,EE,Estonia,45339,y,P,LC,
+Carterocephalus palaemon,EE,Estonia,45339,y,P,LC,1
+Carterocephalus silvicola,EE,Estonia,45339,y,P,LC,1
+Celastrina argiolus,EE,Estonia,45339,y,P,LC,1
+Coenonympha arcania,EE,Estonia,45339,y,P,LC,1
+Coenonympha glycerion,EE,Estonia,45339,y,P,LC,1
+Coenonympha hero,EE,Estonia,45339,y,P,LC,1
+Coenonympha pamphilus,EE,Estonia,45339,y,P,LC,1
+Coenonympha tullia,EE,Estonia,45339,y,P,LC,1
+Colias hyale,EE,Estonia,45339,y,P,NT,20
+Colias palaeno,EE,Estonia,45339,y,P,LC,1
+Cupido argiades,EE,Estonia,45339,y,P,LC,1
+Cupido minimus,EE,Estonia,45339,y,P,LC,1
+Cyaniris semiargus,EE,Estonia,45339,y,P,LC,1
+Erebia embla,EE,Estonia,45339,y,P,EN,50
+Erebia ligea,EE,Estonia,45339,y,P,LC,1
+Erynnis tages,EE,Estonia,45339,y,P,NT,20
+Eumedonia eumedon,EE,Estonia,45339,y,P,LC,1
+Euphydryas aurinia,EE,Estonia,45339,y,P,LC,1
+Euphydryas maturna,EE,Estonia,45339,y,P,LC,1
+Fabriciana adippe,EE,Estonia,45339,y,P,LC,1
+Fabriciana niobe,EE,Estonia,45339,y,P,EN,50
+Favonius quercus,EE,Estonia,45339,y,P,LC,1
+Glaucopsyche alexis,EE,Estonia,45339,y,Ex,RE,100
+Gonepteryx rhamni,EE,Estonia,45339,y,P,LC,1
+Hamearis lucina,EE,Estonia,45339,y,P,LC,1
+Hesperia comma,EE,Estonia,45339,y,P,LC,1
+Heteropterus morpheus,EE,Estonia,45339,y,P,LC,1
+Hipparchia semele,EE,Estonia,45339,y,P,LC,1
+Hyponephele lycaon,EE,Estonia,45339,y,P,VU,30
+Issoria lathonia,EE,Estonia,45339,y,P,LC,1
+Lasiommata maera,EE,Estonia,45339,y,P,LC,1
+Lasiommata petropolitana,EE,Estonia,45339,y,P,LC,1
+Leptidea juvernica,EE,Estonia,45339,y,P,LC,1
+Leptidea sinapis,EE,Estonia,45339,y,P,LC,1
+Limenitis camilla,EE,Estonia,45339,y,P,LC,1
+Limenitis populi,EE,Estonia,45339,y,P,LC,1
+Lopinga achine,EE,Estonia,45339,y,P,LC,1
+Lycaena alciphron,EE,Estonia,45339,y,P,LC,1
+Lycaena dispar,EE,Estonia,45339,y,P,LC,1
+Lycaena hippothoe,EE,Estonia,45339,y,P,LC,1
+Lycaena phlaeas,EE,Estonia,45339,y,P,LC,1
+Lycaena tityrus,EE,Estonia,45339,y,P,LC,1
+Lycaena virgaureae,EE,Estonia,45339,y,P,LC,1
+Maniola jurtina,EE,Estonia,45339,y,P,LC,1
+Melitaea athalia,EE,Estonia,45339,y,P,LC,1
+Melitaea aurelia,EE,Estonia,45339,y,P,EN,50
+Melitaea cinxia,EE,Estonia,45339,y,P,EN,50
+Melitaea diamina,EE,Estonia,45339,y,P,LC,1
+Melitaea phoebe,EE,Estonia,45339,y,P,LC,1
+Nymphalis antiopa,EE,Estonia,45339,y,P,LC,1
+Nymphalis polychloros,EE,Estonia,45339,y,P,NT,20
+Nymphalis vaualbum,EE,Estonia,45339,y,Ex,RE,100
+Nymphalis xanthomelas,EE,Estonia,45339,y,P,LC,1
+Ochlodes sylvanus,EE,Estonia,45339,y,P,LC,1
+Oeneis jutta,EE,Estonia,45339,y,P,LC,1
+Papilio machaon,EE,Estonia,45339,y,P,LC,1
+Pararge aegeria,EE,Estonia,45339,y,P,LC,1
+Parnassius mnemosyne,EE,Estonia,45339,y,P,LC,1
+Phengaris alcon,EE,Estonia,45339,y,P,CR,80
+Phengaris arion,EE,Estonia,45339,y,P,EN,50
+Pieris brassicae,EE,Estonia,45339,y,P,LC,1
+Pieris napi,EE,Estonia,45339,y,P,LC,1
+Pieris rapae,EE,Estonia,45339,y,P,LC,1
+Plebejus argus,EE,Estonia,45339,y,P,LC,1
+Plebejus idas,EE,Estonia,45339,y,P,LC,1
+Polygonia c-album,EE,Estonia,45339,y,P,LC,1
+Polyommatus amandus,EE,Estonia,45339,y,P,LC,1
+Polyommatus icarus,EE,Estonia,45339,y,P,LC,1
+Pseudophilotes vicrama,EE,Estonia,45339,y,P,VU,30
+Pyrgus alveus,EE,Estonia,45339,y,P,LC,1
+Pyrgus malvae,EE,Estonia,45339,y,P,LC,1
+Pyrgus serratulae,EE,Estonia,45339,y,P,VU,30
+Satyrium ilicis,EE,Estonia,45339,y,P,LC,1
+Satyrium pruni,EE,Estonia,45339,y,P,LC,1
+Satyrium w-album,EE,Estonia,45339,y,P,LC,1
+Speyeria aglaja,EE,Estonia,45339,y,P,LC,1
+Thecla betulae,EE,Estonia,45339,y,P,LC,1
+Thymelicus lineola,EE,Estonia,45339,y,P,LC,1
+Thymelicus sylvestris,EE,Estonia,45339,y,P,LC,1
 Vanessa atalanta,EE,Estonia,45339,y,M,NtA,
 Vanessa cardui,EE,Estonia,45339,y,M,NtA,
-Aglais io,ES,Spain,498468,y,P,NE,
-Aglais urticae,ES,Spain,498468,y,P,NE,
-Agriades glandon,ES,Spain,498468,y,P,NE,
-Agriades pyrenaicus,ES,Spain,498468,y,P,NE,
+Aglais io,ES,Spain,498468,y,P,NE,1
+Aglais urticae,ES,Spain,498468,y,P,NE,1
+Agriades glandon,ES,Spain,498468,y,P,NE,1
+Agriades pyrenaicus,ES,Spain,498468,y,P,NE,1
 Agriades zullichi,ES,Spain,498468,y,P,EN,50
-Anthocharis cardamines,ES,Spain,498468,y,P,NE,
-Anthocharis euphenoides,ES,Spain,498468,y,P,NE,
-Apatura ilia,ES,Spain,498468,y,P,NE,
-Apatura iris,ES,Spain,498468,y,P,NE,
-Aphantopus hyperantus,ES,Spain,498468,y,P,NE,
-Aporia crataegi,ES,Spain,498468,y,P,NE,
-Araschnia levana,ES,Spain,498468,y,P,NE,
-Arethusana arethusa,ES,Spain,498468,y,P,NE,
-Argynnis pandora,ES,Spain,498468,y,P,NE,
-Argynnis paphia,ES,Spain,498468,y,P,NE,
-Aricia agestis,ES,Spain,498468,y,P,NE,
-Aricia cramera,ES,Spain,498468,y,P,NE,
-Aricia montensis,ES,Spain,498468,y,P,NE,
-Aricia morronensis,ES,Spain,498468,y,P,NE,
-Aricia nicias,ES,Spain,498468,y,P,NE,
-Azanus jesous,ES,Spain,498468,y,P,NE,
-Boloria dia,ES,Spain,498468,y,P,NE,
-Boloria eunomia,ES,Spain,498468,y,P,NE,
-Boloria euphrosyne,ES,Spain,498468,y,P,NE,
-Boloria napaea,ES,Spain,498468,y,P,NE,
-Boloria pales,ES,Spain,498468,y,P,NE,
-Boloria selene,ES,Spain,498468,y,P,NE,
-Borbo borbonica,ES,Spain,498468,y,P,NE,
-Brenthis daphne,ES,Spain,498468,y,P,NE,
-Brenthis hecate,ES,Spain,498468,y,P,NE,
-Brenthis ino,ES,Spain,498468,y,P,NE,
-Brintesia circe,ES,Spain,498468,y,P,NE,
-Cacyreus marshalli,ES,Spain,498468,y,P,NE,
-Callophrys avis,ES,Spain,498468,y,P,NE,
-Callophrys rubi,ES,Spain,498468,y,P,NE,
-Carcharodus alceae,ES,Spain,498468,y,P,NE,
-Carcharodus baeticus,ES,Spain,498468,y,P,NE,
-Carcharodus floccifera,ES,Spain,498468,y,P,NE,
-Carcharodus lavatherae,ES,Spain,498468,y,P,NE,
-Carcharodus tripolinus,ES,Spain,498468,y,P,NE,
-Carterocephalus palaemon,ES,Spain,498468,y,P,NE,
-Celastrina argiolus,ES,Spain,498468,y,P,NE,
-Charaxes jasius,ES,Spain,498468,y,P,NE,
-Chazara briseis,ES,Spain,498468,y,P,NE,
+Anthocharis cardamines,ES,Spain,498468,y,P,NE,1
+Anthocharis euphenoides,ES,Spain,498468,y,P,NE,1
+Apatura ilia,ES,Spain,498468,y,P,NE,1
+Apatura iris,ES,Spain,498468,y,P,NE,1
+Aphantopus hyperantus,ES,Spain,498468,y,P,NE,1
+Aporia crataegi,ES,Spain,498468,y,P,NE,1
+Araschnia levana,ES,Spain,498468,y,P,NE,1
+Arethusana arethusa,ES,Spain,498468,y,P,NE,1
+Argynnis pandora,ES,Spain,498468,y,P,NE,1
+Argynnis paphia,ES,Spain,498468,y,P,NE,1
+Aricia agestis,ES,Spain,498468,y,P,NE,1
+Aricia cramera,ES,Spain,498468,y,P,NE,1
+Aricia montensis,ES,Spain,498468,y,P,NE,1
+Aricia morronensis,ES,Spain,498468,y,P,NE,1
+Aricia nicias,ES,Spain,498468,y,P,NE,1
+Azanus jesous,ES,Spain,498468,y,P,NE,1
+Boloria dia,ES,Spain,498468,y,P,NE,1
+Boloria eunomia,ES,Spain,498468,y,P,NE,1
+Boloria euphrosyne,ES,Spain,498468,y,P,NE,1
+Boloria napaea,ES,Spain,498468,y,P,NE,1
+Boloria pales,ES,Spain,498468,y,P,NE,1
+Boloria selene,ES,Spain,498468,y,P,NE,1
+Borbo borbonica,ES,Spain,498468,y,P,NE,1
+Brenthis daphne,ES,Spain,498468,y,P,NE,1
+Brenthis hecate,ES,Spain,498468,y,P,NE,1
+Brenthis ino,ES,Spain,498468,y,P,NE,1
+Brintesia circe,ES,Spain,498468,y,P,NE,1
+Cacyreus marshalli,ES,Spain,498468,y,P,NE,1
+Callophrys avis,ES,Spain,498468,y,P,NE,1
+Callophrys rubi,ES,Spain,498468,y,P,NE,1
+Carcharodus alceae,ES,Spain,498468,y,P,NE,1
+Carcharodus baeticus,ES,Spain,498468,y,P,NE,1
+Carcharodus floccifera,ES,Spain,498468,y,P,NE,1
+Carcharodus lavatherae,ES,Spain,498468,y,P,NE,1
+Carcharodus tripolinus,ES,Spain,498468,y,P,NE,1
+Carterocephalus palaemon,ES,Spain,498468,y,P,NE,1
+Celastrina argiolus,ES,Spain,498468,y,P,NE,1
+Charaxes jasius,ES,Spain,498468,y,P,NE,1
+Chazara briseis,ES,Spain,498468,y,P,NE,1
 Chazara prieuri,ES,Spain,498468,y,P,NT,20
-Coenonympha arcania,ES,Spain,498468,y,P,NE,
-Coenonympha dorus,ES,Spain,498468,y,P,NE,
-Coenonympha glycerion,ES,Spain,498468,y,P,NE,
-Coenonympha pamphilus,ES,Spain,498468,y,P,NE,
-Colias alfacariensis,ES,Spain,498468,y,P,NE,
-Colias crocea,ES,Spain,498468,y,P,NE,
-Colias phicomone,ES,Spain,498468,y,P,NE,
-Colotis evagore,ES,Spain,498468,y,P,NE,
-Cupido alcetas,ES,Spain,498468,y,P,NE,
-Cupido argiades,ES,Spain,498468,y,P,NE,
-Cupido lorquinii,ES,Spain,498468,y,P,NE,
-Cupido minimus,ES,Spain,498468,y,P,NE,
-Cupido osiris,ES,Spain,498468,y,P,NE,
-Cyaniris semiargus,ES,Spain,498468,y,P,NE,
-Danaus chrysippus,ES,Spain,498468,y,P,NE,
-Danaus plexippus,ES,Spain,498468,y,P,NE,
-Erebia arvernensis,ES,Spain,498468,y,P,NE,
-Erebia epiphron,ES,Spain,498468,y,P,NE,
-Erebia epistygne,ES,Spain,498468,y,P,NE,
-Erebia euryale,ES,Spain,498468,y,P,NE,
-Erebia gorge,ES,Spain,498468,y,P,NE,
-Erebia gorgone,ES,Spain,498468,y,P,NE,
-Erebia hispania,ES,Spain,498468,y,P,NE,
-Erebia lefebvrei,ES,Spain,498468,y,P,NE,
-Erebia manto,ES,Spain,498468,y,P,NE,
-Erebia meolans,ES,Spain,498468,y,P,NE,
-Erebia neoridas,ES,Spain,498468,y,P,NE,
-Erebia oeme,ES,Spain,498468,y,P,NE,
-Erebia palarica,ES,Spain,498468,y,P,NE,
-Erebia pandrose,ES,Spain,498468,y,P,NE,
-Erebia pronoe,ES,Spain,498468,y,P,NE,
-Erebia rondoui,ES,Spain,498468,y,P,NE,
-Erebia sthennyo,ES,Spain,498468,y,P,NE,
-Erebia triarius,ES,Spain,498468,y,P,NE,
-Erebia zapateri,ES,Spain,498468,y,P,NE,
-Erynnis tages,ES,Spain,498468,y,P,NE,
+Coenonympha arcania,ES,Spain,498468,y,P,NE,1
+Coenonympha dorus,ES,Spain,498468,y,P,NE,1
+Coenonympha glycerion,ES,Spain,498468,y,P,NE,1
+Coenonympha pamphilus,ES,Spain,498468,y,P,NE,1
+Colias alfacariensis,ES,Spain,498468,y,P,NE,1
+Colias crocea,ES,Spain,498468,y,P,NE,1
+Colias phicomone,ES,Spain,498468,y,P,NE,1
+Colotis evagore,ES,Spain,498468,y,P,NE,1
+Cupido alcetas,ES,Spain,498468,y,P,NE,1
+Cupido argiades,ES,Spain,498468,y,P,NE,1
+Cupido lorquinii,ES,Spain,498468,y,P,NE,1
+Cupido minimus,ES,Spain,498468,y,P,NE,1
+Cupido osiris,ES,Spain,498468,y,P,NE,1
+Cyaniris semiargus,ES,Spain,498468,y,P,NE,1
+Danaus chrysippus,ES,Spain,498468,y,P,NE,1
+Danaus plexippus,ES,Spain,498468,y,P,NE,1
+Erebia arvernensis,ES,Spain,498468,y,P,NE,1
+Erebia epiphron,ES,Spain,498468,y,P,NE,1
+Erebia epistygne,ES,Spain,498468,y,P,NE,1
+Erebia euryale,ES,Spain,498468,y,P,NE,1
+Erebia gorge,ES,Spain,498468,y,P,NE,1
+Erebia gorgone,ES,Spain,498468,y,P,NE,1
+Erebia hispania,ES,Spain,498468,y,P,NE,1
+Erebia lefebvrei,ES,Spain,498468,y,P,NE,1
+Erebia manto,ES,Spain,498468,y,P,NE,1
+Erebia meolans,ES,Spain,498468,y,P,NE,1
+Erebia neoridas,ES,Spain,498468,y,P,NE,1
+Erebia oeme,ES,Spain,498468,y,P,NE,1
+Erebia palarica,ES,Spain,498468,y,P,NE,1
+Erebia pandrose,ES,Spain,498468,y,P,NE,1
+Erebia pronoe,ES,Spain,498468,y,P,NE,1
+Erebia rondoui,ES,Spain,498468,y,P,NE,1
+Erebia sthennyo,ES,Spain,498468,y,P,NE,1
+Erebia triarius,ES,Spain,498468,y,P,NE,1
+Erebia zapateri,ES,Spain,498468,y,P,NE,1
+Erynnis tages,ES,Spain,498468,y,P,NE,1
 Euchloe bazae,ES,Spain,498468,y,P,NT,20
-Euchloe belemia,ES,Spain,498468,y,P,NE,
-Euchloe crameri,ES,Spain,498468,y,P,NE,
-Euchloe simplonia,ES,Spain,498468,y,P,NE,
-Euchloe tagis,ES,Spain,498468,y,P,NE,
-Eumedonia eumedon,ES,Spain,498468,y,P,NE,
-Euphydryas aurinia,ES,Spain,498468,y,P,NE,
-Euphydryas desfontainii,ES,Spain,498468,y,P,NE,
-Fabriciana adippe,ES,Spain,498468,y,P,NE,
-Fabriciana niobe,ES,Spain,498468,y,P,NE,
-Favonius quercus,ES,Spain,498468,y,P,NE,
-Gegenes nostrodamus,ES,Spain,498468,y,P,NE,
-Gegenes pumilio,ES,Spain,498468,y,P,NE,
-Glaucopsyche alexis,ES,Spain,498468,y,P,NE,
-Glaucopsyche melanops,ES,Spain,498468,y,P,NE,
-Gonepteryx cleopatra,ES,Spain,498468,y,P,NE,
-Gonepteryx rhamni,ES,Spain,498468,y,P,NE,
-Hamearis lucina,ES,Spain,498468,y,P,NE,
-Hesperia comma,ES,Spain,498468,y,P,NE,
-Heteropterus morpheus,ES,Spain,498468,y,P,NE,
-Hipparchia fagi,ES,Spain,498468,y,P,NE,
-Hipparchia fidia,ES,Spain,498468,y,P,NE,
-Hipparchia hermione,ES,Spain,498468,y,P,NE,
-Hipparchia semele,ES,Spain,498468,y,P,NE,
-Hipparchia statilinus,ES,Spain,498468,y,P,NE,
-Hyponephele lupina,ES,Spain,498468,y,P,NE,
-Hyponephele lycaon,ES,Spain,498468,y,P,NE,
-Iolana debilitata,ES,Spain,498468,y,P,NE,
-Iphiclides feisthamelii,ES,Spain,498468,y,P,NE,
-Iphiclides podalirius,ES,Spain,498468,y,P,NE,
-Issoria lathonia,ES,Spain,498468,y,P,NE,
+Euchloe belemia,ES,Spain,498468,y,P,NE,1
+Euchloe crameri,ES,Spain,498468,y,P,NE,1
+Euchloe simplonia,ES,Spain,498468,y,P,NE,1
+Euchloe tagis,ES,Spain,498468,y,P,NE,1
+Eumedonia eumedon,ES,Spain,498468,y,P,NE,1
+Euphydryas aurinia,ES,Spain,498468,y,P,NE,1
+Euphydryas desfontainii,ES,Spain,498468,y,P,NE,1
+Fabriciana adippe,ES,Spain,498468,y,P,NE,1
+Fabriciana niobe,ES,Spain,498468,y,P,NE,1
+Favonius quercus,ES,Spain,498468,y,P,NE,1
+Gegenes nostrodamus,ES,Spain,498468,y,P,NE,1
+Gegenes pumilio,ES,Spain,498468,y,P,NE,1
+Glaucopsyche alexis,ES,Spain,498468,y,P,NE,1
+Glaucopsyche melanops,ES,Spain,498468,y,P,NE,1
+Gonepteryx cleopatra,ES,Spain,498468,y,P,NE,1
+Gonepteryx rhamni,ES,Spain,498468,y,P,NE,1
+Hamearis lucina,ES,Spain,498468,y,P,NE,1
+Hesperia comma,ES,Spain,498468,y,P,NE,1
+Heteropterus morpheus,ES,Spain,498468,y,P,NE,1
+Hipparchia fagi,ES,Spain,498468,y,P,NE,1
+Hipparchia fidia,ES,Spain,498468,y,P,NE,1
+Hipparchia hermione,ES,Spain,498468,y,P,NE,1
+Hipparchia semele,ES,Spain,498468,y,P,NE,1
+Hipparchia statilinus,ES,Spain,498468,y,P,NE,1
+Hyponephele lupina,ES,Spain,498468,y,P,NE,1
+Hyponephele lycaon,ES,Spain,498468,y,P,NE,1
+Iolana debilitata,ES,Spain,498468,y,P,NE,1
+Iphiclides feisthamelii,ES,Spain,498468,y,P,NE,1
+Iphiclides podalirius,ES,Spain,498468,y,P,NE,1
+Issoria lathonia,ES,Spain,498468,y,P,NE,1
 Kretania hesperica,ES,Spain,498468,y,P,NT,20
-Laeosopis roboris,ES,Spain,498468,y,P,NE,
-Lampides boeticus,ES,Spain,498468,y,P,NE,
-Lasiommata maera,ES,Spain,498468,y,P,NE,
-Lasiommata megera,ES,Spain,498468,y,P,NE,
-Lasiommata petropolitana,ES,Spain,498468,y,P,NE,
-Leptidea reali,ES,Spain,498468,y,P,NE,
-Leptidea sinapis,ES,Spain,498468,y,P,NE,
-Leptotes pirithous,ES,Spain,498468,y,P,NE,
-Libythea celtis,ES,Spain,498468,y,P,NE,
-Limenitis camilla,ES,Spain,498468,y,P,NE,
-Limenitis reducta,ES,Spain,498468,y,P,NE,
+Laeosopis roboris,ES,Spain,498468,y,P,NE,1
+Lampides boeticus,ES,Spain,498468,y,P,NE,1
+Lasiommata maera,ES,Spain,498468,y,P,NE,1
+Lasiommata megera,ES,Spain,498468,y,P,NE,1
+Lasiommata petropolitana,ES,Spain,498468,y,P,NE,1
+Leptidea reali,ES,Spain,498468,y,P,NE,1
+Leptidea sinapis,ES,Spain,498468,y,P,NE,1
+Leptotes pirithous,ES,Spain,498468,y,P,NE,1
+Libythea celtis,ES,Spain,498468,y,P,NE,1
+Limenitis camilla,ES,Spain,498468,y,P,NE,1
+Limenitis reducta,ES,Spain,498468,y,P,NE,1
 Lopinga achine,ES,Spain,498468,y,P,VU,30
-Lycaena alciphron,ES,Spain,498468,y,P,NE,
-Lycaena bleusei,ES,Spain,498468,y,P,NE,
+Lycaena alciphron,ES,Spain,498468,y,P,NE,1
+Lycaena bleusei,ES,Spain,498468,y,P,NE,1
 Lycaena helle,ES,Spain,498468,y,P,EN,50
-Lycaena hippothoe,ES,Spain,498468,y,P,NE,
-Lycaena phlaeas,ES,Spain,498468,y,P,NE,
-Lycaena tityrus,ES,Spain,498468,y,P,NE,
-Lycaena virgaureae,ES,Spain,498468,y,P,NE,
-Lysandra albicans,ES,Spain,498468,y,P,NE,
-Lysandra bellargus,ES,Spain,498468,y,P,NE,
-Lysandra caelestissima,ES,Spain,498468,y,P,NE,
-Lysandra coridon,ES,Spain,498468,y,P,NE,
-Lysandra hispana,ES,Spain,498468,y,P,NE,
-Maniola jurtina,ES,Spain,498468,y,P,NE,
-Melanargia galathea,ES,Spain,498468,y,P,NE,
-Melanargia ines,ES,Spain,498468,y,P,NE,
-Melanargia lachesis,ES,Spain,498468,y,P,NE,
-Melanargia occitanica,ES,Spain,498468,y,P,NE,
-Melanargia russiae,ES,Spain,498468,y,P,NE,
-Melitaea aetherie,ES,Spain,498468,y,P,NE,
-Melitaea celadussa,ES,Spain,498468,y,P,NE,
-Melitaea cinxia,ES,Spain,498468,y,P,NE,
-Melitaea deione,ES,Spain,498468,y,P,NE,
-Melitaea diamina,ES,Spain,498468,y,P,NE,
-Melitaea didyma,ES,Spain,498468,y,P,NE,
-Melitaea ornata,ES,Spain,498468,y,P,NE,
-Melitaea parthenoides,ES,Spain,498468,y,P,NE,
-Melitaea phoebe,ES,Spain,498468,y,P,NE,
-Melitaea trivia,ES,Spain,498468,y,P,NE,
-Minois dryas,ES,Spain,498468,y,P,NE,
-Muschampia proto,ES,Spain,498468,y,P,NE,
-Nymphalis antiopa,ES,Spain,498468,y,P,NE,
-Nymphalis polychloros,ES,Spain,498468,y,P,NE,
-Ochlodes sylvanus,ES,Spain,498468,y,P,NE,
-Papilio machaon,ES,Spain,498468,y,P,NE,
-Pararge aegeria,ES,Spain,498468,y,P,NE,
+Lycaena hippothoe,ES,Spain,498468,y,P,NE,1
+Lycaena phlaeas,ES,Spain,498468,y,P,NE,1
+Lycaena tityrus,ES,Spain,498468,y,P,NE,1
+Lycaena virgaureae,ES,Spain,498468,y,P,NE,1
+Lysandra albicans,ES,Spain,498468,y,P,NE,1
+Lysandra bellargus,ES,Spain,498468,y,P,NE,1
+Lysandra caelestissima,ES,Spain,498468,y,P,NE,1
+Lysandra coridon,ES,Spain,498468,y,P,NE,1
+Lysandra hispana,ES,Spain,498468,y,P,NE,1
+Maniola jurtina,ES,Spain,498468,y,P,NE,1
+Melanargia galathea,ES,Spain,498468,y,P,NE,1
+Melanargia ines,ES,Spain,498468,y,P,NE,1
+Melanargia lachesis,ES,Spain,498468,y,P,NE,1
+Melanargia occitanica,ES,Spain,498468,y,P,NE,1
+Melanargia russiae,ES,Spain,498468,y,P,NE,1
+Melitaea aetherie,ES,Spain,498468,y,P,NE,1
+Melitaea celadussa,ES,Spain,498468,y,P,NE,1
+Melitaea cinxia,ES,Spain,498468,y,P,NE,1
+Melitaea deione,ES,Spain,498468,y,P,NE,1
+Melitaea diamina,ES,Spain,498468,y,P,NE,1
+Melitaea didyma,ES,Spain,498468,y,P,NE,1
+Melitaea ornata,ES,Spain,498468,y,P,NE,1
+Melitaea parthenoides,ES,Spain,498468,y,P,NE,1
+Melitaea phoebe,ES,Spain,498468,y,P,NE,1
+Melitaea trivia,ES,Spain,498468,y,P,NE,1
+Minois dryas,ES,Spain,498468,y,P,NE,1
+Muschampia proto,ES,Spain,498468,y,P,NE,1
+Nymphalis antiopa,ES,Spain,498468,y,P,NE,1
+Nymphalis polychloros,ES,Spain,498468,y,P,NE,1
+Ochlodes sylvanus,ES,Spain,498468,y,P,NE,1
+Papilio machaon,ES,Spain,498468,y,P,NE,1
+Pararge aegeria,ES,Spain,498468,y,P,NE,1
 Parnassius apollo,ES,Spain,498468,y,P,LC,1
 Parnassius mnemosyne,ES,Spain,498468,y,P,LC,1
 Phengaris alcon,ES,Spain,498468,y,P,NT,20
-Phengaris arion,ES,Spain,498468,y,P,NE,
+Phengaris arion,ES,Spain,498468,y,P,NE,1
 Phengaris nausithous,ES,Spain,498468,y,P,NT,20
-Pieris brassicae,ES,Spain,498468,y,P,NE,
-Pieris ergane,ES,Spain,498468,y,P,NE,
-Pieris mannii,ES,Spain,498468,y,P,NE,
-Pieris napi,ES,Spain,498468,y,P,NE,
-Pieris rapae,ES,Spain,498468,y,P,NE,
-Plebejus argus,ES,Spain,498468,y,P,NE,
-Plebejus idas,ES,Spain,498468,y,P,NE,
-Polygonia c-album,ES,Spain,498468,y,P,NE,
-Polyommatus amandus,ES,Spain,498468,y,P,NE,
-Polyommatus celina,ES,Spain,498468,y,P,NE,
-Polyommatus damon,ES,Spain,498468,y,P,NE,
-Polyommatus daphnis,ES,Spain,498468,y,P,NE,
-Polyommatus dorylas,ES,Spain,498468,y,P,NE,
-Polyommatus eros,ES,Spain,498468,y,P,NE,
-Polyommatus escheri,ES,Spain,498468,y,P,NE,
-Polyommatus fabressei,ES,Spain,498468,y,P,NE,
-Polyommatus fulgens,ES,Spain,498468,y,P,NE,
+Pieris brassicae,ES,Spain,498468,y,P,NE,1
+Pieris ergane,ES,Spain,498468,y,P,NE,1
+Pieris mannii,ES,Spain,498468,y,P,NE,1
+Pieris napi,ES,Spain,498468,y,P,NE,1
+Pieris rapae,ES,Spain,498468,y,P,NE,1
+Plebejus argus,ES,Spain,498468,y,P,NE,1
+Plebejus idas,ES,Spain,498468,y,P,NE,1
+Polygonia c-album,ES,Spain,498468,y,P,NE,1
+Polyommatus amandus,ES,Spain,498468,y,P,NE,1
+Polyommatus celina,ES,Spain,498468,y,P,NE,1
+Polyommatus damon,ES,Spain,498468,y,P,NE,1
+Polyommatus daphnis,ES,Spain,498468,y,P,NE,1
+Polyommatus dorylas,ES,Spain,498468,y,P,NE,1
+Polyommatus eros,ES,Spain,498468,y,P,NE,1
+Polyommatus escheri,ES,Spain,498468,y,P,NE,1
+Polyommatus fabressei,ES,Spain,498468,y,P,NE,1
+Polyommatus fulgens,ES,Spain,498468,y,P,NE,1
 Polyommatus golgus,ES,Spain,498468,y,P,EN,50
-Polyommatus icarus,ES,Spain,498468,y,P,NE,
-Polyommatus nivescens,ES,Spain,498468,y,P,NE,
-Polyommatus ripartii,ES,Spain,498468,y,P,NE,
-Polyommatus thersites,ES,Spain,498468,y,P,NE,
-Polyommatus violetae,ES,Spain,498468,y,P,NE,
-Pontia callidice,ES,Spain,498468,y,P,NE,
-Pontia daplidice,ES,Spain,498468,y,P,NE,
+Polyommatus icarus,ES,Spain,498468,y,P,NE,1
+Polyommatus nivescens,ES,Spain,498468,y,P,NE,1
+Polyommatus ripartii,ES,Spain,498468,y,P,NE,1
+Polyommatus thersites,ES,Spain,498468,y,P,NE,1
+Polyommatus violetae,ES,Spain,498468,y,P,NE,1
+Pontia callidice,ES,Spain,498468,y,P,NE,1
+Pontia daplidice,ES,Spain,498468,y,P,NE,1
 Pseudochazara williamsi,ES,Spain,498468,y,P,NT,20
-Pseudophilotes abencerragus,ES,Spain,498468,y,P,NE,
-Pseudophilotes baton,ES,Spain,498468,y,P,NE,
-Pseudophilotes panoptes,ES,Spain,498468,y,P,NE,
-Pyrgus alveus,ES,Spain,498468,y,P,NE,
-Pyrgus andromedae,ES,Spain,498468,y,P,NE,
-Pyrgus armoricanus,ES,Spain,498468,y,P,NE,
-Pyrgus cacaliae,ES,Spain,498468,y,P,NE,
-Pyrgus carthami,ES,Spain,498468,y,P,NE,
+Pseudophilotes abencerragus,ES,Spain,498468,y,P,NE,1
+Pseudophilotes baton,ES,Spain,498468,y,P,NE,1
+Pseudophilotes panoptes,ES,Spain,498468,y,P,NE,1
+Pyrgus alveus,ES,Spain,498468,y,P,NE,1
+Pyrgus andromedae,ES,Spain,498468,y,P,NE,1
+Pyrgus armoricanus,ES,Spain,498468,y,P,NE,1
+Pyrgus cacaliae,ES,Spain,498468,y,P,NE,1
+Pyrgus carthami,ES,Spain,498468,y,P,NE,1
 Pyrgus cinarae,ES,Spain,498468,y,P,VU,30
-Pyrgus cirsii,ES,Spain,498468,y,P,NE,
-Pyrgus foulquieri,ES,Spain,498468,y,P,NE,
-Pyrgus malvoides,ES,Spain,498468,y,P,NE,
-Pyrgus onopordi,ES,Spain,498468,y,P,NE,
-Pyrgus serratulae,ES,Spain,498468,y,P,NE,
+Pyrgus cirsii,ES,Spain,498468,y,P,NE,1
+Pyrgus foulquieri,ES,Spain,498468,y,P,NE,1
+Pyrgus malvoides,ES,Spain,498468,y,P,NE,1
+Pyrgus onopordi,ES,Spain,498468,y,P,NE,1
+Pyrgus serratulae,ES,Spain,498468,y,P,NE,1
 Pyrgus sidae,ES,Spain,498468,y,P,VU,30
-Pyronia bathseba,ES,Spain,498468,y,P,NE,
-Pyronia cecilia,ES,Spain,498468,y,P,NE,
-Pyronia tithonus,ES,Spain,498468,y,P,NE,
-Satyrium acaciae,ES,Spain,498468,y,P,NE,
-Satyrium esculi,ES,Spain,498468,y,P,NE,
-Satyrium ilicis,ES,Spain,498468,y,P,NE,
-Satyrium pruni,ES,Spain,498468,y,P,NE,
-Satyrium spini,ES,Spain,498468,y,P,NE,
-Satyrium w-album,ES,Spain,498468,y,P,NE,
-Satyrus actaea,ES,Spain,498468,y,P,NE,
-Satyrus ferula,ES,Spain,498468,y,P,NE,
-Scolitantides orion,ES,Spain,498468,y,P,NE,
-Speyeria aglaja,ES,Spain,498468,y,P,NE,
-Spialia rosae,ES,Spain,498468,y,P,NE,
-Spialia sertorius,ES,Spain,498468,y,P,NE,
-Tarucus theophrastus,ES,Spain,498468,y,P,NE,
-Thecla betulae,ES,Spain,498468,y,P,NE,
-Thymelicus acteon,ES,Spain,498468,y,P,NE,
-Thymelicus lineola,ES,Spain,498468,y,P,NE,
-Thymelicus sylvestris,ES,Spain,498468,y,P,NE,
-Tomares ballus,ES,Spain,498468,y,P,NE,
-Vanessa atalanta,ES,Spain,498468,y,P,NE,
-Vanessa cardui,ES,Spain,498468,y,P,NE,
-Vanessa virginiensis,ES,Spain,498468,y,P,NE,
-Zegris eupheme,ES,Spain,498468,y,P,NE,
-Zerynthia rumina,ES,Spain,498468,y,P,NE,
-Zizeeria knysna,ES,Spain,498468,y,P,NE,
+Pyronia bathseba,ES,Spain,498468,y,P,NE,1
+Pyronia cecilia,ES,Spain,498468,y,P,NE,1
+Pyronia tithonus,ES,Spain,498468,y,P,NE,1
+Satyrium acaciae,ES,Spain,498468,y,P,NE,1
+Satyrium esculi,ES,Spain,498468,y,P,NE,1
+Satyrium ilicis,ES,Spain,498468,y,P,NE,1
+Satyrium pruni,ES,Spain,498468,y,P,NE,1
+Satyrium spini,ES,Spain,498468,y,P,NE,1
+Satyrium w-album,ES,Spain,498468,y,P,NE,1
+Satyrus actaea,ES,Spain,498468,y,P,NE,1
+Satyrus ferula,ES,Spain,498468,y,P,NE,1
+Scolitantides orion,ES,Spain,498468,y,P,NE,1
+Speyeria aglaja,ES,Spain,498468,y,P,NE,1
+Spialia rosae,ES,Spain,498468,y,P,NE,1
+Spialia sertorius,ES,Spain,498468,y,P,NE,1
+Tarucus theophrastus,ES,Spain,498468,y,P,NE,1
+Thecla betulae,ES,Spain,498468,y,P,NE,1
+Thymelicus acteon,ES,Spain,498468,y,P,NE,1
+Thymelicus lineola,ES,Spain,498468,y,P,NE,1
+Thymelicus sylvestris,ES,Spain,498468,y,P,NE,1
+Tomares ballus,ES,Spain,498468,y,P,NE,1
+Vanessa atalanta,ES,Spain,498468,y,P,NE,1
+Vanessa cardui,ES,Spain,498468,y,P,NE,1
+Vanessa virginiensis,ES,Spain,498468,y,P,NE,1
+Zegris eupheme,ES,Spain,498468,y,P,NE,1
+Zerynthia rumina,ES,Spain,498468,y,P,NE,1
+Zizeeria knysna,ES,Spain,498468,y,P,NE,1
 Aglais io,FI,Finland,338145,y,P,LC,1
 Aglais urticae,FI,Finland,338145,y,P,LC,1
 Agriades aquilo,FI,Finland,338145,y,P,EN,50
@@ -2505,7 +2505,7 @@ Melitaea phoebe,FR,France,551394,y,P,LC,1
 Melitaea varia,FR,France,551394,y,P,LC,1
 Minois dryas,FR,France,551394,y,P,LC,1
 Muschampia proto,FR,France,551394,y,P,LC,1
-Neptis rivularis,FR,France,551394,y,Ex,RE,
+Neptis rivularis,FR,France,551394,y,Ex,RE,100
 Nymphalis antiopa,FR,France,551394,y,P,LC,1
 Nymphalis polychloros,FR,France,551394,y,P,LC,1
 Ochlodes sylvanus,FR,France,551394,y,P,LC,1
@@ -2709,7 +2709,7 @@ Erebia euryale,GR,Greece,131940,y,P,LC,1
 Erebia ligea,GR,Greece,131940,y,P,LC,1
 Erebia medusa,GR,Greece,131940,y,P,LC,1
 Erebia melas,GR,Greece,131940,y,P,LC,1
-Erebia neleus,GR,Greece,131940,y,P,CR,
+Erebia neleus,GR,Greece,131940,y,P,CR,80
 Erebia oeme,GR,Greece,131940,y,P,VU,30
 Erebia ottomana,GR,Greece,131940,y,P,LC,1
 Erebia rhodopensis,GR,Greece,131940,y,P,EN,50
@@ -2874,7 +2874,7 @@ Thymelicus acteon,GR,Greece,131940,y,P,LC,1
 Thymelicus hyrax,GR,Greece,131940,y,P,LC,1
 Thymelicus lineola,GR,Greece,131940,y,P,LC,1
 Thymelicus sylvestris,GR,Greece,131940,y,P,LC,1
-Turanana taygetica,GR,Greece,131940,y,P,CR,
+Turanana taygetica,GR,Greece,131940,y,P,CR,80
 Vanessa atalanta,GR,Greece,131940,y,P,LC,1
 Vanessa cardui,GR,Greece,131940,y,M,LC,1
 Ypthima asterope,GR,Greece,131940,y,P,NT,20
@@ -3265,7 +3265,7 @@ Polyommatus icarus,IE,Ireland,70273,y,P,LC,1
 Pyronia tithonus,IE,Ireland,70273,y,P,NT,20
 Speyeria aglaja,IE,Ireland,70273,y,P,VU,30
 Thecla betulae,IE,Ireland,70273,y,P,LC,1
-Thymelicus lineola,IE,Ireland,70273,y,P,NE,
+Thymelicus lineola,IE,Ireland,70273,y,P,NE,1
 Thymelicus sylvestris,IE,Ireland,70273,y,P,DD,1
 Vanessa atalanta,IE,Ireland,70273,y,P,LC,1
 Vanessa cardui,IE,Ireland,70273,y,M,LC,1
@@ -3665,126 +3665,126 @@ Thymelicus lineola,LI,Liechtenstein,160,,P,NRLA,
 Thymelicus sylvestris,LI,Liechtenstein,160,,P,NRLA,
 Vanessa atalanta,LI,Liechtenstein,160,,M,NRLA,
 Vanessa cardui,LI,Liechtenstein,160,,M,NRLA,
-Aglais io,LT,Lithuania,65300,y,P,LC,
-Aglais urticae,LT,Lithuania,65300,y,P,LC,
-Agriades optilete,LT,Lithuania,65300,y,P,LC,
-Anthocharis cardamines,LT,Lithuania,65300,y,P,LC,
-Apatura ilia,LT,Lithuania,65300,y,P,LC,
-Apatura iris,LT,Lithuania,65300,y,P,LC,
-Aphantopus hyperantus,LT,Lithuania,65300,y,P,LC,
-Aporia crataegi,LT,Lithuania,65300,y,P,LC,
-Araschnia levana,LT,Lithuania,65300,y,P,LC,
-Argynnis laodice,LT,Lithuania,65300,y,P,LC,
-Argynnis paphia,LT,Lithuania,65300,y,P,LC,
-Aricia agestis,LT,Lithuania,65300,y,P,LC,
-Aricia artaxerxes,LT,Lithuania,65300,y,P,LC,
-Boloria aquilonaris,LT,Lithuania,65300,y,P,LC,
-Boloria dia,LT,Lithuania,65300,y,P,LC,
-Boloria eunomia,LT,Lithuania,65300,y,P,LC,
-Boloria euphrosyne,LT,Lithuania,65300,y,P,LC,
+Aglais io,LT,Lithuania,65300,y,P,LC,1
+Aglais urticae,LT,Lithuania,65300,y,P,LC,1
+Agriades optilete,LT,Lithuania,65300,y,P,LC,1
+Anthocharis cardamines,LT,Lithuania,65300,y,P,LC,1
+Apatura ilia,LT,Lithuania,65300,y,P,LC,1
+Apatura iris,LT,Lithuania,65300,y,P,LC,1
+Aphantopus hyperantus,LT,Lithuania,65300,y,P,LC,1
+Aporia crataegi,LT,Lithuania,65300,y,P,LC,1
+Araschnia levana,LT,Lithuania,65300,y,P,LC,1
+Argynnis laodice,LT,Lithuania,65300,y,P,LC,1
+Argynnis paphia,LT,Lithuania,65300,y,P,LC,1
+Aricia agestis,LT,Lithuania,65300,y,P,LC,1
+Aricia artaxerxes,LT,Lithuania,65300,y,P,LC,1
+Boloria aquilonaris,LT,Lithuania,65300,y,P,LC,1
+Boloria dia,LT,Lithuania,65300,y,P,LC,1
+Boloria eunomia,LT,Lithuania,65300,y,P,LC,1
+Boloria euphrosyne,LT,Lithuania,65300,y,P,LC,1
 Boloria frigga,LT,Lithuania,65300,y,P,VU,30
-Boloria selene,LT,Lithuania,65300,y,P,LC,
-Brenthis daphne,LT,Lithuania,65300,y,P,LC,
+Boloria selene,LT,Lithuania,65300,y,P,LC,1
+Brenthis daphne,LT,Lithuania,65300,y,P,LC,1
 Brenthis hecate,LT,Lithuania,65300,y,P,CR,80
-Brenthis ino,LT,Lithuania,65300,y,P,LC,
-Callophrys rubi,LT,Lithuania,65300,y,P,LC,
+Brenthis ino,LT,Lithuania,65300,y,P,LC,1
+Callophrys rubi,LT,Lithuania,65300,y,P,LC,1
 Carcharodus alceae,LT,Lithuania,65300,y,P,DD,1
-Carcharodus floccifera,LT,Lithuania,65300,y,P,LC,
+Carcharodus floccifera,LT,Lithuania,65300,y,P,LC,1
 Carterocephalus palaemon,LT,Lithuania,65300,y,P,NT,20
-Carterocephalus silvicola,LT,Lithuania,65300,y,P,LC,
-Celastrina argiolus,LT,Lithuania,65300,y,P,LC,
-Coenonympha arcania,LT,Lithuania,65300,y,P,LC,
-Coenonympha glycerion,LT,Lithuania,65300,y,P,LC,
-Coenonympha hero,LT,Lithuania,65300,y,P,EN,
-Coenonympha pamphilus,LT,Lithuania,65300,y,P,LC,
+Carterocephalus silvicola,LT,Lithuania,65300,y,P,LC,1
+Celastrina argiolus,LT,Lithuania,65300,y,P,LC,1
+Coenonympha arcania,LT,Lithuania,65300,y,P,LC,1
+Coenonympha glycerion,LT,Lithuania,65300,y,P,LC,1
+Coenonympha hero,LT,Lithuania,65300,y,P,EN,50
+Coenonympha pamphilus,LT,Lithuania,65300,y,P,LC,1
 Coenonympha tullia,LT,Lithuania,65300,y,P,VU,30
-Colias hyale,LT,Lithuania,65300,y,P,LC,
-Colias palaeno,LT,Lithuania,65300,y,P,LC,
-Cupido argiades,LT,Lithuania,65300,y,P,LC,
-Cupido minimus,LT,Lithuania,65300,y,P,LC,
-Cyaniris semiargus,LT,Lithuania,65300,y,P,LC,
+Colias hyale,LT,Lithuania,65300,y,P,LC,1
+Colias palaeno,LT,Lithuania,65300,y,P,LC,1
+Cupido argiades,LT,Lithuania,65300,y,P,LC,1
+Cupido minimus,LT,Lithuania,65300,y,P,LC,1
+Cyaniris semiargus,LT,Lithuania,65300,y,P,LC,1
 Erebia aethiops,LT,Lithuania,65300,y,P,DD,1
 Erebia ligea,LT,Lithuania,65300,y,P,DD,1
-Erynnis tages,LT,Lithuania,65300,y,P,EN,
+Erynnis tages,LT,Lithuania,65300,y,P,EN,50
 Eumedonia eumedon,LT,Lithuania,65300,y,P,NT,20
-Euphydryas aurinia,LT,Lithuania,65300,y,P,EN,
+Euphydryas aurinia,LT,Lithuania,65300,y,P,EN,50
 Euphydryas maturna,LT,Lithuania,65300,y,P,VU,30
-Fabriciana adippe,LT,Lithuania,65300,y,P,LC,
-Fabriciana niobe,LT,Lithuania,65300,y,P,LC,
-Favonius quercus,LT,Lithuania,65300,y,P,LC,
-Glaucopsyche alexis,LT,Lithuania,65300,y,P,EN,
-Gonepteryx rhamni,LT,Lithuania,65300,y,P,LC,
+Fabriciana adippe,LT,Lithuania,65300,y,P,LC,1
+Fabriciana niobe,LT,Lithuania,65300,y,P,LC,1
+Favonius quercus,LT,Lithuania,65300,y,P,LC,1
+Glaucopsyche alexis,LT,Lithuania,65300,y,P,EN,50
+Gonepteryx rhamni,LT,Lithuania,65300,y,P,LC,1
 Hamearis lucina,LT,Lithuania,65300,y,Ex,RE,100
-Hesperia comma,LT,Lithuania,65300,y,P,LC,
-Heteropterus morpheus,LT,Lithuania,65300,y,P,LC,
-Hipparchia hermione,LT,Lithuania,65300,y,P,EN,
-Hipparchia semele,LT,Lithuania,65300,y,P,LC,
+Hesperia comma,LT,Lithuania,65300,y,P,LC,1
+Heteropterus morpheus,LT,Lithuania,65300,y,P,LC,1
+Hipparchia hermione,LT,Lithuania,65300,y,P,EN,50
+Hipparchia semele,LT,Lithuania,65300,y,P,LC,1
 Hipparchia statilinus,LT,Lithuania,65300,y,P,VU,30
-Hyponephele lycaon,LT,Lithuania,65300,y,P,LC,
-Issoria lathonia,LT,Lithuania,65300,y,P,LC,
-Lasiommata maera,LT,Lithuania,65300,y,P,LC,
-Lasiommata megera,LT,Lithuania,65300,y,P,LC,
+Hyponephele lycaon,LT,Lithuania,65300,y,P,LC,1
+Issoria lathonia,LT,Lithuania,65300,y,P,LC,1
+Lasiommata maera,LT,Lithuania,65300,y,P,LC,1
+Lasiommata megera,LT,Lithuania,65300,y,P,LC,1
 Lasiommata petropolitana,LT,Lithuania,65300,y,P,DD,1
-Leptidea juvernica,LT,Lithuania,65300,y,P,LC,
-Leptidea sinapis,LT,Lithuania,65300,y,P,LC,
-Limenitis camilla,LT,Lithuania,65300,y,P,LC,
-Limenitis populi,LT,Lithuania,65300,y,P,LC,
-Lopinga achine,LT,Lithuania,65300,y,P,LC,
-Lycaena alciphron,LT,Lithuania,65300,y,P,LC,
+Leptidea juvernica,LT,Lithuania,65300,y,P,LC,1
+Leptidea sinapis,LT,Lithuania,65300,y,P,LC,1
+Limenitis camilla,LT,Lithuania,65300,y,P,LC,1
+Limenitis populi,LT,Lithuania,65300,y,P,LC,1
+Lopinga achine,LT,Lithuania,65300,y,P,LC,1
+Lycaena alciphron,LT,Lithuania,65300,y,P,LC,1
 Lycaena dispar,LT,Lithuania,65300,y,P,NT,20
-Lycaena helle,LT,Lithuania,65300,y,P,EN,
-Lycaena hippothoe,LT,Lithuania,65300,y,P,LC,
-Lycaena phlaeas,LT,Lithuania,65300,y,P,LC,
-Lycaena tityrus,LT,Lithuania,65300,y,P,LC,
-Lycaena virgaureae,LT,Lithuania,65300,y,P,LC,
-Lysandra coridon,LT,Lithuania,65300,y,P,EN,
-Maniola jurtina,LT,Lithuania,65300,y,P,LC,
+Lycaena helle,LT,Lithuania,65300,y,P,EN,50
+Lycaena hippothoe,LT,Lithuania,65300,y,P,LC,1
+Lycaena phlaeas,LT,Lithuania,65300,y,P,LC,1
+Lycaena tityrus,LT,Lithuania,65300,y,P,LC,1
+Lycaena virgaureae,LT,Lithuania,65300,y,P,LC,1
+Lysandra coridon,LT,Lithuania,65300,y,P,EN,50
+Maniola jurtina,LT,Lithuania,65300,y,P,LC,1
 Melanargia galathea,LT,Lithuania,65300,y,P,DD,1
-Melitaea athalia,LT,Lithuania,65300,y,P,LC,
-Melitaea aurelia,LT,Lithuania,65300,y,P,EN,
-Melitaea britomartis,LT,Lithuania,65300,y,P,LC,
-Melitaea cinxia,LT,Lithuania,65300,y,P,LC,
+Melitaea athalia,LT,Lithuania,65300,y,P,LC,1
+Melitaea aurelia,LT,Lithuania,65300,y,P,EN,50
+Melitaea britomartis,LT,Lithuania,65300,y,P,LC,1
+Melitaea cinxia,LT,Lithuania,65300,y,P,LC,1
 Melitaea diamina,LT,Lithuania,65300,y,P,NT,20
-Melitaea didyma,LT,Lithuania,65300,y,P,LC,
-Melitaea phoebe,LT,Lithuania,65300,y,P,LC,
-Nymphalis antiopa,LT,Lithuania,65300,y,P,LC,
-Nymphalis polychloros,LT,Lithuania,65300,y,P,LC,
-Nymphalis xanthomelas,LT,Lithuania,65300,y,P,LC,
-Ochlodes sylvanus,LT,Lithuania,65300,y,P,LC,
-Oeneis jutta,LT,Lithuania,65300,y,P,EN,
-Papilio machaon,LT,Lithuania,65300,y,P,LC,
-Pararge aegeria,LT,Lithuania,65300,y,P,LC,
-Parnassius mnemosyne,LT,Lithuania,65300,y,P,LC,
-Phengaris alcon,LT,Lithuania,65300,y,P,EN,
-Phengaris arion,LT,Lithuania,65300,y,P,EN,
+Melitaea didyma,LT,Lithuania,65300,y,P,LC,1
+Melitaea phoebe,LT,Lithuania,65300,y,P,LC,1
+Nymphalis antiopa,LT,Lithuania,65300,y,P,LC,1
+Nymphalis polychloros,LT,Lithuania,65300,y,P,LC,1
+Nymphalis xanthomelas,LT,Lithuania,65300,y,P,LC,1
+Ochlodes sylvanus,LT,Lithuania,65300,y,P,LC,1
+Oeneis jutta,LT,Lithuania,65300,y,P,EN,50
+Papilio machaon,LT,Lithuania,65300,y,P,LC,1
+Pararge aegeria,LT,Lithuania,65300,y,P,LC,1
+Parnassius mnemosyne,LT,Lithuania,65300,y,P,LC,1
+Phengaris alcon,LT,Lithuania,65300,y,P,EN,50
+Phengaris arion,LT,Lithuania,65300,y,P,EN,50
 Phengaris teleius,LT,Lithuania,65300,y,P,VU,30
-Pieris brassicae,LT,Lithuania,65300,y,P,LC,
-Pieris napi,LT,Lithuania,65300,y,P,LC,
-Pieris rapae,LT,Lithuania,65300,y,P,LC,
-Plebejus argus,LT,Lithuania,65300,y,P,LC,
-Plebejus argyrognomon,LT,Lithuania,65300,y,P,LC,
-Plebejus idas,LT,Lithuania,65300,y,P,LC,
-Polygonia c-album,LT,Lithuania,65300,y,P,LC,
-Polyommatus amandus,LT,Lithuania,65300,y,P,LC,
+Pieris brassicae,LT,Lithuania,65300,y,P,LC,1
+Pieris napi,LT,Lithuania,65300,y,P,LC,1
+Pieris rapae,LT,Lithuania,65300,y,P,LC,1
+Plebejus argus,LT,Lithuania,65300,y,P,LC,1
+Plebejus argyrognomon,LT,Lithuania,65300,y,P,LC,1
+Plebejus idas,LT,Lithuania,65300,y,P,LC,1
+Polygonia c-album,LT,Lithuania,65300,y,P,LC,1
+Polyommatus amandus,LT,Lithuania,65300,y,P,LC,1
 Polyommatus daphnis,LT,Lithuania,65300,y,P,DD,1
-Polyommatus dorylas,LT,Lithuania,65300,y,P,EN,
-Polyommatus icarus,LT,Lithuania,65300,y,P,LC,
-Pontia edusa,LT,Lithuania,65300,y,P,LC,
-Pseudophilotes vicrama,LT,Lithuania,65300,y,P,LC,
-Pyrgus alveus,LT,Lithuania,65300,y,P,LC,
+Polyommatus dorylas,LT,Lithuania,65300,y,P,EN,50
+Polyommatus icarus,LT,Lithuania,65300,y,P,LC,1
+Pontia edusa,LT,Lithuania,65300,y,P,LC,1
+Pseudophilotes vicrama,LT,Lithuania,65300,y,P,LC,1
+Pyrgus alveus,LT,Lithuania,65300,y,P,LC,1
 Pyrgus carthami,LT,Lithuania,65300,y,Ex,RE,100
-Pyrgus malvae,LT,Lithuania,65300,y,P,LC,
-Pyrgus serratulae,LT,Lithuania,65300,y,P,EN,
-Satyrium ilicis,LT,Lithuania,65300,y,P,LC,
-Satyrium pruni,LT,Lithuania,65300,y,P,LC,
-Satyrium spini,LT,Lithuania,65300,y,P,LC,
-Satyrium w-album,LT,Lithuania,65300,y,P,LC,
-Speyeria aglaja,LT,Lithuania,65300,y,P,LC,
-Thecla betulae,LT,Lithuania,65300,y,P,LC,
-Thymelicus lineola,LT,Lithuania,65300,y,P,LC,
-Thymelicus sylvestris,LT,Lithuania,65300,y,P,LC,
-Vanessa atalanta,LT,Lithuania,65300,y,P,LC,
-Vanessa cardui,LT,Lithuania,65300,y,M,LC,
+Pyrgus malvae,LT,Lithuania,65300,y,P,LC,1
+Pyrgus serratulae,LT,Lithuania,65300,y,P,EN,50
+Satyrium ilicis,LT,Lithuania,65300,y,P,LC,1
+Satyrium pruni,LT,Lithuania,65300,y,P,LC,1
+Satyrium spini,LT,Lithuania,65300,y,P,LC,1
+Satyrium w-album,LT,Lithuania,65300,y,P,LC,1
+Speyeria aglaja,LT,Lithuania,65300,y,P,LC,1
+Thecla betulae,LT,Lithuania,65300,y,P,LC,1
+Thymelicus lineola,LT,Lithuania,65300,y,P,LC,1
+Thymelicus sylvestris,LT,Lithuania,65300,y,P,LC,1
+Vanessa atalanta,LT,Lithuania,65300,y,P,LC,1
+Vanessa cardui,LT,Lithuania,65300,y,M,LC,1
 Aglais io,LU,Luxembourg,2428,y,P,NT,20
 Aglais urticae,LU,Luxembourg,2428,y,P,LC,1
 Anthocharis cardamines,LU,Luxembourg,2428,y,P,LC,1
@@ -3808,8 +3808,8 @@ Celastrina argiolus,LU,Luxembourg,2428,y,P,LC,1
 Coenonympha arcania,LU,Luxembourg,2428,y,P,LC,1
 Coenonympha pamphilus,LU,Luxembourg,2428,y,P,LC,1
 Colias crocea,LU,Luxembourg,2428,y,M,LC,1
-Colias hyale,LU,Luxembourg,2428,y,M,NE,
-Cupido argiades,LU,Luxembourg,2428,y,P,NE,
+Colias hyale,LU,Luxembourg,2428,y,M,NE,1
+Cupido argiades,LU,Luxembourg,2428,y,P,NE,1
 Cupido minimus,LU,Luxembourg,2428,y,P,EN,50
 Cyaniris semiargus,LU,Luxembourg,2428,y,P,LC,1
 Erebia medusa,LU,Luxembourg,2428,y,P,LC,1
@@ -3826,8 +3826,8 @@ Iphiclides podalirius,LU,Luxembourg,2428,y,Ex,RE,100
 Issoria lathonia,LU,Luxembourg,2428,y,P,LC,1
 Lasiommata maera,LU,Luxembourg,2428,y,P,CR,80
 Lasiommata megera,LU,Luxembourg,2428,y,P,LC,1
-Leptidea juvernica,LU,Luxembourg,2428,y,P,NE,
-Leptidea sinapis,LU,Luxembourg,2428,y,P,NE,
+Leptidea juvernica,LU,Luxembourg,2428,y,P,NE,1
+Leptidea sinapis,LU,Luxembourg,2428,y,P,NE,1
 Limenitis camilla,LU,Luxembourg,2428,y,P,LC,1
 Limenitis populi,LU,Luxembourg,2428,y,P,EN,50
 Lycaena dispar,LU,Luxembourg,2428,y,P,LC,1
@@ -4595,16 +4595,16 @@ Boloria euphrosyne,NL,Netherlands,41198,y,Ex,RE,100
 Boloria selene,NL,Netherlands,41198,y,P,EN,50
 Brenthis ino,NL,Netherlands,41198,y,Ex,RE,100
 Callophrys rubi,NL,Netherlands,41198,y,P,LC,1
-Carcharodus alceae,NL,Netherlands,41198,y,P,NE,
+Carcharodus alceae,NL,Netherlands,41198,y,P,NE,1
 Carterocephalus palaemon,NL,Netherlands,41198,y,P,VU,30
 Celastrina argiolus,NL,Netherlands,41198,y,P,LC,1
 Coenonympha arcania,NL,Netherlands,41198,y,Ex,RE,100
 Coenonympha hero,NL,Netherlands,41198,y,Ex,RE,100
 Coenonympha pamphilus,NL,Netherlands,41198,y,P,LC,1
 Coenonympha tullia,NL,Netherlands,41198,y,P,CR,80
-Colias crocea,NL,Netherlands,41198,y,M,NE,
-Colias hyale,NL,Netherlands,41198,y,M,NE,
-Cupido argiades,NL,Netherlands,41198,y,P,NE,
+Colias crocea,NL,Netherlands,41198,y,M,NE,1
+Colias hyale,NL,Netherlands,41198,y,M,NE,1
+Cupido argiades,NL,Netherlands,41198,y,P,NE,1
 Cupido minimus,NL,Netherlands,41198,y,Ex,RE,100
 Cyaniris semiargus,NL,Netherlands,41198,y,P,RE,100
 Erynnis tages,NL,Netherlands,41198,y,P,CR,80
@@ -4638,7 +4638,7 @@ Phengaris arion,NL,Netherlands,41198,y,Ex,RE,100
 Phengaris nausithous,NL,Netherlands,41198,y,P,CR,80
 Phengaris teleius,NL,Netherlands,41198,y,P,CR,80
 Pieris brassicae,NL,Netherlands,41198,y,P,LC,1
-Pieris mannii,NL,Netherlands,41198,y,P,NE,
+Pieris mannii,NL,Netherlands,41198,y,P,NE,1
 Pieris napi,NL,Netherlands,41198,y,P,LC,1
 Pieris rapae,NL,Netherlands,41198,y,P,LC,1
 Plebejus argus,NL,Netherlands,41198,y,P,NT,20
@@ -4655,8 +4655,8 @@ Thecla betulae,NL,Netherlands,41198,y,P,EN,50
 Thymelicus acteon,NL,Netherlands,41198,y,Ex,RE,100
 Thymelicus lineola,NL,Netherlands,41198,y,P,LC,1
 Thymelicus sylvestris,NL,Netherlands,41198,y,P,LC,1
-Vanessa atalanta,NL,Netherlands,41198,y,M,NE,
-Vanessa cardui,NL,Netherlands,41198,y,M,NE,
+Vanessa atalanta,NL,Netherlands,41198,y,M,NE,1
+Vanessa cardui,NL,Netherlands,41198,y,M,NE,1
 Aglais io,NO,Norway,385178,,P,LC,1
 Aglais urticae,NO,Norway,385178,,P,LC,1
 Agriades aquilo,NO,Norway,385178,,P,LC,1
@@ -5252,7 +5252,7 @@ Aricia agestis,RS,Serbia,88361,,P,LC,1
 Aricia anteros,RS,Serbia,88361,,P,LC,1
 Aricia artaxerxes,RS,Serbia,88361,,P,LC,1
 Boloria dia,RS,Serbia,88361,,P,LC,1
-Boloria eunomia,RS,Serbia,88361,,P,CR,
+Boloria eunomia,RS,Serbia,88361,,P,CR,80
 Boloria euphrosyne,RS,Serbia,88361,,P,LC,1
 Boloria graeca,RS,Serbia,88361,,P,NT,20
 Boloria pales,RS,Serbia,88361,,P,VU,30
@@ -5281,7 +5281,7 @@ Colias caucasica,RS,Serbia,88361,,P,VU,30
 Colias crocea,RS,Serbia,88361,,P,LC,1
 Colias erate,RS,Serbia,88361,,P,LC,1
 Colias hyale,RS,Serbia,88361,,P,LC,1
-Colias myrmidone,RS,Serbia,88361,,P,CR,
+Colias myrmidone,RS,Serbia,88361,,P,CR,80
 Cupido alcetas,RS,Serbia,88361,,P,LC,1
 Cupido argiades,RS,Serbia,88361,,P,LC,1
 Cupido decoloratus,RS,Serbia,88361,,P,LC,1
@@ -5329,7 +5329,7 @@ Issoria lathonia,RS,Serbia,88361,,P,LC,1
 Kirinia climene,RS,Serbia,88361,,P,VU,30
 Kirinia roxelana,RS,Serbia,88361,,P,LC,1
 Kretania sephirus,RS,Serbia,88361,,P,NT,20
-Lampides boeticus,RS,Serbia,88361,,M,NE,
+Lampides boeticus,RS,Serbia,88361,,M,NE,1
 Lasiommata maera,RS,Serbia,88361,,P,LC,1
 Lasiommata megera,RS,Serbia,88361,,P,LC,1
 Lasiommata petropolitana,RS,Serbia,88361,,P,NT,20
@@ -5342,11 +5342,11 @@ Libythea celtis,RS,Serbia,88361,,P,NT,20
 Limenitis camilla,RS,Serbia,88361,,P,LC,1
 Limenitis populi,RS,Serbia,88361,,P,NT,20
 Limenitis reducta,RS,Serbia,88361,,P,LC,1
-Lopinga achine,RS,Serbia,88361,,P,CR,
+Lopinga achine,RS,Serbia,88361,,P,CR,80
 Lycaena alciphron,RS,Serbia,88361,,P,LC,1
 Lycaena candens,RS,Serbia,88361,,P,LC,1
 Lycaena dispar,RS,Serbia,88361,,P,LC,1
-Lycaena helle,RS,Serbia,88361,,P,CR,
+Lycaena helle,RS,Serbia,88361,,P,CR,80
 Lycaena hippothoe,RS,Serbia,88361,,P,DD,1
 Lycaena phlaeas,RS,Serbia,88361,,P,LC,1
 Lycaena thersamon,RS,Serbia,88361,,P,LC,1
@@ -5933,7 +5933,7 @@ Phengaris alcon,SI,Slovenia,20273,y,P,EN,50
 Phengaris arion,SI,Slovenia,20273,y,P,VU,30
 Phengaris nausithous,SI,Slovenia,20273,y,P,VU,30
 Phengaris teleius,SI,Slovenia,20273,y,P,VU,30
-Pieris balcana,SI,Slovenia,20273,y,P,DD,
+Pieris balcana,SI,Slovenia,20273,y,P,DD,1
 Pieris brassicae,SI,Slovenia,20273,y,P,LC,1
 Pieris bryoniae,SI,Slovenia,20273,y,P,LC,1
 Pieris ergane,SI,Slovenia,20273,y,P,VU,30
@@ -6011,7 +6011,7 @@ Carcharodus lavatherae,SK,Slovakia,49036,y,Ex,RE,100
 Carterocephalus palaemon,SK,Slovakia,49036,y,P,LC,1
 Carterocephalus silvicola,SK,Slovakia,49036,y,Ex,RE,100
 Celastrina argiolus,SK,Slovakia,49036,y,P,LC,1
-Chazara briseis,SK,Slovakia,49036,y,P,CR,
+Chazara briseis,SK,Slovakia,49036,y,P,CR,80
 Coenonympha arcania,SK,Slovakia,49036,y,P,LC,1
 Coenonympha glycerion,SK,Slovakia,49036,y,P,LC,1
 Coenonympha hero,SK,Slovakia,49036,y,P,EN,50
@@ -6019,12 +6019,12 @@ Coenonympha oedippus,SK,Slovakia,49036,y,Ex,RE,100
 Coenonympha pamphilus,SK,Slovakia,49036,y,P,LC,1
 Coenonympha tullia,SK,Slovakia,49036,y,P,VU,30
 Colias alfacariensis,SK,Slovakia,49036,y,P,LC,1
-Colias chrysotheme,SK,Slovakia,49036,y,P,CR,
+Colias chrysotheme,SK,Slovakia,49036,y,P,CR,80
 Colias crocea,SK,Slovakia,49036,y,M,LC,1
 Colias erate,SK,Slovakia,49036,y,P,LC,1
 Colias hyale,SK,Slovakia,49036,y,P,LC,1
-Colias myrmidone,SK,Slovakia,49036,y,P,CR,
-Colias palaeno,SK,Slovakia,49036,y,P,CR,
+Colias myrmidone,SK,Slovakia,49036,y,P,CR,80
+Colias palaeno,SK,Slovakia,49036,y,P,CR,80
 Cupido alcetas,SK,Slovakia,49036,y,P,VU,30
 Cupido argiades,SK,Slovakia,49036,y,P,LC,1
 Cupido decoloratus,SK,Slovakia,49036,y,P,LC,1
@@ -6057,8 +6057,8 @@ Hipparchia fagi,SK,Slovakia,49036,y,P,VU,30
 Hipparchia hermione,SK,Slovakia,49036,y,P,EN,50
 Hipparchia semele,SK,Slovakia,49036,y,P,EN,50
 Hipparchia statilinus,SK,Slovakia,49036,y,P,EN,50
-Hyponephele lupina,SK,Slovakia,49036,y,P,CR,
-Hyponephele lycaon,SK,Slovakia,49036,y,P,CR,
+Hyponephele lupina,SK,Slovakia,49036,y,P,CR,80
+Hyponephele lycaon,SK,Slovakia,49036,y,P,CR,80
 Iolana iolas,SK,Slovakia,49036,y,Ex,RE,100
 Iphiclides podalirius,SK,Slovakia,49036,y,P,LC,1
 Issoria lathonia,SK,Slovakia,49036,y,P,LC,1
@@ -6107,7 +6107,7 @@ Pararge aegeria,SK,Slovakia,49036,y,P,LC,1
 Parnassius apollo,SK,Slovakia,49036,y,P,EN,50
 Parnassius mnemosyne,SK,Slovakia,49036,y,P,VU,30
 Phengaris alcon,SK,Slovakia,49036,y,P,EN,50
-Phengaris arion,SK,Slovakia,49036,y,P,CR,
+Phengaris arion,SK,Slovakia,49036,y,P,CR,80
 Phengaris nausithous,SK,Slovakia,49036,y,P,EN,50
 Phengaris teleius,SK,Slovakia,49036,y,P,EN,50
 Pieris brassicae,SK,Slovakia,49036,y,P,LC,1
@@ -6151,203 +6151,203 @@ Thymelicus sylvestris,SK,Slovakia,49036,y,P,LC,1
 Vanessa atalanta,SK,Slovakia,49036,y,P,LC,1
 Vanessa cardui,SK,Slovakia,49036,y,M,LC,1
 Zerynthia polyxena,SK,Slovakia,49036,y,P,VU,30
-Aglais io,UA,Ukraine,603628,,P,LC,
-Aglais urticae,UA,Ukraine,603628,,P,LC,
-Agriades dardanus,UA,Ukraine,603628,,P,VU,
-Agriades optilete,UA,Ukraine,603628,,P,VU,
-Anthocharis cardamines,UA,Ukraine,603628,,P,LC,
-Apatura ilia,UA,Ukraine,603628,,P,LC,
-Apatura iris,UA,Ukraine,603628,,P,LC,
-Apatura metis,UA,Ukraine,603628,,P,VU,
-Aphantopus hyperantus,UA,Ukraine,603628,,P,LC,
-Aporia crataegi,UA,Ukraine,603628,,P,LC,
-Araschnia levana,UA,Ukraine,603628,,P,LC,
-Arethusana arethusa,UA,Ukraine,603628,,P,NT,
-Argynnis laodice,UA,Ukraine,603628,,P,VU,
-Argynnis pandora,UA,Ukraine,603628,,P,LC,
-Argynnis paphia,UA,Ukraine,603628,,P,LC,
-Aricia agestis,UA,Ukraine,603628,,P,LC,
-Aricia anteros,UA,Ukraine,603628,,P,CR,
-Aricia artaxerxes,UA,Ukraine,603628,,P,DD,
-Boloria aquilonaris,UA,Ukraine,603628,,P,EN,
-Boloria dia,UA,Ukraine,603628,,P,LC,
-Boloria eunomia,UA,Ukraine,603628,,P,EN,
-Boloria euphrosyne,UA,Ukraine,603628,,P,LC,
-Boloria selene,UA,Ukraine,603628,,P,LC,
-Boloria titania,UA,Ukraine,603628,,Ex,RE,
-Brenthis daphne,UA,Ukraine,603628,,P,LC,
-Brenthis hecate,UA,Ukraine,603628,,P,LC,
-Brenthis ino,UA,Ukraine,603628,,P,LC,
-Brintesia circe,UA,Ukraine,603628,,P,NT,
-Callophrys rubi,UA,Ukraine,603628,,P,LC,
-Carcharodus alceae,UA,Ukraine,603628,,P,LC,
-Carcharodus floccifera,UA,Ukraine,603628,,P,EN,
-Carcharodus lavatherae,UA,Ukraine,603628,,P,EN,
-Carcharodus orientalis,UA,Ukraine,603628,,P,VU,
-Carterocephalus palaemon,UA,Ukraine,603628,,P,LC,
-Carterocephalus silvicola,UA,Ukraine,603628,,P,VU,
-Celastrina argiolus,UA,Ukraine,603628,,P,LC,
-Chazara briseis,UA,Ukraine,603628,,P,NT,
-Chazara persephone,UA,Ukraine,603628,,P,VU,
-Coenonympha arcania,UA,Ukraine,603628,,P,LC,
-Coenonympha glycerion,UA,Ukraine,603628,,P,LC,
-Coenonympha hero,UA,Ukraine,603628,,P,VU,
-Coenonympha leander,UA,Ukraine,603628,,P,DD,
-Coenonympha oedippus,UA,Ukraine,603628,,P,EN,
-Coenonympha pamphilus,UA,Ukraine,603628,,P,LC,
-Coenonympha phryne,UA,Ukraine,603628,,P,CR,
-Coenonympha tullia,UA,Ukraine,603628,,P,VU,
-Colias alfacariensis,UA,Ukraine,603628,,P,DD,
-Colias chrysotheme,UA,Ukraine,603628,,P,EN,
-Colias crocea,UA,Ukraine,603628,,P,LC,
-Colias erate,UA,Ukraine,603628,,P,LC,
-Colias hyale,UA,Ukraine,603628,,P,LC,
-Colias myrmidone,UA,Ukraine,603628,,P,CR,
-Colias palaeno,UA,Ukraine,603628,,P,EN,
-Cupido alcetas,UA,Ukraine,603628,,P,VU,
-Cupido argiades,UA,Ukraine,603628,,P,LC,
-Cupido decoloratus,UA,Ukraine,603628,,P,NT,
-Cupido minimus,UA,Ukraine,603628,,P,NT,
-Cupido osiris,UA,Ukraine,603628,,P,VU,
-Cyaniris semiargus,UA,Ukraine,603628,,P,LC,
-Erebia aethiops,UA,Ukraine,603628,,P,LC,
-Erebia euryale,UA,Ukraine,603628,,P,LC,
-Erebia ligea,UA,Ukraine,603628,,P,LC,
-Erebia manto,UA,Ukraine,603628,,P,EN,
-Erebia medusa,UA,Ukraine,603628,,P,NT,
-Erebia pronoe,UA,Ukraine,603628,,P,NE,
-Erynnis tages,UA,Ukraine,603628,,P,LC,
-Euchloe ausonia,UA,Ukraine,603628,,P,VU,
-Eumedonia eumedon,UA,Ukraine,603628,,P,VU,
-Euphydryas aurinia,UA,Ukraine,603628,,P,VU,
-Euphydryas maturna,UA,Ukraine,603628,,P,VU,
-Fabriciana adippe,UA,Ukraine,603628,,P,LC,
-Fabriciana niobe,UA,Ukraine,603628,,P,LC,
-Favonius quercus,UA,Ukraine,603628,,P,LC,
-Glaucopsyche alexis,UA,Ukraine,603628,,P,NT,
-Gonepteryx rhamni,UA,Ukraine,603628,,P,LC,
-Hamearis lucina,UA,Ukraine,603628,,P,VU,
-Hesperia comma,UA,Ukraine,603628,,P,NT,
-Heteropterus morpheus,UA,Ukraine,603628,,P,VU,
-Hipparchia fagi,UA,Ukraine,603628,,P,VU,
-Hipparchia hermione,UA,Ukraine,603628,,P,EN,
-Hipparchia pellucida,UA,Ukraine,603628,,P,NT,
-Hipparchia semele,UA,Ukraine,603628,,P,LC,
-Hipparchia statilinus,UA,Ukraine,603628,,P,NT,
-Hipparchia volgensis,UA,Ukraine,603628,,P,NT,
-Hyponephele lupina,UA,Ukraine,603628,,P,NT,
-Hyponephele lycaon,UA,Ukraine,603628,,P,LC,
-Iphiclides podalirius,UA,Ukraine,603628,,P,LC,
-Issoria lathonia,UA,Ukraine,603628,,P,LC,
-Kirinia climene,UA,Ukraine,603628,,P,VU,
-Kretania pylaon,UA,Ukraine,603628,,P,VU,
-Kretania sephirus,UA,Ukraine,603628,,P,VU,
-Lasiommata maera,UA,Ukraine,603628,,P,LC,
-Lasiommata megera,UA,Ukraine,603628,,P,LC,
-Lasiommata petropolitana,UA,Ukraine,603628,,P,DD,
-Leptidea duponcheli,UA,Ukraine,603628,,P,NT,
-Leptidea juvernica,UA,Ukraine,603628,,P,LC,
-Leptidea morsei,UA,Ukraine,603628,,P,DD,
-Leptidea sinapis,UA,Ukraine,603628,,P,LC,
-Libythea celtis,UA,Ukraine,603628,,P,NT,
-Limenitis camilla,UA,Ukraine,603628,,P,LC,
-Limenitis populi,UA,Ukraine,603628,,P,VU,
-Limenitis reducta,UA,Ukraine,603628,,P,DD,
-Lopinga achine,UA,Ukraine,603628,,P,VU,
-Lycaena alciphron,UA,Ukraine,603628,,P,NT,
-Lycaena dispar,UA,Ukraine,603628,,P,LC,
-Lycaena helle,UA,Ukraine,603628,,P,VU,
-Lycaena hippothoe,UA,Ukraine,603628,,P,NT,
-Lycaena phlaeas,UA,Ukraine,603628,,P,LC,
-Lycaena thersamon,UA,Ukraine,603628,,P,LC,
-Lycaena tityrus,UA,Ukraine,603628,,P,LC,
-Lycaena virgaureae,UA,Ukraine,603628,,P,LC,
-Lysandra bellargus,UA,Ukraine,603628,,P,LC,
-Lysandra coridon,UA,Ukraine,603628,,P,LC,
-Maniola jurtina,UA,Ukraine,603628,,P,LC,
-Melanargia galathea,UA,Ukraine,603628,,P,LC,
-Melanargia russiae,UA,Ukraine,603628,,P,EN,
-Melitaea arduinna,UA,Ukraine,603628,,P,EN,
-Melitaea athalia,UA,Ukraine,603628,,P,LC,
-Melitaea aurelia,UA,Ukraine,603628,,P,NT,
-Melitaea britomartis,UA,Ukraine,603628,,P,NT,
-Melitaea cinxia,UA,Ukraine,603628,,P,LC,
-Melitaea diamina,UA,Ukraine,603628,,P,NT,
-Melitaea didyma,UA,Ukraine,603628,,P,LC,
-Melitaea ornata,UA,Ukraine,603628,,P,DD,
-Melitaea phoebe,UA,Ukraine,603628,,P,LC,
-Melitaea trivia,UA,Ukraine,603628,,P,NT,
-Minois dryas,UA,Ukraine,603628,,P,LC,
-Muschampia cribrellum,UA,Ukraine,603628,,P,EN,
-Muschampia proto,UA,Ukraine,603628,,P,VU,
-Muschampia tessellum,UA,Ukraine,603628,,P,VU,
-Neolycaena rhymnus,UA,Ukraine,603628,,P,VU,
-Neolysandra coelestina,UA,Ukraine,603628,,P,EN,
-Neptis rivularis,UA,Ukraine,603628,,P,LC,
-Neptis sappho,UA,Ukraine,603628,,P,LC,
-Nymphalis antiopa,UA,Ukraine,603628,,P,NT,
-Nymphalis polychloros,UA,Ukraine,603628,,P,LC,
-Nymphalis vaualbum,UA,Ukraine,603628,,P,DD,
-Nymphalis xanthomelas,UA,Ukraine,603628,,P,LC,
-Ochlodes sylvanus,UA,Ukraine,603628,,P,LC,
-Oeneis jutta,UA,Ukraine,603628,,P,EN,
-Oeneis tarpeia,UA,Ukraine,603628,,Ex,RE,
-Papilio machaon,UA,Ukraine,603628,,P,LC,
-Pararge aegeria,UA,Ukraine,603628,,P,LC,
-Parnassius apollo,UA,Ukraine,603628,,Ex,RE,
-Parnassius mnemosyne,UA,Ukraine,603628,,P,NT,
-Phengaris alcon,UA,Ukraine,603628,,P,VU,
-Phengaris arion,UA,Ukraine,603628,,P,NT,
-Phengaris nausithous,UA,Ukraine,603628,,P,VU,
-Phengaris teleius,UA,Ukraine,603628,,P,VU,
-Pieris brassicae,UA,Ukraine,603628,,P,LC,
-Pieris bryoniae,UA,Ukraine,603628,,P,NT,
-Pieris napi,UA,Ukraine,603628,,P,LC,
-Pieris rapae,UA,Ukraine,603628,,P,LC,
-Plebejus argus,UA,Ukraine,603628,,P,LC,
-Plebejus argyrognomon,UA,Ukraine,603628,,P,LC,
-Plebejus idas,UA,Ukraine,603628,,P,LC,
-Polygonia c-album,UA,Ukraine,603628,,P,LC,
-Polyommatus amandus,UA,Ukraine,603628,,P,VU,
-Polyommatus damocles,UA,Ukraine,603628,,P,VU,
-Polyommatus damon,UA,Ukraine,603628,,P,CR,
-Polyommatus damone,UA,Ukraine,603628,,P,VU,
-Polyommatus daphnis,UA,Ukraine,603628,,P,NT,
-Polyommatus dorylas,UA,Ukraine,603628,,P,EN,
-Polyommatus eros,UA,Ukraine,603628,,P,CR,
-Polyommatus icarus,UA,Ukraine,603628,,P,LC,
-Polyommatus ripartii,UA,Ukraine,603628,,P,NT,
-Polyommatus thersites,UA,Ukraine,603628,,P,NT,
-Pontia edusa,UA,Ukraine,603628,,P,LC,
-Proterebia phegea,UA,Ukraine,603628,,P,VU,
-Pseudochazara euxina,UA,Ukraine,603628,,P,VU,
-Pseudophilotes bavius,UA,Ukraine,603628,,P,VU,
-Pseudophilotes vicrama,UA,Ukraine,603628,,P,NT,
-Pyrgus alveus,UA,Ukraine,603628,,P,NT,
-Pyrgus andromedae,UA,Ukraine,603628,,P,DD,
-Pyrgus armoricanus,UA,Ukraine,603628,,P,NT,
-Pyrgus carthami,UA,Ukraine,603628,,P,NT,
-Pyrgus cinarae,UA,Ukraine,603628,,P,NT,
-Pyrgus malvae,UA,Ukraine,603628,,P,LC,
-Pyrgus serratulae,UA,Ukraine,603628,,P,NT,
-Pyrgus sidae,UA,Ukraine,603628,,P,VU,
-Pyronia tithonus,UA,Ukraine,603628,,Ex,RE,
-Satyrium acaciae,UA,Ukraine,603628,,P,LC,
-Satyrium ilicis,UA,Ukraine,603628,,P,NT,
-Satyrium pruni,UA,Ukraine,603628,,P,LC,
-Satyrium spini,UA,Ukraine,603628,,P,LC,
-Satyrium w-album,UA,Ukraine,603628,,P,LC,
-Satyrus virbius,UA,Ukraine,603628,,P,VU,
-Scolitantides orion,UA,Ukraine,603628,,P,NT,
-Speyeria aglaja,UA,Ukraine,603628,,P,LC,
-Spialia orbifer,UA,Ukraine,603628,,P,NT,
-Thecla betulae,UA,Ukraine,603628,,P,LC,
-Thymelicus acteon,UA,Ukraine,603628,,P,DD,
-Thymelicus lineola,UA,Ukraine,603628,,P,LC,
-Thymelicus sylvestris,UA,Ukraine,603628,,P,LC,
-Tomares callimachus,UA,Ukraine,603628,,P,EN,
-Tomares nogelii,UA,Ukraine,603628,,P,EN,
-Vanessa atalanta,UA,Ukraine,603628,,P,LC,
-Vanessa cardui,UA,Ukraine,603628,,M,LC,
-Zegris eupheme,UA,Ukraine,603628,,P,EN,
-Zerynthia polyxena,UA,Ukraine,603628,,P,NT,
+Aglais io,UA,Ukraine,603628,,P,LC,1
+Aglais urticae,UA,Ukraine,603628,,P,LC,1
+Agriades dardanus,UA,Ukraine,603628,,P,VU,30
+Agriades optilete,UA,Ukraine,603628,,P,VU,30
+Anthocharis cardamines,UA,Ukraine,603628,,P,LC,1
+Apatura ilia,UA,Ukraine,603628,,P,LC,1
+Apatura iris,UA,Ukraine,603628,,P,LC,1
+Apatura metis,UA,Ukraine,603628,,P,VU,30
+Aphantopus hyperantus,UA,Ukraine,603628,,P,LC,1
+Aporia crataegi,UA,Ukraine,603628,,P,LC,1
+Araschnia levana,UA,Ukraine,603628,,P,LC,1
+Arethusana arethusa,UA,Ukraine,603628,,P,NT,20
+Argynnis laodice,UA,Ukraine,603628,,P,VU,30
+Argynnis pandora,UA,Ukraine,603628,,P,LC,1
+Argynnis paphia,UA,Ukraine,603628,,P,LC,1
+Aricia agestis,UA,Ukraine,603628,,P,LC,1
+Aricia anteros,UA,Ukraine,603628,,P,CR,80
+Aricia artaxerxes,UA,Ukraine,603628,,P,DD,1
+Boloria aquilonaris,UA,Ukraine,603628,,P,EN,50
+Boloria dia,UA,Ukraine,603628,,P,LC,1
+Boloria eunomia,UA,Ukraine,603628,,P,EN,50
+Boloria euphrosyne,UA,Ukraine,603628,,P,LC,1
+Boloria selene,UA,Ukraine,603628,,P,LC,1
+Boloria titania,UA,Ukraine,603628,,Ex,RE,100
+Brenthis daphne,UA,Ukraine,603628,,P,LC,1
+Brenthis hecate,UA,Ukraine,603628,,P,LC,1
+Brenthis ino,UA,Ukraine,603628,,P,LC,1
+Brintesia circe,UA,Ukraine,603628,,P,NT,20
+Callophrys rubi,UA,Ukraine,603628,,P,LC,1
+Carcharodus alceae,UA,Ukraine,603628,,P,LC,1
+Carcharodus floccifera,UA,Ukraine,603628,,P,EN,50
+Carcharodus lavatherae,UA,Ukraine,603628,,P,EN,50
+Carcharodus orientalis,UA,Ukraine,603628,,P,VU,30
+Carterocephalus palaemon,UA,Ukraine,603628,,P,LC,1
+Carterocephalus silvicola,UA,Ukraine,603628,,P,VU,30
+Celastrina argiolus,UA,Ukraine,603628,,P,LC,1
+Chazara briseis,UA,Ukraine,603628,,P,NT,20
+Chazara persephone,UA,Ukraine,603628,,P,VU,30
+Coenonympha arcania,UA,Ukraine,603628,,P,LC,1
+Coenonympha glycerion,UA,Ukraine,603628,,P,LC,1
+Coenonympha hero,UA,Ukraine,603628,,P,VU,30
+Coenonympha leander,UA,Ukraine,603628,,P,DD,1
+Coenonympha oedippus,UA,Ukraine,603628,,P,EN,50
+Coenonympha pamphilus,UA,Ukraine,603628,,P,LC,1
+Coenonympha phryne,UA,Ukraine,603628,,P,CR,80
+Coenonympha tullia,UA,Ukraine,603628,,P,VU,30
+Colias alfacariensis,UA,Ukraine,603628,,P,DD,1
+Colias chrysotheme,UA,Ukraine,603628,,P,EN,50
+Colias crocea,UA,Ukraine,603628,,P,LC,1
+Colias erate,UA,Ukraine,603628,,P,LC,1
+Colias hyale,UA,Ukraine,603628,,P,LC,1
+Colias myrmidone,UA,Ukraine,603628,,P,CR,80
+Colias palaeno,UA,Ukraine,603628,,P,EN,50
+Cupido alcetas,UA,Ukraine,603628,,P,VU,30
+Cupido argiades,UA,Ukraine,603628,,P,LC,1
+Cupido decoloratus,UA,Ukraine,603628,,P,NT,20
+Cupido minimus,UA,Ukraine,603628,,P,NT,20
+Cupido osiris,UA,Ukraine,603628,,P,VU,30
+Cyaniris semiargus,UA,Ukraine,603628,,P,LC,1
+Erebia aethiops,UA,Ukraine,603628,,P,LC,1
+Erebia euryale,UA,Ukraine,603628,,P,LC,1
+Erebia ligea,UA,Ukraine,603628,,P,LC,1
+Erebia manto,UA,Ukraine,603628,,P,EN,50
+Erebia medusa,UA,Ukraine,603628,,P,NT,20
+Erebia pronoe,UA,Ukraine,603628,,P,NE,1
+Erynnis tages,UA,Ukraine,603628,,P,LC,1
+Euchloe ausonia,UA,Ukraine,603628,,P,VU,30
+Eumedonia eumedon,UA,Ukraine,603628,,P,VU,30
+Euphydryas aurinia,UA,Ukraine,603628,,P,VU,30
+Euphydryas maturna,UA,Ukraine,603628,,P,VU,30
+Fabriciana adippe,UA,Ukraine,603628,,P,LC,1
+Fabriciana niobe,UA,Ukraine,603628,,P,LC,1
+Favonius quercus,UA,Ukraine,603628,,P,LC,1
+Glaucopsyche alexis,UA,Ukraine,603628,,P,NT,20
+Gonepteryx rhamni,UA,Ukraine,603628,,P,LC,1
+Hamearis lucina,UA,Ukraine,603628,,P,VU,30
+Hesperia comma,UA,Ukraine,603628,,P,NT,20
+Heteropterus morpheus,UA,Ukraine,603628,,P,VU,30
+Hipparchia fagi,UA,Ukraine,603628,,P,VU,30
+Hipparchia hermione,UA,Ukraine,603628,,P,EN,50
+Hipparchia pellucida,UA,Ukraine,603628,,P,NT,20
+Hipparchia semele,UA,Ukraine,603628,,P,LC,1
+Hipparchia statilinus,UA,Ukraine,603628,,P,NT,20
+Hipparchia volgensis,UA,Ukraine,603628,,P,NT,20
+Hyponephele lupina,UA,Ukraine,603628,,P,NT,20
+Hyponephele lycaon,UA,Ukraine,603628,,P,LC,1
+Iphiclides podalirius,UA,Ukraine,603628,,P,LC,1
+Issoria lathonia,UA,Ukraine,603628,,P,LC,1
+Kirinia climene,UA,Ukraine,603628,,P,VU,30
+Kretania pylaon,UA,Ukraine,603628,,P,VU,30
+Kretania sephirus,UA,Ukraine,603628,,P,VU,30
+Lasiommata maera,UA,Ukraine,603628,,P,LC,1
+Lasiommata megera,UA,Ukraine,603628,,P,LC,1
+Lasiommata petropolitana,UA,Ukraine,603628,,P,DD,1
+Leptidea duponcheli,UA,Ukraine,603628,,P,NT,20
+Leptidea juvernica,UA,Ukraine,603628,,P,LC,1
+Leptidea morsei,UA,Ukraine,603628,,P,DD,1
+Leptidea sinapis,UA,Ukraine,603628,,P,LC,1
+Libythea celtis,UA,Ukraine,603628,,P,NT,20
+Limenitis camilla,UA,Ukraine,603628,,P,LC,1
+Limenitis populi,UA,Ukraine,603628,,P,VU,30
+Limenitis reducta,UA,Ukraine,603628,,P,DD,1
+Lopinga achine,UA,Ukraine,603628,,P,VU,30
+Lycaena alciphron,UA,Ukraine,603628,,P,NT,20
+Lycaena dispar,UA,Ukraine,603628,,P,LC,1
+Lycaena helle,UA,Ukraine,603628,,P,VU,30
+Lycaena hippothoe,UA,Ukraine,603628,,P,NT,20
+Lycaena phlaeas,UA,Ukraine,603628,,P,LC,1
+Lycaena thersamon,UA,Ukraine,603628,,P,LC,1
+Lycaena tityrus,UA,Ukraine,603628,,P,LC,1
+Lycaena virgaureae,UA,Ukraine,603628,,P,LC,1
+Lysandra bellargus,UA,Ukraine,603628,,P,LC,1
+Lysandra coridon,UA,Ukraine,603628,,P,LC,1
+Maniola jurtina,UA,Ukraine,603628,,P,LC,1
+Melanargia galathea,UA,Ukraine,603628,,P,LC,1
+Melanargia russiae,UA,Ukraine,603628,,P,EN,50
+Melitaea arduinna,UA,Ukraine,603628,,P,EN,50
+Melitaea athalia,UA,Ukraine,603628,,P,LC,1
+Melitaea aurelia,UA,Ukraine,603628,,P,NT,20
+Melitaea britomartis,UA,Ukraine,603628,,P,NT,20
+Melitaea cinxia,UA,Ukraine,603628,,P,LC,1
+Melitaea diamina,UA,Ukraine,603628,,P,NT,20
+Melitaea didyma,UA,Ukraine,603628,,P,LC,1
+Melitaea ornata,UA,Ukraine,603628,,P,DD,1
+Melitaea phoebe,UA,Ukraine,603628,,P,LC,1
+Melitaea trivia,UA,Ukraine,603628,,P,NT,20
+Minois dryas,UA,Ukraine,603628,,P,LC,1
+Muschampia cribrellum,UA,Ukraine,603628,,P,EN,50
+Muschampia proto,UA,Ukraine,603628,,P,VU,30
+Muschampia tessellum,UA,Ukraine,603628,,P,VU,30
+Neolycaena rhymnus,UA,Ukraine,603628,,P,VU,30
+Neolysandra coelestina,UA,Ukraine,603628,,P,EN,50
+Neptis rivularis,UA,Ukraine,603628,,P,LC,1
+Neptis sappho,UA,Ukraine,603628,,P,LC,1
+Nymphalis antiopa,UA,Ukraine,603628,,P,NT,20
+Nymphalis polychloros,UA,Ukraine,603628,,P,LC,1
+Nymphalis vaualbum,UA,Ukraine,603628,,P,DD,1
+Nymphalis xanthomelas,UA,Ukraine,603628,,P,LC,1
+Ochlodes sylvanus,UA,Ukraine,603628,,P,LC,1
+Oeneis jutta,UA,Ukraine,603628,,P,EN,50
+Oeneis tarpeia,UA,Ukraine,603628,,Ex,RE,100
+Papilio machaon,UA,Ukraine,603628,,P,LC,1
+Pararge aegeria,UA,Ukraine,603628,,P,LC,1
+Parnassius apollo,UA,Ukraine,603628,,Ex,RE,100
+Parnassius mnemosyne,UA,Ukraine,603628,,P,NT,20
+Phengaris alcon,UA,Ukraine,603628,,P,VU,30
+Phengaris arion,UA,Ukraine,603628,,P,NT,20
+Phengaris nausithous,UA,Ukraine,603628,,P,VU,30
+Phengaris teleius,UA,Ukraine,603628,,P,VU,30
+Pieris brassicae,UA,Ukraine,603628,,P,LC,1
+Pieris bryoniae,UA,Ukraine,603628,,P,NT,20
+Pieris napi,UA,Ukraine,603628,,P,LC,1
+Pieris rapae,UA,Ukraine,603628,,P,LC,1
+Plebejus argus,UA,Ukraine,603628,,P,LC,1
+Plebejus argyrognomon,UA,Ukraine,603628,,P,LC,1
+Plebejus idas,UA,Ukraine,603628,,P,LC,1
+Polygonia c-album,UA,Ukraine,603628,,P,LC,1
+Polyommatus amandus,UA,Ukraine,603628,,P,VU,30
+Polyommatus damocles,UA,Ukraine,603628,,P,VU,30
+Polyommatus damon,UA,Ukraine,603628,,P,CR,80
+Polyommatus damone,UA,Ukraine,603628,,P,VU,30
+Polyommatus daphnis,UA,Ukraine,603628,,P,NT,20
+Polyommatus dorylas,UA,Ukraine,603628,,P,EN,50
+Polyommatus eros,UA,Ukraine,603628,,P,CR,80
+Polyommatus icarus,UA,Ukraine,603628,,P,LC,1
+Polyommatus ripartii,UA,Ukraine,603628,,P,NT,20
+Polyommatus thersites,UA,Ukraine,603628,,P,NT,20
+Pontia edusa,UA,Ukraine,603628,,P,LC,1
+Proterebia phegea,UA,Ukraine,603628,,P,VU,30
+Pseudochazara euxina,UA,Ukraine,603628,,P,VU,30
+Pseudophilotes bavius,UA,Ukraine,603628,,P,VU,30
+Pseudophilotes vicrama,UA,Ukraine,603628,,P,NT,20
+Pyrgus alveus,UA,Ukraine,603628,,P,NT,20
+Pyrgus andromedae,UA,Ukraine,603628,,P,DD,1
+Pyrgus armoricanus,UA,Ukraine,603628,,P,NT,20
+Pyrgus carthami,UA,Ukraine,603628,,P,NT,20
+Pyrgus cinarae,UA,Ukraine,603628,,P,NT,20
+Pyrgus malvae,UA,Ukraine,603628,,P,LC,1
+Pyrgus serratulae,UA,Ukraine,603628,,P,NT,20
+Pyrgus sidae,UA,Ukraine,603628,,P,VU,30
+Pyronia tithonus,UA,Ukraine,603628,,Ex,RE,100
+Satyrium acaciae,UA,Ukraine,603628,,P,LC,1
+Satyrium ilicis,UA,Ukraine,603628,,P,NT,20
+Satyrium pruni,UA,Ukraine,603628,,P,LC,1
+Satyrium spini,UA,Ukraine,603628,,P,LC,1
+Satyrium w-album,UA,Ukraine,603628,,P,LC,1
+Satyrus virbius,UA,Ukraine,603628,,P,VU,30
+Scolitantides orion,UA,Ukraine,603628,,P,NT,20
+Speyeria aglaja,UA,Ukraine,603628,,P,LC,1
+Spialia orbifer,UA,Ukraine,603628,,P,NT,20
+Thecla betulae,UA,Ukraine,603628,,P,LC,1
+Thymelicus acteon,UA,Ukraine,603628,,P,DD,1
+Thymelicus lineola,UA,Ukraine,603628,,P,LC,1
+Thymelicus sylvestris,UA,Ukraine,603628,,P,LC,1
+Tomares callimachus,UA,Ukraine,603628,,P,EN,50
+Tomares nogelii,UA,Ukraine,603628,,P,EN,50
+Vanessa atalanta,UA,Ukraine,603628,,P,LC,1
+Vanessa cardui,UA,Ukraine,603628,,M,LC,1
+Zegris eupheme,UA,Ukraine,603628,,P,EN,50
+Zerynthia polyxena,UA,Ukraine,603628,,P,NT,20

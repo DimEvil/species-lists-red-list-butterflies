@@ -14,9 +14,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 [maes_2019]: https://doi.org/10.1007/s10841-019-00127-z
 
-This script is used to dynamically calculate the **weighted red list values** for butterflies in Europe, use for [Maes et al. (2019)][maes_2019].
-
-# Load libraries
+This document uses the _National checklists and red lists for European butterflies_ dataset in this repository to create the tables and figures for [Maes et al. (2019)][maes_2019]. It associated red list categories with numeric values to create weighted red list values per country and species. 
 
 ```{r}
 library(tidyverse)      # To do data science
@@ -95,13 +93,39 @@ write_csv(eu_species_list, here::here("data", "interim", "eu_species_list.csv"),
 
 # Create weighted red list status per country/island group
 
-Create a dataframe of the taxa per country (= distributions) and associate with country information and regional threat score. Regional threat score is a **weight** (in percentage) assigned to a red list category (rlc) for a country, e.g. `CR` in `Andorra`	= `80`.
+Create a dataframe of the taxa per country (= distributions) and associate with country information:
 
 ```{r}
 analysis_data <-
   distribution %>%
-  left_join(country_info, by = "region_code") %>%
-  left_join(regional_threat_scores, by = c("rlc", "region_code" = "country_code")) # Only associate region_code that are country_code (excluding islands, etc.)
+  left_join(country_info, by = "region_code")
+```
+
+See distinct red list categories:
+
+```{r}
+analysis_data %>% distinct(rlc)
+```
+
+Associate a **weighted red list value** (see [paper][maes_2019]):
+
+```{r}
+analysis_data %<>% mutate(rlc_numeric = recode(rlc, 
+  RE = 100,
+  CR = 80,
+  EN = 50,
+  VU = 30,
+  NT = 20,
+  LC = 1,
+  DD = 1,
+  Unknown = 1,
+  
+  R = 20, # Rare, used for Germany
+  NE = 1,
+  `LC/NE` = 1,
+  NtA = NA_real_,
+  NRLA = NA_real_
+))
 ```
 
 Exclude regional scientific names without an official scientific name:
