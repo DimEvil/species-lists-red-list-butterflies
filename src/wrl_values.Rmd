@@ -174,6 +174,7 @@ analysis_data %<>%
     area,
     part_of_eu,
     status,
+    endemic,
     rlc,
     rlc_numeric
   ) %>%
@@ -192,17 +193,18 @@ Save file:
 write_csv(analysis_data, here::here("data", "interim", "analysis_data.csv"), na = "")
 ```
 
-# Species per country
+# Table 1: species per country
 
 ```{r}
 species_per_country <-
   analysis_data %>%
   group_by(country_name, country_code) %>%
   summarize(
-    `number_of_species` = n_distinct(scientific_name)
+    `number_of_species` = n_distinct(scientific_name),
+    `number_of_endemic_species` = sum(!is.na(endemic))
   )
 
-write_csv(species_per_country, here::here("data", "processed", "wrl", "species_per_country.csv"), na = "")
+write_csv(species_per_country, here::here("data", "wrl", "table1.csv"), na = "")
 ```
 
 # Mean red list value per country (cRLV)
