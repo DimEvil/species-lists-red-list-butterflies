@@ -1,8 +1,8 @@
-# National checklists and red lists for prioritising European butterfly conservation actions
+# National checklists and red lists for European butterflies
 
 ## Rationale
 
-This repository contains the functionality to standardize the _National checklists and red lists for prioritising European butterfly conservation actions_ (Maes et al. 2019) to a [Darwin Core checklist](https://www.gbif.org/dataset-classes) that can be harvested by [GBIF](http://www.gbif.org).
+This repository contains the functionality to standardize the _National checklists and red lists for European butterflies_ to a [Darwin Core checklist](https://www.gbif.org/dataset-classes) that can be harvested by [GBIF](http://www.gbif.org).
 
 The repository also includes the script used to calculate the weighted red list categories as used in Maes et al. (2019).
 
