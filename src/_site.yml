@@ -1,4 +1,4 @@
-name: "National checklists and red lists for prioritising European butterfly conservation actions"
+name: "National checklists and red lists for European butterflies"
 output_dir: "../docs"
 include: "static"
 navbar:
