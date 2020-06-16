@@ -474,6 +474,14 @@ distribution %>%
 distribution %<>% mutate(dwc_source = reference)
 ```
 
+### occurrenceRemarks
+
+```{r}
+distribution %<>% mutate(dwc_occurrenceRemarks = case_when(
+  scientific_name_regional != scientific_name ~ paste0("In source as '", scientific_name_regional, "'")
+))
+```
+
 # Vernacular names extension
 
 Create a dataframe with unique taxa only (retaining the first of multiple distribution rows):
