@@ -12,7 +12,7 @@
 <meta name="author" content="Peter Desmet" />
 <meta name="author" content="Dimitri Brosens" />
 
-<meta name="date" content="2020-06-11" />
+<meta name="date" content="2020-06-17" />
 
 <title>Darwin Core mapping</title>
 
@@ -359,7 +359,7 @@ div.tocify {
   <a href="dwc_mapping.html">Darwin Core mapping</a>
 </li>
 <li>
-  <a href="wrl_values.html">Weighted red list values</a>
+  <a href="integrating_rl.html">Integrating red lists</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -379,10 +379,10 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Darwin Core mapping</h1>
-<h3 class="subtitle">For: National checklists and red lists for prioritising European butterfly conservation actions</h3>
+<h3 class="subtitle">For: National checklists and red lists for European butterflies</h3>
 <h4 class="author">Peter Desmet</h4>
 <h4 class="author">Dimitri Brosens</h4>
-<h4 class="date">2020-06-11</h4>
+<h4 class="date">2020-06-17</h4>
 
 </div>
 
@@ -402,20 +402,17 @@ library(digest)         # To generate hashes</code></pre>
 <pre class="r"><code>input_distribution &lt;- read_csv(&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=979140000&amp;single=true&amp;output=csv&quot;)
 input_taxa &lt;- read_csv(&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=1559651428&amp;single=true&amp;output=csv&quot;)
 input_regions &lt;- read_csv(&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=2076261682&amp;single=true&amp;output=csv&quot;)
-input_references &lt;- read_csv(&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=1083424499&amp;single=true&amp;output=csv&quot;)
-input_rlc &lt;- read_csv(&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=1579699417&amp;single=true&amp;output=csv&quot;)</code></pre>
+input_references &lt;- read_csv(&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSrKN8_XbQ4Vo-VrtUiqAtS5im3QxkHBNSJHPSLmrkM5C1PIC7DOg-oboRcEJZtWp_qsi802YRlRp8C/pub?gid=1083424499&amp;single=true&amp;output=csv&quot;)</code></pre>
 <p>Sort the source files (to maintain some consistency between updates of the dataset):</p>
 <pre class="r"><code>input_distribution %&lt;&gt;% arrange(scientific_name, region_code)
 input_taxa %&lt;&gt;% arrange(scientific_name)
 input_regions %&lt;&gt;% arrange(region_code)
-input_references %&lt;&gt;% arrange(region_code, citation)
-input_rlc %&lt;&gt;% arrange(country_code, rlc)</code></pre>
+input_references %&lt;&gt;% arrange(region_code, citation)</code></pre>
 <p>Copy the source data to the repository to keep track of changes:</p>
 <pre class="r"><code>write_csv(input_distribution, here(&quot;data&quot;, &quot;raw&quot;, &quot;distribution.csv&quot;), na = &quot;&quot;)
 write_csv(input_taxa, here(&quot;data&quot;, &quot;raw&quot;, &quot;taxa.csv&quot;), na = &quot;&quot;)
 write_csv(input_regions, here(&quot;data&quot;, &quot;raw&quot;, &quot;regions.csv&quot;), na = &quot;&quot;)
-write_csv(input_references, here(&quot;data&quot;, &quot;raw&quot;, &quot;references.csv&quot;), na = &quot;&quot;)
-write_csv(input_rlc, here(&quot;data&quot;, &quot;raw&quot;, &quot;rlc.csv&quot;), na = &quot;&quot;)</code></pre>
+write_csv(input_references, here(&quot;data&quot;, &quot;raw&quot;, &quot;references.csv&quot;), na = &quot;&quot;)</code></pre>
 <p>The first 4 files will be used for the Darwin Core mapping, while <code>rlc</code> is needed for the calculation in <code>wrl_values.Rmd</code>.</p>
 </div>
 <div id="preprocessing" class="section level1">
@@ -531,7 +528,7 @@ input_data %&lt;&gt;% mutate(taxon_id = paste(
 </div>
 <div id="datasetname" class="section level3">
 <h3><span class="header-section-number">3.1.7</span> datasetName</h3>
-<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_datasetName = &quot;National checklists and red lists for prioritising European butterfly conservation actions&quot;)</code></pre>
+<pre class="r"><code>taxon %&lt;&gt;% mutate(dwc_datasetName = &quot;National checklists and red lists for European butterflies&quot;)</code></pre>
 </div>
 <div id="taxonid" class="section level3">
 <h3><span class="header-section-number">3.1.8</span> taxonID</h3>
@@ -745,6 +742,12 @@ input_data %&lt;&gt;% mutate(taxon_id = paste(
 <h3><span class="header-section-number">3.2.7</span> source</h3>
 <pre class="r"><code>distribution %&lt;&gt;% mutate(dwc_source = reference)</code></pre>
 </div>
+<div id="occurrenceremarks" class="section level3">
+<h3><span class="header-section-number">3.2.8</span> occurrenceRemarks</h3>
+<pre class="r"><code>distribution %&lt;&gt;% mutate(dwc_occurrenceRemarks = case_when(
+  scientific_name_regional != scientific_name ~ paste0(&quot;In source as &#39;&quot;, scientific_name_regional, &quot;&#39;&quot;)
+))</code></pre>
+</div>
 </div>
 </div>
 <div id="vernacular-names-extension" class="section level1">
@@ -781,14 +784,14 @@ colnames(vernacular_names) &lt;- str_remove(colnames(vernacular_names), &quot;dw
 <pre class="r"><code>taxon %&gt;% head()</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["language"],"name":[1],"type":["chr"],"align":["left"]},{"label":["license"],"name":[2],"type":["chr"],"align":["left"]},{"label":["rightsHolder"],"name":[3],"type":["chr"],"align":["left"]},{"label":["accessRights"],"name":[4],"type":["chr"],"align":["left"]},{"label":["datasetID"],"name":[5],"type":["chr"],"align":["left"]},{"label":["institutionCode"],"name":[6],"type":["chr"],"align":["left"]},{"label":["datasetName"],"name":[7],"type":["chr"],"align":["left"]},{"label":["taxonID"],"name":[8],"type":["chr"],"align":["left"]},{"label":["scientificName"],"name":[9],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[10],"type":["chr"],"align":["left"]},{"label":["phylum"],"name":[11],"type":["chr"],"align":["left"]},{"label":["class"],"name":[12],"type":["chr"],"align":["left"]},{"label":["order"],"name":[13],"type":["chr"],"align":["left"]},{"label":["family"],"name":[14],"type":["chr"],"align":["left"]},{"label":["genus"],"name":[15],"type":["chr"],"align":["left"]},{"label":["specificEpithet"],"name":[16],"type":["chr"],"align":["left"]},{"label":["taxonRank"],"name":[17],"type":["chr"],"align":["left"]},{"label":["scientificNameAuthorship"],"name":[18],"type":["chr"],"align":["left"]},{"label":["nomenclaturalCode"],"name":[19],"type":["chr"],"align":["left"]}],"data":[{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for prioritising European butterfly conservation actions","8":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368","9":"Aglais ichnusa","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Nymphalidae","15":"Aglais","16":"ichnusa","17":"species","18":"(Hübner, 1824)","19":"ICZN"},{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for prioritising European butterfly conservation actions","8":"eurobutt-checklist:taxon:313b5c3d9d2b299ecb8018413ad136ba","9":"Aglais io","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Nymphalidae","15":"Aglais","16":"io","17":"species","18":"(Linnaeus, 1758)","19":"ICZN"},{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for prioritising European butterfly conservation actions","8":"eurobutt-checklist:taxon:b539a7ed55eb3e9e98da58bcc194ee6a","9":"Aglais urticae","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Nymphalidae","15":"Aglais","16":"urticae","17":"species","18":"(Linnaeus, 1758)","19":"ICZN"},{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for prioritising European butterfly conservation actions","8":"eurobutt-checklist:taxon:f5471fb0cd39f621cc6798be5fea44aa","9":"Agriades aquilo","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Lycaenidae","15":"Agriades","16":"aquilo","17":"species","18":"(Boisduval, 1832)","19":"ICZN"},{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for prioritising European butterfly conservation actions","8":"eurobutt-checklist:taxon:80df9d0fb00d1caaa84fac49d305d07b","9":"Agriades dardanus","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Lycaenidae","15":"Agriades","16":"dardanus","17":"species","18":"(Freyer, 1843)","19":"ICZN"},{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for prioritising European butterfly conservation actions","8":"eurobutt-checklist:taxon:d97bac5d477e090d61a361463d91637a","9":"Agriades glandon","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Lycaenidae","15":"Agriades","16":"glandon","17":"species","18":"(de Prunner, 1798)","19":"ICZN"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["language"],"name":[1],"type":["chr"],"align":["left"]},{"label":["license"],"name":[2],"type":["chr"],"align":["left"]},{"label":["rightsHolder"],"name":[3],"type":["chr"],"align":["left"]},{"label":["accessRights"],"name":[4],"type":["chr"],"align":["left"]},{"label":["datasetID"],"name":[5],"type":["chr"],"align":["left"]},{"label":["institutionCode"],"name":[6],"type":["chr"],"align":["left"]},{"label":["datasetName"],"name":[7],"type":["chr"],"align":["left"]},{"label":["taxonID"],"name":[8],"type":["chr"],"align":["left"]},{"label":["scientificName"],"name":[9],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[10],"type":["chr"],"align":["left"]},{"label":["phylum"],"name":[11],"type":["chr"],"align":["left"]},{"label":["class"],"name":[12],"type":["chr"],"align":["left"]},{"label":["order"],"name":[13],"type":["chr"],"align":["left"]},{"label":["family"],"name":[14],"type":["chr"],"align":["left"]},{"label":["genus"],"name":[15],"type":["chr"],"align":["left"]},{"label":["specificEpithet"],"name":[16],"type":["chr"],"align":["left"]},{"label":["taxonRank"],"name":[17],"type":["chr"],"align":["left"]},{"label":["scientificNameAuthorship"],"name":[18],"type":["chr"],"align":["left"]},{"label":["nomenclaturalCode"],"name":[19],"type":["chr"],"align":["left"]}],"data":[{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for European butterflies","8":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368","9":"Aglais ichnusa","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Nymphalidae","15":"Aglais","16":"ichnusa","17":"species","18":"(Hübner, 1824)","19":"ICZN"},{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for European butterflies","8":"eurobutt-checklist:taxon:313b5c3d9d2b299ecb8018413ad136ba","9":"Aglais io","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Nymphalidae","15":"Aglais","16":"io","17":"species","18":"(Linnaeus, 1758)","19":"ICZN"},{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for European butterflies","8":"eurobutt-checklist:taxon:b539a7ed55eb3e9e98da58bcc194ee6a","9":"Aglais urticae","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Nymphalidae","15":"Aglais","16":"urticae","17":"species","18":"(Linnaeus, 1758)","19":"ICZN"},{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for European butterflies","8":"eurobutt-checklist:taxon:f5471fb0cd39f621cc6798be5fea44aa","9":"Agriades aquilo","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Lycaenidae","15":"Agriades","16":"aquilo","17":"species","18":"(Boisduval, 1832)","19":"ICZN"},{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for European butterflies","8":"eurobutt-checklist:taxon:80df9d0fb00d1caaa84fac49d305d07b","9":"Agriades dardanus","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Lycaenidae","15":"Agriades","16":"dardanus","17":"species","18":"(Freyer, 1843)","19":"ICZN"},{"1":"en","2":"http://creativecommons.org/publicdomain/zero/1.0/","3":"INBO","4":"https://www.inbo.be/en/norms-data-use","5":"","6":"INBO","7":"National checklists and red lists for European butterflies","8":"eurobutt-checklist:taxon:d97bac5d477e090d61a361463d91637a","9":"Agriades glandon","10":"Animalia","11":"Arthropoda","12":"Insecta","13":"Lepidoptera","14":"Lycaenidae","15":"Agriades","16":"glandon","17":"species","18":"(de Prunner, 1798)","19":"ICZN"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Preview distribution extension:</p>
 <pre class="r"><code>distribution %&gt;% head()</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonID"],"name":[1],"type":["chr"],"align":["left"]},{"label":["locationID"],"name":[2],"type":["chr"],"align":["left"]},{"label":["locality"],"name":[3],"type":["chr"],"align":["left"]},{"label":["countryCode"],"name":[4],"type":["chr"],"align":["left"]},{"label":["occurrenceStatus"],"name":[5],"type":["chr"],"align":["left"]},{"label":["threatStatus"],"name":[6],"type":["chr"],"align":["left"]},{"label":["source"],"name":[7],"type":["chr"],"align":["left"]}],"data":[{"1":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368","2":"","3":"European Union","4":"NA","5":"present","6":"LC","7":"van Swaay et al. (2010)"},{"1":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368","2":"","3":"Europe","4":"NA","5":"present","6":"LC","7":"van Swaay et al. (2010) | Wiemers et al. (2018)"},{"1":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368","2":"ISO_3166:FR","3":"France","4":"FR","5":"present","6":"unknown","7":"UICN France et al. (2012) | Lafranchis et al. (2015)"},{"1":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368","2":"ISO_3166:IT","3":"Italy","4":"IT","5":"present","6":"LC","7":"Bonelli et al. (2018) | Balletto et al. (2014)"},{"1":"eurobutt-checklist:taxon:313b5c3d9d2b299ecb8018413ad136ba","2":"ISO_3166:AD","3":"Andorra","4":"AD","5":"present","6":"LC","7":"Dantart and Jubany (2012)"},{"1":"eurobutt-checklist:taxon:313b5c3d9d2b299ecb8018413ad136ba","2":"ISO_3166:AL","3":"Albania","4":"AL","5":"present","6":"unknown","7":"Anonymous (2013) | Cuvelier et al. (2018) | Micevski et al. (2015) | Šašić et al. (2015) | Verovnik and Popović (2013)"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonID"],"name":[1],"type":["chr"],"align":["left"]},{"label":["locationID"],"name":[2],"type":["chr"],"align":["left"]},{"label":["locality"],"name":[3],"type":["chr"],"align":["left"]},{"label":["countryCode"],"name":[4],"type":["chr"],"align":["left"]},{"label":["occurrenceStatus"],"name":[5],"type":["chr"],"align":["left"]},{"label":["threatStatus"],"name":[6],"type":["chr"],"align":["left"]},{"label":["source"],"name":[7],"type":["chr"],"align":["left"]},{"label":["occurrenceRemarks"],"name":[8],"type":["chr"],"align":["left"]}],"data":[{"1":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368","2":"","3":"European Union","4":"NA","5":"present","6":"LC","7":"van Swaay et al. (2010)","8":"NA"},{"1":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368","2":"","3":"Europe","4":"NA","5":"present","6":"LC","7":"van Swaay et al. (2010) | Wiemers et al. (2018)","8":"NA"},{"1":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368","2":"ISO_3166:FR","3":"France","4":"FR","5":"present","6":"unknown","7":"UICN France et al. (2012) | Lafranchis et al. (2015)","8":"In source as 'Aglais urticae ichnusa'"},{"1":"eurobutt-checklist:taxon:eea749686fd1f784f6da17ee3b551368","2":"ISO_3166:IT","3":"Italy","4":"IT","5":"present","6":"LC","7":"Bonelli et al. (2018) | Balletto et al. (2014)","8":"NA"},{"1":"eurobutt-checklist:taxon:313b5c3d9d2b299ecb8018413ad136ba","2":"ISO_3166:AD","3":"Andorra","4":"AD","5":"present","6":"LC","7":"Dantart and Jubany (2012)","8":"In source as 'Inachis io'"},{"1":"eurobutt-checklist:taxon:313b5c3d9d2b299ecb8018413ad136ba","2":"ISO_3166:AL","3":"Albania","4":"AL","5":"present","6":"unknown","7":"Anonymous (2013) | Cuvelier et al. (2018) | Micevski et al. (2015) | Šašić et al. (2015) | Verovnik and Popović (2013)","8":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Preview vernacular names extension:</p>

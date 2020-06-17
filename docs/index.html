@@ -280,7 +280,7 @@ $(document).ready(function () {
   <a href="dwc_mapping.html">Darwin Core mapping</a>
 </li>
 <li>
-  <a href="wrl_values.html">Weighted red list values</a>
+  <a href="integrating_rl.html">Integrating red lists</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -303,17 +303,17 @@ $(document).ready(function () {
 </div>
 
 
-<div id="national-checklists-and-red-lists-for-prioritising-european-butterfly-conservation-actions" class="section level1">
-<h1>National checklists and red lists for prioritising European butterfly conservation actions</h1>
+<div id="national-checklists-and-red-lists-for-european-butterflies" class="section level1">
+<h1>National checklists and red lists for European butterflies</h1>
 <div id="rationale" class="section level2">
 <h2>Rationale</h2>
-<p>This repository contains the functionality to standardize the <em>National checklists and red lists for prioritising European butterfly conservation actions</em> (Maes et al. 2019) to a <a href="https://www.gbif.org/dataset-classes">Darwin Core checklist</a> that can be harvested by <a href="http://www.gbif.org">GBIF</a>.</p>
-<p>The repository also includes the script used to calculate the weighted red list categories as used in Maes et al. (2019).</p>
+<p>This repository contains the functionality to standardize the <em>National checklists and red lists for European butterflies</em> to a <a href="https://www.gbif.org/dataset-classes">Darwin Core checklist</a> that can be harvested by <a href="http://www.gbif.org">GBIF</a>.</p>
+<p>The repository also includes the script to integrate red lists, calculate weighted red list values, and create the tables and figures for <a href="https://doi.org/10.1007/s10841-019-00127-z">Maes et al. (2019)</a>.</p>
 </div>
 <div id="workflow" class="section level2">
 <h2>Workflow</h2>
 <p><a href="data/raw">source data</a> (maintained as a <a href="https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?usp=sharing">Google Spreadsheet</a>) → Darwin Core <a href="src/dwc_mapping.Rmd">mapping script</a> → generated <a href="data/processed">Darwin Core files</a></p>
-<p><a href="data/raw">source data</a> → <a href="src/wrl_values.Rmd">script</a> to calculate weighted red list values → <a href="data/processed/wrl">weighted red list values table</a></p>
+<p><a href="data/raw">source data</a> → <a href="src/integrating_rl.Rmd">analysis script</a> → <a href="reports">tables and figures for Maes et al. (2019)</a></p>
 </div>
 <div id="published-dataset" class="section level2">
 <h2>Published dataset</h2>
@@ -329,15 +329,16 @@ $(document).ready(function () {
 │
 ├── data
 │   ├── raw                : Source data from Google Spreadsheet, input for scripts GENERATED
-│   └── processed
-│       ├── *.csv          : Darwin Core output of mapping script GENERATED
-│       └── wrl_values.csv : Output of weighted red list values script
+│   ├── interim            : Interim data created for analysis GENERATED
+│   └── processed          : Darwin Core output of mapping script GENERATED
 │
 ├── docs                   : Repository website GENERATED
 │
+├── reports                : Figures and tables as output of analysis GENERATED
+│
 └── src
     ├── dwc_mapping.Rmd    : Darwin Core mapping script
-    ├── wrl_values.Rmd     : Script to dynamically calculate weighted red list values
+    ├── integrating_rl.Rmd : Analysis script to integrate red lists
     ├── _site.yml          : Settings to build website in docs/
     └── index.Rmd          : Template for website homepage</code></pre>
 </div>

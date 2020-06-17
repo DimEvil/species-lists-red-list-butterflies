@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Dimitri Brosens" />
+<meta name="author" content="Dirk Maes" />
+<meta name="author" content="Peter Desmet" />
+
+
+<title>Integrating red lists</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="static/css/custom.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h2 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h3 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h4 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h5 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h6 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">eurobutt-checklist</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="dwc_mapping.html">Darwin Core mapping</a>
+</li>
+<li>
+  <a href="integrating_rl.html">Integrating red lists</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/inbo/eurobutt-checklist">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Integrating red lists</h1>
+<h4 class="author">Dimitri Brosens</h4>
+<h4 class="author">Dirk Maes</h4>
+<h4 class="author">Peter Desmet</h4>
+<h4 class="date">18 juli 2018</h4>
+
+</div>
+
+
+<p>This document uses the <em>National checklists and red lists for European butterflies</em> dataset in this repository to create the tables and figures for <a href="https://doi.org/10.1007/s10841-019-00127-z">Maes et al. (2019)</a>. It associated red list categories with numeric values to create weighted red list values per country and species.</p>
+<pre class="r"><code>library(tidyverse)      # To do data science
+library(tidylog)        # To provide feedback on dplyr functions
+library(magrittr)       # To use %&lt;&gt;% pipes
+library(here)           # To find files
+library(janitor)        # To clean input data
+library(gam)            # To work with generalized additive models</code></pre>
+<div id="read-source-data" class="section level1">
+<h1><span class="header-section-number">1</span> Read source data</h1>
+<p>The source data is maintained in a Google Spreadsheet and copied by <code>src/dwc_mapping.Rmd</code> to <code>data/raw</code>, from which we read it:</p>
+<pre class="r"><code>species_list &lt;- read_csv(here::here(&quot;data&quot;, &quot;raw&quot;, &quot;taxa.csv&quot;))
+distribution &lt;- read_csv(here::here(&quot;data&quot;, &quot;raw&quot;, &quot;distribution.csv&quot;))
+country_info &lt;- read_csv(here::here(&quot;data&quot;, &quot;raw&quot;, &quot;regions.csv&quot;))</code></pre>
+</div>
+<div id="analysis-data-taxon-per-countryisland-group" class="section level1">
+<h1><span class="header-section-number">2</span> Analysis data: taxon per country/island group</h1>
+<p>Create a dataframe of the taxa per country (= distributions) and associate with country information:</p>
+<pre class="r"><code>analysis_data &lt;-
+  distribution %&gt;%
+  left_join(country_info, by = &quot;region_code&quot;)</code></pre>
+<p>See distinct red list categories:</p>
+<pre class="r"><code>analysis_data %&gt;% distinct(rlc)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["rlc"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"LC"},{"1":"Unknown"},{"1":"NE"},{"1":"NRLA"},{"1":"NT"},{"1":"EN"},{"1":"VU"},{"1":"R"},{"1":"CR"},{"1":"RE"},{"1":"NtA"},{"1":"DD"},{"1":"LC/NE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Associate a <strong>weighted red list value</strong> (see <a href="https://doi.org/10.1007/s10841-019-00127-z">paper</a>):</p>
+<pre class="r"><code>analysis_data %&lt;&gt;% mutate(rlc_numeric = recode(rlc, 
+  RE = 100,
+  CR = 80,
+  EN = 50,
+  VU = 30,
+  NT = 20,
+  LC = 1,
+  DD = 1,
+  Unknown = 1,
+  
+  R = 20, # Rare, used for Germany
+  NE = 1,
+  `LC/NE` = 1,
+  NtA = NA_real_,
+  NRLA = NA_real_
+))</code></pre>
+<p>Exclude regional scientific names without an official scientific name:</p>
+<pre class="r"><code>analysis_data %&lt;&gt;% filter(!is.na(scientific_name)) # 11 rows</code></pre>
+<p>Remove duplicated rows (e.g. two local scientific names that were mapped to one):</p>
+<pre class="r"><code>analysis_data %&lt;&gt;% distinct(scientific_name, region_code, status, rlc, .keep_all = TRUE) # 17 rows</code></pre>
+<p>Show any remaining scientific_name + region_code duplicates that will be used in analysis:</p>
+<pre class="r"><code>analysis_data %&gt;% filter(use == &quot;y&quot;) %&gt;% get_dupes(scientific_name, region_code) # 0 rows</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["scientific_name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["region_code"],"name":[2],"type":["chr"],"align":["left"]},{"label":["dupe_count"],"name":[3],"type":["int"],"align":["right"]},{"label":["scientific_name_regional"],"name":[4],"type":["chr"],"align":["left"]},{"label":["rlc"],"name":[5],"type":["chr"],"align":["left"]},{"label":["status"],"name":[6],"type":["chr"],"align":["left"]},{"label":["endemic"],"name":[7],"type":["chr"],"align":["left"]},{"label":["comments"],"name":[8],"type":["chr"],"align":["left"]},{"label":["use"],"name":[9],"type":["chr"],"align":["left"]},{"label":["region_name"],"name":[10],"type":["chr"],"align":["left"]},{"label":["country_code"],"name":[11],"type":["chr"],"align":["left"]},{"label":["country_name"],"name":[12],"type":["chr"],"align":["left"]},{"label":["part_of_eu"],"name":[13],"type":["chr"],"align":["left"]},{"label":["area"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["population"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["rlc_numeric"],"name":[16],"type":["dbl"],"align":["right"]}],"data":[],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Exclude non-countries, islands, and non-official scientific names. Keep island groups:</p>
+<pre class="r"><code>analysis_data %&lt;&gt;% filter(
+  !is.na(country_code), # Exclude Europe, EU27, Macaronesia
+  !str_detect(region_code, &quot;MA_AZ_&quot;), # Exclude Azores islands, keep island group MA_AZ
+  !str_detect(region_code, &quot;MA_CA_&quot;), # Exclude Canary islands, keep island group MA_CA
+  !str_detect(region_code, &quot;MA_MA_&quot;) # Exclude Madeira islands, keep island group MA_MA
+)</code></pre>
+<p>Only include taxa to be used for analysis (column <code>use</code>, based on breeding, regular migrant, regionally extinct, etc.):</p>
+<pre class="r"><code>analysis_data %&lt;&gt;% filter(use == &quot;y&quot;)</code></pre>
+<p>Select useful fields and rename <code>region_code</code> to <code>country_code</code> (including countries + island groups):</p>
+<pre class="r"><code>analysis_data %&lt;&gt;%
+  select(
+    scientific_name,
+    region_code,
+    country_name,
+    area,
+    part_of_eu,
+    status,
+    endemic,
+    rlc,
+    rlc_numeric
+  ) %&gt;%
+  rename(country_code = region_code)</code></pre>
+<p>Sort values by country, species:</p>
+<pre class="r"><code>analysis_data %&lt;&gt;% arrange(country_code, scientific_name)</code></pre>
+<p>Save file:</p>
+<pre class="r"><code>write_csv(analysis_data, here::here(&quot;data&quot;, &quot;interim&quot;, &quot;analysis_data.csv&quot;), na = &quot;&quot;)</code></pre>
+</div>
+<div id="table-1-species-per-country" class="section level1">
+<h1><span class="header-section-number">3</span> Table 1: species per country</h1>
+<pre class="r"><code>species_per_country &lt;-
+  analysis_data %&gt;%
+  group_by(country_name, country_code) %&gt;%
+  summarize(
+    `n_species` = n_distinct(scientific_name),
+    `n_endemic_species` = sum(!is.na(endemic))
+  )
+
+write_csv(species_per_country, here::here(&quot;reports&quot;, &quot;species_per_country.csv&quot;), na = &quot;&quot;)</code></pre>
+</div>
+<div id="figure-2-mean-red-list-value-per-country-crlv" class="section level1">
+<h1><span class="header-section-number">4</span> Figure 2: mean red list value per country (cRLV)</h1>
+<p>Linear model:</p>
+<pre class="r"><code>mean_rlc_per_country &lt;-
+  analysis_data %&gt;%
+    drop_na(rlc_numeric) %&gt;%
+  group_by(country_code) %&gt;%
+    do(
+      lm(rlc_numeric ~ 1, data = .data) %&gt;%
+        predict.lm(
+          ., 
+            newdata = data.frame(rlc_numeric_a = 0, rlc_numeric_b = 1),
+            interval = &quot;confidence&quot;,
+            level = 0.95
+        ) %&gt;%
+        as.data.frame()
+    )</code></pre>
+<p>Save data:</p>
+<pre class="r"><code>write.csv(mean_rlc_per_country, here::here(&quot;data&quot;, &quot;interim&quot;, &quot;mean_rlc_per_country.csv&quot;), na = &quot;&quot;)</code></pre>
+<p>Create plot:</p>
+<pre class="r"><code>mean_rlc_per_country_plot &lt;- ggplot(mean_rlc_per_country, aes(x = reorder(country_code, -fit), y = fit)) + 
+  geom_point() +
+  geom_pointrange(aes(ymin = lwr, ymax = upr)) +
+  xlab(&quot;CountryCode&quot;) +
+  ylab(&quot;mRLV&quot;) + 
+  geom_hline(yintercept = 50, size = 1, linetype = 1) + # colour = &quot;red&quot;)
+  geom_hline(yintercept = 30, size = 1, linetype = 2) + # , colour = &quot;orange&quot;
+  geom_hline(yintercept = 20, size = 1, linetype = 3) + # , colour = &quot;yellow&quot;
+  theme_bw()
+
+ggsave(
+  mean_rlc_per_country_plot,
+  file = here::here(&quot;reports&quot;, &quot;mean_rlv_per_country.jpg&quot;),
+  device = &quot;jpeg&quot;,
+  dpi = 300,
+  height = 5,
+  width = 10
+)
+
+mean_rlc_per_country_plot</code></pre>
+<p><img src="integrating_rl_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+</div>
+<div id="table-3-weighted-red-list-value-per-species-wsrlv" class="section level1">
+<h1><span class="header-section-number">5</span> Table 3: weighted red list value per species (wsRLV)</h1>
+<p>We create this table by creating a number of dataframes summarizing information per <code>scientific_name</code> and then joining these together.</p>
+<ol style="list-style-type: decimal">
+<li>Create lookup of red list status for Europe and European Union.</li>
+</ol>
+<pre class="r"><code># Use distribution df, since region_code = &quot;EUR&quot;/&quot;EU27&quot; is excluded from analysis data
+rlc_eur &lt;-
+  distribution %&gt;%
+  filter(region_code == &quot;EUR&quot;) %&gt;%
+  filter(use == &quot;y&quot;) %&gt;%
+  select(scientific_name, rlc, endemic) %&gt;%
+  rename(rlc_eur = rlc, endemic_eur = endemic)
+
+rlc_eu27 &lt;-
+  distribution %&gt;%
+  filter(region_code == &quot;EU27&quot;) %&gt;%
+  filter(use == &quot;y&quot;) %&gt;%
+  select(scientific_name, rlc, endemic) %&gt;%
+  rename(rlc_eu27 = rlc, endemic_eu27 = endemic)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Create lookup of endemic status:</li>
+</ol>
+<pre class="r"><code>endemic &lt;-
+  analysis_data %&gt;%
+  filter(!is.na(endemic)) %&gt;%
+  group_by(scientific_name) %&gt;%
+  summarize(
+    endemic = paste(unique(endemic), collapse = &quot;|&quot;)
+  )</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Create lookup of counts per species:</li>
+</ol>
+<pre class="r"><code>counts_eur &lt;-
+  analysis_data %&gt;% # Contains all countries/island groups = Europe
+  group_by(scientific_name) %&gt;%
+  summarize(
+    n_species_eur = n(),
+    n_rl_eur = sum(!is.na(rlc_numeric))
+  )</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Create lookup of counts per species in European Union:</li>
+</ol>
+<pre class="r"><code>counts_eu27 &lt;-
+  analysis_data %&gt;%
+  filter(!is.na(part_of_eu)) %&gt;%
+  group_by(scientific_name) %&gt;%
+  summarize(
+    n_species_eu27 = n(),
+    n_rl_eu27 = sum(!is.na(rlc_numeric))
+  )</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Create linear model for all species:</li>
+</ol>
+<pre class="r"><code>weighted_rlv_per_species &lt;-
+  analysis_data %&gt;%
+  group_by(scientific_name) %&gt;%
+  drop_na(rlc_numeric) %&gt;%
+  do(
+    lm(rlc_numeric ~ 1, weights = sqrt(area), data = .) %&gt;%
+        predict.lm(
+          .,
+          newdata = data.frame(rlc_numeric_a = 0, rlc_numeric_b = 1),
+            interval = &quot;confidence&quot;,
+            level = 0.95
+        ) %&gt;%
+      as.data.frame()
+    )</code></pre>
+<p>Save data:</p>
+<pre class="r"><code>write.csv(weighted_rlv_per_species, here::here(&quot;data&quot;, &quot;interim&quot;, &quot;weighted_rlv_per_species.csv&quot;), na = &quot;&quot;)</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>Create linear model for species in European Union:</li>
+</ol>
+<pre class="r"><code>weighted_rlv_per_species_eu27 &lt;-
+  analysis_data %&gt;%
+  drop_na(rlc_numeric) %&gt;%
+  filter(!is.na(part_of_eu)) %&gt;%
+  group_by(scientific_name) %&gt;%
+  do(
+    lm(rlc_numeric ~ 1, weights = sqrt(area), data = .) %&gt;%
+        predict.lm(
+          .,
+          newdata = data.frame(rlc_numeric = 0, rlc_numeric = 1),
+            interval = &quot;confidence&quot;,
+            level = 0.95
+        ) %&gt;%
+      as.data.frame()
+    )</code></pre>
+<p>Join information together with species list:</p>
+<pre class="r"><code>weighted_species_list &lt;-
+  species_list %&gt;%
+  left_join(rlc_eur, by = &quot;scientific_name&quot;) %&gt;%
+  left_join(rlc_eu27, by = &quot;scientific_name&quot;) %&gt;%
+  left_join(endemic, by = &quot;scientific_name&quot;) %&gt;%
+  left_join(counts_eur, by = &quot;scientific_name&quot;) %&gt;%
+  left_join(counts_eu27, by = &quot;scientific_name&quot;) %&gt;%
+  left_join(
+    weighted_rlv_per_species %&gt;% select(scientific_name, fit) %&gt;% rename(wsrlv_eur = fit),
+    by = &quot;scientific_name&quot;) %&gt;%
+  left_join(
+    weighted_rlv_per_species_eu27 %&gt;% select(scientific_name, fit) %&gt;% rename(wsrlv_eu27 = fit),
+    by = &quot;scientific_name&quot;
+  )</code></pre>
+<p>Number of taxa should remain the same:</p>
+<pre class="r"><code>nrow(species_list) == nrow(weighted_species_list) # Expect TRUE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>Order by <code>wsrlv_eur</code> and select columns:</p>
+<pre class="r"><code>table3 &lt;- weighted_species_list %&gt;%
+  arrange(desc(wsrlv_eur), desc(n_species_eur)) %&gt;%
+  select(
+    scientific_name,
+    endemic_eur,
+    edge_of_range,
+    wsrlv_eur,
+    n_species_eur,
+    n_rl_eur,
+    rlc_eur,
+    wsrlv_eu27,
+    n_species_eu27,
+    n_rl_eu27,
+    rlc_eu27,
+    habitats_directive,
+    endemic
+  ) %&gt;%
+  mutate(
+    wsrlv_eur = round(wsrlv_eur, 2),
+    wsrlv_eu27 = round(wsrlv_eu27, 2)
+  )</code></pre>
+<p>Save file:</p>
+<pre class="r"><code>write_csv(table3, here::here(&quot;reports&quot;, &quot;weighted_species_list.csv&quot;), na = &quot;&quot;)</code></pre>
+</div>
+<div id="figure-3-correlation-between-srqtarea-and-mean-red-list-value" class="section level1">
+<h1><span class="header-section-number">6</span> Figure 3: correlation between srqt(area) and mean red list value</h1>
+<p>Calculate mean rlc per sqrt of area:</p>
+<pre class="r"><code>mean_rlc_sqrt_area &lt;-
+  analysis_data %&gt;%
+  mutate(
+    rlc_numeric = round(rlc_numeric, 0),
+    sqrt_area = sqrt(area/1000) # Divide by 1000
+  ) %&gt;%
+  group_by(sqrt_area) %&gt;%
+  summarize(
+    mean_rlc_numeric = mean(rlc_numeric, na.rm = TRUE)
+  ) %&gt;%
+  filter(!is.na(mean_rlc_numeric))</code></pre>
+<p>Create plot:</p>
+<pre class="r"><code>mean_rlc_sqrt_area_plot &lt;- ggplot(mean_rlc_sqrt_area, aes(x = sqrt_area, y = mean_rlc_numeric)) +
+  geom_point() +
+  geom_smooth(method = &quot;lm&quot;, se = TRUE, colour = &quot;black&quot;, formula = y ~ splines::ns(x, 1)) +
+  theme_bw() +
+  labs(x = &quot;sqrt(area)&quot;, y = &quot;mRLV&quot;) +
+  theme(axis.text.x = element_text(face = &quot;bold&quot;, size = 20), axis.text.y = element_text(face = &quot;bold&quot;, size = 20)) +
+  theme(axis.title = element_text(face = &quot;bold&quot;, size = 22))
+
+mean_rlc_sqrt_area_plot</code></pre>
+<p><img src="integrating_rl_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<pre class="r"><code>ggsave(mean_rlc_sqrt_area_plot, file = here::here(&quot;reports/mean_rlv_per_sqrt_area.jpg&quot;), device = &quot;jpeg&quot;, dpi = 300, height = 6, width = 10)</code></pre>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
