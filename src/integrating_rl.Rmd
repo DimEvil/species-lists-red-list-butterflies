@@ -207,10 +207,10 @@ species_per_country <-
 write_csv(species_per_country, here::here("data", "integrating_rl", "species_per_country.csv"), na = "")
 ```
 
-# Figure 2: Linear model for weighted red list value per country
+# Figure 2: Linear model for mean red list value per country (cRLV)
 
 ```{r}
-lms_country <-
+mean_rlc_per_country <-
   analysis_data %>%
 	drop_na(rlc_numeric) %>%
   group_by(country_code) %>%
@@ -227,7 +227,7 @@ lms_country <-
 ```
 
 ```{r}
-mean_rlc_per_country <- ggplot(lms_country, aes(x = reorder(country_code, -fit), y = fit)) + 
+mean_rlc_per_country_plot <- ggplot(mean_rlc_per_country, aes(x = reorder(country_code, -fit), y = fit)) + 
   geom_point() +
   geom_pointrange(aes(ymin = lwr, ymax = upr)) +
   xlab("CountryCode") +
@@ -237,10 +237,8 @@ mean_rlc_per_country <- ggplot(lms_country, aes(x = reorder(country_code, -fit),
   geom_hline(yintercept = 20, size = 1, linetype = 3) + # , colour = "yellow"
   theme_bw()
 
-mean_rlc_per_country
-
 ggsave(
-  mean_rlc_per_country,
+  mean_rlc_per_country_plot,
   file = here::here("images", "mean_rlv_per_country.jpg"),
   device = "jpeg",
   dpi = 300,
