@@ -207,7 +207,9 @@ species_per_country <-
 write_csv(species_per_country, here::here("data", "integrating_rl", "species_per_country.csv"), na = "")
 ```
 
-# Figure 2: Linear model for mean red list value per country (cRLV)
+# Figure 2: mean red list value per country (cRLV)
+
+Linear model:
 
 ```{r}
 mean_rlc_per_country <-
@@ -218,13 +220,21 @@ mean_rlc_per_country <-
 	  lm(rlc_numeric ~ 1, data = .data) %>%
 		predict.lm(
 		  ., 
-		 	newdata = data.frame(RLCNumA = 0, RLCNumB = 1),
+		 	newdata = data.frame(rlc_numeric_a = 0, rlc_numeric_b = 1),
 		 	interval = "confidence",
 		 	level = 0.95
 		) %>%
 		as.data.frame()
 	)
 ```
+
+Save data:
+
+```{r}
+write.csv(mean_rlc_per_country, here::here("data", "interim", "mean_rlc_per_country.csv"), na = "")
+```
+
+Create plot:
 
 ```{r}
 mean_rlc_per_country_plot <- ggplot(mean_rlc_per_country, aes(x = reorder(country_code, -fit), y = fit)) + 
@@ -247,54 +257,31 @@ ggsave(
 )
 ```
 
-
-# Mean red list value per country (cRLV)
-
-```{r}
-mean_rlv_per_country <-
-  analysis_data %>%
-  group_by(country_name, country_code) %>%
-  summarize(
-    mean_rlv = mean(rlc_numeric, na.rm = TRUE)
-  )
-
-write_csv(mean_rlv_per_country, here::here("data", "processed", "wrl", "mean_rlv_per_country.csv"), na = "")
-```
-
-# Mean red list value per species (wsRLV)
-
-```{r}
-weighted_rlv_per_species <-
-  analysis_data %>%
-  group_by(scientific_name) %>%
-  summarize(
-    weighted_species_rlv = mean(rlc_numeric, na.rm = TRUE)
-  )
-
-write_csv(weighted_rlv_per_species, here::here("data", "processed", "wrl", "weighted_rlv_per_species.csv"), na = "")
-```
-
-```{r}
-
-```
-
 # Weighted red list value per species (wsRLV)
 
-```{r}
-
-```
-
+Linear model:
 
 ```{r}
 weighted_rlv_per_species <-
   analysis_data %>%
-  mutate(sqrt_area = sqrt(area)) %>%
+  drop_na(rlc_numeric) %>%
   group_by(scientific_name) %>%
-  summarize(
-    weighted_rlv = mean(rlc_numeric/sqrt_area, na.rm = TRUE)
-  )
+  do(
+    lm(rlc_numeric ~ 1, weights = sqrt(area), data = .) %>%
+		predict.lm(
+		  .,
+		  newdata = data.frame(rlc_numeric = 0, rlc_numeric = 1),
+			interval = "confidence",
+			level = 0.95
+		) %>%
+	  as.data.frame()
+	)
+```
 
-write_csv(weighted_rlv_per_species, here::here("data", "processed", "wrl", "weighted_rlv_per_species.csv"), na = "")
+Save data:
+
+```{r}
+write.csv(weighted_rlv_per_species, here::here("data", "interim", "weighted_rlv_per_species.csv"), na = "")
 ```
 
 
