@@ -60,7 +60,6 @@ write_csv(input_distribution, here("data", "raw", "distribution.csv"), na = "")
 write_csv(input_taxa, here("data", "raw", "taxa.csv"), na = "")
 write_csv(input_regions, here("data", "raw", "regions.csv"), na = "")
 write_csv(input_references, here("data", "raw", "references.csv"), na = "")
-write_csv(input_rlc, here("data", "raw", "rlc.csv"), na = "")
 ```
 
 The first 4 files will be used for the Darwin Core mapping, while `rlc` is needed for the calculation in `wrl_values.Rmd`.
