@@ -37,62 +37,7 @@ country_info <- read_csv(here::here("data", "raw", "regions.csv"))
 regional_threat_scores <- read_csv(here::here("data", "raw", "rlc.csv"))
 ```
 
-# Create species list with Europe/EU red list and endemic status
-
-Create lookup of red list status in Europe and European Union:
-
-```{r}
-eur <-
-  distribution %>%
-  filter(region_code == "EUR") %>%
-  filter(use == "y") %>%
-  select(scientific_name, rlc, endemic) %>%
-  rename(rlc_eur = rlc, endemic_eur = endemic)
-
-eu27 <-
-  distribution %>%
-  filter(region_code == "EU27") %>%
-  filter(use == "y") %>%
-  select(scientific_name, rlc, endemic) %>%
-  rename(rlc_eu27 = rlc, endemic_eu27 = endemic)
-```
-
-Create lookup of endemic status:
-
-```{r}
-endemic <-
-  distribution %>%
-  filter(!is.na(endemic)) %>%
-  filter(!region_code %in% c("EUR", "EU27")) %>% # Treated separately, see above
-  group_by(scientific_name) %>%
-  summarize(
-    endemic = paste(unique(endemic), collapse = "|")
-  )
-```
-
-Join information together with species list:
-
-```{r}
-eu_species_list <-
-  species_list %>%
-  left_join(eur, by = "scientific_name") %>%
-  left_join(eu27, by = "scientific_name") %>%
-  left_join(endemic, by = "scientific_name")
-```
-
-Number of taxa should remain the same:
-
-```{r}
-nrow(species_list) == nrow(eu_species_list) # Expect TRUE
-```
-
-Save file:
-
-```{r}
-write_csv(eu_species_list, here::here("data", "interim", "eu_species_list.csv"), na = "")
-```
-
-# Create weighted red list status per country/island group
+# Analysis data: taxon per country/island group
 
 Create a dataframe of the taxa per country (= distributions) and associate with country information:
 
@@ -201,8 +146,8 @@ species_per_country <-
   analysis_data %>%
   group_by(country_name, country_code) %>%
   summarize(
-    `number_of_species` = n_distinct(scientific_name),
-    `number_of_endemic_species` = sum(!is.na(endemic))
+    `n_species` = n_distinct(scientific_name),
+    `n_endemic_species` = sum(!is.na(endemic))
   )
 
 write_csv(species_per_country, here::here("data", "integrating_rl", "species_per_country.csv"), na = "")
@@ -256,22 +201,82 @@ ggsave(
   height = 5,
   width = 10
 )
+
+mean_rlc_per_country_plot
 ```
 
-# Weighted red list value per species (wsRLV)
+# Table 3: weighted red list value per species (wsRLV)
 
-Linear model:
+We create this table by creating a number of dataframes summarizing information per `scientific_name` and then joining these together.
+
+1. Create lookup of red list status for Europe and European Union.
+
+```{r}
+# Use distribution df, since region_code = "EUR"/"EU27" is excluded from analysis data
+rlc_eur <-
+  distribution %>%
+  filter(region_code == "EUR") %>%
+  filter(use == "y") %>%
+  select(scientific_name, rlc, endemic) %>%
+  rename(rlc_eur = rlc, endemic_eur = endemic)
+
+rlc_eu27 <-
+  distribution %>%
+  filter(region_code == "EU27") %>%
+  filter(use == "y") %>%
+  select(scientific_name, rlc, endemic) %>%
+  rename(rlc_eu27 = rlc, endemic_eu27 = endemic)
+```
+
+2. Create lookup of endemic status:
+
+```{r}
+endemic <-
+  analysis_data %>%
+  filter(!is.na(endemic)) %>%
+  group_by(scientific_name) %>%
+  summarize(
+    endemic = paste(unique(endemic), collapse = "|")
+  )
+```
+
+3. Create lookup of counts per species:
+
+```{r}
+counts_eur <-
+  analysis_data %>% # Contains all countries/island groups = Europe
+  group_by(scientific_name) %>%
+  summarize(
+    n_species_eur = n(),
+    n_rl_eur = sum(!is.na(rlc_numeric))
+  )
+```
+
+4. Create lookup of counts per species in European Union:
+
+```{r}
+counts_eu27 <-
+  analysis_data %>%
+  filter(!is.na(part_of_eu)) %>%
+  group_by(scientific_name) %>%
+  summarize(
+    n_species_eu27 = n(),
+    n_rl_eu27 = sum(!is.na(rlc_numeric))
+  )
+```
+
+5. Create linear model for all species:
 
 ```{r}
 weighted_rlv_per_species <-
   analysis_data %>%
-  drop_na(rlc_numeric) %>%
   group_by(scientific_name) %>%
+  drop_na(rlc_numeric) %>%
   do(
     lm(rlc_numeric ~ 1, weights = sqrt(area), data = .) %>%
 		predict.lm(
 		  .,
-		  newdata = data.frame(rlc_numeric = 0, rlc_numeric = 1),
+		  newdata = data.frame(rlc_numeric_a = 0, rlc_numeric_b = 1),
 			interval = "confidence",
 			level = 0.95
 		) %>%
@@ -285,8 +290,82 @@ Save data:
 write.csv(weighted_rlv_per_species, here::here("data", "interim", "weighted_rlv_per_species.csv"), na = "")
 ```
 
+6. Create linear model for species in European Union:
 
+```{r}
+weighted_rlv_per_species_eu27 <-
+  analysis_data %>%
+  drop_na(rlc_numeric) %>%
+  filter(!is.na(part_of_eu)) %>%
+  group_by(scientific_name) %>%
+  do(
+    lm(rlc_numeric ~ 1, weights = sqrt(area), data = .) %>%
+		predict.lm(
+		  .,
+		  newdata = data.frame(rlc_numeric = 0, rlc_numeric = 1),
+			interval = "confidence",
+			level = 0.95
+		) %>%
+	  as.data.frame()
+	)
+```
 
+Join information together with species list:
+
+```{r}
+weighted_species_list <-
+  species_list %>%
+  left_join(rlc_eur, by = "scientific_name") %>%
+  left_join(rlc_eu27, by = "scientific_name") %>%
+  left_join(endemic, by = "scientific_name") %>%
+  left_join(counts_eur, by = "scientific_name") %>%
+  left_join(counts_eu27, by = "scientific_name") %>%
+  left_join(
+    weighted_rlv_per_species %>% select(scientific_name, fit) %>% rename(wsrlv_eur = fit),
+    by = "scientific_name") %>%
+  left_join(
+    weighted_rlv_per_species_eu27 %>% select(scientific_name, fit) %>% rename(wsrlv_eu27 = fit),
+    by = "scientific_name"
+  )
+```
+
+Number of taxa should remain the same:
+
+```{r}
+nrow(species_list) == nrow(weighted_species_list) # Expect TRUE
+```
+
+Order by `wsrlv_eur` and select columns:
+
+```{r}
+table3 <- weighted_species_list %>%
+  arrange(desc(wsrlv_eur), desc(n_species_eur)) %>%
+  select(
+    scientific_name,
+    endemic_eur,
+    edge_of_range,
+    wsrlv_eur,
+    n_species_eur,
+    n_rl_eur,
+    rlc_eur,
+    wsrlv_eu27,
+    n_species_eu27,
+    n_rl_eu27,
+    rlc_eu27,
+    habitats_directive,
+    endemic
+  ) %>%
+  mutate(
+    wsrlv_eur = round(wsrlv_eur, 2),
+    wsrlv_eu27 = round(wsrlv_eu27, 2)
+  )
+```
+
+Save file:
+
+```{r}
+write_csv(table3, here::here("data", "integrating_rl", "weighted_species_list.csv"), na = "")
+```
 
 # Correlation area - mean RLC per country 
 
