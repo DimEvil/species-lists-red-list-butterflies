@@ -1,5 +1,5 @@
 ---
-title: "Weighted red list values"
+title: "Integrating red lists"
 author:
 - Dimitri Brosens
 - Dirk Maes
@@ -204,7 +204,7 @@ species_per_country <-
     `number_of_endemic_species` = sum(!is.na(endemic))
   )
 
-write_csv(species_per_country, here::here("data", "wrl", "table1.csv"), na = "")
+write_csv(species_per_country, here::here("data", "integrating_rl", "species_per_country.csv"), na = "")
 ```
 
 # Figure 2: Linear model for weighted red list value per country
