@@ -367,38 +367,35 @@ Save file:
 write_csv(table3, here::here("data", "integrating_rl", "weighted_species_list.csv"), na = "")
 ```
 
-# Correlation area - mean RLC per country 
+# Figure 3: correlation between srqt(area) and mean red list value
+
+Calculate mean rlc per sqrt of area:
 
 ```{r}
-CorAreaMeanRLC <- taxa_country_rlv %>%
-  select(scientific_name, rlc_numeric, area)
+mean_rlc_sqrt_area <-
+  analysis_data %>%
+  mutate(
+    rlc_numeric = round(rlc_numeric, 0),
+    sqrt_area = sqrt(area/1000) # Divide by 1000
+  ) %>%
+  group_by(sqrt_area) %>%
+  summarize(
+    mean_rlc_numeric = mean(rlc_numeric, na.rm = TRUE)
+  ) %>%
+  filter(!is.na(mean_rlc_numeric))
+```
 
-CorAreaMeanRLC$RLCNum <- round(CorAreaMeanRLC$rlc_numeric, 0)
-CorAreaMeanRLC$sqrtRLCNum <- sqrt(CorAreaMeanRLC$rlc_numeric)
-CorAreaMeanRLC$Area1 <- CorAreaMeanRLC$area/1000
-CorAreaMeanRLC$sqrtArea <- sqrt(CorAreaMeanRLC$Area1)
+Create plot:
 
-hist(CorAreaMeanRLC$RLCNum)
-hist(CorAreaMeanRLC$sqrtRLCNum)
+```{r}
+mean_rlc_sqrt_area_plot <- ggplot(mean_rlc_sqrt_area, aes(x = sqrt_area, y = mean_rlc_numeric)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE, colour = "black", formula = y ~ splines::ns(x, 1)) +
+  theme_bw() +
+  labs(x = "sqrt(area)", y = "mRLV") +
+  theme(axis.text.x = element_text(face = "bold", size = 20), axis.text.y = element_text(face = "bold", size = 20)) +
+  theme(axis.title = element_text(face = "bold", size = 22))
 
-cor.test(CorAreaMeanRLC$RLCNum, CorAreaMeanRLC$sqrtArea, method = c("pearson"))
-
-glm.cor <- aov(RLCNum ~ sqrtArea
-
-							 , data= CorAreaMeanRLC
-							 , family = poisson)
-summary(glm.cor)
-plot(glm.cor)
-
-glm.cor <- glm(RLCNum ~ Area, data = CorAreaMeanRLC, family = poisson)
-summary(glm.cor)
-
-gam.cor <- gam(RLCNum ~ s(sqrtArea), data = CorAreaMeanRLC, family = poisson)
-summary(gam.cor)
-plot(gam.cor)
-
-AreamRLV <- ggplot(CorAreaMeanRLC, aes(x = sqrtArea, y = RLCNum)) + geom_point() + geom_smooth(method = "lm", se = TRUE, colour = "black", formula = y ~ splines::ns(x, 1)) + theme_bw() + labs(x = "sqrt(Area)", y = "mRLV") + theme(axis.text.x = element_text(face = "bold", size = 20), axis.text.y = element_text(face = "bold", size = 20)) + theme(axis.title = element_text(face="bold", size=22))
-
-AreamRLV
-ggsave(AreamRLV, file = here("images/mean_rlv_per_sqrt_area.jpg"), device = "jpeg", dpi = 300, height = 6, width = 10)
+mean_rlc_sqrt_area_plot
+ggsave(mean_rlc_sqrt_area_plot, file = here("images/mean_rlv_per_sqrt_area.jpg"), device = "jpeg", dpi = 300, height = 6, width = 10)
 ```
