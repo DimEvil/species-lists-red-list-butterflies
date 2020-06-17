@@ -4,13 +4,13 @@
 
 This repository contains the functionality to standardize the _National checklists and red lists for European butterflies_ to a [Darwin Core checklist](https://www.gbif.org/dataset-classes) that can be harvested by [GBIF](http://www.gbif.org).
 
-The repository also includes the script used to calculate the weighted red list categories as used in Maes et al. (2019).
+The repository also includes the script to integrate red lists, calculate weighted red list values, and create the tables and figures for [Maes et al. (2019)](https://doi.org/10.1007/s10841-019-00127-z).
 
 ## Workflow
 
 [source data](data/raw) (maintained as a [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?usp=sharing)) → Darwin Core [mapping script](src/dwc_mapping.Rmd) → generated [Darwin Core files](data/processed)
 
-[source data](data/raw) → [script](src/wrl_values.Rmd) to calculate weighted red list values → [weighted red list values table](data/processed/wrl)
+[source data](data/raw) → [analysis script](src/integrating_rl.Rmd) → [tables and figures for Maes et al. (2019)](reports)
 
 ## Published dataset
 
@@ -28,15 +28,16 @@ The repository structure is based on [Cookiecutter Data Science](http://drivenda
 │
 ├── data
 │   ├── raw                : Source data from Google Spreadsheet, input for scripts GENERATED
-│   └── processed
-│       ├── *.csv          : Darwin Core output of mapping script GENERATED
-│       └── wrl_values.csv : Output of weighted red list values script
+│   ├── interim            : Interim data created for analysis GENERATED
+│   └── processed          : Darwin Core output of mapping script GENERATED
 │
 ├── docs                   : Repository website GENERATED
 │
+├── reports                : Figures and tables as output of analysis GENERATED
+│
 └── src
     ├── dwc_mapping.Rmd    : Darwin Core mapping script
-    ├── wrl_values.Rmd     : Script to dynamically calculate weighted red list values
+    ├── integrating_rl.Rmd : Analysis script to integrate red lists
     ├── _site.yml          : Settings to build website in docs/
     └── index.Rmd          : Template for website homepage
 ```

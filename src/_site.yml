@@ -6,8 +6,8 @@ navbar:
   left:
     - text: "Darwin Core mapping"
       href: dwc_mapping.html
-    - text: "Weighted red list values"
-      href: wrl_values.html
+    - text: "Integrating red lists"
+      href: integrating_rl.html
   right:
     - icon: fa-github fa-lg
       href: https://github.com/inbo/eurobutt-checklist

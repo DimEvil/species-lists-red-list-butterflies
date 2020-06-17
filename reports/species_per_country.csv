@@ -1,0 +1,46 @@
+country_name,country_code,n_species,n_endemic_species
+Albania,AL,201,0
+Andorra,AD,151,0
+Austria,AT,205,0
+Belarus,BY,133,0
+Belgium,BE,112,0
+Bosnia and Herzegovina,BA,195,0
+Bulgaria,BG,217,0
+Croatia,HR,196,0
+Cyprus,CY,48,3
+Czech Republic,CZ,157,0
+Denmark,DK,84,0
+Estonia,EE,104,0
+Finland,FI,110,0
+France,FR,255,0
+Germany,DE,178,0
+Greece,GR,235,7
+Hungary,HU,156,0
+Iceland,IS,2,0
+Ireland,IE,35,0
+Italy,IT,272,9
+Latvia,LV,118,0
+Liechtenstein,LI,122,0
+Lithuania,LT,120,0
+Luxembourg,LU,88,0
+Malta,MT,23,0
+Moldova,MD,124,0
+Montenegro,ME,183,0
+Netherlands,NL,77,0
+North Macedonia,MK,203,1
+Norway,NO,96,0
+Poland,PL,154,0
+Portugal,MA_AZ,8,2
+Portugal,MA_MA,15,4
+Portugal,PT,133,0
+Romania,RO,193,0
+Russia,RU,258,0
+Serbia,RS,198,0
+Slovakia,SK,172,0
+Slovenia,SI,179,0
+Spain,ES,233,12
+Spain,MA_CA,33,13
+Sweden,SE,111,0
+Switzerland,CH,202,0
+Ukraine,UA,200,1
+United Kingdom,GB,63,0
