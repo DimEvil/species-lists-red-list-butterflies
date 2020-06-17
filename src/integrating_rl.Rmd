@@ -34,7 +34,6 @@ The source data is maintained in a Google Spreadsheet and copied by `src/dwc_map
 species_list <- read_csv(here::here("data", "raw", "taxa.csv"))
 distribution <- read_csv(here::here("data", "raw", "distribution.csv"))
 country_info <- read_csv(here::here("data", "raw", "regions.csv"))
-regional_threat_scores <- read_csv(here::here("data", "raw", "rlc.csv"))
 ```
 
 # Analysis data: taxon per country/island group
