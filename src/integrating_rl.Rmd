@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 [maes_2019]: https://doi.org/10.1007/s10841-019-00127-z
 
-This document uses the _National checklists and red lists for European butterflies_ dataset in this repository to create the tables and figures for [Maes et al. (2019)][maes_2019]. It associated red list categories with numeric values to create weighted red list values per country and species. 
+This document uses the _National checklists and red lists for European butterflies_ dataset in this repository to create the tables and figures for [Maes et al. (2019)][maes_2019]. It associated red list categories with numeric values to create weighted red list values per country and species. The source file for this document can be found [here](https://github.com/inbo/eurobutt-checklist/blob/master/src/integrating_rl.Rmd).
 
 ```{r}
 library(tidyverse)      # To do data science

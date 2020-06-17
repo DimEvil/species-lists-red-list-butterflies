@@ -8,9 +8,9 @@ The repository also includes the script to integrate red lists, calculate weight
 
 ## Workflow
 
-[source data](data/raw) (maintained as a [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?usp=sharing)) → Darwin Core [mapping script](src/dwc_mapping.Rmd) → generated [Darwin Core files](data/processed)
+[source data](https://github.com/inbo/eurobutt-checklist/tree/master/data/raw) (maintained as a [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1RvxpOYf2ZrTu9nsTLumoi-G-GGhh6_lV37TNtPiVES4/edit?usp=sharing)) → Darwin Core [mapping script](https://inbo.github.io/eurobutt-checklist/dwc_mapping.html) → generated [Darwin Core files](https://github.com/inbo/eurobutt-checklist/tree/master/data/processed)
 
-[source data](data/raw) → [analysis script](src/integrating_rl.Rmd) → [tables and figures for Maes et al. (2019)](reports)
+[source data](https://github.com/inbo/eurobutt-checklist/tree/master/data/raw) → [analysis script](https://inbo.github.io/eurobutt-checklist/integrating_rl.html) → [tables and figures for Maes et al. (2019)](https://github.com/inbo/eurobutt-checklist/tree/master/reports)
 
 ## Published dataset
 
