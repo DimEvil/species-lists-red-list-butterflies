@@ -1,4 +1,4 @@
-country_name,country_code,number_of_species,number_of_endemic_species
+country_name,country_code,n_species,n_endemic_species
 Albania,AL,201,0
 Andorra,AD,151,0
 Austria,AT,205,0

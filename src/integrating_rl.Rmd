@@ -3,6 +3,7 @@ title: "Integrating red lists"
 author:
 - Dimitri Brosens
 - Dirk Maes
+- Peter Desmet
 date: "18 juli 2018"
 output:
   html_document: default
