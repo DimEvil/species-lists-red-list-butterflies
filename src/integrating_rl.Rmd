@@ -150,7 +150,7 @@ species_per_country <-
     `n_endemic_species` = sum(!is.na(endemic))
   )
 
-write_csv(species_per_country, here::here("data", "integrating_rl", "species_per_country.csv"), na = "")
+write_csv(species_per_country, here::here("reports", "species_per_country.csv"), na = "")
 ```
 
 # Figure 2: mean red list value per country (cRLV)
@@ -195,7 +195,7 @@ mean_rlc_per_country_plot <- ggplot(mean_rlc_per_country, aes(x = reorder(countr
 
 ggsave(
   mean_rlc_per_country_plot,
-  file = here::here("images", "mean_rlv_per_country.jpg"),
+  file = here::here("reports", "mean_rlv_per_country.jpg"),
   device = "jpeg",
   dpi = 300,
   height = 5,
@@ -364,7 +364,7 @@ table3 <- weighted_species_list %>%
 Save file:
 
 ```{r}
-write_csv(table3, here::here("data", "integrating_rl", "weighted_species_list.csv"), na = "")
+write_csv(table3, here::here("reports", "weighted_species_list.csv"), na = "")
 ```
 
 # Figure 3: correlation between srqt(area) and mean red list value
@@ -397,5 +397,5 @@ mean_rlc_sqrt_area_plot <- ggplot(mean_rlc_sqrt_area, aes(x = sqrt_area, y = mea
   theme(axis.title = element_text(face = "bold", size = 22))
 
 mean_rlc_sqrt_area_plot
-ggsave(mean_rlc_sqrt_area_plot, file = here("images/mean_rlv_per_sqrt_area.jpg"), device = "jpeg", dpi = 300, height = 6, width = 10)
+ggsave(mean_rlc_sqrt_area_plot, file = here::here("reports/mean_rlv_per_sqrt_area.jpg"), device = "jpeg", dpi = 300, height = 6, width = 10)
 ```
