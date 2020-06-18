@@ -14,7 +14,8 @@ The repository also includes the script to integrate red lists, calculate weight
 
 ## Published dataset
 
-...
+* [Dataset on the IPT](https://ipt.inbo.be/resource?r=eurobutt-checklist)
+* [Dataset on GBIF](https://doi.org/10.15468/ye7whj)
 
 ## Repo structure
 
